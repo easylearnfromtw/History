@@ -79,12 +79,12 @@
 - https://youtu.be/cL4Q8PYMzHE?si=R3UIxFjzUlCTSwK4
 - https://youtu.be/mX5wcyjsZck?si=mA3DxgaPAreNrc9u
 
-### 阿媽家旁午間大火
+### 阿媽家旁午後大火
 
-日期年份待考　家人回憶和平島阿媽家旁 原阿九鯊魚羹所在處 中午突發大火　家族適逢外出旅遊　據家屬所述家人未有傷亡　惟有不少物品焚損　損失範圍仍待核實
+2019年9月9日下午　家人回憶和平島阿媽家旁 原阿九鯊魚羹所在處 突發大火　家族適逢外出旅遊　據家屬所述家人未有傷亡　惟有不少物品焚損　損失範圍仍待核實
 
 - https://youtu.be/wY6YrXXqlbI?si=SW8IqofGcwHJvoCf
 - https://youtu.be/QxD_RAg_zgE?si=cfrmc0FFYOJQ-PUj
 - https://youtu.be/IaVmKb1oLsY?si=nTuqVG9Yosk4Hy9M
 
-影音網址由家屬提供　影片內容目前無法直接核實　日期及火警原因另待查證　公開網站採家族口述紀錄方式呈現
+影音網址由家屬提供　影片內容目前無法直接核實　阿九鯊魚羹旁火警日期與時段由家屬補充為2019年9月9日下午　火警原因另待查證　公開網站採家族口述紀錄方式呈現
