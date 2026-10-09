@@ -1,8 +1,8 @@
 <!doctype html>
 <html lang="zh-Hant"><head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8"><meta name="viewport" content="width device width initial scale 1">
 <meta name="robots" content="noindex,nofollow,noarchive"><meta name="theme-color" content="#f1ede3">
-<title>家族內部典藏｜林王家族誌</title>
+<title>家族內部典藏林王家族誌</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Noto+Sans+TC:wght@400;500;600&family=Noto+Serif+TC:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -15,9 +15,9 @@
 @media(max-width:800px){.header{height:70px}.shell{grid-template-columns:1fr}.left{padding:46px 28px 48px;min-height:300px}.left h1{font-size:37px;margin:16px 0}.left p{font-size:12px}.left .foot{margin-top:20px}.right{padding:55px 28px 70px}.privatebar{padding:10px 14px}}
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
 </style></head><body>
-<header class="header"><a class="brand" href="../"><span class="seal">林王</span><span>林王家族誌<small>PRIVATE FAMILY ARCHIVE</small></span></a><a class="back" href="../">返回家族官網　↗</a></header>
-<main class="shell"><div class="left"><span class="kicker">FAMILY MEMBERS · PRIVATE COLLECTION</span><h1>家族故事，<br>留給家人閱讀。</h1><p>有人寫下名字，有人留下足跡。完整世系、人物列傳、家族大事紀與私人典藏，僅在通過密碼解鎖後顯示。</p><div class="foot">LIN × WANG ARCHIVE / RESTRICTED</div></div><div class="right"><section class="formbox"><span class="topline">01 / MEMBER ACCESS</span><h2>登入家族典藏室</h2><p class="intro">請輸入家族密碼。私人內容會在你使用的裝置上解密，密碼不會以明文儲存於此網頁。</p><form id="login"><label for="secret">家族密碼</label><div class="input-row"><input type="password" id="secret" autocomplete="current-password" required placeholder="請輸入家族密碼"><button type="button" id="togglePass">顯示</button></div><button class="submit" id="submit" type="submit"><span>解鎖家族完整版</span><span aria-hidden="true">↗</span></button><p id="feedback" class="error" role="status" aria-live="polite"></p></form><div class="note">此頁使用加密檔案，並非伺服器帳號系統。已解鎖的資料僅保留在此瀏覽分頁；請勿在共用裝置解鎖。8 位數密碼只適合測試，日後建議換成較長的通關密語。</div></section></div></main>
-<section class="private" id="private" hidden><div class="privatebar"><div>林王家族誌　·　私人完整典藏<small>PRIVATE ACCESS · SESSION ONLY</small></div><button class="lock" id="logout">登出並鎖定　×</button></div><iframe id="familyFrame" title="完整家族族譜" referrerpolicy="no-referrer"></iframe></section>
+<header class="header"><a class="brand" href="../"><span class="seal">林王</span><span>林王家族誌<small>PRIVATE FAMILY ARCHIVE</small></span></a><a class="back" href="../">返回家族官網　</a></header>
+<main class="shell"><div class="left"><span class="kicker">FAMILY MEMBERS PRIVATE COLLECTION</span><h1>家族故事<br>留給家人閱讀</h1><p>有人寫下名字有人留下足跡完整世系人物列傳家族大事紀與私人典藏僅在通過密碼解鎖後顯示</p><div class="foot">LIN WANG ARCHIVE RESTRICTED</div></div><div class="right"><section class="formbox"><span class="topline">01 MEMBER ACCESS</span><h2>登入家族典藏室</h2><p class="intro">請輸入家族密碼私人內容會在你使用的裝置上解密密碼不會以明文儲存於此網頁</p><form id="login"><label for="secret">家族密碼</label><div class="input-row"><input type="password" id="secret" autocomplete="current-password" required placeholder="請輸入家族密碼"><button type="button" id="togglePass">顯示</button></div><button class="submit" id="submit" type="submit"><span>解鎖家族完整版</span><span aria-hidden="true"></span></button><p id="feedback" class="error" role="status" aria-live="polite"></p></form><div class="note">此頁使用加密檔案並非伺服器帳號系統已解鎖的資料僅保留在此瀏覽分頁請勿在共用裝置解鎖8 位數密碼只適合測試日後建議換成較長的通關密語</div></section></div></main>
+<section class="private" id="private" hidden><div class="privatebar"><div>林王家族誌　　私人完整典藏<small>PRIVATE ACCESS SESSION ONLY</small></div><button class="lock" id="logout">登出並鎖定　</button></div><iframe id="familyFrame" title="完整家族族譜" referrerpolicy="no-referrer"></iframe></section>
 <script>
 (()=>{'use strict';const $=x=>document.querySelector(x);const input=$('#secret');let blobUrl=null,locked=false;
 function toBytes(v){const b=atob(v);return Uint8Array.from(b,c=>c.charCodeAt(0))}
@@ -59,7 +59,7 @@ function applyCorrections(html,patch){
 }
 
 $('#togglePass').addEventListener('click',()=>{const show=input.type==='password';input.type=show?'text':'password';$('#togglePass').textContent=show?'隱藏':'顯示'});
-$('#login').addEventListener('submit',async e=>{e.preventDefault();if(locked)return;locked=true;const btn=$('#submit');btn.disabled=true;$('#feedback').textContent='';try{let html=await decrypt(input.value);html=applyCorrections(html,await decryptPatch(input.value));blobUrl=URL.createObjectURL(new Blob([html],{type:'text/html;charset=utf-8'}));$('#familyFrame').src=blobUrl;$('#private').hidden=false;document.documentElement.style.overflow='hidden';input.value='';}catch(err){$('#feedback').textContent=err.name==='OperationError'?'密碼不正確，請重新輸入。':err.message||'解鎖失敗，請稍後再試。';}finally{btn.disabled=false;locked=false}});
+$('#login').addEventListener('submit',async e=>{e.preventDefault();if(locked)return;locked=true;const btn=$('#submit');btn.disabled=true;$('#feedback').textContent='';try{let html=await decrypt(input.value);html=applyCorrections(html,await decryptPatch(input.value));blobUrl=URL.createObjectURL(new Blob([html],{type:'text/html;charset=utf-8'}));$('#familyFrame').src=blobUrl;$('#private').hidden=false;document.documentElement.style.overflow='hidden';input.value='';}catch(err){$('#feedback').textContent=err.name==='OperationError'?'密碼不正確 請重新輸入':'解鎖失敗 請稍後再試';}finally{btn.disabled=false;locked=false}});
 $('#logout').addEventListener('click',()=>{$('#familyFrame').removeAttribute('src');$('#private').hidden=true;document.documentElement.style.overflow='';if(blobUrl){URL.revokeObjectURL(blobUrl);blobUrl=null}input.value=''});
 window.addEventListener('pagehide',()=>{if(blobUrl)URL.revokeObjectURL(blobUrl)});
 })();
