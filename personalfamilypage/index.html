@@ -91,7 +91,7 @@
 </style></head><body>
 <header class="header"><a class="brand" href="../"><span class="seal">林王</span><span>林王家族誌<small>PRIVATE FAMILY ARCHIVE</small></span></a><a class="back" href="../">返回家族官網　</a></header>
 <main class="shell"><div class="left"><span class="kicker">FAMILY MEMBERS PRIVATE COLLECTION</span><h1>家族故事<br>留給家人閱讀</h1><p>有人寫下名字有人留下足跡完整世系人物列傳家族大事紀與私人典藏僅在通過密碼解鎖後顯示</p><div class="foot">LIN WANG ARCHIVE RESTRICTED</div></div><div class="right"><section class="formbox"><span class="topline">01 MEMBER ACCESS</span><h2>登入家族典藏室</h2><p class="intro">請輸入家族密碼私人內容會在你使用的裝置上解密密碼不會以明文儲存於此網頁</p><form id="login"><label for="secret">家族密碼</label><div class="input-row"><input type="password" id="secret" name="family-password" autocomplete="current-password" autocorrect="off" autocapitalize="off" spellcheck="false" enterkeyhint="go" aria-describedby="feedback" required placeholder="請輸入家族密碼"><button type="button" id="togglePass" aria-label="顯示或隱藏家族密碼">顯示</button></div><button class="submit" id="submit" type="submit"><span>解鎖家族完整版</span><span aria-hidden="true"></span></button><p id="feedback" class="error" role="status" aria-live="polite"></p></form><details class="login-help"><summary>遇到解鎖問題</summary><div class="login-help-content"><p>請確認已連接網路　並使用新版 Safari 或 Chrome 瀏覽器</p><p>家族密碼由家人提供　如無法解鎖請向家族管理者確認</p><p>開啟私人族譜後可隨時點選登出並鎖定</p></div></details>
-<div class="note">此頁使用加密檔案並非伺服器帳號系統已解鎖的資料僅保留在此瀏覽分頁請勿在共用裝置解鎖8 位數密碼只適合測試日後建議換成較長的通關密語</div></section></div></main>
+<p style="margin:18px 0 0;font-size:12px"><a href="../admin/" style="text-decoration:underline;text-underline-offset:4px">前往人物資料管理</a></p><div class="note">此頁使用加密檔案並非伺服器帳號系統已解鎖的資料僅保留在此瀏覽分頁請勿在共用裝置解鎖8 位數密碼只適合測試日後建議換成較長的通關密語</div></section></div></main>
 <section class="private" id="private" hidden><div class="privatebar"><div>林王家族誌　　私人完整典藏<small>PRIVATE ACCESS SESSION ONLY</small></div><button class="lock" id="logout">登出並鎖定　</button></div><iframe id="familyFrame" title="完整家族族譜" referrerpolicy="no-referrer"></iframe></section>
 <script>
 (()=>{'use strict';const $=x=>document.querySelector(x);const input=$('#secret');let blobUrl=null,locked=false;
@@ -166,8 +166,39 @@ function applyCorrections(html,patch){
  return html.slice(0,start)+content+html.slice(end);
 }
 
+/* The encrypted base archive is unchanged. Apply only the public family-supplied revisions after decryption. */
+function taipeiToday(){const parts=new Intl.DateTimeFormat('en-US',{timeZone:'Asia/Taipei',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(new Date());const get=k=>parts.find(p=>p.type===k)?.value||'';return get('year')+'-'+get('month')+'-'+get('day')}
+function profileEducation(person){return person.educationStatusFrom&&taipeiToday()>=person.educationStatusFrom?person.educationStatusAfter:person.educationStatus}
+function applyFamilyProfiles(html,doc){
+ if(!doc||!doc.people)return html;
+ const marker='window.ARCHIVE_DATA = ',at=html.indexOf(marker);
+ if(at<0)return html;
+ const start=at+marker.length,found=/;\\s*<\\/script>/.exec(html.slice(start));
+ if(!found)return html;
+ const end=start+found.index;
+ let data;try{data=JSON.parse(html.slice(start,end))}catch(error){return html}
+ if(!Array.isArray(data.people))return html;
+ const aliases={'林哲緯':['lin_zhewei','lin_zhewei','lin_cherwei'],'林哲愷':['lin_zhekai'],'陳季佑':['chen_jiyou','chen_chiyou'],'王品媗':['wang_pinxuan'],'李芸閑':['li_yunxian','li_yunxian']};
+ for(const [name,changes] of Object.entries(doc.people)){
+  const match=data.people.find(p=>String(p.name||p.fullName||'')===name||(aliases[name]||[]).includes(String(p.id||'')));
+  if(!match)continue;
+  const status=profileEducation(changes);
+  const info=['家族資料修訂',changes.ageRelation||'',status&&status!=='未提供'?'學籍狀態 '+status:''].filter(Boolean).join('　');
+  if(!Array.isArray(match.notes))match.notes=[];
+  match.notes=match.notes.filter(v=>!String(v).startsWith('家族資料修訂'));
+  match.notes.push(info);
+  if(changes.ageRelation)match.ageRelation=changes.ageRelation;
+  if(status&&status!=='未提供')match.educationStatus=status;
+  let bio=String(match.bio||'').replace(/\\s*〔家族資料修訂：[^〕]*〕/gu,'');
+  match.bio=bio+'　〔家族資料修訂：'+info+'〕';
+ }
+ const safe=JSON.stringify(data).replace(/</g,'\\\\u003c');
+ return html.slice(0,start)+safe+html.slice(end);
+}
+async function loadPublicProfiles(){try{const r=await fetch('../data/people.json',{cache:'no-store'});if(!r.ok)throw Error('profiles');return await r.json()}catch(e){return null}}
+
 $('#togglePass').addEventListener('click',()=>{const show=input.type==='password';input.type=show?'text':'password';$('#togglePass').textContent=show?'隱藏':'顯示'});
-$('#login').addEventListener('submit',async e=>{e.preventDefault();if(locked)return;locked=true;const btn=$('#submit');btn.disabled=true;btn.setAttribute('aria-busy','true');$('#feedback').textContent='正在開啟家族典藏';input.blur();try{let html=await decrypt(input.value);html=applyCorrections(html,await decryptPatch(input.value));html=applyCorrections(html,await decryptPatch(input.value,'./weiguo-annals.enc.json'));if(blobUrl)URL.revokeObjectURL(blobUrl);blobUrl=URL.createObjectURL(new Blob([html],{type:'text/html;charset=utf-8'}));$('#familyFrame').src=blobUrl;$('#private').hidden=false;document.documentElement.style.overflow='hidden';input.value='';$('#feedback').textContent='';$('#logout').focus({preventScroll:true});}catch(err){$('#feedback').textContent=err.name==='OperationError'?'密碼不正確 請重新輸入':String(err.message||'解鎖失敗 請稍後再試').replace(/[\p{P}\p{S}]/gu,' ');}finally{btn.disabled=false;btn.removeAttribute('aria-busy');locked=false}});
+$('#login').addEventListener('submit',async e=>{e.preventDefault();if(locked)return;locked=true;const btn=$('#submit');btn.disabled=true;btn.setAttribute('aria-busy','true');$('#feedback').textContent='正在開啟家族典藏';input.blur();try{let html=await decrypt(input.value);html=applyCorrections(html,await decryptPatch(input.value));html=applyCorrections(html,await decryptPatch(input.value,'./weiguo-annals.enc.json'));html=applyFamilyProfiles(html,await loadPublicProfiles());if(blobUrl)URL.revokeObjectURL(blobUrl);blobUrl=URL.createObjectURL(new Blob([html],{type:'text/html;charset=utf-8'}));$('#familyFrame').src=blobUrl;$('#private').hidden=false;document.documentElement.style.overflow='hidden';input.value='';$('#feedback').textContent='';$('#logout').focus({preventScroll:true});}catch(err){$('#feedback').textContent=err.name==='OperationError'?'密碼不正確 請重新輸入':String(err.message||'解鎖失敗 請稍後再試').replace(/[\p{P}\p{S}]/gu,' ');}finally{btn.disabled=false;btn.removeAttribute('aria-busy');locked=false}});
 $('#logout').addEventListener('click',()=>{$('#familyFrame').removeAttribute('src');$('#private').hidden=true;document.documentElement.style.overflow='';if(blobUrl){URL.revokeObjectURL(blobUrl);blobUrl=null}input.value='';$('#secret').focus({preventScroll:true})});
 window.addEventListener('pagehide',()=>{if(blobUrl)URL.revokeObjectURL(blobUrl)});
 })();
