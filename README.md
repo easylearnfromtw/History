@@ -1,23 +1,21 @@
-# 林王家族誌 · THE LIN × WANG FAMILY ARCHIVE
+# 林王家族誌｜The Lin × Wang Family Archive
 
-家族專屬族譜網站，採 **編年體 × 紀傳體**：以家族通紀串連不同世代，人物列傳保存生命故事。
+以年編事，以人立傳。林氏與王氏家族的數位族譜專站。
 
-## 雙入口
+## 網站分區
+- 公開家族官網：`index.html`，亞麻白、深綠、香檳金及大地色，呈現官方形象、編年選讀與家族典藏理念。
+- 家族私人版：`personalfamilypage/index.html`，獨立密碼登入，完整族譜與傳記保存於 AES-256-GCM 加密片段，瀏覽器解密後呈現。密碼不寫進原始碼。
 
-- 公開官方網站：`index.html` — 家族源流、編年選讀、典藏理念。
-- 私人家族入口：`personalfamilypage/index.html` — 家族密碼解鎖私密資料；加密檔 `personalfamilypage/archive.enc.json`。
+## 家系修訂
+- 王螢家（原名王樹林）為王居萬、王黃彩雲之女，已連接親子關係。
+- 林哲緯民國92年（2003）出生，林哲愷民國98年（2009）出生。
+- 依應屆學制推估的年份必須標記「推估」，不能視為已驗證畢業日期。
+- 已從新版展示與私人資料移除王居萬照片。
 
-主視覺：亞麻白、深綠色、香檳金、棕色及大地色。沒有上傳或引用王居萬先生照片。
+## GitHub Pages
+Settings → Pages → Deploy from a branch → main → /(root)
+- 公開首頁：`/History/`
+- 家族入口：`/History/personalfamilypage/`
 
-## 保護提醒
-
-這是加密存檔式的靜態測試站，不是真正的伺服器帳號驗證。私人資料雖使用 AES-256-GCM 與 PBKDF2 加密，短數字密碼仍容易受到離線猜測；正式上線建議改為高強度密碼或身分驗證服務。
-
-**過去放入公開 GitHub 的舊版資料與照片，可能仍存在 Git 歷史紀錄、網站快取或複本中。** 從最新分支刪除檔案，無法保證清除過去已公開的內容。
-
-本網站僅屬林王家族誌；和平島內容只作家族歷史背景，不開設獨立《和平島誌》。
-
-## 網站連結
-
-- 公開版：https://easylearnfromtw.github.io/History/
-- 家族入口：https://easylearnfromtw.github.io/History/personalfamilypage/
+## 安全
+GitHub Pages 為公開靜態託管。私人版透過密碼衍生金鑰在瀏覽器解密；8 位數測試密碼強度有限，正式使用應改用長通關密語或伺服器登入。舊資料即使在目前分支刪除，仍可能留在歷史提交及第三方快取中。不可上傳未加密備份。
