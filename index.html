@@ -294,6 +294,14 @@ body.lineage-modal-open{overflow:hidden}
 .lineage-child-list .lineage-child-courtesy{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;min-height:65px;line-height:1.55}
 .lineage-child-courtesy small{display:block;color:var(--brown);font:400 11px/1.7 var(--serif);margin-top:2px;white-space:normal}
 @media(max-width:720px){.lineage-child-courtesy{max-width:100%;width:100%}.lineage-child-list .lineage-child-courtesy{min-height:61px}}
+
+/* Education timeline within family biography */
+.lineage-person-education{border-top:1px solid #d5c9b5;margin:24px 0 4px;padding-top:20px}
+.lineage-person-education-title{display:block;font:500 12px var(--serif);color:var(--brown);letter-spacing:.12em;margin-bottom:11px}
+.lineage-person-education-row{display:grid;grid-template-columns:80px minmax(0,1fr);gap:10px;padding:12px 0;border-bottom:1px solid #e1d7c6;align-items:start}
+.lineage-person-education-row span{font:400 12px/1.9 var(--serif);color:var(--brown)}
+.lineage-person-education-row strong{font:400 15px/1.9 var(--serif);color:var(--green)}
+@media(max-width:720px){.lineage-person-education{margin-top:17px;padding-top:15px}.lineage-person-education-row{grid-template-columns:64px minmax(0,1fr)}}
 </style>
 </head>
 <body>
@@ -444,7 +452,7 @@ const publicLineageRecords={
  "王居萬":{group:"王家祖輩",bio:"王氏居萬少歷軍旅　據家屬所述曾就讀政治作戰學校　官至陸軍上尉　曾任輔導長　後於社寮參與鄉里公益",rel:[["配偶",["王黃彩雲"]],["子女",["王俊明","王曉芬","王美玲","王螢家"]]],chapter:"#juwan",source:"據家族口述整理　詳細事蹟參閱王居萬傳"},
  "王黃彩雲":{group:"王家祖輩",bio:"黃氏彩雲出自汐止黃家　少時曾從事紡織與家庭代工　後與居萬成家於社寮　經營撞球間及和平檳榔店　後人尤念其勤儉與遠見",rel:[["配偶",["王居萬"]],["子女",["王俊明","王曉芬","王美玲","王螢家"]]],chapter:"#caiyun",source:"據家族口述整理　詳細事蹟參閱王黃彩雲傳"},
  "王俊明":{group:"王家第二代",bio:"王氏俊明為居萬彩雲之子　家族譜系錄其婚姻與二名子女",rel:[["父母",["王居萬","王黃彩雲"]],["曾配偶",["鄧越鴻"]],["子女",["王翔立","王品媗"]],["現配偶",["小梅"]]],source:"家屬提供親屬關係"},
- "王曉芬":{group:"王家第二代",bio:"王氏曉芬為居萬彩雲之女　與林衞國結縭　育有哲緯哲愷二子　並曾參與家族事業之經營",rel:[["父母",["王居萬","王黃彩雲"]],["配偶",["林衞國"]],["子女",["林哲緯","林哲愷"]]],source:"家屬提供親屬關係及事業經歷"},
+ "王曉芬":{group:"王家第二代",bio:"王氏曉芬為居萬彩雲之女　少時就讀基隆中正國中　後入基隆商工　與林衞國結縭　育有哲緯哲愷二子　並曾參與家族事業之經營",education:[["國中","基隆中正國中"],["高中","基隆商工"]],rel:[["父母",["王居萬","王黃彩雲"]],["配偶",["林衞國"]],["子女",["林哲緯","林哲愷"]]],source:"家屬提供親屬關係及事業經歷"},
  "王美玲":{group:"王家第二代",bio:"王氏美玲為居萬彩雲之女　與陳建成結縭　育有季佑一子",rel:[["父母",["王居萬","王黃彩雲"]],["配偶",["陳建成"]],["子女",["陳季佑"]]],source:"家屬提供親屬關係"},
  "王螢家":{group:"王家第二代",bio:"王氏螢家為居萬彩雲之女　與李心為結縭　育有芸閑永彤二女",rel:[["父母",["王居萬","王黃彩雲"]],["配偶",["李心為"]],["子女",["李芸閑","李永彤"]]],source:"家屬提供親屬關係"},
  "鄧越鴻":{group:"王家姻親",bio:"王俊明前配偶　王翔立及王品媗之母",rel:[["曾配偶",["王俊明"]],["子女",["王翔立","王品媗"]]],source:"家屬提供親屬關係"},
@@ -479,6 +487,13 @@ function openLineagePerson(name,trigger){
  const aliasEl=document.querySelector('#lineagePersonAlias');
  aliasEl.hidden=!record.alias;aliasEl.textContent=record.alias||'';
  document.querySelector('#lineagePersonBio').textContent=record.bio;
+ const educationBox=document.querySelector('#lineagePersonEducation');
+ educationBox.hidden=!(record.education&&record.education.length);
+ educationBox.replaceChildren();
+ if(record.education&&record.education.length){
+  const label=document.createElement('span');label.className='lineage-person-education-title';label.textContent='求學經歷';educationBox.append(label);
+  for(const [stage,school] of record.education){const row=document.createElement('div');row.className='lineage-person-education-row';const a=document.createElement('span');a.textContent=stage;const b=document.createElement('strong');b.textContent=school;row.append(a,b);educationBox.append(row);}
+ }
  document.querySelector('#lineagePersonCitation').textContent=record.source||'家屬口述';
  const relContainer=document.querySelector('#lineagePersonRelations');
  relContainer.innerHTML=(record.rel||[]).map(([label,names])=>'<div class="lineage-person-relrow"><span>'+escapeLineageText(label)+'</span><div>'+names.map(n=>'<button type="button" data-person="'+escapeLineageText(n)+'">'+escapeLineageText(n)+'</button>').join('')+'</div></div>').join('');
@@ -537,6 +552,7 @@ document.addEventListener('keydown',event=>{
    <h2 id="lineagePersonName"></h2>
    <p class="lineage-person-alias" id="lineagePersonAlias" hidden></p>
    <p class="lineage-person-biography" id="lineagePersonBio"></p>
+   <div class="lineage-person-education" id="lineagePersonEducation" hidden></div>
    <div class="lineage-person-relations" id="lineagePersonRelations"></div>
    <div class="lineage-person-actions" id="lineagePersonActions"></div>
    <p class="lineage-person-citation" id="lineagePersonCitation"></p>
