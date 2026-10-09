@@ -539,12 +539,39 @@ html.reader-larger .island-history-step p,html.reader-larger .island-history-hea
 .courtyard-footer a:hover{color:#846843}
 html.reader-larger .courtyard-story-body p{font-size:19px;line-height:2.5}
 @media(max-width:780px){.courtyard-head{align-items:flex-start;flex-direction:column;gap:7px}.courtyard-stories{grid-template-columns:1fr;gap:11px}.courtyard-story{min-height:0;padding:22px 23px 27px}.courtyard-art{width:94px;height:94px;right:17px;top:26px}.courtyard-art span{font-size:35px}.courtyard-story-body{padding-top:97px}.courtyard-story-body h3{font-size:25px}.courtyard-story-body p{font-size:16px;line-height:2.35}.courtyard-footer{flex-direction:column;align-items:flex-start;gap:8px}.courtyard-history{scroll-margin-top:85px}}
+
+/* Published family holiday pastimes */
+.leisure-history{margin:0 0 clamp(55px,8vw,110px);padding-top:33px;border-top:1px solid #cbbfa9;scroll-margin-top:98px}
+.leisure-heading{display:flex;justify-content:space-between;align-items:center;gap:20px}
+.leisure-heading h2{font:400 clamp(36px,5vw,60px)/1.5 var(--serif);color:var(--green);margin:10px 0;letter-spacing:.1em}
+.leisure-heading p{font:400 13px/2.1 var(--serif);color:#846f55;margin:0}
+.leisure-seal{width:76px;height:76px;border:1px solid #b8a07d;border-radius:50%;display:grid;place-items:center;font:400 35px var(--serif);color:#9e835a;flex:none}
+.leisure-opening{background:#203f34;color:#f5f0e6;padding:clamp(20px,4vw,38px);display:grid;grid-template-columns:168px 1fr;gap:28px;align-items:center;margin:30px 0 23px}
+.leisure-opening>span{font:400 clamp(24px,2.8vw,32px)/1.6 var(--serif)}
+.leisure-opening>p{font:400 16px/2.35 var(--serif);margin:0;color:#eee8db}
+.leisure-intro{display:grid;grid-template-columns:168px 1fr;gap:28px;align-items:center;border-top:1px solid #cbbcaa;padding:24px 0 19px}
+.leisure-intro>span{font:400 24px/1.6 var(--serif);color:var(--green)}
+.leisure-intro p{font:400 15px/2.35 var(--serif);color:#5a544b;margin:0}
+.leisure-tables{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px}
+.leisure-table{background:#ede5d7;border:1px solid #cbbb9f;min-width:0;padding:25px 22px 28px}
+.leisure-table:nth-child(2){background:#e8e2d7}.leisure-table:nth-child(3){background:#f0eae0}
+.leisure-table-index{font:500 11px/2 var(--serif);color:#93764c}
+.leisure-table h3{font:400 clamp(21px,2.5vw,28px)/1.7 var(--serif);color:var(--green);margin:13px 0 0}
+.leisure-players{font:400 12px/1.9 var(--serif);color:#8a755d;display:block;margin:2px 0 19px}
+.leisure-table p{font:400 14px/2.35 var(--serif);color:#5a5145;margin:0}
+.leisure-ending{padding:24px 0 4px;display:grid;grid-template-columns:168px 1fr;gap:10px 28px;border-bottom:1px solid #cabb9f}
+.leisure-ending>span{font:500 11px/2 var(--serif);color:#9b835d}
+.leisure-ending p{font:400 12px/2.25 var(--serif);color:#81776b;margin:0}
+.leisure-ending a{grid-column:2;display:flex;align-items:center;min-height:44px;color:var(--green);font:500 12px var(--serif);justify-self:start}
+html.reader-larger .leisure-table p,html.reader-larger .leisure-intro p,html.reader-larger .leisure-opening p{font-size:18px!important;line-height:2.5}
+@media(max-width:950px){.leisure-tables{grid-template-columns:1fr}.leisure-table{padding:23px 22px}.leisure-table p{font-size:15px}}
+@media(max-width:700px){.leisure-history{scroll-margin-top:80px}.leisure-heading h2{font-size:39px}.leisure-seal{width:56px;height:56px;font-size:27px}.leisure-opening,.leisure-intro,.leisure-ending{grid-template-columns:1fr;gap:11px}.leisure-opening{margin-top:24px;padding:25px 20px}.leisure-opening>p{font-size:15px}.leisure-intro{padding-top:20px}.leisure-ending a{grid-column:1}.leisure-table{padding:20px 19px}.leisure-table h3{font-size:25px}.leisure-table p{font-size:14px;line-height:2.3}}
 </style>
 </head>
 <body>
 <div class="reading-progress" id="readingProgress" aria-hidden="true"></div>
 <a href="#about" class="skip-to-content">跳至正文</a>
-<header class="nav" id="top"><a class="brand" href="#top" aria-label="社寮王家家族史館首頁"><span class="crest">王</span><span class="brand-copy"><strong>社寮王家</strong><small>THE SHELIAO WANG FAMILY</small></span></a><button class="menu-toggle" id="toggle" type="button" aria-controls="links" aria-expanded="false">選單 </button><nav class="nav-links" id="links" aria-label="網站選單"><a href="#about">王家簡史</a><a href="#courtyard">庭外史</a><a href="#caiyun">彩雲傳</a><a href="#juwan">居萬傳</a><a href="#chronicle">王家通紀</a><a href="#origins">家系源流</a><a href="#lineage">家族世系</a><a href="#secondgen">第二代列傳</a><a href="#sources">史料說明</a></nav><button class="find-trigger" type="button" id="openPersonFinder" aria-haspopup="dialog" aria-controls="personFinder">尋人 <span class="find-trigger-glyph" aria-hidden="true"></span></button></header>
+<header class="nav" id="top"><a class="brand" href="#top" aria-label="社寮王家家族史館首頁"><span class="crest">王</span><span class="brand-copy"><strong>社寮王家</strong><small>THE SHELIAO WANG FAMILY</small></span></a><button class="menu-toggle" id="toggle" type="button" aria-controls="links" aria-expanded="false">選單 </button><nav class="nav-links" id="links" aria-label="網站選單"><a href="#about">王家簡史</a><a href="#courtyard">庭外史</a><a href="#family-pastimes">雅興外史</a><a href="#caiyun">彩雲傳</a><a href="#juwan">居萬傳</a><a href="#chronicle">王家通紀</a><a href="#origins">家系源流</a><a href="#lineage">家族世系</a><a href="#secondgen">第二代列傳</a><a href="#sources">史料說明</a></nav><button class="find-trigger" type="button" id="openPersonFinder" aria-haspopup="dialog" aria-controls="personFinder">尋人 <span class="find-trigger-glyph" aria-hidden="true"></span></button></header>
 <nav class="mobile-chapters" aria-label="閱讀章節"><a href="#about" data-mobile-chapter="about">家乘序</a><a href="#caiyun" data-mobile-chapter="caiyun">人物</a><a href="#chronicle" data-mobile-chapter="chronicle">通紀</a><a href="#lineage" data-mobile-chapter="lineage">世系</a></nav>
 <main>
 <section class="hero"><div class="hero-copy"><span class="kicker">王家簡史 SHELIAO WANG FAMILY HISTORY</span><h1 class="display">社寮王家<br><em>以史傳家</em></h1><p class="intro">社寮王家居於此乃天時地利人和上祖相傳飄洋自福建輾轉汐止落腳社寮從紡織代工軍旅歲月到港邊商鋪以土地為序記下王家的來時路</p><div class="hero-cta"><a class="btn" href="#about">閱讀王家簡史 <span></span></a><a class="quiet-link" href="#caiyun">閱讀人物列傳　</a></div><div class="hero-bottom">一姓之傳 百年之思 以文存之</div></div><div class="hero-art" aria-label="象徵家族代代相連的抽象枝葉紋樣"><span class="art-corner">SHELIAO FIG 01</span><svg class="line-art" viewBox="0 0 520 610" role="img" aria-label="以年輪及枝脈象徵家族傳承的藝術圖形"><g fill="none" stroke="#bbaa8a" stroke-width="1"><ellipse cx="260" cy="300" rx="160" ry="228"/><ellipse cx="260" cy="300" rx="140" ry="208"/><ellipse cx="260" cy="300" rx="118" ry="185"/><ellipse cx="260" cy="300" rx="97" ry="160"/><ellipse cx="260" cy="300" rx="75" ry="132"/><path d="M260 94v420 M96 302h328 M260 303C203 251 194 213 215 166 M260 303C330 249 338 211 315 161 M260 303C196 353 189 401 227 451 M260 303C320 349 343 385 305 467" opacity=".6"/><path d="M85 490Q258 532 435 490 M93 116Q250 84 427 117" opacity=".4"/></g><g fill="#c2a97c"><circle cx="260" cy="95" r="3"/><circle cx="100" cy="300" r="3"/><circle cx="420" cy="300" r="3"/><circle cx="260" cy="510" r="3"/></g><rect x="186" y="255" width="148" height="92" fill="#173c32"/><text x="260" y="316" text-anchor="middle" class="center-mark">王</text></svg><span class="art-caption">A LEGACY WRITTEN THROUGH GENERATIONS</span></div></section>
@@ -577,6 +604,18 @@ html.reader-larger .courtyard-story-body p{font-size:19px;line-height:2.5}
   </article>
  </div>
  <div class="courtyard-footer"><span>庭外瑣事　存於家乘</span><a href="#chapters">續讀人物與通紀 <span aria-hidden="true">→</span></a></div>
+</section>
+
+<section class="leisure-history reveal" id="family-pastimes" aria-labelledby="leisureTitle">
+ <div class="leisure-heading"><div><span class="kicker">FAMILY LEISURE CHRONICLES</span><h2 id="leisureTitle">雅興外史</h2><p>歲時相聚　骰聲牌響　一門之樂存於其間</p></div><span class="leisure-seal" aria-hidden="true">樂</span></div>
+ <div class="leisure-opening"><span>歲朝骰戲</span><p>王家逢歲時佳節　親族常聚一堂　以骰為戲　俗稱輸吧骰子　此為家中相傳之過年餘興　亦見於臺灣民間節慶娛樂　往昔常以拾元為注　輪番擲骰　勝負之間笑語不絕　所重者終為親族共聚之歡</p></div>
+ <div class="leisure-intro"><span>麻將三席</span><p>後麻將亦成雅興之一　居萬素好麻將　然於小注之局興致未必相投　親族團聚常分三桌　各有所好　今據家人回憶錄其席間風貌</p></div>
+ <div class="leisure-tables">
+  <article class="leisure-table"><span class="leisure-table-index">其一</span><h3>古稀之席</h3><span class="leisure-players">長輩之桌</span><p>此席多為年逾七旬之長者　居萬與黃氏彩雲之兄弟常同遊　每以千元為注　其間摸牌談笑　時有吞雲吐霧　煙霧與牌聲相織　儼然昔年團圓之景</p></article>
+  <article class="leisure-table"><span class="leisure-table-index">其二</span><h3>二代之席</h3><span class="leisure-players">親族同席</span><p>常見王居萬　王漢文　林衞國　陳建成等人入席　王漢文乃居萬之弟與郭氏碧枝所生　此席亦常煙霧繚繞　出牌論局　時而熱鬧　各有牌風</p></article>
+  <article class="leisure-table"><span class="leisure-table-index">其三</span><h3>少輩親友之席</h3><span class="leisure-players">不拘長幼的歡聚之桌</span><p>林哲緯　林哲愷　李心為　陳季佑　王美玲　李芸閑　王品媗等人常聚　除麻將外亦遊黃牌　撲克　狼人殺　拉密及任天堂 Switch　麻將或採底十台五　或底五十台十　其注較輕　談笑與遊戲並重</p></article>
+ </div>
+ <div class="leisure-ending"><span>編者附記</span><p>三桌雖各異其趣　長幼同聚之情則一　昔日骰響牌聲　今皆成家門記憶　本文據家屬口述而錄　桌次席次及金額並非每次聚會皆固定　個別親族爭執及私人健康紀錄不載於公開家乘</p><a href="#chronicle">接續閱讀王家通紀</a></div>
 </section>
 </div>
 <section class="dark-panel" id="chapters"><div class="wrap"><div class="section-heading reveal"><div><span class="kicker">THE HOUSE OF WANG 王家家乘</span><h2>事以年繫<br>人以傳存</h2></div><p>一族之盛衰藏於日用一人之悲歡見於平生此編以家乘為序以人物列傳為骨願來者得知先人所歷</p></div><div class="theme-grid"><a class="theme-card reveal" href="#about"><small>01 FAMILY PRELUDE</small><h3>王家簡史</h3><p>祖出福建因緣汐止終與社寮相繫錄其家訓與編纂者之思</p><span class="arrow"></span></a><a class="theme-card reveal" href="#caiyun"><small>02 BIOGRAPHIES</small><h3>人物列傳</h3><p>述彩雲少時勞苦記居萬軍旅鄉情使名姓之後猶見其人</p><span class="arrow"></span></a><a class="theme-card reveal" href="#chronicle"><small>03 CHRONICLE</small><h3>王家通紀</h3><p>按時序繫遷徙立業社寮興替與子孫之思</p><span class="arrow"></span></a></div></div></section>
@@ -792,7 +831,7 @@ html.reader-larger .courtyard-story-body p{font-size:19px;line-height:2.5}
 <section class="sources wrap" id="sources"><div class="source-layout"><div class="reveal"><span class="kicker">OUR ARCHIVAL PRINCIPLES</span><h2>述其所聞<br>慎其所未聞</h2></div><div class="source-list reveal"><p>家屬口述與訪談 <span>ORAL HISTORY</span></p><p>歷史照片與實物 <span>FAMILY COLLECTION</span></p><p>工商及公開登記 <span>PUBLIC RECORDS</span></p><p>人物列傳與編年修訂 <span>EDITORIAL ARCHIVE</span></p></div></div></section>
 <button type="button" id="readingSizeToggle" class="reading-size-toggle" aria-pressed="false" aria-label="放大正文文字">字級 <span aria-hidden="true">甲</span></button>
 <a class="backtotop" id="jumpToTop" href="#top" aria-label="返回網頁頂部"><span aria-hidden="true"></span><span>TOP</span></a>
-</main><footer class="footer"><div class="wrap"><div class="footer-top"><div><div class="footer-title">社寮王家</div><p class="footer-desc">社寮為家以年紀事以人立傳<br>THE SHELIAO WANG FAMILY ARCHIVE</p></div><div class="footer-links"><a href="#about">簡史</a><a href="#courtyard">庭外史</a><a href="#caiyun">彩雲傳</a><a href="#juwan">居萬傳</a><a href="#secondgen">二代傳</a><a href="#chronicle">通紀</a><a href="#lineage">世系</a><a href="#sources">典藏原則</a></div></div><div class="footer-bottom"><span> 2026 SHELIAO WANG FAMILY ARCHIVE FAMILY ORAL HISTORY</span><a class="private-entry" href="./personalfamilypage/" aria-label="家族內部入口">FAMILY ACCESS </a></div></div></footer>
+</main><footer class="footer"><div class="wrap"><div class="footer-top"><div><div class="footer-title">社寮王家</div><p class="footer-desc">社寮為家以年紀事以人立傳<br>THE SHELIAO WANG FAMILY ARCHIVE</p></div><div class="footer-links"><a href="#about">簡史</a><a href="#courtyard">庭外史</a><a href="#family-pastimes">雅興外史</a><a href="#caiyun">彩雲傳</a><a href="#juwan">居萬傳</a><a href="#secondgen">二代傳</a><a href="#chronicle">通紀</a><a href="#lineage">世系</a><a href="#sources">典藏原則</a></div></div><div class="footer-bottom"><span> 2026 SHELIAO WANG FAMILY ARCHIVE FAMILY ORAL HISTORY</span><a class="private-entry" href="./personalfamilypage/" aria-label="家族內部入口">FAMILY ACCESS </a></div></div></footer>
 
 
 
