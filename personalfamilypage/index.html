@@ -14,6 +14,56 @@
 .private{height:100svh;display:flex;flex-direction:column;background:var(--cream);position:fixed;inset:0;z-index:30}.privatebar{background:var(--deep);color:#f6f0e3;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:11px clamp(14px,3vw,38px);font-size:12px}.privatebar small{display:block;color:#aabcac;font-size:10px;margin-top:3px}.lock{border:1px solid #c8b691;color:#f5e9d2;background:none;padding:8px 16px;white-space:nowrap}.private iframe{width:100%;flex:1;border:0;display:block}.loading{opacity:.65}
 @media(max-width:800px){.header{height:70px}.shell{grid-template-columns:1fr}.left{padding:46px 28px 48px;min-height:300px}.left h1{font-size:37px;margin:16px 0}.left p{font-size:12px}.left .foot{margin-top:20px}.right{padding:55px 28px 70px}.privatebar{padding:10px 14px}}
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+
+/* iPhone and small screen private archive */
+:root{--mobile-hit:48px}
+@media(max-width:800px){
+ html{height:auto;min-height:100%;-webkit-text-size-adjust:100%}
+ body{min-height:100dvh;overflow-x:clip}
+ .header{height:auto;min-height:68px;padding:11px max(18px,env(safe-area-inset-left,0px)) 11px max(18px,env(safe-area-inset-right,0px));gap:10px}
+ .brand{min-width:0;gap:9px;font-size:13px}
+ .seal{width:38px;height:40px;flex-shrink:0;font-size:14px}
+ .brand small{font-size:8px;letter-spacing:.08em}
+ .back{font-size:12px;display:flex;min-height:44px;align-items:center;white-space:nowrap;padding-bottom:0}
+ .shell{display:flex;flex-direction:column;min-height:calc(100dvh - 68px)}
+ .right{order:1;display:block;padding:33px 22px 29px}
+ .formbox{max-width:490px}
+ .formbox .topline{margin-bottom:12px}
+ .formbox h2{font-size:clamp(29px,7.5vw,38px);margin:0 0 9px;line-height:1.45}
+ .formbox .intro{font-size:13px;line-height:2.02;margin:0 0 24px}
+ .formbox label{margin-bottom:9px}
+ .input-row{min-height:54px}
+ .input-row input{font-size:17px;min-height:54px;padding:13px 14px;letter-spacing:.09em}
+ .input-row button{min-width:57px;min-height:52px;font-size:13px;padding:0 12px}
+ .submit{min-height:55px;margin-top:12px;padding:13px 16px;align-items:center}
+ .submit span:first-child{font-size:15px}
+ .submit:focus-visible,.input-row:focus-within{outline-offset:2px}
+ .submit[aria-busy="true"]{opacity:.75}
+ .note{font-size:11px;line-height:1.95;margin-top:25px}
+ .left{order:2;min-height:0;display:block;padding:34px 22px calc(45px + env(safe-area-inset-bottom,0px))}
+ .left .kicker{font-size:10px}
+ .left h1{font-size:clamp(29px,8vw,41px);margin:13px 0;line-height:1.5}
+ .left p{font-size:13px;line-height:2.15;margin:12px 0}
+ .left .foot{margin-top:28px;font-size:9px}
+ .left:after{width:230px;height:230px;right:-100px;bottom:-110px;box-shadow:0 0 0 26px #a8947517,0 0 0 55px #a894750d}
+ .private{height:100dvh;min-height:0;max-height:100dvh;inset:0;display:flex;flex-direction:column}
+ .privatebar{flex:0 0 auto;min-height:62px;align-items:center;padding:9px max(12px,env(safe-area-inset-right,0px)) 9px max(12px,env(safe-area-inset-left,0px));gap:10px;font-size:12px}
+ .privatebar>div{min-width:0;overflow-wrap:anywhere}
+ .privatebar small{font-size:9px;margin-top:3px}
+ .privatebar .lock,.lock{min-height:44px;white-space:nowrap;flex:0 0 auto;padding:10px 11px;font-size:12px}
+ .private iframe{flex:1 1 auto;min-height:0;height:0;width:100%;border:0;overflow:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
+}
+@media(max-width:375px){
+ .header{padding-left:13px;padding-right:13px}
+ .brand{font-size:12px}.brand small{font-size:7px}
+ .right{padding:25px 17px 26px}
+ .left{padding-left:17px;padding-right:17px}
+ .privatebar{font-size:11px}.privatebar small{font-size:8px}
+}
+@media(hover:none) and (pointer:coarse){
+ .submit,.lock,.input-row button,.back{touch-action:manipulation}
+}
+
 </style></head><body>
 <header class="header"><a class="brand" href="../"><span class="seal">林王</span><span>林王家族誌<small>PRIVATE FAMILY ARCHIVE</small></span></a><a class="back" href="../">返回家族官網　</a></header>
 <main class="shell"><div class="left"><span class="kicker">FAMILY MEMBERS PRIVATE COLLECTION</span><h1>家族故事<br>留給家人閱讀</h1><p>有人寫下名字有人留下足跡完整世系人物列傳家族大事紀與私人典藏僅在通過密碼解鎖後顯示</p><div class="foot">LIN WANG ARCHIVE RESTRICTED</div></div><div class="right"><section class="formbox"><span class="topline">01 MEMBER ACCESS</span><h2>登入家族典藏室</h2><p class="intro">請輸入家族密碼私人內容會在你使用的裝置上解密密碼不會以明文儲存於此網頁</p><form id="login"><label for="secret">家族密碼</label><div class="input-row"><input type="password" id="secret" autocomplete="current-password" required placeholder="請輸入家族密碼"><button type="button" id="togglePass">顯示</button></div><button class="submit" id="submit" type="submit"><span>解鎖家族完整版</span><span aria-hidden="true"></span></button><p id="feedback" class="error" role="status" aria-live="polite"></p></form><div class="note">此頁使用加密檔案並非伺服器帳號系統已解鎖的資料僅保留在此瀏覽分頁請勿在共用裝置解鎖8 位數密碼只適合測試日後建議換成較長的通關密語</div></section></div></main>
@@ -59,8 +109,8 @@ function applyCorrections(html,patch){
 }
 
 $('#togglePass').addEventListener('click',()=>{const show=input.type==='password';input.type=show?'text':'password';$('#togglePass').textContent=show?'隱藏':'顯示'});
-$('#login').addEventListener('submit',async e=>{e.preventDefault();if(locked)return;locked=true;const btn=$('#submit');btn.disabled=true;$('#feedback').textContent='';try{let html=await decrypt(input.value);html=applyCorrections(html,await decryptPatch(input.value));blobUrl=URL.createObjectURL(new Blob([html],{type:'text/html;charset=utf-8'}));$('#familyFrame').src=blobUrl;$('#private').hidden=false;document.documentElement.style.overflow='hidden';input.value='';}catch(err){$('#feedback').textContent=err.name==='OperationError'?'密碼不正確 請重新輸入':'解鎖失敗 請稍後再試';}finally{btn.disabled=false;locked=false}});
-$('#logout').addEventListener('click',()=>{$('#familyFrame').removeAttribute('src');$('#private').hidden=true;document.documentElement.style.overflow='';if(blobUrl){URL.revokeObjectURL(blobUrl);blobUrl=null}input.value=''});
+$('#login').addEventListener('submit',async e=>{e.preventDefault();if(locked)return;locked=true;const btn=$('#submit');btn.disabled=true;btn.setAttribute('aria-busy','true');$('#feedback').textContent='正在開啟家族典藏';input.blur();try{let html=await decrypt(input.value);html=applyCorrections(html,await decryptPatch(input.value));if(blobUrl)URL.revokeObjectURL(blobUrl);blobUrl=URL.createObjectURL(new Blob([html],{type:'text/html;charset=utf-8'}));$('#familyFrame').src=blobUrl;$('#private').hidden=false;document.documentElement.style.overflow='hidden';input.value='';$('#feedback').textContent='';$('#logout').focus({preventScroll:true});}catch(err){$('#feedback').textContent=err.name==='OperationError'?'密碼不正確 請重新輸入':String(err.message||'解鎖失敗 請稍後再試').replace(/[\p{P}\p{S}]/gu,' ');}finally{btn.disabled=false;btn.removeAttribute('aria-busy');locked=false}});
+$('#logout').addEventListener('click',()=>{$('#familyFrame').removeAttribute('src');$('#private').hidden=true;document.documentElement.style.overflow='';if(blobUrl){URL.revokeObjectURL(blobUrl);blobUrl=null}input.value='';$('#secret').focus({preventScroll:true})});
 window.addEventListener('pagehide',()=>{if(blobUrl)URL.revokeObjectURL(blobUrl)});
 })();
 </script></body></html>
