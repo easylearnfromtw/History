@@ -1,0 +1,861 @@
+/* ==========================================================================
+   社寮王家　典雅書卷設計層  classic.css
+   最後載入，覆蓋 heritage / site-0x / more/styles / relations / disclosure。
+   只調整呈現，不改史文；全站不用 Emoji，以字體、留白與線條成章。
+
+   設計語彙
+   - 宋體記史，楷書題識：正文、標題用 Noto Serif TC；家訓、題記、引語、
+     編者曰與頁首題辭用霞鶩文楷 TC，作為「家人之聲」。
+   - 版框：重要文件以文武邊（外粗內細雙線）框起，如線裝書版框。
+   - 朱印：品牌「王」與題識落款以印泥色鈐印，全站僅此一處用紅。
+   - 書耳：卡片右上以小籤標示卷名單字。
+   - 玻璃只用於導覽層（頁首、選單），內容層保持不透明紙面。
+   ========================================================================== */
+
+:root{
+  /* 紙、墨、松、金、印 */
+  --c-paper:#f3eee3;
+  --c-paper-2:#ebe3d3;
+  --c-paper-3:#faf7f0;
+  --c-ink:#24302a;
+  --c-text:#3b3f37;
+  --c-muted:#6b6354;
+  --c-pine:#1c3a30;
+  --c-pine-2:#2a4c40;
+  --c-pine-3:#14302a;
+  --c-gold:#a88b5c;
+  --c-gold-ink:#7a5f38;
+  --c-gold-soft:#cdb88f;
+  --c-seal:#bd180a;
+  --c-line:#d9cebb;
+  --c-line-2:#e5ddce;
+  --c-indigo:#1f3a5f;
+  --c-indigo-2:#3a5683;
+  --c-indigo-wash:rgba(31,58,95,.055);
+
+  --f-song:'Noto Serif TC','Noto Serif CJK TC','Source Han Serif TC','Songti TC','PMingLiU',serif;
+  --f-kai:'LXGW WenKai TC','Kaiti TC','BiauKai','DFKai-SB','KaiTi','Noto Serif TC',serif;
+  --f-latin:'Cormorant Garamond','Noto Serif TC',Georgia,serif;
+
+  --frame:inset 0 0 0 5px var(--c-paper-3),inset 0 0 0 6px var(--c-line);
+  --ease:cubic-bezier(.22,.61,.36,1);
+
+  /* 舊有變數全部對應到新色票與字體 */
+  --m-paper:var(--c-paper);--m-paper2:var(--c-paper-2);--m-dark:var(--c-pine);--m-green:var(--c-pine-2);
+  --m-ink:var(--c-ink);--m-gold:var(--c-gold);--m-muted:var(--c-muted);--m-line:var(--c-line);
+  --m-serif:var(--f-song);--m-sans:var(--f-song);--m-latin:var(--f-latin);
+  --linen:var(--c-paper);--cream:var(--c-paper-3);--green:var(--c-pine);--green2:var(--c-pine-2);
+  --gold:var(--c-gold);--brown:var(--c-gold-ink);--ink:var(--c-ink);--muted:var(--c-muted);--line:var(--c-line);
+  --serif:var(--f-song);--sans:var(--f-song);--latin:var(--f-latin);
+  --home-rule:var(--c-line);--home-serif:var(--f-song);
+}
+
+/* ---------- 紙面與基本排印 ---------- */
+html{background:var(--c-paper);-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{
+  background-color:var(--c-paper);
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .42 0 0 0 0 .36 0 0 0 0 .25 0 0 0 .075 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23p)'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='520' height='520'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.004 .09' numOctaves='3' seed='7' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .55 0 0 0 0 .47 0 0 0 0 .33 0 0 0 .05 -.015'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23f)'/%3E%3C/svg%3E");
+  color:var(--c-text);
+  font:400 16px/2 var(--f-song);
+  letter-spacing:.02em;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+  font-kerning:normal;
+  font-synthesis:weight;
+}
+body:before{display:none!important}
+/* 舊樣式為已移除的手機底部選單預留的空白 */
+body{padding-bottom:0!important}
+::selection{background:rgba(168,139,92,.32);color:var(--c-ink)}
+h1,h2,h3,h4{color:var(--c-ink);font-weight:500;text-wrap:balance}
+p,li,summary{text-wrap:pretty}
+a{transition:color .2s var(--ease),border-color .2s var(--ease),background-color .2s var(--ease)}
+a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,[tabindex]:focus-visible{outline:1.5px solid var(--c-gold-ink);outline-offset:4px}
+img{max-width:100%}
+
+/* 小型英文標籤：改為 Cormorant 小型大寫，取代粗體全大寫的無襯線字 */
+.museum-small,.kicker,.origin-label,.relations-reader-intro .museum-small{
+  font:600 12.5px/1.7 var(--f-latin)!important;
+  letter-spacing:.2em!important;
+  text-transform:uppercase!important;
+  color:var(--c-gold-ink)!important;
+  overflow-wrap:anywhere;
+}
+@media(max-width:760px){.museum-small,.kicker,.origin-label{font-size:11.5px!important;letter-spacing:.16em!important}}
+
+/* ---------- 頁首：紙質玻璃導覽層 ---------- */
+.museum-header{
+  top:env(safe-area-inset-top,0px);
+  background:linear-gradient(180deg,rgba(248,245,237,.86),rgba(243,238,227,.78));
+  -webkit-backdrop-filter:blur(18px) saturate(1.45);backdrop-filter:blur(18px) saturate(1.45);
+  border-bottom:1px solid rgba(168,139,92,.38);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.75);
+  transition:box-shadow .35s var(--ease),background-color .35s var(--ease);
+}
+.museum-header.is-scrolled{box-shadow:inset 0 1px 0 rgba(255,255,255,.75),0 10px 30px -22px rgba(20,48,42,.55)}
+.museum-top{height:80px;gap:32px;transition:height .35s var(--ease)}
+.museum-header.is-scrolled .museum-top{height:64px}
+.museum-brand{gap:14px}
+.museum-mark{
+  width:44px;height:44px;border:0;flex:none;
+  background:url("seal.png") center/contain no-repeat;
+  color:transparent;font-size:0;box-shadow:none;transform:none;
+}
+.museum-mark:after{display:none}
+.museum-brand b{font:600 18px/1.4 var(--f-song);letter-spacing:.26em;color:var(--c-ink)}
+.museum-brand small{font:600 10.5px/1.4 var(--f-latin);letter-spacing:.22em;color:var(--c-muted);margin-top:2px;white-space:nowrap}
+.museum-nav{gap:clamp(16px,2vw,30px)}
+.museum-nav a{position:relative;font:500 14px/1.6 var(--f-song);letter-spacing:.12em;color:#5a5649;padding:8px 0;box-shadow:none!important;text-decoration:none!important}
+.museum-nav a::after{content:"";position:absolute;left:0;right:.12em;bottom:2px;height:1px;background:var(--c-gold);transform:scaleX(0);transform-origin:center;transition:transform .3s var(--ease)}
+.museum-nav a:hover{color:var(--c-ink)}
+.museum-nav a:hover::after{transform:scaleX(.6)}
+.museum-nav a[aria-current=page]{color:var(--c-pine)}
+.museum-nav a[aria-current=page]::after{transform:scaleX(1);background:var(--c-pine)}
+.museum-menu{border:1px solid rgba(168,139,92,.6);background:rgba(250,247,240,.55);color:var(--c-pine);font:500 13px/1 var(--f-song);letter-spacing:.32em;padding:12px 10px 12px 16px;min-height:42px}
+
+@media(max-width:1100px){
+  .museum-top{height:68px}
+  .museum-header.is-scrolled .museum-top{height:60px}
+  .museum-nav{
+    top:calc(100% + 1px)!important;
+    background:rgba(246,242,233,.985);
+    -webkit-backdrop-filter:blur(20px) saturate(1.4);backdrop-filter:blur(20px) saturate(1.4);
+    border-bottom:1px solid rgba(168,139,92,.38);
+    box-shadow:0 24px 40px -28px rgba(20,48,42,.45);
+    padding:8px max(20px,4.5vw) 20px!important;
+    display:none;
+    grid-template-columns:repeat(2,minmax(0,1fr));column-gap:28px;
+  }
+  .museum-nav.open{display:grid}
+  .museum-nav a{font-size:16px;letter-spacing:.18em;padding:14px 0!important;border-bottom:1px solid var(--c-line-2)!important}
+  .museum-nav a::after{display:none}
+  .museum-nav a[aria-current=page]{color:var(--c-pine);font-weight:600}
+  .museum-nav a[aria-current=page]::before{content:"";display:inline-block;width:6px;height:6px;background:var(--c-seal);transform:rotate(45deg) translateY(-3px);margin-right:12px}
+}
+@media(max-width:560px){.museum-nav{grid-template-columns:1fr}}
+@media(max-width:760px){
+  .museum-brand b{font-size:16px;letter-spacing:.22em}
+  .museum-brand small{font-size:9.5px;letter-spacing:.18em}
+  .museum-mark{width:38px;height:38px}
+}
+
+/* ---------- 麵包屑 ---------- */
+.museum-crumb{font:400 13px/1.8 var(--f-song);color:var(--c-muted);letter-spacing:.06em;padding:22px 0 0;gap:10px}
+.museum-crumb span:not([aria-current]){color:var(--c-gold-soft)}
+.museum-crumb [aria-current]{color:var(--c-ink)}
+
+/* ---------- 篇首：書名頁，下以文武線收束 ---------- */
+.museum-page-hero{
+  padding:clamp(34px,5vw,62px) 0 0;border-bottom:0;
+  grid-template-columns:minmax(0,1fr) minmax(0,.62fr);gap:14px clamp(28px,5vw,80px);align-items:end;
+}
+.museum-page-hero::after{content:"";grid-column:1/-1;height:5px;border-top:2px solid var(--c-pine);border-bottom:1px solid var(--c-gold);margin-top:clamp(18px,2.4vw,30px)}
+.museum-page-hero h1{font:500 clamp(42px,5.4vw,72px)/1.25 var(--f-song);letter-spacing:.1em;color:var(--c-ink);margin:14px 0 0}
+.museum-page-hero p{font:400 17px/2.05 var(--f-kai);color:var(--c-muted);letter-spacing:.06em;max-width:30em;margin:0 0 6px;justify-self:end}
+@media(max-width:760px){
+  .museum-page-hero{grid-template-columns:1fr;padding-top:26px}
+  .museum-page-hero h1{font-size:44px}
+  .museum-page-hero p{justify-self:start;font-size:16px}
+}
+
+/* ---------- 篇末：下一篇章 ---------- */
+.museum-next{
+  border-top:1px solid var(--c-line);padding:28px 0 34px;
+  font:500 clamp(20px,2.2vw,26px)/1.5 var(--f-song);letter-spacing:.12em;color:var(--c-ink);
+}
+.museum-next small{font:600 12px/1.6 var(--f-latin);letter-spacing:.18em;color:var(--c-gold-ink)}
+.museum-next>span:last-child,.museum-next::after{flex:0 0 auto}
+.museum-next>span:last-child{display:none}
+.museum-next::after{content:"";width:46px;height:9px;background:
+  linear-gradient(var(--c-gold),var(--c-gold)) left center/100% 1px no-repeat;
+  -webkit-mask:linear-gradient(#000,#000) left/calc(100% - 8px) 100% no-repeat,conic-gradient(from 225deg at 100% 50%,#000 90deg,transparent 0) right/9px 100% no-repeat;
+  transition:width .35s var(--ease)}
+.museum-next:hover{color:var(--c-pine)}
+@media(max-width:760px){
+  .museum-next{flex-wrap:wrap;gap:4px 18px;padding:24px 0 30px;font-size:21px}
+  .museum-next small{flex-basis:100%}
+  .museum-next::after{margin-left:auto}
+}
+.museum-next:hover::after{width:70px}
+
+/* ---------- 頁尾：牌記 ---------- */
+.museum-footer{background:var(--c-pine-3);color:#efe8d8;padding:clamp(34px,4vw,52px) 0}
+.museum-footer-in{
+  border:1px solid rgba(205,184,143,.42);
+  box-shadow:inset 0 0 0 5px var(--c-pine-3),inset 0 0 0 6px rgba(205,184,143,.22);
+  padding:clamp(24px,3vw,34px) clamp(22px,3.4vw,44px);
+}
+.museum-footer strong{font:500 22px/1.5 var(--f-song);letter-spacing:.32em;color:#f3ecdc}
+.museum-footer p{font:400 15px/2 var(--f-kai);color:#c9c1ad;letter-spacing:.1em;margin:6px 0 0}
+.museum-footer-links{gap:10px 26px}
+.museum-footer-links a{font:400 14px/2 var(--f-song);letter-spacing:.12em;color:#e2d9c4;text-decoration:none!important;border-bottom:1px solid transparent}
+.museum-footer-links a:hover{color:#fff;border-bottom-color:var(--c-gold-soft)}
+
+/* ---------- 首頁篇首：橫排大題，題後鈐家印 ---------- */
+.home-intro{
+  display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);
+  grid-template-areas:"kicker coords" "title copy" "title line";
+  grid-template-rows:auto 1fr auto;
+  column-gap:clamp(40px,7vw,130px);align-items:end;
+  padding:clamp(52px,7vw,104px) 0 clamp(56px,6vw,92px);
+  border-bottom:0;position:relative;z-index:1;
+}
+.home-intro::after{content:"";position:absolute;left:0;right:0;bottom:0;height:5px;border-top:2px solid var(--c-pine);border-bottom:1px solid var(--c-gold)}
+.home-intro>.museum-small{grid-area:kicker;margin-bottom:clamp(20px,2.4vw,34px)}
+.home-title{grid-area:title;margin:0;color:var(--c-ink)}
+.home-title-main{display:block;font:500 clamp(64px,10.4vw,160px)/1.08 var(--f-song);letter-spacing:.1em;margin-right:-.1em;margin-left:-.04em}
+.home-title-sub{display:flex;align-items:center;gap:22px;margin-top:clamp(16px,2vw,26px);font:400 clamp(22px,2.3vw,32px)/1.5 var(--f-kai);letter-spacing:.5em;color:var(--c-pine-2)}
+.home-title-sub::before{content:"";width:clamp(36px,4vw,64px);height:5px;flex:none;border-top:1px solid var(--c-gold);border-bottom:1px solid var(--c-gold)}
+.home-title-sub::after{content:"";flex:none;width:clamp(52px,5vw,72px);aspect-ratio:1;margin-left:-.1em;background:url("seal.png") center/contain no-repeat}
+.home-intro-copy{grid-area:copy;font:400 clamp(17px,1.5vw,20px)/2.2 var(--f-song)!important;color:var(--c-text)!important;letter-spacing:.06em;max-width:24em;margin:0!important;text-align:justify;text-justify:inter-ideograph}
+.home-intro-line{grid-area:line;margin-top:30px!important;width:min(200px,40%)!important;height:1px!important;background:var(--c-gold)!important}
+@media(prefers-reduced-motion:no-preference){
+  .home-title-main{animation:rise-in .9s var(--ease) both}
+  .home-title-sub{animation:rise-in .9s var(--ease) .2s both}
+  .home-intro-copy{animation:rise-in .9s var(--ease) .35s both}
+}
+@keyframes rise-in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@media(max-width:900px){
+  .home-intro{grid-template-columns:1fr;grid-template-areas:"kicker" "coords" "title" "copy" "line";grid-template-rows:none}
+  .home-coords{justify-self:start!important;text-align:left!important;margin-bottom:26px!important}
+  .home-intro-copy{margin-top:34px!important;text-align:left}
+  .home-title-main{font-size:clamp(54px,17vw,88px)}
+  .home-title-sub{letter-spacing:.36em;gap:16px}
+}
+
+/* ---------- 首頁座標 ---------- */
+.home-coords{grid-area:coords;justify-self:end;align-self:start;text-align:right;margin:0;display:flex;flex-direction:column;gap:2px;
+  font:400 13.5px/1.7 var(--f-song);letter-spacing:.14em;color:var(--c-muted)}
+.home-coords span:last-child{font:600 13px/1.7 var(--f-latin);letter-spacing:.12em;color:var(--c-gold-ink);font-variant-numeric:lining-nums tabular-nums}
+.welcome-step{position:relative;z-index:1}
+
+/* ---------- 卷次：大寫數字壹貳參肆伍，淡金色大字置於各卷右上 ---------- */
+.home-chapter.museum-shell,.home-literary>.museum-shell{position:relative;isolation:isolate}
+.home-numeral{position:absolute;z-index:-1;top:clamp(40px,5vw,70px);right:-.04em;pointer-events:none;user-select:none;
+  font:400 clamp(130px,14vw,210px)/1 var(--f-song);color:rgba(168,139,92,.13)}
+.home-literary .home-numeral{color:rgba(205,184,143,.09)}
+.museum-page-hero[data-numeral]{position:relative;isolation:isolate}
+.museum-page-hero[data-numeral]::before{content:attr(data-numeral);position:absolute;z-index:-1;pointer-events:none;
+  right:-.04em;top:clamp(10px,2vw,30px);font:400 clamp(150px,17vw,250px)/1 var(--f-song);
+  color:rgba(168,139,92,.12)}
+.more-hero[data-numeral]>.wrap{position:relative;z-index:1}
+.more-hero[data-numeral]::before{content:attr(data-numeral);position:absolute;right:max(4vw,calc((100% - 1360px)/2));bottom:-.18em;z-index:0;pointer-events:none;
+  font:400 clamp(160px,22vw,320px)/1 var(--f-song);color:rgba(205,184,143,.08)}
+@media(max-width:760px){
+  .home-numeral{font-size:120px;top:34px}
+  .museum-page-hero[data-numeral]::before{font-size:132px;top:14px}
+  .more-hero[data-numeral]::before{font-size:150px;right:16px}
+}
+
+/* ---------- 卷冊卡片：游標所至，紙面微亮 ---------- */
+.museum-collection-card,.more-card,.origin,.courtyard-story,.leisure-table{
+  background-image:radial-gradient(380px circle at var(--mx,-600px) var(--my,-600px),rgba(205,184,143,.16),transparent 64%)!important}
+
+/* ---------- 換頁：同站頁面之間淡入淡出，頁首不動 ---------- */
+@view-transition{navigation:auto}
+.museum-header{view-transition-name:site-header}
+::view-transition-old(root){animation:vt-out .28s var(--ease) both}
+::view-transition-new(root){animation:vt-in .45s var(--ease) both}
+@keyframes vt-out{to{opacity:0}}
+@keyframes vt-in{from{opacity:0}}
+@media(prefers-reduced-motion:reduce){@view-transition{navigation:none}}
+
+/* ---------- 首頁開場：歡迎頁 → 緣起 → 主頁，每次造訪顯示一次 ---------- */
+.welcome{display:none}
+html.welcome-pending body{overflow:hidden}
+html.welcome-pending .welcome{
+  display:grid;place-items:center;position:fixed;inset:0;z-index:300;overflow-y:auto;
+  padding:calc(env(safe-area-inset-top,0px) + 28px) 20px calc(env(safe-area-inset-bottom,0px) + 28px);
+  background-color:var(--c-paper);background-image:inherit;
+  transition:opacity .7s var(--ease),visibility .7s;
+}
+.welcome.is-leaving{opacity:0;visibility:hidden}
+.welcome-step{grid-area:1/1;display:flex;flex-direction:column;align-items:center;text-align:center;width:min(100%,38em)}
+.welcome-step[hidden]{display:none!important}
+.welcome-seal{width:clamp(112px,13vw,160px);height:auto;aspect-ratio:1;max-width:100%}
+.welcome-poem{display:flex;flex-direction:column;gap:.3em;margin:clamp(34px,5vw,52px) 0 0;
+  font:400 clamp(25px,3.2vw,40px)/1.6 var(--f-kai);letter-spacing:.24em;margin-right:-.24em;color:var(--c-ink)}
+.welcome-source{margin:26px 0 0;padding-top:20px;position:relative;font:400 14.5px/1.8 var(--f-song);letter-spacing:.16em;color:var(--c-muted)}
+.welcome-source::before{content:"";position:absolute;top:0;left:50%;width:56px;margin-left:-28px;height:5px;border-top:1px solid var(--c-gold);border-bottom:1px solid var(--c-gold)}
+.welcome-label{margin:0;font:600 16px/1.6 var(--f-song);letter-spacing:.6em;margin-right:-.6em;color:var(--c-pine)}
+.welcome-label::after{content:"";display:block;width:56px;height:5px;margin:18px auto 0;border-top:1px solid var(--c-gold);border-bottom:1px solid var(--c-gold)}
+.welcome-letter{display:flex;flex-direction:column;width:min(100%,19em);margin-top:clamp(30px,4vw,44px);font-size:clamp(21px,2.4vw,28px)}
+.welcome-dedication{margin:0;text-align:justify;text-justify:inter-ideograph;font:400 1em/2.15 var(--f-kai);letter-spacing:.12em;color:var(--c-ink)}
+.welcome-sign{align-self:flex-end;margin:.9em 0 0;font:400 .68em/1.8 var(--f-kai);letter-spacing:.3em;margin-right:-.3em;color:var(--c-pine)}
+.welcome-actions{display:flex;flex-direction:column;align-items:center;gap:16px;margin-top:clamp(38px,5vw,54px)}
+.welcome-btn{padding:15px 32px 15px 38px;background:var(--c-pine);border:1px solid var(--c-pine);
+  font:500 15px/1 var(--f-song);letter-spacing:.42em;color:var(--c-paper-3);transition:background-color .3s var(--ease),color .3s var(--ease),border-color .3s var(--ease)}
+.welcome-btn:hover{background:var(--c-pine-2);border-color:var(--c-pine-2)}
+.welcome-skip{background:none;border:0;padding:6px 2px;font:400 13.5px/1.6 var(--f-song);letter-spacing:.14em;color:var(--c-muted);border-bottom:1px solid transparent}
+.welcome-skip:hover,.welcome-skip:focus-visible{color:var(--c-ink);border-bottom-color:var(--c-gold)}
+@media(max-width:560px){.welcome-letter{font-size:20px}.welcome-dedication{letter-spacing:.08em}}
+/* 文字淡入；家印不加任何效果 */
+@media(prefers-reduced-motion:no-preference){
+  .welcome-step.is-current .welcome-poem,.welcome-step.is-current .welcome-source,.welcome-step.is-current .welcome-actions,
+  .welcome-step.is-current .welcome-label,.welcome-step.is-current .welcome-dedication,.welcome-step.is-current .welcome-sign{animation:fade-in .9s var(--ease) both}
+  .welcome-step.is-current .welcome-source,.welcome-step.is-current .welcome-dedication{animation-delay:.2s}
+  .welcome-step.is-current .welcome-actions,.welcome-step.is-current .welcome-sign{animation-delay:.4s}
+  html.welcome-pending .home-title-main,html.welcome-pending .home-title-sub,html.welcome-pending .home-intro-copy{animation-play-state:paused}
+}
+@keyframes fade-in{from{opacity:0}to{opacity:1}}
+
+/* ---------- 首頁各卷 ---------- */
+.home-chapter{padding:clamp(52px,6vw,84px) 0;border-bottom:1px solid var(--c-line)}
+.home-chapter-grid{grid-template-columns:minmax(200px,.32fr) minmax(0,1fr);gap:clamp(32px,7vw,120px)}
+.home-number{display:flex!important;align-items:baseline;gap:14px;flex-wrap:wrap;font:500 14px/1.6 var(--f-song)!important;letter-spacing:.2em!important;color:var(--c-gold-ink)!important}
+.home-number i{font:italic 500 18px/1.4 var(--f-latin);letter-spacing:.03em;color:var(--c-gold-ink)}
+.home-number b{font:600 15px/1.4 var(--f-song);letter-spacing:.3em;color:var(--c-pine)}
+.home-chapter-aside h2{font:500 clamp(32px,3.4vw,44px)/1.4 var(--f-song)!important;letter-spacing:.12em;color:var(--c-ink);margin:18px 0 14px!important}
+.home-chapter-aside small{font:400 16px/2 var(--f-kai)!important;color:var(--c-muted)!important;letter-spacing:.08em;max-width:16em!important}
+.home-copy{font:400 17px/2.2 var(--f-song)!important;color:var(--c-text)!important;letter-spacing:.04em!important;max-width:36em!important;text-align:justify;text-justify:inter-ideograph;line-break:strict}
+.home-copy p{margin:0 0 1.15em!important}
+.home-caption{font:400 13.5px/2 var(--f-song)!important;color:var(--c-muted)!important;border-top:1px solid var(--c-line-2)!important;max-width:44em}
+.home-caption a{border-bottom:1px solid var(--c-gold-soft);padding-bottom:2px}
+.home-caption a:hover{color:var(--c-pine);border-bottom-color:var(--c-pine)}
+.home-action{gap:18px!important;padding:12px 0 8px!important;margin-top:28px!important;border-bottom:1px solid var(--c-gold)!important;font:500 15px/1.6 var(--f-song)!important;letter-spacing:.1em;color:var(--c-ink)!important}
+.home-action span{font:400 13px/1.6 var(--f-song);color:var(--c-gold-ink);letter-spacing:.12em;position:relative;padding-right:30px}
+.home-action span::after{content:"";position:absolute;right:0;top:50%;width:20px;height:1px;background:currentColor;transition:width .3s var(--ease)}
+.home-action:hover{color:var(--c-pine)!important;border-bottom-color:var(--c-pine)!important}
+.home-action:hover span::after{width:26px}
+.home-summary-names{font:500 16px/2 var(--f-song)!important;letter-spacing:.24em;color:var(--c-pine)!important;padding-bottom:16px!important}
+.home-biographies{gap:0!important}
+.home-person{padding:8px clamp(26px,4vw,64px) 0 0!important}
+.home-person+.home-person{border-left:1px solid var(--c-line)!important;padding:8px 0 0 clamp(26px,4vw,64px)!important}
+.home-person h3{font:500 clamp(30px,3.2vw,42px)/1.4 var(--f-song)!important;letter-spacing:.12em;margin:10px 0 22px!important}
+.home-person h3 a:hover{color:var(--c-pine)}
+.home-person .home-copy{font-size:16.5px!important}
+.home-person-source{font:400 13.5px/2 var(--f-kai)!important;color:var(--c-muted)!important;letter-spacing:.06em}
+.home-literary{background:var(--c-pine-3)!important;position:relative}
+.home-literary::before{content:"";position:absolute;inset:16px;border:1px solid rgba(205,184,143,.24);pointer-events:none}
+.home-literary .home-number,.home-literary .home-number i{color:var(--c-gold-soft)!important}
+.home-literary .home-number b{color:#efe6d2}
+.home-literary h2{color:#f3ecdc!important}
+.home-literary .home-copy{color:#ddd5c3!important;opacity:1!important}
+.home-literary .home-chapter-aside small{color:#bdb7a5!important}
+.home-literary .home-action{color:#f3ecdc!important;border-bottom-color:var(--c-gold-soft)!important}
+.home-literary .home-action span{color:var(--c-gold-soft)}
+.home-ending{padding:34px 0 44px!important}
+.home-ending p{font:400 14px/2 var(--f-kai)!important;color:var(--c-muted)!important;letter-spacing:.06em}
+.home-ending a{font:500 15px/1.6 var(--f-song);letter-spacing:.1em;text-decoration:none!important;border-bottom:1px solid var(--c-gold);padding-bottom:4px}
+@media(max-width:900px){.home-chapter-grid{grid-template-columns:1fr;gap:18px}}
+@media(max-width:720px){
+  .home-chapter{padding:46px 0 52px}
+  .home-copy{font-size:16px!important;line-height:2.1!important;text-align:left}
+  .home-person,.home-person+.home-person{padding:0!important;border-left:0!important}
+  .home-person+.home-person{border-top:1px solid var(--c-line)!important;padding-top:36px!important;margin-top:8px}
+  .home-person .home-copy{font-size:16px!important}
+  .home-literary::before{inset:10px}
+}
+
+/* ---------- 典藏目錄卡片、外傳卷冊卡片：紙本卷冊與書耳 ---------- */
+.museum-collection-grid,.more-cards{gap:clamp(14px,1.6vw,22px)!important}
+.museum-collection-card,.more-card{
+  position:relative;background:var(--c-paper-3)!important;
+  border:1px solid var(--c-line)!important;
+  box-shadow:var(--frame);
+  padding:clamp(28px,3vw,44px)!important;padding-right:clamp(76px,7vw,96px)!important;
+  transition:box-shadow .35s var(--ease),transform .35s var(--ease),border-color .35s var(--ease)!important;
+}
+.museum-collection-card:hover,.more-card:hover{
+  transform:translateY(-2px)!important;border-color:var(--c-gold)!important;
+  box-shadow:inset 0 0 0 5px var(--c-paper-3),inset 0 0 0 6px var(--c-gold-soft),0 24px 40px -34px rgba(20,48,42,.55);
+}
+.museum-collection-card h2,.more-card h3{font:500 clamp(28px,2.8vw,36px)/1.45 var(--f-song)!important;letter-spacing:.12em;color:var(--c-ink)!important;margin:16px 0 10px!important}
+.museum-collection-card p,.more-card p{font:400 15.5px/2.05 var(--f-song)!important;color:var(--c-muted)!important;letter-spacing:.04em}
+.museum-collection-card i,.more-card-action{margin-top:auto;padding-top:26px;align-self:flex-start!important;font:500 14px/1.6 var(--f-song)!important;letter-spacing:.14em;color:var(--c-pine)!important;font-style:normal;position:relative;padding-right:30px!important}
+.museum-collection-card i::after,.more-card-action::after{content:"";position:absolute;right:0;bottom:.8em;width:20px;height:1px;background:var(--c-gold);transition:width .3s var(--ease)}
+.museum-collection-card:hover i::after,.more-card:hover .more-card-action::after{width:28px}
+/* 書耳：以卡片的 data-mark 作卷籤 */
+.museum-collection-card[data-mark]::before,.more-card::before{
+  content:attr(data-mark)!important;position:absolute!important;inset:auto!important;
+  top:-1px!important;right:clamp(22px,2.6vw,34px)!important;bottom:auto!important;
+  width:36px;padding:14px 0 16px;text-align:center;
+  font:400 19px/1.25 var(--f-kai)!important;color:var(--c-paper-3)!important;
+  background:var(--c-pine);writing-mode:vertical-rl;letter-spacing:.2em;
+  clip-path:polygon(0 0,100% 0,100% 100%,50% calc(100% - 8px),0 100%);
+  pointer-events:none;
+}
+.more-card:nth-child(n){background:var(--c-paper-3)!important}
+
+.museum-secondary{border-top:1px solid var(--c-line)!important;margin-top:36px!important}
+.museum-secondary a{font:500 22px/1.5 var(--f-song)!important;letter-spacing:.1em;color:var(--c-ink)!important}
+.museum-secondary a span{font:600 12px/1.6 var(--f-latin)!important;letter-spacing:.18em!important;color:var(--c-gold-ink)!important}
+.museum-secondary a:hover{color:var(--c-pine)!important}
+.museum-collection>p a{font:400 14px/2 var(--f-song);color:var(--c-muted)}
+.museum-collection>p a:hover{color:var(--c-pine)}
+@media(max-width:760px){
+  .museum-collection-card,.more-card{padding:26px 64px 26px 22px!important;min-height:0!important}
+  .museum-collection-card[data-mark]::before,.more-card::before{right:16px!important;width:32px;font-size:17px!important;padding:12px 0 14px}
+  .museum-secondary a{font-size:19px!important}
+}
+
+/* 卡片底部空白的動作記號，改為一段可延伸的細線 */
+.museum-collection-card i:empty{padding:0!important;margin-top:auto;width:44px;height:1px;background:var(--c-gold);transition:width .35s var(--ease)}
+.museum-collection-card i:empty::after{display:none}
+.museum-collection-card:hover i:empty{width:72px}
+.museum-collection-card h2{margin-top:14px!important}
+
+/* ---------- 正文閱讀 ---------- */
+.museum-reading .family-preface{padding:clamp(30px,4vw,56px) 0 clamp(40px,5vw,70px)!important}
+.family-preface .preface-heading h2{font:500 clamp(42px,5vw,68px)/1.5 var(--f-song)!important;letter-spacing:.12em!important;color:var(--c-ink)}
+.preface-heading{display:flex;flex-direction:column;align-items:flex-start;gap:18px}
+@media(min-width:901px){.preface-heading{position:sticky;top:120px;align-self:start}}
+.family-preface .serif-manuscript>p:not(.oral-note){font:400 clamp(17px,1.5vw,20px)/2.35 var(--f-song)!important;letter-spacing:.06em!important;color:var(--c-ink)!important}
+.preface-colophon{border-top:0!important}
+.preface-colophon .colophon-rule{width:100%!important;height:5px!important;background:none!important;border-top:1px solid var(--c-gold);border-bottom:1px solid var(--c-line);margin:0 0 30px!important}
+.preface-colophon p{font:400 clamp(17px,1.5vw,20px)/2.25 var(--f-kai)!important;color:var(--c-pine)!important;letter-spacing:.06em!important}
+.colophon-seal{
+  font:400 16px/1.4 var(--f-kai)!important;letter-spacing:.24em!important;
+  color:var(--c-seal)!important;border:1.5px solid var(--c-seal)!important;
+  box-shadow:inset 0 0 0 2px var(--c-paper),inset 0 0 0 3px rgba(155,47,35,.55);
+  padding:9px 12px 9px 16px!important;transform:none;margin-top:6px;
+}
+.oral-note,.source-note,.preface-copy .oral-note{font:400 13.5px/2 var(--f-song)!important;color:var(--c-muted)!important;letter-spacing:.04em}
+.museum-reading>div[style]>a{font:500 15px/1.6 var(--f-song)!important;letter-spacing:.1em;border-bottom-color:var(--c-gold)!important;padding:10px 0!important}
+.museum-reading>div[style]>a:hover{color:var(--c-pine)}
+
+/* 人物列傳：版框文件 */
+.museum-reading .biography-section{
+  background:var(--c-paper-3)!important;
+  border:1px solid var(--c-gold-soft)!important;
+  box-shadow:inset 0 0 0 6px var(--c-paper-3),inset 0 0 0 7px var(--c-line);
+  padding:clamp(34px,4.6vw,66px) clamp(22px,4.6vw,68px)!important;
+  margin-top:clamp(26px,3vw,40px);
+}
+.museum-reading .biography-section>.wrap,.museum-reading .biography-section.wrap{width:auto!important;max-width:none}
+.biography-head{border-bottom:1px solid var(--c-line)!important;padding-bottom:18px!important}
+.biography-index{font:500 15px/1.5 var(--f-song)!important;letter-spacing:.32em!important;color:var(--c-pine)!important}
+.title-seal{
+  width:68px!important;height:68px!important;border:0!important;
+  background:url("seal.png") center/contain no-repeat!important;
+  color:transparent!important;font-size:0!important;box-shadow:none!important;transform:none!important;
+}
+.biography-title h2{font:500 clamp(44px,5vw,70px)/1.35 var(--f-song)!important;letter-spacing:.14em!important;color:var(--c-ink)}
+.biography-title h2 small{font:600 12.5px/1.6 var(--f-latin)!important;letter-spacing:.24em!important;color:var(--c-gold-ink)!important;margin-top:12px}
+.biography-subtitle{font:400 19px/2 var(--f-kai)!important;color:var(--c-pine)!important;letter-spacing:.08em;max-width:15em!important}
+.biography-rule{height:5px!important;width:88px!important;background:none!important;border-top:1px solid var(--c-gold);border-bottom:1px solid var(--c-gold)}
+.biography-aside{font:400 14px/2.05 var(--f-song)!important;color:var(--c-muted)!important;max-width:22em!important}
+.biography-text h3{font:600 21px/1.6 var(--f-song)!important;letter-spacing:.14em;color:var(--c-pine)!important;margin:0 0 14px!important;display:flex;align-items:center;gap:14px}
+.biography-text h3::before{content:"";width:7px;height:7px;flex:none;border:1px solid var(--c-gold);transform:rotate(45deg)}
+.biography-text>p{font:400 17px/2.2 var(--f-song)!important;color:var(--c-text)!important;letter-spacing:.045em!important;margin:0 0 2.2em!important;max-width:36em}
+.biography-text>blockquote{
+  background:none!important;border-left:0!important;
+  border-top:1px solid var(--c-gold)!important;border-bottom:1px solid var(--c-gold)!important;
+  padding:26px 6px 22px!important;margin:10px 0 40px!important;
+  font:400 clamp(20px,2vw,25px)/1.9 var(--f-kai)!important;letter-spacing:.1em;color:var(--c-pine)!important;
+}
+.biography-text>blockquote small{font:400 13px/1.8 var(--f-song)!important;color:var(--c-muted)!important;margin-top:8px}
+.compiler-verdict{
+  background:var(--c-paper)!important;border:1px solid var(--c-gold-soft)!important;border-top:1px solid var(--c-gold-soft)!important;
+  box-shadow:inset 0 0 0 5px var(--c-paper),inset 0 0 0 6px var(--c-line);
+  padding:clamp(28px,3.4vw,42px) clamp(24px,3.4vw,44px)!important;
+}
+.compiler-label{font:600 15px/1.5 var(--f-song)!important;letter-spacing:.3em!important;color:var(--c-pine)!important}
+.compiler-verdict p{font:400 clamp(17px,1.6vw,20px)/2.15 var(--f-kai)!important;color:var(--c-ink)!important;letter-spacing:.06em}
+.compiler-verdict small{font:400 13px/1.9 var(--f-song)!important;color:var(--c-muted)!important}
+.biography-text .source-note{font-size:13px!important;line-height:2!important;border-top:1px solid var(--c-line)!important}
+.biography-next{border:1px solid var(--c-line)!important;background:var(--c-paper)!important;padding:22px 24px!important}
+.biography-next:hover{border-color:var(--c-gold)!important}
+.biography-next>span{font:500 13px/1.5 var(--f-song)!important;letter-spacing:.14em!important;color:var(--c-gold-ink)!important}
+.biography-next strong{font:500 21px/1.5 var(--f-song)!important;letter-spacing:.12em;color:var(--c-ink)}
+@media(max-width:760px){
+  .museum-reading .biography-section{padding:28px 20px!important;box-shadow:inset 0 0 0 4px var(--c-paper-3),inset 0 0 0 5px var(--c-line)}
+  .biography-text>p{font-size:16px!important;line-height:2.1!important}
+  .biography-title h2{font-size:44px!important}
+}
+
+/* 二代合傳等通篇文章 */
+.museum-editorial{max-width:min(780px,100%)!important;margin:0 auto!important;padding:clamp(34px,4vw,60px) 0 clamp(40px,5vw,70px)!important}
+.museum-editorial h2{font:500 clamp(32px,3.6vw,46px)/1.45 var(--f-song)!important;letter-spacing:.12em;color:var(--c-ink);margin:18px 0 30px!important}
+.museum-editorial p{font:400 17.5px/2.25 var(--f-song)!important;color:var(--c-text)!important;letter-spacing:.06em!important;margin-top:0;margin-bottom:1.3em}
+.museum-editorial .home-caption{font-size:14px!important}
+.museum-editorial .museum-next{flex-wrap:wrap;gap:6px 20px}
+.museum-editorial .museum-next small{flex-basis:100%}
+.museum-editorial .museum-next::after{margin-left:auto}
+
+/* ---------- 展讀（details）：以菱形與十字示意開合 ---------- */
+.reading-disclosure{border:1px solid var(--c-line)!important;background:var(--c-paper-3)!important;transition:border-color .3s var(--ease)}
+.reading-disclosure:hover,.reading-disclosure[open]{border-color:var(--c-gold-soft)!important}
+.reading-disclosure>summary{
+  list-style:none!important;display:flex!important;align-items:center;gap:16px;position:relative;
+  padding:18px 60px 18px 22px!important;
+  font:500 16px/1.75 var(--f-song)!important;letter-spacing:.08em;color:var(--c-ink)!important;
+}
+.reading-disclosure>summary::-webkit-details-marker{display:none}
+.reading-disclosure>summary::before{content:"";flex:none;width:7px;height:7px;border:1px solid var(--c-gold);transform:rotate(45deg);transition:background-color .3s var(--ease),border-color .3s var(--ease)}
+.reading-disclosure>summary::after{
+  content:"";position:absolute;right:22px;top:50%;width:14px;height:14px;margin-top:-7px;
+  background:linear-gradient(var(--c-gold-ink),var(--c-gold-ink)) center/14px 1px no-repeat,linear-gradient(var(--c-gold-ink),var(--c-gold-ink)) center/1px 14px no-repeat;
+  transition:background-size .3s var(--ease),transform .3s var(--ease);
+}
+.reading-disclosure>summary:hover{background:rgba(168,139,92,.07)!important}
+.reading-disclosure[open]>summary{border-bottom:1px solid var(--c-line-2)!important}
+.reading-disclosure[open]>summary::before{background:var(--c-pine);border-color:var(--c-pine)}
+.reading-disclosure[open]>summary::after{background-size:14px 1px,1px 0;transform:rotate(180deg)}
+.reading-disclosure-content{padding:22px clamp(20px,3vw,36px) 26px!important}
+@media(prefers-reduced-motion:no-preference){.reading-disclosure[open]>.reading-disclosure-content{animation:unfold .45s var(--ease)}}
+@keyframes unfold{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+.reading-disclosure-content p{font-family:var(--f-song)}
+@media(max-width:760px){.reading-disclosure>summary{padding:15px 50px 15px 16px!important;font-size:15px!important}.reading-disclosure>summary::after{right:16px}}
+
+/* ---------- 王家通紀：編年時間線 ---------- */
+.story-section .story-intro h2,.island-history-head h3,.section-heading h2,.courtyard-head h2,.leisure-heading h2{letter-spacing:.1em!important;font-weight:500!important;color:var(--c-ink)!important}
+.story-intro p,.section-heading p{font:400 16px/2.05 var(--f-kai)!important;color:var(--c-muted)!important}
+.museum-record-content .story-section .chronicle-item,.more-disaster-entries .chronicle-item{
+  position:relative;border:0!important;border-left:1px solid var(--c-gold-soft)!important;
+  padding:12px 0 12px 30px!important;margin-left:6px;
+}
+.museum-record-content .story-section .chronicle-item .reading-disclosure>summary::before,
+.more-disaster-entries .chronicle-item .reading-disclosure>summary::before{position:absolute;left:-37px;top:50%;margin-top:-4px;background:var(--c-paper)}
+.museum-record-content .story-section .chronicle-item .reading-disclosure[open]>summary::before,
+.more-disaster-entries .chronicle-item .reading-disclosure[open]>summary::before{background:var(--c-pine)}
+.chronicle-copy small{font:600 14px/1.6 var(--f-song)!important;letter-spacing:.3em;color:var(--c-pine)!important}
+.chronicle-copy p{font:400 16.5px/2.15 var(--f-song)!important;color:var(--c-text)!important;letter-spacing:.04em}
+.chronicle-read-more,.island-history-linkout a,.island-history-links a{
+  border:1px solid var(--c-gold-soft)!important;background:var(--c-paper-3)!important;color:var(--c-pine)!important;
+  font:500 14px/1.6 var(--f-song)!important;letter-spacing:.08em;padding:10px 16px!important;
+}
+.chronicle-read-more:hover,.island-history-linkout a:hover,.island-history-links a:hover{background:var(--c-pine)!important;color:var(--c-paper-3)!important;border-color:var(--c-pine)!important}
+.shipyard-history{
+  background:var(--c-paper-3)!important;border:1px solid var(--c-gold-soft)!important;
+  box-shadow:var(--frame)!important;outline:0!important;
+  padding:clamp(28px,4vw,52px)!important;margin:26px 0 26px 6px!important;
+}
+.shipyard-history::before,.shipyard-history::after{display:none!important}
+.shipyard-history-head h3{font:500 clamp(26px,3vw,36px)/1.55 var(--f-song)!important;letter-spacing:.1em;color:var(--c-ink)!important}
+.shipyard-history-head p,.shipyard-history-memory{font:400 16px/2.1 var(--f-song)!important;color:var(--c-text)!important}
+.shipyard-history-events span{font:600 13px/1.7 var(--f-song)!important;letter-spacing:.2em!important;color:var(--c-gold-ink)!important}
+.shipyard-history-events strong{color:var(--c-ink)!important;font-weight:500!important}
+.shipyard-history-events p{font:400 15px/2.05 var(--f-song)!important;color:var(--c-muted)!important}
+.shipyard-history-sources a{color:var(--c-pine);border-bottom:1px solid var(--c-gold-soft)}
+.shipyard-history-sources a:hover{border-bottom-color:var(--c-pine)}
+
+/* 通紀頁尾的編纂原則等深色區 */
+.museum-record-content .sources,.museum-record-content .earth{background:transparent!important}
+
+/* 編纂原則 */
+.sources h2{font:500 clamp(34px,4vw,54px)/1.45 var(--f-song)!important;letter-spacing:.1em;color:var(--c-ink)}
+.source-list{border-top:2px solid var(--c-pine)!important}
+.source-list p{font:500 16px/1.8 var(--f-song)!important;letter-spacing:.1em;color:var(--c-ink)!important;border-bottom:1px solid var(--c-line)!important;align-items:baseline}
+.source-list span{font:600 12px/1.6 var(--f-latin)!important;letter-spacing:.18em;color:var(--c-gold-ink)!important}
+
+/* ---------- 地誌六期 ---------- */
+.island-history{border-top:0!important;position:relative}
+.museum-record-content .island-history{margin-top:0!important;padding-top:clamp(30px,4vw,56px)!important}
+.island-history-head{align-items:end}
+.island-history-subtitle{font:400 17px/2 var(--f-kai)!important;color:var(--c-gold-ink)!important;letter-spacing:.14em}
+.island-history-head>p,.island-history-head p{font-family:var(--f-kai)!important;font-size:16px!important;color:var(--c-muted)!important;line-height:2.05!important}
+.island-history-map{border-left:1px solid var(--c-line)!important;border-top:1px solid var(--c-line)!important;background:var(--c-paper-3)}
+.island-history-step,.island-history-step:nth-child(2n){background:var(--c-paper-3)!important;border-right:1px solid var(--c-line)!important;border-bottom:1px solid var(--c-line)!important;padding:30px 28px 52px!important}
+.island-history-era{font:600 13px/1.8 var(--f-song)!important;letter-spacing:.2em;color:var(--c-gold-ink)!important}
+.island-history-step h4{font:500 clamp(20px,1.9vw,24px)/1.65 var(--f-song)!important;letter-spacing:.08em;color:var(--c-ink)!important}
+.island-history-step p{font-size:15px!important;line-height:2.05!important;color:var(--c-text)!important}
+.island-history-num{
+  right:20px!important;bottom:auto!important;top:24px;opacity:1!important;
+  font:400 17px/1 var(--f-kai)!important;color:var(--c-gold-ink)!important;
+  writing-mode:vertical-rl;border:1px solid var(--c-gold-soft);padding:8px 5px;letter-spacing:0;
+}
+.island-history-bottom>p{font:400 14px/2.1 var(--f-song)!important;color:var(--c-muted)!important}
+.origin{background:var(--c-paper-3)!important;border:1px solid var(--c-line)!important;box-shadow:var(--frame)}
+.origin:before{display:none!important}
+.origin h3{font:500 clamp(30px,3.2vw,40px)/1.5 var(--f-song)!important;letter-spacing:.12em;color:var(--c-ink)}
+.origin p{font-size:15.5px!important;line-height:2.1!important;color:var(--c-text)!important}
+.origin .num{font:400 20px/1 var(--f-kai)!important;color:var(--c-paper-3)!important;background:var(--c-pine);padding:12px 8px 16px;writing-mode:vertical-rl;top:-1px;bottom:auto!important;right:30px!important;clip-path:polygon(0 0,100% 0,100% 100%,50% calc(100% - 7px),0 100%)}
+.earth .section-heading p{font-family:var(--f-kai)!important}
+.island-history-linkout h3{letter-spacing:.1em;font-weight:500!important;color:var(--c-ink)!important}
+
+/* ---------- 外傳各卷 ---------- */
+.more-hero{background:var(--c-pine-3)!important;padding:clamp(40px,5vw,72px) 0 clamp(40px,5vw,60px)!important}
+.more-hero::after{content:""!important;inset:16px!important;border:1px solid rgba(205,184,143,.24);font:0/0 a!important;top:16px!important;right:16px!important;color:transparent!important}
+.more-hero h1{font:500 clamp(44px,5.6vw,72px)/1.3 var(--f-song)!important;letter-spacing:.14em!important;color:#f3ecdc}
+.more-hero p{font:400 17px/2.05 var(--f-kai)!important;color:#d3cbb8!important;letter-spacing:.06em}
+.more-hero .kicker{color:var(--c-gold-soft)!important}
+.more-trail{font:400 13px/2 var(--f-song)!important;color:#c3b8a0!important;letter-spacing:.06em}
+.more-trail a{text-decoration:none!important;border-bottom:1px solid rgba(205,184,143,.5)}
+.more-chapters{gap:0!important;padding:0!important;margin:clamp(22px,3vw,34px) 0 8px;border-bottom:1px solid var(--c-line)}
+.more-chapters a{border:0!important;background:none!important;color:var(--c-muted)!important;font:500 15px/1.6 var(--f-song)!important;letter-spacing:.12em;padding:12px clamp(12px,1.6vw,22px)!important;position:relative}
+.more-chapters a::after{content:"";position:absolute;left:clamp(12px,1.6vw,22px);right:clamp(12px,1.6vw,22px);bottom:-1px;height:2px;background:var(--c-pine);transform:scaleX(0);transition:transform .3s var(--ease)}
+.more-chapters a:hover{color:var(--c-ink)!important}
+.more-chapters a[aria-current=page]{color:var(--c-pine)!important}
+.more-chapters a[aria-current=page]::after{transform:scaleX(1)}
+.more-chapters a:first-child{padding-left:0!important}
+.more-chapters a:first-child::after{left:0}
+.more-chapters{flex-wrap:wrap;overflow:visible!important}
+@media(max-width:760px){
+  .more-chapters a{font-size:14.5px!important;letter-spacing:.04em;padding:11px 9px!important}
+  .more-chapters a::after{left:9px;right:9px}
+}
+.more-intro h2{font:500 clamp(34px,4vw,52px)/1.45 var(--f-song)!important;letter-spacing:.12em;color:var(--c-ink)!important}
+.more-intro p{font:400 16px/2.05 var(--f-kai)!important;color:var(--c-muted)!important}
+.more-note{border-top:1px solid var(--c-line)!important;font:400 14px/2 var(--f-kai)!important;color:var(--c-muted)!important}
+.more-note a{border:1px solid var(--c-gold-soft)!important;background:var(--c-paper-3);font:500 14px/1.6 var(--f-song)!important;letter-spacing:.1em;color:var(--c-pine)!important}
+.more-note a:hover{background:var(--c-pine)!important;color:var(--c-paper-3)!important;border-color:var(--c-pine)!important}
+.courtyard-head>p,.leisure-heading p{font:400 16px/2 var(--f-kai)!important;color:var(--c-muted)!important}
+.courtyard-story,.courtyard-story:nth-child(2){background:var(--c-paper-3)!important;border:1px solid var(--c-line)!important;box-shadow:var(--frame)}
+.courtyard-story-order,.leisure-table-index{font:600 13px/1.8 var(--f-song)!important;letter-spacing:.24em!important;color:var(--c-gold-ink)!important}
+.courtyard-story-body h3,.leisure-table h3{font-weight:500!important;letter-spacing:.1em;color:var(--c-ink)!important}
+.courtyard-story-body p,.leisure-intro p,.leisure-table p,.fire-annex-story p{font:400 16.5px/2.15 var(--f-song)!important;color:var(--c-text)!important}
+.courtyard-story-body p{font-family:var(--f-kai)!important;font-size:18px!important;color:var(--c-ink)!important}
+.courtyard-art,.courtyard-art:before,.courtyard-art:after{border-color:rgba(168,139,92,.35)!important}
+.courtyard-art span{font-family:var(--f-kai)!important;color:var(--c-gold)!important}
+.leisure-seal{border-radius:0!important;border:2px solid var(--c-pine)!important;box-shadow:inset 0 0 0 3px var(--c-paper),inset 0 0 0 4px var(--c-gold);font:400 32px/1 var(--f-kai)!important;color:var(--c-pine)!important;background:var(--c-paper-3)}
+.leisure-opening{background:var(--c-pine-3)!important;position:relative}
+.leisure-opening>span{font-weight:500!important;letter-spacing:.12em;color:#f3ecdc}
+.leisure-opening .reading-disclosure{background:rgba(250,247,240,.06)!important;border-color:rgba(205,184,143,.35)!important}
+.leisure-opening .reading-disclosure>summary{color:#efe8d8!important}
+.leisure-opening .reading-disclosure>summary::after{background:linear-gradient(var(--c-gold-soft),var(--c-gold-soft)) center/14px 1px no-repeat,linear-gradient(var(--c-gold-soft),var(--c-gold-soft)) center/1px 14px no-repeat}
+.leisure-opening .reading-disclosure[open]>summary::after{background-size:14px 1px,1px 0}
+.leisure-opening .reading-disclosure>summary:hover{background:rgba(250,247,240,.05)!important}
+.leisure-opening .reading-disclosure-content p{color:#e4dccb!important}
+.leisure-intro>span{font-weight:500!important;letter-spacing:.1em;color:var(--c-ink)!important}
+.leisure-table,.leisure-table:nth-child(n){background:var(--c-paper-3)!important;border:1px solid var(--c-line)!important;box-shadow:var(--frame)}
+.leisure-players{font:400 14px/1.9 var(--f-kai)!important;color:var(--c-muted)!important}
+.leisure-intro,.leisure-ending,.leisure-history{border-color:var(--c-line)!important}
+.leisure-ending>span{font:600 13px/2 var(--f-song)!important;letter-spacing:.2em;color:var(--c-gold-ink)!important}
+.leisure-ending a{font:500 14px/1.6 var(--f-song)!important;letter-spacing:.1em;border-bottom:1px solid var(--c-gold);min-height:0!important;padding:8px 0 6px;margin-top:6px}
+.more-disaster-intro{font:400 16px/2.05 var(--f-kai)!important;color:var(--c-muted)!important}
+.fire-history-annex{background:var(--c-paper-3)!important;border:1px solid var(--c-gold-soft)!important;box-shadow:var(--frame)}
+.fire-history-annex:before{display:none!important}
+.fire-history-annex .fire-archive-library,.fire-archive-library{background:var(--c-paper)!important;border:1px solid var(--c-line)!important;margin-left:0!important}
+.fire-annex-heading h3{font-weight:500!important;letter-spacing:.1em;color:var(--c-ink)!important}
+.fire-annex-date,.spring-fire-date{font:600 13px/1.8 var(--f-song)!important;letter-spacing:.16em;color:var(--c-gold-ink)!important}
+.fire-annex-subtitle{font:400 16px/2 var(--f-kai)!important;color:var(--c-muted)!important}
+.fire-archive-grid .fire-archive-link{background:var(--c-pine)!important;border-color:var(--c-pine-2)!important;font:500 14px/1.7 var(--f-song)!important;letter-spacing:.06em}
+.fire-archive-grid .fire-archive-link:hover,.fire-archive-grid .fire-archive-link:focus-visible{background:var(--c-pine-2)!important}
+.more-disaster-entries .spring-fire-entry{background:transparent!important;padding:12px 0 12px 30px!important}
+
+@media(max-width:760px){
+  .more-hero::after,.fiction-hero::after{inset:8px!important;top:8px!important;right:8px!important}
+  .more-hero .wrap{width:calc(100% - 56px)!important}
+  .fiction-hero .museum-shell{width:calc(100% - 56px)}
+}
+
+/* ---------- 海島有名：書衣 ---------- */
+.fiction-hero{background:var(--c-pine-3)!important;position:relative}
+.fiction-hero::after{content:"";position:absolute;inset:18px;border:1px solid rgba(205,184,143,.26);box-shadow:inset 0 0 0 5px var(--c-pine-3),inset 0 0 0 6px rgba(205,184,143,.14);pointer-events:none}
+.fiction-hero .museum-small{color:var(--c-gold-soft)!important}
+.fiction-title{font-weight:500!important;letter-spacing:.2em!important;color:#f3ecdc}
+.fiction-lead{font-family:var(--f-kai)!important;color:#d8d0bd!important;letter-spacing:.06em}
+.fiction-rule{height:5px!important;background:none!important;border-top:1px solid var(--c-gold-soft);border-bottom:1px solid var(--c-gold-soft)}
+.fiction-grid h2{font-weight:500!important;letter-spacing:.12em}
+.fiction-grid p{font-size:17px!important;line-height:2.2!important;color:var(--c-text)!important}
+
+/* ---------- 人物關係圖 ---------- */
+.relations-lede h1{font:500 clamp(42px,5.4vw,72px)/1.3 var(--f-song)!important;letter-spacing:.12em;color:var(--c-ink)}
+.relations-lede p{font:400 16.5px/2.15 var(--f-song)!important;color:var(--c-muted)!important;max-width:40em!important}
+.relations-toolbar{border-top:2px solid var(--c-pine)!important;border-bottom:1px solid var(--c-gold)!important}
+.relations-toolbar label{font:600 14px/1.6 var(--f-song)!important;letter-spacing:.2em;color:var(--c-pine)!important}
+.relations-toolbar input{background:var(--c-paper-3)!important;border:0!important;border-bottom:1px solid var(--c-gold)!important;font:400 16px/1.6 var(--f-song)!important;padding:12px 4px!important}
+.relations-toolbar input:focus{outline:0;border-bottom-color:var(--c-pine)!important;box-shadow:0 1px 0 var(--c-pine)}
+.relations-toolbar p{font:400 14px/2 var(--f-kai)!important;color:var(--c-muted)!important}
+.relations-scroll{background:var(--c-paper-3)!important;border:1px solid var(--c-gold-soft)!important;box-shadow:var(--frame)}
+.relation-branch{background:var(--c-paper)!important;border:1px solid var(--c-line)!important}
+.relation-branch>small{font:600 13px/1.6 var(--f-song)!important;letter-spacing:.24em!important;color:var(--c-gold-ink)!important}
+.relations-marriage{font:400 14px var(--f-kai)!important;color:var(--c-gold-ink)!important}
+.relations-pair-label,.relations-child-label{font:400 13px/1.6 var(--f-kai)!important;color:var(--c-muted)!important;letter-spacing:.1em}
+.rel-node{background:var(--c-paper-3)!important;border:1px solid var(--c-line)!important;transition:border-color .25s var(--ease),background-color .25s var(--ease),box-shadow .25s var(--ease)!important}
+.rel-node small{font:400 12.5px/1.5 var(--f-song)!important;letter-spacing:.06em;color:var(--c-muted)!important}
+.rel-node strong{font-weight:500!important;letter-spacing:.12em;color:var(--c-ink)}
+.rel-node:hover,.rel-node:focus-visible{border-color:var(--c-gold)!important;background:#fffdf7!important}
+.rel-node[aria-pressed="true"],.relations-children .rel-node[aria-pressed="true"]{background:var(--c-pine)!important;border-color:var(--c-pine)!important;box-shadow:inset 0 0 0 3px var(--c-pine),inset 0 0 0 4px rgba(205,184,143,.6)!important}
+.rel-node[aria-pressed="true"] strong{color:#f6f0e2}
+.rel-node[aria-pressed="true"] small{color:var(--c-gold-soft)!important}
+.relations-caption{font:400 14px/2 var(--f-song)!important;color:var(--c-muted)!important}
+.relations-reader-intro h2{font-weight:500!important;letter-spacing:.12em;color:var(--c-ink)!important}
+.relations-reader-intro p{font:400 15px/2.1 var(--f-kai)!important}
+.relations-person-meta{font:400 14px/2 var(--f-song)!important;color:var(--c-gold-ink)!important;letter-spacing:.08em}
+.relations-person-title{font-weight:500!important;letter-spacing:.14em;color:var(--c-ink)}
+.relations-article h3{font:600 20px/1.7 var(--f-song)!important;letter-spacing:.14em;color:var(--c-pine)!important;display:flex;align-items:center;gap:14px}
+.relations-article h3::before{content:"";width:7px;height:7px;flex:none;border:1px solid var(--c-gold);transform:rotate(45deg)}
+.relations-article p{font:400 17px/2.2 var(--f-song)!important;color:var(--c-text)!important;letter-spacing:.045em}
+.relations-profile-notes{font:400 14.5px/2.1 var(--f-song)!important}
+.relations-index{gap:8px 10px!important}
+.relations-index button{font:500 14px/1.6 var(--f-song)!important;letter-spacing:.1em;padding:8px 14px!important;border:1px solid var(--c-line)!important;background:var(--c-paper-3)!important;color:var(--c-ink)!important}
+.relations-index button:hover{border-color:var(--c-gold)!important;background:#fffdf7!important}
+.relations-index button[aria-pressed=true]{background:var(--c-pine)!important;border-color:var(--c-pine)!important;color:#f6f0e2!important}
+
+/* ---------- 舊式世系 ---------- */
+.lineage-section,.lineage-header{background:transparent!important}
+.lineage-header h2,.lineage-intro h2{font-weight:500!important;letter-spacing:.12em!important}
+.lineage-motto{font-family:var(--f-kai)!important;color:var(--c-pine)!important}
+.lineage-intro p,.lineage-header p{font-family:var(--f-kai)!important}
+.lineage-ancestor-person{background:var(--c-paper-3)!important;border-color:var(--c-gold-soft)!important}
+.lineage-marriage{font-family:var(--f-kai)!important;border-color:var(--c-gold)!important;color:var(--c-pine)!important;background:var(--c-paper-3)!important}
+.lineage-branch{background:var(--c-paper-3)!important;border-color:var(--c-line)!important}
+.lineage-epilogue{font-family:var(--f-kai)!important}
+
+/* ---------- 頁首選單（外傳頁沿用主導覽後的小節） ---------- */
+.more-skip{font:500 14px var(--f-song)}
+
+/* ---------- 典藏附錄（凡例・大事年表・參考書目）：以靛藍為輔色 ---------- */
+.tag{display:inline-flex;align-items:center;padding:1px 9px 2px;font:500 12.5px/1.6 var(--f-song);letter-spacing:.16em;border:1px solid;white-space:nowrap}
+.tag-doc{background:var(--c-indigo);border-color:var(--c-indigo);color:#f2f0ea}
+.tag-oral{border-color:var(--c-gold);color:var(--c-gold-ink)}
+.tag-tbd{border-style:dashed;border-color:#a39a88;color:var(--c-muted)}
+.tag-media{border-color:var(--c-indigo-2);color:var(--c-indigo)}
+.tag-book{border-color:var(--c-pine);color:var(--c-pine)}
+.appendix .museum-page-hero::after{border-top-color:var(--c-indigo)}
+.appendix .museum-small{color:var(--c-indigo-2)!important}
+.appendix .museum-next small{color:var(--c-indigo-2)}
+.appx-section{display:grid;grid-template-columns:minmax(200px,.32fr) minmax(0,1fr);gap:clamp(28px,6vw,110px);padding:clamp(44px,5vw,72px) 0;border-bottom:1px solid var(--c-line)}
+.appx-aside h2{font:500 clamp(30px,3.2vw,42px)/1.4 var(--f-song);letter-spacing:.14em;color:var(--c-indigo);margin:14px 0 12px}
+.appx-aside p{font:400 15.5px/2 var(--f-kai);color:var(--c-muted);margin:0;max-width:15em}
+.legend-list{margin:0;display:grid;gap:0;max-width:44em}
+.legend-list>div{display:grid;grid-template-columns:96px 1fr;gap:20px;align-items:baseline;padding:16px 0;border-bottom:1px solid var(--c-line-2)}
+.legend-list>div:first-child{border-top:2px solid var(--c-indigo)}
+.legend-list dd{margin:0;font:400 16.5px/2 var(--f-song);color:var(--c-text)}
+.conv-list{list-style:none;margin:0;padding:0;max-width:44em;counter-reset:none;border-top:2px solid var(--c-indigo)}
+.conv-list li{display:grid;grid-template-columns:2.6em 1fr;gap:6px;padding:20px 0;border-bottom:1px solid var(--c-line-2)}
+.conv-mark{font:600 21px/2 var(--f-song);color:var(--c-indigo)}
+.conv-list p{margin:0;font:400 17.5px/2.1 var(--f-song);letter-spacing:.05em;color:var(--c-text);text-align:justify;text-justify:inter-ideograph}
+@media(max-width:900px){.appx-section{grid-template-columns:1fr;gap:18px}.appx-aside p{max-width:none}}
+@media(max-width:560px){.legend-list>div{grid-template-columns:80px 1fr;gap:12px}.conv-list p{font-size:16.5px}}
+
+/* 大事年表：左為年代，中為和平島・基隆（文獻，靛藍），右為社寮王家（口述，金） */
+.tl{padding:clamp(36px,4vw,60px) 0 clamp(40px,5vw,70px)}
+.tl-legend{display:flex;flex-wrap:wrap;align-items:center;gap:10px 12px;padding-bottom:26px}
+.tl-legend a{margin-left:8px;font:400 14px/1.8 var(--f-song);letter-spacing:.08em;color:var(--c-indigo);border-bottom:1px solid rgba(31,58,95,.35)}
+.tl-legend a:hover{border-bottom-color:var(--c-indigo)}
+.tl-heads,.tl-row{display:grid;grid-template-columns:minmax(150px,.7fr) minmax(0,1.3fr) minmax(0,1.3fr);column-gap:clamp(20px,3vw,44px)}
+.tl-heads{position:sticky;top:64px;z-index:5;padding:14px 0 12px;background:linear-gradient(var(--c-paper) 82%,rgba(243,238,227,0));border-bottom:2px solid var(--c-indigo)}
+.tl-heads span{font:600 14px/1.6 var(--f-song);letter-spacing:.3em;color:var(--c-muted)}
+.tl-heads .tl-head-local{color:var(--c-indigo)}
+.tl-heads .tl-head-family{color:var(--c-gold-ink)}
+.tl-era-title{margin:0;padding:30px 0 6px;font:600 clamp(19px,1.8vw,22px)/1.6 var(--f-song);letter-spacing:.3em;color:var(--c-ink);border-bottom:1px solid var(--c-line)}
+.tl-list{list-style:none;margin:0;padding:0}
+.tl-row{padding:18px 0;border-bottom:1px solid var(--c-line-2);align-items:start}
+.tl-time{margin:0;font:500 16px/1.7 var(--f-song);letter-spacing:.08em;color:var(--c-ink)}
+.tl-west{display:block;font:600 15px/1.6 var(--f-latin);letter-spacing:.1em;color:var(--c-muted);font-variant-numeric:lining-nums}
+.tl-card{min-width:0;padding-left:18px;border-left:2px solid var(--c-gold)}
+.tl-local .tl-card{grid-column:2;border-left-color:var(--c-indigo);background:linear-gradient(90deg,var(--c-indigo-wash),transparent 70%)}
+.tl-family .tl-card{grid-column:3}
+.tl-track{display:none;font:600 12.5px/1.6 var(--f-song);letter-spacing:.24em;color:var(--c-gold-ink)}
+.tl-local .tl-track{color:var(--c-indigo)}
+.tl-card h3{margin:0 0 4px;font:500 19px/1.6 var(--f-song);letter-spacing:.1em;color:var(--c-ink)}
+.tl-local .tl-card h3{color:var(--c-indigo)}
+.tl-card p{margin:0;font:400 15.5px/2 var(--f-song);color:var(--c-text)}
+.tl-meta{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:10px}
+.tl-meta a{margin-left:6px;font:500 13.5px/1.6 var(--f-song);letter-spacing:.12em;color:var(--c-muted);border-bottom:1px solid var(--c-line)}
+.tl-meta a:hover{color:var(--c-ink);border-bottom-color:var(--c-gold)}
+.tl-note{max-width:44em;margin:30px 0 0;font:400 14.5px/2 var(--f-kai);color:var(--c-muted)}
+@media(max-width:900px){
+  .tl-heads{display:none}
+  .tl-row{grid-template-columns:1fr;row-gap:8px}
+  .tl-local .tl-card,.tl-family .tl-card{grid-column:1}
+  .tl-track{display:block;margin-bottom:2px}
+  .tl-west{display:inline;margin-left:10px}
+}
+
+/* 參考書目 */
+.refs{padding:clamp(30px,4vw,56px) 0 clamp(40px,5vw,70px)}
+.ref-group{padding:clamp(26px,3vw,40px) 0}
+.ref-group h2{display:flex;align-items:baseline;gap:16px;margin:0 0 6px;padding-bottom:14px;border-bottom:2px solid var(--c-indigo);
+  font:500 clamp(24px,2.4vw,30px)/1.5 var(--f-song);letter-spacing:.16em;color:var(--c-ink)}
+.ref-num{font:600 .8em/1 var(--f-song);color:var(--c-indigo)}
+.ref-list{list-style:none;margin:0;padding:0}
+.ref{display:grid;grid-template-columns:minmax(150px,.7fr) minmax(0,1.6fr) minmax(170px,.8fr);gap:8px clamp(20px,3vw,40px);padding:18px 0;border-bottom:1px solid var(--c-line-2);align-items:baseline}
+.ref-src{margin:0;font:600 14.5px/1.8 var(--f-song);letter-spacing:.1em;color:var(--c-indigo)}
+.ref-title{margin:0;font:400 17px/1.8 var(--f-song);letter-spacing:.06em;color:var(--c-ink)}
+.ref-title::before{content:"〈"}.ref-title::after{content:"〉"}
+.ref-url{display:inline-block;margin-top:2px;font:500 14px/1.7 var(--f-latin);letter-spacing:.04em;color:var(--c-indigo-2);overflow-wrap:anywhere;border-bottom:1px solid rgba(58,86,131,.3)}
+.ref-url:hover{color:var(--c-indigo);border-bottom-color:var(--c-indigo)}
+.ref-side{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px}
+.ref-used{margin:0;font:400 13.5px/1.8 var(--f-song);color:var(--c-muted);letter-spacing:.06em}
+@media(max-width:900px){.ref{grid-template-columns:1fr;gap:4px}}
+
+/* 典藏目錄的附錄卡 */
+.appendix-row{margin-top:clamp(36px,4vw,56px);padding-top:clamp(26px,3vw,40px);border-top:2px solid var(--c-indigo)}
+.appendix-head{display:flex;align-items:baseline;gap:18px;margin-bottom:18px}
+.appendix-head .museum-small{color:var(--c-indigo-2)!important}
+.appendix-head h2{margin:0;font:500 clamp(26px,2.6vw,34px)/1.4 var(--f-song);letter-spacing:.2em;color:var(--c-indigo)}
+.appendix-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(12px,1.4vw,18px)}
+.appendix-card{position:relative;display:block;padding:26px 26px 24px 84px;background:var(--c-paper-3);border:1px solid var(--c-line);transition:border-color .3s var(--ease),transform .3s var(--ease)}
+.appendix-card:hover{border-color:var(--c-indigo-2);transform:translateY(-2px)}
+.appendix-mark{position:absolute;left:24px;top:26px;width:40px;height:40px;display:grid;place-items:center;background:var(--c-indigo);color:#f2f0ea;font:400 20px/1 var(--f-kai)}
+.appendix-card h3{margin:0 0 4px;font:500 21px/1.5 var(--f-song);letter-spacing:.16em;color:var(--c-ink)}
+.appendix-card p{margin:0;font:400 14.5px/1.9 var(--f-song);color:var(--c-muted)}
+@media(max-width:900px){.appendix-grid{grid-template-columns:1fr}}
+
+/* ---------- 頁尾牌記：全站目次 ---------- */
+.museum-footer-in{display:grid!important;grid-template-columns:minmax(200px,.8fr) minmax(0,2.2fr);gap:clamp(28px,5vw,80px);align-items:start!important}
+.footer-colophon strong{display:block}
+.footer-colophon p{max-width:16em}
+.footer-toc{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:20px clamp(18px,3vw,40px)}
+.footer-toc>div{display:flex;flex-direction:column;gap:2px;min-width:0}
+.footer-toc-title{font:600 13px/1.6 var(--f-song);letter-spacing:.32em;color:var(--c-gold-soft);padding-bottom:10px;margin-bottom:6px;border-bottom:1px solid rgba(205,184,143,.28)}
+.footer-toc a{font:400 14.5px/2.1 var(--f-song);letter-spacing:.1em;color:#ddd4c0;width:fit-content;border-bottom:1px solid transparent}
+.footer-toc a:hover{color:#fff;border-bottom-color:var(--c-gold-soft)}
+.footer-toc a[aria-current=page]{color:var(--c-gold-soft)}
+.footer-base{display:flex;justify-content:space-between;align-items:center;gap:12px 24px;flex-wrap:wrap;padding-top:20px}
+.footer-base p{margin:0;font:400 13px/1.9 var(--f-kai);letter-spacing:.08em;color:#a9a593}
+.footer-return{font:500 13.5px/1.8 var(--f-song);letter-spacing:.2em;color:#ddd4c0;border-bottom:1px solid rgba(205,184,143,.4)}
+.footer-return:hover{color:#fff;border-bottom-color:var(--c-gold-soft)}
+@media(max-width:1100px){.footer-toc{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:900px){.museum-footer-in{grid-template-columns:1fr}.footer-toc{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* ---------- 跳至正文 ---------- */
+.skip-link,.more-skip{position:fixed!important;left:16px;top:-80px;z-index:200;padding:12px 18px;background:var(--c-pine)!important;color:#f6f0e2!important;font:500 14px/1 var(--f-song)!important;letter-spacing:.12em;transition:top .2s var(--ease)}
+.skip-link:focus,.more-skip:focus{top:calc(env(safe-area-inset-top,0px) + 12px)}
+
+/* ---------- 閱讀進度：頁首下緣一道金線 ---------- */
+.read-progress{position:absolute;left:0;right:0;bottom:-1px;height:2px;transform-origin:left;transform:scaleX(0);background:linear-gradient(90deg,var(--c-gold),var(--c-pine));pointer-events:none}
+
+/* ---------- 外傳各卷：頁首已有卷名，正文內重複的卷名僅留給讀屏器 ---------- */
+.more-story .courtyard-head h2,.more-story .courtyard-head>div>.kicker,.more-story .courtyard-head>.kicker,
+.more-story .leisure-heading h2,.more-story .leisure-heading .kicker,
+.more-story .island-history-head h3,.more-story .island-history-head .kicker{
+  position:absolute!important;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0
+}
+.more-story .courtyard-head,.more-story .leisure-heading{margin-top:8px}
+
+/* ---------- 人物關係圖篇首與世系頁 ---------- */
+.relations-lede{padding-top:clamp(26px,4vw,48px)!important;position:relative}
+.relations-lede::after{content:"";display:block;height:5px;border-top:2px solid var(--c-pine);border-bottom:1px solid var(--c-gold);margin-top:clamp(18px,2.4vw,30px)}
+.relations-toolbar{border-top:0!important}
+
+/* ---------- 404 ---------- */
+.notfound{padding:clamp(60px,9vw,130px) 0 clamp(70px,9vw,120px)}
+.notfound h1{font:500 clamp(36px,4.6vw,60px)/1.35 var(--f-song);letter-spacing:.12em;margin:16px 0 18px}
+.notfound p{font:400 18px/2.1 var(--f-kai);color:var(--c-muted);margin:0 0 30px}
+.notfound-links{display:flex;flex-wrap:wrap;gap:10px 26px}
+.notfound-links a{font:500 16px/2 var(--f-song);letter-spacing:.14em;color:var(--c-ink);border-bottom:1px solid var(--c-gold)}
+.notfound-links a:hover{color:var(--c-pine);border-bottom-color:var(--c-pine)}
+
+/* ---------- 列印：只印正文，展讀內容全數展開（見 classic.js） ---------- */
+@media print{
+  @page{margin:18mm 16mm}
+  html,body{background:#fff!important}
+  body{color:#111;font-size:11pt}
+  .museum-header,.museum-footer,.museum-crumb,.more-chapters,.museum-next,.biography-next,.skip-link,.more-skip,.read-progress,
+  .home-action,.relations-toolbar,.relations-stage,.relations-caption,.relations-index,.reading-size-toggle,.backtotop,.find-trigger,.more-note,.leisure-ending a{display:none!important}
+  .museum-reading .biography-section,.shipyard-history,.fire-history-annex,.compiler-verdict,.reading-disclosure,.museum-collection-card,.more-card,.origin,.courtyard-story,.leisure-table{box-shadow:none!important;background:#fff!important;border-color:#bbb!important}
+  .home-literary,.more-hero,.fiction-hero,.leisure-opening{background:#fff!important;color:#111!important}
+  .home-literary *,.more-hero *,.fiction-hero *,.leisure-opening *{color:#111!important}
+  .home-literary::before,.more-hero::after,.fiction-hero::after{display:none!important}
+  .reading-disclosure>summary::after{display:none}
+  .biography-title{position:static!important}
+  .preface-heading{position:static!important}
+  h1,h2,h3,h4{break-after:avoid}
+  p,blockquote{orphans:3;widows:3}
+  blockquote,.compiler-verdict,.chronicle-item{break-inside:avoid}
+  a{color:inherit!important;border-bottom:0!important}
+}
+
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+
+/* Archive integration: keep the literature volume in the top-level table of contents. */
+@media (min-width:1101px) {
+  .museum-nav { gap:clamp(10px,1.3vw,23px); }
+  .museum-nav a { font-size:clamp(12px,.92vw,14px); letter-spacing:.07em; white-space:nowrap; }
+}
+@media (max-width:1100px) {
+  .museum-nav.open { max-height:min(78vh,760px); overflow-y:auto; overscroll-behavior:contain; }
+}
+@media (prefers-reduced-motion:reduce) {
+  html { scroll-behavior:auto!important; }
+  .home-intro-copy,.home-title-main,.home-title-sub { animation:none!important; }
+}

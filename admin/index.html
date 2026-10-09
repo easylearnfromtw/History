@@ -5,7 +5,7 @@
 .edit-person{border:1px solid var(--m-line);padding:26px;margin:19px 0;background:#fbf8f1}.edit-person h2{font:400 25px var(--m-serif);margin:0 0 17px}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px}
 .editor label{font-size:12px;color:var(--m-muted);display:block}.editor input,.editor textarea{display:block;width:100%;margin-top:6px;border:1px solid #cabfac;background:#fffdf8;color:var(--m-ink);padding:11px;font:14px/1.8 var(--m-sans);border-radius:0}.editor textarea{resize:vertical;min-height:79px}.full{grid-column:1/-1}.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px;align-items:center}.actions button,.actions a{border:1px solid var(--m-dark);padding:12px 18px;background:var(--m-dark);color:white;font:13px var(--m-sans)}.actions .subtle{background:transparent;color:var(--m-dark)}.editor button:disabled{opacity:.5;cursor:not-allowed}.status{color:var(--m-dark);padding:15px 0;min-height:55px}.editor-note{border-top:1px solid var(--m-line);padding-top:16px;color:var(--m-muted);font-size:12px}
 @media(max-width:720px){.form-grid{grid-template-columns:1fr}.edit-person{padding:17px}}
-</style></head><body>
+</style><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&amp;family=LXGW+WenKai+TC&amp;family=Noto+Serif+TC:wght@400;500;600;700&amp;display=swap"><link rel="stylesheet" href="../assets/classic.css"><link rel="icon" type="image/png" href="../assets/seal-64.png"><link rel="apple-touch-icon" href="../assets/seal-touch.png"></head><body>
 <header class="museum-header"><div class="museum-shell museum-top"><a class="museum-brand" href="../"><span class="museum-mark">王</span><span><b>社寮王家</b><small>THE SHELIAO WANG FAMILY</small></span></a><a href="../" style="margin-left:auto;font-size:12px;color:var(--m-dark);white-space:nowrap">返回史館</a></div></header>
 <main class="editor"><span class="museum-small">EDITORIAL SYSTEM / FAMILY RECORDS</span><h1>人物資料管理</h1><p class="editor-lead">統一維護家族成員的同齡關係、學籍狀態及排程日期。公開族譜與解鎖後的私人族譜共用此修訂資料。內容先在本頁編輯，發布必須使用具有儲存庫寫入權限的 GitHub 權杖。</p>
 <p style="padding:12px 0 23px;border-bottom:1px solid #d8d0c2"><a href="records.html" style="border-bottom:1px solid #ad9061;padding-bottom:6px;font-size:13px">管理個別人物史記與傳記段落</a>　<a href="../relations/" style="border-bottom:1px solid #ad9061;padding-bottom:6px;font-size:13px">查看人物關係圖</a></p><div id="entries" aria-live="polite"></div>
@@ -42,4 +42,4 @@ $('publish').addEventListener('click',async()=>{
 });
 load();
 })();
-</script></body></html>
+</script><script src="../assets/classic.js" defer></script></body></html>

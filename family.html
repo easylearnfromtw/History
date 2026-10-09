@@ -27,7 +27,7 @@ footer{padding:50px 4vw;color:var(--gray);border-top:1px solid var(--line);font-
 <section id="events" class="view section"><div class="section-head"><div><span class="kicker">04 / TIMELINE</span><h2>家族大事紀</h2></div><p>成長、工作、旅行、公益及紀念事件，依年代編列。</p></div><div id="moments"></div></section>
 </main><footer><span>林王家族誌 · THE FAMILY ARCHIVE</span><span>家族口述與部分公共紀錄彙編 · 公開測試版</span></footer>
 <dialog id="personModal"><button class="close" id="closeModal" aria-label="關閉人物頁">×</button><div id="personDetail"></div></dialog>
-<script src="data.js"></script><script>
+<script>if(!window.ARCHIVE_DATA){location.replace("family/" + location.hash);}</script><script>
 (()=>{
 const D=window.ARCHIVE_DATA||{people:[],events:[],chronicle:[],relations:[]},P=D.people||[],byId=Object.fromEntries(P.map(p=>[p.id,p]));
 const el=id=>document.getElementById(id);

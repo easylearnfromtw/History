@@ -2,7 +2,7 @@
 .records-editor{width:min(960px,calc(100% - 44px));margin:47px auto 85px}.records-editor h1{font:400 clamp(33px,5vw,54px)/1.5 var(--m-serif);margin:18px 0}.records-intro{font-size:13px;line-height:2.2;color:var(--m-muted)}
 .records-panel{border:1px solid var(--m-line);padding:clamp(20px,3vw,32px);background:#faf7ef;margin:23px 0}.records-panel h2{font:400 26px var(--m-serif)}.records-editor label{display:block;font-size:12px;color:var(--m-muted);margin:15px 0}.records-editor input,.records-editor textarea,.records-editor select{display:block;width:100%;margin-top:7px;padding:12px;border:1px solid var(--m-line);background:#fffdf9;color:var(--m-dark);font:14px/1.8 var(--m-sans);border-radius:0}.records-editor textarea{min-height:122px;resize:vertical}
 .records-section{margin:16px 0;padding:15px 18px;border-left:2px solid var(--m-gold);background:#f2ebe0}.records-actions{display:flex;gap:11px;flex-wrap:wrap;margin:22px 0}.records-actions button,.records-actions a{border:1px solid var(--m-dark);background:var(--m-dark);color:white;padding:11px 17px;font:13px var(--m-sans)}.records-actions .quiet{background:transparent;color:var(--m-dark)}.records-actions button:disabled{opacity:.5}.records-state{min-height:43px;font-size:13px;color:var(--m-dark);padding:10px 0}.records-guide{font-size:12px;line-height:2.2;color:var(--m-muted);border-top:1px solid var(--m-line);padding-top:16px}
-</style></head><body>
+</style><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&amp;family=LXGW+WenKai+TC&amp;family=Noto+Serif+TC:wght@400;500;600;700&amp;display=swap"><link rel="stylesheet" href="../assets/classic.css"><link rel="icon" type="image/png" href="../assets/seal-64.png"><link rel="apple-touch-icon" href="../assets/seal-touch.png"></head><body>
 <header class="museum-header"><div class="museum-shell museum-top"><a class="museum-brand" href="../"><span class="museum-mark">王</span><span><b>社寮王家</b><small>THE SHELIAO WANG FAMILY</small></span></a><a href="./" style="margin-left:auto;font-size:12px;color:var(--m-dark);white-space:nowrap">返回資料管理</a></div></header>
 <main class="records-editor"><span class="museum-small">EDITORIAL BACK OFFICE / HISTORICAL BIOGRAPHIES</span><h1>個別史記編輯</h1><p class="records-intro">本頁編輯公開人物關係圖所使用的個別史記，與學籍資料管理分開。所有修改先停留在目前瀏覽器，使用具備儲存庫 Contents 寫入權限的 GitHub 權杖才可正式發布。</p>
 <div class="records-panel"><label for="choosePerson">編輯哪一位人物？<select id="choosePerson"><option value="">正在載入人物清單</option></select></label>
@@ -37,4 +37,4 @@ $('save').addEventListener('click',async()=>{const token=$('editorToken').value.
 });
 load();
 })();
-</script></body></html>
+</script><script src="../assets/classic.js" defer></script></body></html>
