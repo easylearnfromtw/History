@@ -31,9 +31,24 @@
 /* Navigation and reading refinements */
 section[id], .intro-block[id]{scroll-margin-top:110px}.nav-links{gap:clamp(11px,1.7vw,28px)}.nav-links a{font-size:11px}
 @media (max-width:1100px){.nav{height:auto;min-height:76px;flex-wrap:wrap;padding:13px 23px}.menu-toggle{display:block}.nav-right{display:none}.nav-links{display:none;order:3;width:100%;margin:0;padding:12px 0;flex-direction:column;align-items:stretch;gap:0;border-top:1px solid var(--line)}.nav-links.open{display:flex}.nav-links a{font-size:13px;padding:10px 0}}
+
+/* Editorial navigation & long-form reading */
+html{scroll-padding-top:105px}section[id],article[id],.intro-block[id]{scroll-margin-top:105px}
+.reading-progress{position:fixed;top:0;left:0;width:0;height:3px;z-index:100;background:var(--gold);pointer-events:none;transition:width .1s linear}
+.biography-next{display:flex;gap:10px;align-items:center;justify-content:space-between;margin-top:24px;padding:24px 20px;border:1px solid #c8bcab;color:var(--green);transition:background .2s,border-color .2s}
+.biography-next:hover{background:rgba(173,144,97,.10);border-color:var(--gold)}
+.biography-next>span{font:500 10px var(--latin);letter-spacing:.07em;color:var(--brown)}
+.biography-next strong{font:400 18px/1.5 var(--serif)}
+.biography-next strong span{font:400 15px var(--latin)}
+.backtotop{position:fixed;bottom:24px;right:25px;z-index:15;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;width:52px;height:52px;background:var(--green);border:1px solid var(--gold);box-shadow:0 8px 25px #00000018;color:#f4eee1;opacity:0;pointer-events:none;transform:translateY(12px);transition:opacity .25s,transform .25s}
+.backtotop.shown{opacity:1;pointer-events:auto;transform:none}
+.backtotop span:first-child{font:400 22px/1.1 var(--serif)}.backtotop span:last-child{font:500 8px/1.2 var(--latin);letter-spacing:.13em}
+@media(max-width:720px){html{scroll-padding-top:82px}section[id],article[id],.intro-block[id]{scroll-margin-top:82px}.backtotop{right:14px;bottom:17px;width:44px;height:44px}.biography-next{align-items:flex-start;flex-direction:column;gap:9px}}
+@media(prefers-reduced-motion:reduce){.reading-progress,.biography-next,.backtotop{transition:none}}
 </style>
 </head>
 <body>
+<div class="reading-progress" id="readingProgress" aria-hidden="true"></div>
 <header class="nav" id="top"><a class="brand" href="#top" aria-label="社寮王家家族史館首頁"><span class="crest">王</span><span class="brand-copy"><strong>社寮王家</strong><small>THE SHELIAO WANG FAMILY</small></span></a><button class="menu-toggle" id="toggle" type="button" aria-controls="links" aria-expanded="false">選單 ☰</button><nav class="nav-links" id="links" aria-label="網站選單"><a href="#about">王家簡史</a><a href="#caiyun">彩雲傳</a><a href="#juwan">居萬傳</a><a href="#chronicle">王家通紀</a><a href="#origins">家系源流</a><a href="#sources">史料說明</a></nav><span class="nav-right">EST. IN MEMORY</span></header>
 <main>
 <section class="hero"><div class="hero-copy"><span class="kicker">王家簡史 · SHELIAO WANG FAMILY HISTORY</span><h1 class="display">社寮王家，<br><em>源遠流長。</em></h1><p class="intro">社寮王家居於此，乃天時、地利、人和。上祖相傳飄洋自福建，輾轉汐止，落腳社寮；從紡織代工、軍旅歲月到港邊商鋪，以土地為序，記下王家的來時路。</p><div class="hero-cta"><a class="btn" href="#about">閱讀王家簡史 <span>↗</span></a><a class="quiet-link" href="#caiyun">閱讀人物列傳　→</a></div><div class="hero-bottom">社寮為根 · 汐止為脈 · 家傳未竟</div></div><div class="hero-art" aria-label="象徵家族代代相連的抽象枝葉紋樣"><span class="art-corner">SHELIAO · FIG. 01</span><svg class="line-art" viewBox="0 0 520 610" role="img" aria-label="以年輪及枝脈象徵家族傳承的藝術圖形"><g fill="none" stroke="#bbaa8a" stroke-width="1"><ellipse cx="260" cy="300" rx="160" ry="228"/><ellipse cx="260" cy="300" rx="140" ry="208"/><ellipse cx="260" cy="300" rx="118" ry="185"/><ellipse cx="260" cy="300" rx="97" ry="160"/><ellipse cx="260" cy="300" rx="75" ry="132"/><path d="M260 94v420 M96 302h328 M260 303C203 251 194 213 215 166 M260 303C330 249 338 211 315 161 M260 303C196 353 189 401 227 451 M260 303C320 349 343 385 305 467" opacity=".6"/><path d="M85 490Q258 532 435 490 M93 116Q250 84 427 117" opacity=".4"/></g><g fill="#c2a97c"><circle cx="260" cy="95" r="3"/><circle cx="100" cy="300" r="3"/><circle cx="420" cy="300" r="3"/><circle cx="260" cy="510" r="3"/></g><rect x="186" y="255" width="148" height="92" fill="#173c32"/><text x="260" y="316" text-anchor="middle" class="center-mark">王</text></svg><span class="art-caption">A LEGACY WRITTEN THROUGH GENERATIONS</span></div></section>
@@ -46,19 +61,32 @@ section[id], .intro-block[id]{scroll-margin-top:110px}.nav-links{gap:clamp(11px,
 <h3>與王氏結縭</h3><p>後與王居萬結為連理，婚後稱王黃彩雲。夫妻於基隆和平島開設撞球間。依家族記憶，當時中國造船廠及附近港區活動帶來人潮，店內一度賓客絡繹；其後轉營和平檳榔店，長年維繫一家溫飽與子女成長。</p>
 <h3>歲月遞嬗</h3><p>家族記憶認為，隨中國造船廠重心與港區生活型態逐漸改變，和平島昔日繁盛景象亦有消長。黃氏善於待人接物，憑人情、勤儉與經營之道守住家業。家族另有一說：黃氏未以繼承財產為念，曾將自身資源讓與兄弟，兄弟其後在傳統產業發展有成；相關繼承及事業細節仍待文件考證。</p>
 <blockquote>「社寮王家門前燕，見識彩雲之遠見。」<small>— 後代家語</small></blockquote>
-<p class="source-note">史料性質：家族口述與後代追述。黃家仕紳背景、土地繼承、親屬企業與造船業興替的具體年代尚待查證。</p></div></div></section>
+<p class="source-note">史料性質：家族口述與後代追述。黃家仕紳背景、土地繼承、親屬企業與造船業興替的具體年代尚待查證。</p><a class="biography-next" href="#juwan"><span>接續閱讀 · 列傳第二</span><strong>王居萬傳 <span aria-hidden="true">↗</span></strong></a></div></div></section>
 <section class="biography-section biography-alt" id="juwan"><div class="wrap"><div class="biography-head reveal"><span class="kicker">人物列傳 · BIOGRAPHY II</span><span class="biography-index">列傳第二</span></div><div class="biography-grid"><div class="biography-title reveal"><span class="title-seal">王</span><h2>王居萬<small>WANG JU-WAN</small></h2><p class="biography-subtitle">從軍守紀，退而愛鄉。</p><div class="biography-rule"></div><p class="biography-aside">陸軍上尉、政治作戰學校求學經歷；曾任輔導長，據家屬所述，後參與和平島社區公益事務。</p></div>
 <div class="biography-text reveal"><h3>軍旅生涯</h3><p>王氏居萬，早歲投身軍旅，曾就讀政治作戰學校，官至陸軍上尉，並有輔導長任職經歷。其時臺灣處戒嚴年代，軍中紀律森嚴。家族追憶，居萬待人嚴正，亦重袍澤情誼。</p>
 <h3>同袍舊事</h3><p>家人相傳，昔有部屬犯下重過，王氏曾以體罰代替其所憂慮的更嚴厲懲處，部屬感念甚深。此事屬家族轉述，涉及的軍紀規範、處置及結果尚無可核對的紀錄；本傳保留為口述往事，不據此認定當時處置的合法性或正當性。</p>
 <h3>成家立業，關懷鄉里</h3><p>與黃氏彩雲成婚後，夫妻扎根社寮。居萬以軍旅磨礪出的處事態度持家，亦投身地方事務。家屬記述其創辦和平島長青協會，熱心協助里民；現任團管區常務理事之職，正式團體全稱及任期仍待補充。</p>
 <blockquote>「居萬心腸，常念同袍與鄉人。」<small>— 依家族記憶編纂</small></blockquote>
-<p class="source-note">史料性質：家族口述。軍校學籍、軍階證明、軍中往事、協會職務與任期，待文件核實。</p></div></div></div></section>
+<p class="source-note">史料性質：家族口述。軍校學籍、軍階證明、軍中往事、協會職務與任期，待文件核實。</p><a class="biography-next" href="#chronicle"><span>接續閱讀 · 家族通紀</span><strong>社寮王家通紀 <span aria-hidden="true">↗</span></strong></a></div></div></div></section>
 <section class="story-section wrap" id="chronicle"><div class="story-intro reveal"><div><span class="kicker">A CHRONOLOGICAL FAMILY HISTORY</span><h2>社寮王家通紀</h2></div><p>依家族口述編年，與人物列傳互相參照；未核實的年份及地點皆明白註記。</p></div><article class="chronicle-item reveal"><div class="chronicle-year">清季至戰後 · 待考</div><div class="chronicle-copy"><small>卷一 / 遷徙</small><h3>由福建而汐止，復居社寮</h3><p>家族相傳先祖自福建渡海來臺，曾於汐止安居，後與基隆和平島社寮結下深厚淵源。具體人物、遷居年代及路線，尚待戶籍及祖譜考據。</p></div><i class="chronicle-dot"></i></article><article class="chronicle-item reveal"><div class="chronicle-year">民國六十年代前後</div><div class="chronicle-copy"><small>卷二 / 勤業</small><h3>加工出口年代的身影</h3><p>王黃彩雲國小畢業後投身紡織與家庭代工。這段個人經歷與臺灣加工出口擴張時期相互映照，也寫下她以勞動扶持家人的往事。</p></div><i class="chronicle-dot"></i></article><article class="chronicle-item reveal"><div class="chronicle-year">約民國六、七十年代 · 待考</div><div class="chronicle-copy"><small>卷三 / 營商</small><h3>海港人潮與撞球間</h3><p>王居萬與王黃彩雲成婚後，在社寮經營撞球間。依家族記憶，中國造船廠及港區活動曾帶來往來人潮，亦讓商鋪成為地方生活的一部分。</p></div><i class="chronicle-dot"></i></article><article class="chronicle-item reveal"><div class="chronicle-year">其後 · 待考</div><div class="chronicle-copy"><small>卷四 / 家業</small><h3>從撞球間到和平檳榔店</h3><p>夫妻其後轉營和平檳榔店，以商業收入支應家庭。港區產業環境轉變後，黃氏仍憑待客之道與經營能力維繫家業。</p></div><i class="chronicle-dot"></i></article><article class="chronicle-item reveal"><div class="chronicle-year">近年 · 待考</div><div class="chronicle-copy"><small>卷五 / 鄉里</small><h3>長青協會與地方情誼</h3><p>王居萬據家屬記述曾創辦和平島長青協會，關懷長者與里民。相關活動時間、創會文件及任期仍待逐一整理。</p></div><i class="chronicle-dot"></i></article><article class="chronicle-item reveal"><div class="chronicle-year">2025年3月1日</div><div class="chronicle-copy"><small>卷六 / 壽辰</small><h3>王居萬農曆八十大壽</h3><p>王家於國曆2025年3月1日慶祝居萬農曆八十大壽，當天為農曆乙巳年二月初二；是否即其固定農曆生日，尚待確認。</p></div><i class="chronicle-dot"></i></article></section>
 <section class="earth" id="origins"><div class="wrap"><div class="section-heading reveal"><div><span class="kicker">FROM FUJIAN TO SHELIAO</span><h2>由海而來，<br>在社寮落地生根。</h2></div><p>汐止黃家、社寮王家，交織成這部家族史的中心。姻親林氏家系則另於內部完整族譜中記錄。</p></div><div class="origin-grid"><article class="origin reveal"><span class="origin-label">01 / FROM FUJIAN TO TAIWAN</span><h3>渡海與遷居</h3><p>先祖相傳從福建渡海，緣起於汐止，而後定居基隆社寮。確切祖先姓名與年代持續考證中。</p><span class="num">源</span></article><article class="origin reveal"><span class="origin-label">02 / THE SHELIAO WANG FAMILY</span><h3>立家與傳承</h3><p>居萬與彩雲的軍旅、經商與社區服務故事，逐漸形成社寮王家的代際記憶。</p><span class="num">家</span></article></div></div></section>
 <section class="sources wrap" id="sources"><div class="source-layout"><div class="reveal"><span class="kicker">OUR ARCHIVAL PRINCIPLES</span><h2>為故事留下來源，<br>為未知保留空白。</h2><p>本篇採「編年體 × 紀傳體」編輯方法。家人的口述是珍貴線索，但不能直接代替戶籍、學籍、軍職及商業文件；關於福建遷徙、黃家家產、造船廠興替及軍中故事的敘述，現階段均保留為家族口述。</p></div><div class="source-list reveal"><p>家屬口述與訪談 <span>ORAL HISTORY</span></p><p>歷史照片與實物 <span>FAMILY COLLECTION</span></p><p>工商及公開登記 <span>PUBLIC RECORDS</span></p><p>人物列傳與編年修訂 <span>EDITORIAL ARCHIVE</span></p></div></div></section>
+<a class="backtotop" id="jumpToTop" href="#top" aria-label="返回網頁頂部"><span aria-hidden="true">↑</span><span>TOP</span></a>
 </main><footer class="footer"><div class="wrap"><div class="footer-top"><div><div class="footer-title">社寮王家</div><p class="footer-desc">世居社寮，以年記事，以人立傳。<br>THE SHELIAO WANG FAMILY ARCHIVE</p></div><div class="footer-links"><a href="#about">簡史</a><a href="#caiyun">彩雲傳</a><a href="#juwan">居萬傳</a><a href="#chronicle">通紀</a><a href="#sources">典藏原則</a></div></div><div class="footer-bottom"><span>© 2026 SHELIAO WANG FAMILY ARCHIVE · FAMILY ORAL HISTORY</span><a class="private-entry" href="./personalfamilypage/" aria-label="家族內部入口">FAMILY ACCESS · ↗</a></div></div></footer>
 <script>
 const t=document.querySelector('#toggle'),n=document.querySelector('#links');t.addEventListener('click',()=>{const on=n.classList.toggle('open');t.setAttribute('aria-expanded',String(on))});n.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{n.classList.remove('open');t.setAttribute('aria-expanded','false')}));
 if('IntersectionObserver' in window){const io=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target)}}),{threshold:.08});document.querySelectorAll('.reveal').forEach(x=>io.observe(x))}else document.querySelectorAll('.reveal').forEach(x=>x.classList.add('visible'));
+
+const progress=document.querySelector('#readingProgress'),backtotop=document.querySelector('#jumpToTop');
+let readingPending=false;
+function updateReadingProgress(){
+  const max=document.documentElement.scrollHeight-window.innerHeight;
+  const fraction=max>0?Math.max(0,Math.min(1,window.scrollY/max)):0;
+  if(progress)progress.style.width=(fraction*100).toFixed(2)+'%';
+  if(backtotop)backtotop.classList.toggle('shown',window.scrollY>500);
+  readingPending=false;
+}
+window.addEventListener('scroll',()=>{if(!readingPending){readingPending=true;requestAnimationFrame(updateReadingProgress)}},{passive:true});
+window.addEventListener('resize',updateReadingProgress,{passive:true});updateReadingProgress();
 </script>
 </body></html>
