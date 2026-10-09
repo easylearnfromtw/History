@@ -748,6 +748,37 @@ html.reader-larger .island-history-step p,html.reader-larger .island-history-hea
 <button type="button" id="readingSizeToggle" class="reading-size-toggle" aria-pressed="false" aria-label="放大正文文字">字級 <span aria-hidden="true">甲</span></button>
 <a class="backtotop" id="jumpToTop" href="#top" aria-label="返回網頁頂部"><span aria-hidden="true"></span><span>TOP</span></a>
 </main><footer class="footer"><div class="wrap"><div class="footer-top"><div><div class="footer-title">社寮王家</div><p class="footer-desc">社寮為家以年紀事以人立傳<br>THE SHELIAO WANG FAMILY ARCHIVE</p></div><div class="footer-links"><a href="#about">簡史</a><a href="#caiyun">彩雲傳</a><a href="#juwan">居萬傳</a><a href="#secondgen">二代傳</a><a href="#chronicle">通紀</a><a href="#lineage">世系</a><a href="#sources">典藏原則</a></div></div><div class="footer-bottom"><span> 2026 SHELIAO WANG FAMILY ARCHIVE FAMILY ORAL HISTORY</span><a class="private-entry" href="./personalfamilypage/" aria-label="家族內部入口">FAMILY ACCESS </a></div></div></footer>
+
+
+
+<div class="quick-find-modal" id="personFinder" hidden>
+ <div class="quick-find-shade" id="finderShade" aria-hidden="true"></div>
+ <section class="quick-find-sheet" role="dialog" aria-modal="true" aria-labelledby="finderTitle" tabindex="-1">
+  <div class="quick-find-head"><div><span class="kicker">FAMILY INDEX</span><h2 id="finderTitle">人物索引</h2></div><button type="button" class="quick-find-close" id="closePersonFinder">關閉</button></div>
+  <label for="personFinderInput" class="quick-find-label">輸入姓名或字號</label>
+  <div class="quick-find-inputrow"><span aria-hidden="true">尋</span><input id="personFinderInput" type="search" placeholder="搜尋家族成員" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" enterkeyhint="search"></div>
+  <p class="quick-find-count" id="personFinderCount" role="status" aria-live="polite"></p>
+  <div class="quick-find-results" id="personFinderResults"></div>
+  <p class="quick-find-note">僅搜尋公開的人物紀錄　私人家族資料不會顯示</p>
+ </section>
+</div>
+<div class="lineage-person-overlay" id="lineagePersonOverlay" hidden>
+ <div class="lineage-person-backdrop" data-close-person aria-hidden="true"></div>
+ <section class="lineage-person-sheet" id="lineagePersonSheet" role="dialog" aria-modal="true" aria-labelledby="lineagePersonName" tabindex="-1">
+  <div class="lineage-sheet-grip" aria-hidden="true"></div>
+  <div class="lineage-sheet-header"><span class="kicker">社寮王家　人物紀錄</span><span class="lineage-sheet-controls"><button type="button" class="lineage-sheet-back" id="lineagePersonBack" hidden>返回上一位</button><button type="button" class="lineage-sheet-close" id="lineagePersonClose" aria-label="關閉人物紀錄">關閉</button></span></div>
+  <div class="lineage-person-content" id="lineagePersonContent" aria-live="polite">
+   <span class="lineage-person-label" id="lineagePersonRole"></span>
+   <h2 id="lineagePersonName"></h2>
+   <p class="lineage-person-alias" id="lineagePersonAlias" hidden></p>
+   <p class="lineage-person-biography" id="lineagePersonBio"></p>
+   <div class="lineage-person-education" id="lineagePersonEducation" hidden></div>
+   <div class="lineage-person-relations" id="lineagePersonRelations"></div>
+   <div class="lineage-person-actions" id="lineagePersonActions"></div>
+   <p class="lineage-person-citation" id="lineagePersonCitation"></p>
+  </div>
+ </section>
+</div>
 <script>
 const t=document.querySelector('#toggle'),n=document.querySelector('#links');t.addEventListener('click',()=>{const on=n.classList.toggle('open');t.setAttribute('aria-expanded',String(on))});n.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{n.classList.remove('open');t.setAttribute('aria-expanded','false')}));
 if('IntersectionObserver' in window){const io=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target)}}),{threshold:.08});document.querySelectorAll('.reveal').forEach(x=>io.observe(x))}else document.querySelectorAll('.reveal').forEach(x=>x.classList.add('visible'));
@@ -1023,34 +1054,4 @@ applyTextSize(savedLarge);
 readingSizeToggle.addEventListener('click',()=>applyTextSize(!document.documentElement.classList.contains('reader-larger')));
 
 </script>
-
-
-<div class="quick-find-modal" id="personFinder" hidden>
- <div class="quick-find-shade" id="finderShade" aria-hidden="true"></div>
- <section class="quick-find-sheet" role="dialog" aria-modal="true" aria-labelledby="finderTitle" tabindex="-1">
-  <div class="quick-find-head"><div><span class="kicker">FAMILY INDEX</span><h2 id="finderTitle">人物索引</h2></div><button type="button" class="quick-find-close" id="closePersonFinder">關閉</button></div>
-  <label for="personFinderInput" class="quick-find-label">輸入姓名或字號</label>
-  <div class="quick-find-inputrow"><span aria-hidden="true">尋</span><input id="personFinderInput" type="search" placeholder="搜尋家族成員" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" enterkeyhint="search"></div>
-  <p class="quick-find-count" id="personFinderCount" role="status" aria-live="polite"></p>
-  <div class="quick-find-results" id="personFinderResults"></div>
-  <p class="quick-find-note">僅搜尋公開的人物紀錄　私人家族資料不會顯示</p>
- </section>
-</div>
-<div class="lineage-person-overlay" id="lineagePersonOverlay" hidden>
- <div class="lineage-person-backdrop" data-close-person aria-hidden="true"></div>
- <section class="lineage-person-sheet" id="lineagePersonSheet" role="dialog" aria-modal="true" aria-labelledby="lineagePersonName" tabindex="-1">
-  <div class="lineage-sheet-grip" aria-hidden="true"></div>
-  <div class="lineage-sheet-header"><span class="kicker">社寮王家　人物紀錄</span><span class="lineage-sheet-controls"><button type="button" class="lineage-sheet-back" id="lineagePersonBack" hidden>返回上一位</button><button type="button" class="lineage-sheet-close" id="lineagePersonClose" aria-label="關閉人物紀錄">關閉</button></span></div>
-  <div class="lineage-person-content" id="lineagePersonContent" aria-live="polite">
-   <span class="lineage-person-label" id="lineagePersonRole"></span>
-   <h2 id="lineagePersonName"></h2>
-   <p class="lineage-person-alias" id="lineagePersonAlias" hidden></p>
-   <p class="lineage-person-biography" id="lineagePersonBio"></p>
-   <div class="lineage-person-education" id="lineagePersonEducation" hidden></div>
-   <div class="lineage-person-relations" id="lineagePersonRelations"></div>
-   <div class="lineage-person-actions" id="lineagePersonActions"></div>
-   <p class="lineage-person-citation" id="lineagePersonCitation"></p>
-  </div>
- </section>
-</div>
 </body></html>
