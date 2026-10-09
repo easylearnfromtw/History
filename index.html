@@ -515,12 +515,36 @@ html.reader-larger .island-history-step p,html.reader-larger .island-history-hea
 @media(max-width:980px){.island-history-map{grid-template-columns:repeat(2,minmax(0,1fr))}.island-history-bottom{grid-template-columns:1fr}.island-history-links{justify-content:flex-start}}
 @media(max-width:720px){.island-history{margin-top:45px;padding-top:36px;scroll-margin-top:81px}.island-history-head{grid-template-columns:1fr;gap:9px;margin-bottom:25px}.island-history-head h3{font-size:40px}.island-history-head>p{font-size:14px;line-height:2.25}.island-history-map{grid-template-columns:1fr}.island-history-step{min-height:0;padding:24px 22px 36px}.island-history-step h4{font-size:22px;margin:9px 0}.island-history-step p{font-size:14px}.island-history-links{flex-direction:column}.island-history-links a{width:100%;text-align:center;min-height:46px}.island-history-bottom{gap:14px}}
 @media(prefers-reduced-motion:reduce){.island-history-links a{transition:none}}
+
+/* Family courtyard micro histories */
+.courtyard-history{margin:clamp(25px,4.5vw,65px) 0 clamp(68px,7vw,115px);padding-top:35px;border-top:1px solid #cdbca4;scroll-margin-top:95px}
+.courtyard-head{display:flex;align-items:flex-end;justify-content:space-between;gap:30px;margin-bottom:30px}
+.courtyard-head h2{font:400 clamp(36px,5vw,60px)/1.5 var(--serif);letter-spacing:.12em;color:var(--green);margin:9px 0}
+.courtyard-head>p{font:400 13px/2.15 var(--serif);color:#88765e;margin:0 0 10px}
+.courtyard-stories{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.courtyard-story{min-width:0;position:relative;background:#ece4d7;border:1px solid #c9b9a1;min-height:360px;padding:23px clamp(19px,2.6vw,35px) 26px;display:flex;flex-direction:column}
+.courtyard-story:nth-child(2){background:#e5e1d3}
+.courtyard-story-order{font:500 11px/1.8 var(--serif);color:#92774c;letter-spacing:.12em}
+.courtyard-art{position:absolute;right:24px;top:38px;width:128px;height:128px;border:1px solid #bea78280;border-radius:50%;display:grid;place-items:center;pointer-events:none}
+.courtyard-art:before,.courtyard-art:after{content:"";position:absolute;inset:14px;border:1px solid #bca7866b;border-radius:50%;transform:rotate(30deg)}
+.courtyard-art:after{inset:28px;transform:rotate(-25deg)}
+.courtyard-art span{font:400 45px/1 var(--serif);color:#bca78691}
+.courtyard-art-leaf{border-radius:8% 70% 8% 70%;transform:rotate(15deg)}
+.courtyard-story-body{position:relative;z-index:1;margin-top:auto;padding-top:112px}
+.courtyard-story-body h3{font:400 27px/1.7 var(--serif);color:var(--green);margin:0 0 15px}
+.courtyard-story-body p{font:400 clamp(15px,1.25vw,17px)/2.45 var(--serif);color:#564f43;margin:0 0 22px;letter-spacing:.035em;overflow-wrap:anywhere}
+.courtyard-story-body small{display:block;border-top:1px solid #ccbea9;padding-top:13px;color:#907f6b;font:400 11px/1.9 var(--serif)}
+.courtyard-footer{display:flex;justify-content:space-between;gap:25px;align-items:center;padding:25px 0 0;color:#857760;font:400 12px/2 var(--serif)}
+.courtyard-footer a{display:inline-flex;align-items:center;gap:10px;min-height:44px;border-bottom:1px solid #b7a07b;color:var(--green)}
+.courtyard-footer a:hover{color:#846843}
+html.reader-larger .courtyard-story-body p{font-size:19px;line-height:2.5}
+@media(max-width:780px){.courtyard-head{align-items:flex-start;flex-direction:column;gap:7px}.courtyard-stories{grid-template-columns:1fr;gap:11px}.courtyard-story{min-height:0;padding:22px 23px 27px}.courtyard-art{width:94px;height:94px;right:17px;top:26px}.courtyard-art span{font-size:35px}.courtyard-story-body{padding-top:97px}.courtyard-story-body h3{font-size:25px}.courtyard-story-body p{font-size:16px;line-height:2.35}.courtyard-footer{flex-direction:column;align-items:flex-start;gap:8px}.courtyard-history{scroll-margin-top:85px}}
 </style>
 </head>
 <body>
 <div class="reading-progress" id="readingProgress" aria-hidden="true"></div>
 <a href="#about" class="skip-to-content">跳至正文</a>
-<header class="nav" id="top"><a class="brand" href="#top" aria-label="社寮王家家族史館首頁"><span class="crest">王</span><span class="brand-copy"><strong>社寮王家</strong><small>THE SHELIAO WANG FAMILY</small></span></a><button class="menu-toggle" id="toggle" type="button" aria-controls="links" aria-expanded="false">選單 </button><nav class="nav-links" id="links" aria-label="網站選單"><a href="#about">王家簡史</a><a href="#caiyun">彩雲傳</a><a href="#juwan">居萬傳</a><a href="#chronicle">王家通紀</a><a href="#origins">家系源流</a><a href="#lineage">家族世系</a><a href="#secondgen">第二代列傳</a><a href="#sources">史料說明</a></nav><button class="find-trigger" type="button" id="openPersonFinder" aria-haspopup="dialog" aria-controls="personFinder">尋人 <span class="find-trigger-glyph" aria-hidden="true"></span></button></header>
+<header class="nav" id="top"><a class="brand" href="#top" aria-label="社寮王家家族史館首頁"><span class="crest">王</span><span class="brand-copy"><strong>社寮王家</strong><small>THE SHELIAO WANG FAMILY</small></span></a><button class="menu-toggle" id="toggle" type="button" aria-controls="links" aria-expanded="false">選單 </button><nav class="nav-links" id="links" aria-label="網站選單"><a href="#about">王家簡史</a><a href="#courtyard">庭外史</a><a href="#caiyun">彩雲傳</a><a href="#juwan">居萬傳</a><a href="#chronicle">王家通紀</a><a href="#origins">家系源流</a><a href="#lineage">家族世系</a><a href="#secondgen">第二代列傳</a><a href="#sources">史料說明</a></nav><button class="find-trigger" type="button" id="openPersonFinder" aria-haspopup="dialog" aria-controls="personFinder">尋人 <span class="find-trigger-glyph" aria-hidden="true"></span></button></header>
 <nav class="mobile-chapters" aria-label="閱讀章節"><a href="#about" data-mobile-chapter="about">家乘序</a><a href="#caiyun" data-mobile-chapter="caiyun">人物</a><a href="#chronicle" data-mobile-chapter="chronicle">通紀</a><a href="#lineage" data-mobile-chapter="lineage">世系</a></nav>
 <main>
 <section class="hero"><div class="hero-copy"><span class="kicker">王家簡史 SHELIAO WANG FAMILY HISTORY</span><h1 class="display">社寮王家<br><em>以史傳家</em></h1><p class="intro">社寮王家居於此乃天時地利人和上祖相傳飄洋自福建輾轉汐止落腳社寮從紡織代工軍旅歲月到港邊商鋪以土地為序記下王家的來時路</p><div class="hero-cta"><a class="btn" href="#about">閱讀王家簡史 <span></span></a><a class="quiet-link" href="#caiyun">閱讀人物列傳　</a></div><div class="hero-bottom">一姓之傳 百年之思 以文存之</div></div><div class="hero-art" aria-label="象徵家族代代相連的抽象枝葉紋樣"><span class="art-corner">SHELIAO FIG 01</span><svg class="line-art" viewBox="0 0 520 610" role="img" aria-label="以年輪及枝脈象徵家族傳承的藝術圖形"><g fill="none" stroke="#bbaa8a" stroke-width="1"><ellipse cx="260" cy="300" rx="160" ry="228"/><ellipse cx="260" cy="300" rx="140" ry="208"/><ellipse cx="260" cy="300" rx="118" ry="185"/><ellipse cx="260" cy="300" rx="97" ry="160"/><ellipse cx="260" cy="300" rx="75" ry="132"/><path d="M260 94v420 M96 302h328 M260 303C203 251 194 213 215 166 M260 303C330 249 338 211 315 161 M260 303C196 353 189 401 227 451 M260 303C320 349 343 385 305 467" opacity=".6"/><path d="M85 490Q258 532 435 490 M93 116Q250 84 427 117" opacity=".4"/></g><g fill="#c2a97c"><circle cx="260" cy="95" r="3"/><circle cx="100" cy="300" r="3"/><circle cx="420" cy="300" r="3"/><circle cx="260" cy="510" r="3"/></g><rect x="186" y="255" width="148" height="92" fill="#173c32"/><text x="260" y="316" text-anchor="middle" class="center-mark">王</text></svg><span class="art-caption">A LEGACY WRITTEN THROUGH GENERATIONS</span></div></section>
@@ -528,12 +552,33 @@ html.reader-larger .island-history-step p,html.reader-larger .island-history-hea
 <section class="intro-block reveal family-preface" id="about">
 <div class="preface-heading"><span class="kicker">序 王家簡史 FAMILY PRELUDE</span><h2>社寮王家<br>家乘序</h2><div class="inscription-stamp">家訓　節儉、和</div><div class="preface-side-note">以先人之事，<br>寄後人之思。</div></div>
 <div class="preface-copy serif-manuscript">
-<p>社寮王家居於此，乃天實、地利、人和。經祝融眷顧、地牛翻擾，仍屹立不搖，殆有神靈護佑。王家居於此位，乃先輩之薈萃。</p>
-<p>上祖飄洋自福建，安於新北汐止、基隆，以「節儉、和」為訓，諫後世子弟勿忘家訓，家族安和，不曾異爨，故有今日。</p>
-<p>和平島乃先帝之靈氣所存，巍峨山巔、敻遠沙海，屬臺島之北，紅毛居於此，以名之雞籠，而後作基隆。</p>
-<div class="preface-colophon"><span class="colophon-rule" aria-hidden="true"></span><p>今族譜以林氏哲愷於民國清德壹佰壹拾五時秋朔所傳，衷謝列祖之德暨思念往昔之事，臨傳涕泣，不知所云。</p><span class="colophon-seal">林氏哲愷 謹識</span></div>
-<p class="oral-note">家族原序照錄。此文為家族史傳體題序，祖籍、地名沿革、災異、紀年及其他史實，仍有待文獻考證。</p>
-</div></section></div>
+<p>社寮王家居於此，乃天實、地利、人和。經祝融侵擾、地牛翻擾，仍屹立不搖，殆有神靈護佑。王家居於此位，乃先輩之薈萃。</p>
+<p>上祖飄洋自福建，安於新北汐止、基隆，以「節儉、和」為訓，諫後世子弟勿忘家訓，眷聽而從之，故家族安和，不曾異爨，而有今日。</p>
+<p>和平島乃先帝之靈氣所存，巍峨山巔、敻遠沙海，屬臺島之北，紅毛居於此，後倭寇也從此入，以名之雞籠，而後作基隆。</p>
+<div class="preface-colophon"><span class="colophon-rule" aria-hidden="true"></span><p>今族譜以外孫林氏哲愷於民國壹佰壹拾五時秋朔所傳，衷謝列祖之德暨思念往昔之事，臨傳涕泣，不知所云。</p><span class="colophon-seal">林氏哲愷 謹識</span></div>
+<p class="oral-note">家乘序依編纂者最新修訂照錄。此文為家族史傳體題序，祖籍、地名沿革、災異、紀年及其他史實，仍有待文獻考證。</p>
+
+</div></section>
+<section class="courtyard-history reveal" id="courtyard" aria-labelledby="courtyardTitle">
+ <div class="courtyard-head">
+  <div><span class="kicker">COURTYARD CHRONICLES</span><h2 id="courtyardTitle">庭外史</h2></div>
+  <p>門前一草一木　亦有家人往事可記</p>
+ </div>
+ <div class="courtyard-stories">
+  <article class="courtyard-story">
+   <span class="courtyard-story-order">庭外史之一</span>
+   <div class="courtyard-art courtyard-art-flower" aria-hidden="true"><span>曇</span></div>
+   <div class="courtyard-story-body"><h3>曇之夜綻</h3><p>於王家外庭，種有曇，彩雲所種也，常蓓蕾，夜時所綻，頃刻即謝，姍姍可愛</p><small>據家族庭院記憶收錄</small></div>
+  </article>
+  <article class="courtyard-story">
+   <span class="courtyard-story-order">庭外史之二</span>
+   <div class="courtyard-art courtyard-art-leaf" aria-hidden="true"><span>草</span></div>
+   <div class="courtyard-story-body"><h3>菸草偶生</h3><p>王家屋外，居萬時而喫煙之，菸草落於溝蓋下，意外種得菸草。</p><small>據家族庭院記憶收錄</small></div>
+  </article>
+ </div>
+ <div class="courtyard-footer"><span>庭外瑣事　存於家乘</span><a href="#chapters">續讀人物與通紀 <span aria-hidden="true">→</span></a></div>
+</section>
+</div>
 <section class="dark-panel" id="chapters"><div class="wrap"><div class="section-heading reveal"><div><span class="kicker">THE HOUSE OF WANG 王家家乘</span><h2>事以年繫<br>人以傳存</h2></div><p>一族之盛衰藏於日用一人之悲歡見於平生此編以家乘為序以人物列傳為骨願來者得知先人所歷</p></div><div class="theme-grid"><a class="theme-card reveal" href="#about"><small>01 FAMILY PRELUDE</small><h3>王家簡史</h3><p>祖出福建因緣汐止終與社寮相繫錄其家訓與編纂者之思</p><span class="arrow"></span></a><a class="theme-card reveal" href="#caiyun"><small>02 BIOGRAPHIES</small><h3>人物列傳</h3><p>述彩雲少時勞苦記居萬軍旅鄉情使名姓之後猶見其人</p><span class="arrow"></span></a><a class="theme-card reveal" href="#chronicle"><small>03 CHRONICLE</small><h3>王家通紀</h3><p>按時序繫遷徙立業社寮興替與子孫之思</p><span class="arrow"></span></a></div></div></section>
 <section class="biography-section wrap" id="caiyun"><div class="biography-head reveal"><span class="kicker">人物列傳 BIOGRAPHY I</span><span class="biography-index">列傳第一</span></div>
 <div class="biography-grid"><div class="biography-title reveal"><span class="title-seal">王</span><h2>王黃彩雲<small>WANG HUANG CAIYUN</small></h2><p class="biography-subtitle">起於寒素成於勤儉半生風雨護一門燈火</p><div class="biography-rule"></div><p class="biography-aside">黃氏少時以勞動養家後與王居萬偕老於基隆社寮經營撞球間及和平檳榔店此傳據後人口述編纂</p></div>
@@ -747,7 +792,7 @@ html.reader-larger .island-history-step p,html.reader-larger .island-history-hea
 <section class="sources wrap" id="sources"><div class="source-layout"><div class="reveal"><span class="kicker">OUR ARCHIVAL PRINCIPLES</span><h2>述其所聞<br>慎其所未聞</h2></div><div class="source-list reveal"><p>家屬口述與訪談 <span>ORAL HISTORY</span></p><p>歷史照片與實物 <span>FAMILY COLLECTION</span></p><p>工商及公開登記 <span>PUBLIC RECORDS</span></p><p>人物列傳與編年修訂 <span>EDITORIAL ARCHIVE</span></p></div></div></section>
 <button type="button" id="readingSizeToggle" class="reading-size-toggle" aria-pressed="false" aria-label="放大正文文字">字級 <span aria-hidden="true">甲</span></button>
 <a class="backtotop" id="jumpToTop" href="#top" aria-label="返回網頁頂部"><span aria-hidden="true"></span><span>TOP</span></a>
-</main><footer class="footer"><div class="wrap"><div class="footer-top"><div><div class="footer-title">社寮王家</div><p class="footer-desc">社寮為家以年紀事以人立傳<br>THE SHELIAO WANG FAMILY ARCHIVE</p></div><div class="footer-links"><a href="#about">簡史</a><a href="#caiyun">彩雲傳</a><a href="#juwan">居萬傳</a><a href="#secondgen">二代傳</a><a href="#chronicle">通紀</a><a href="#lineage">世系</a><a href="#sources">典藏原則</a></div></div><div class="footer-bottom"><span> 2026 SHELIAO WANG FAMILY ARCHIVE FAMILY ORAL HISTORY</span><a class="private-entry" href="./personalfamilypage/" aria-label="家族內部入口">FAMILY ACCESS </a></div></div></footer>
+</main><footer class="footer"><div class="wrap"><div class="footer-top"><div><div class="footer-title">社寮王家</div><p class="footer-desc">社寮為家以年紀事以人立傳<br>THE SHELIAO WANG FAMILY ARCHIVE</p></div><div class="footer-links"><a href="#about">簡史</a><a href="#courtyard">庭外史</a><a href="#caiyun">彩雲傳</a><a href="#juwan">居萬傳</a><a href="#secondgen">二代傳</a><a href="#chronicle">通紀</a><a href="#lineage">世系</a><a href="#sources">典藏原則</a></div></div><div class="footer-bottom"><span> 2026 SHELIAO WANG FAMILY ARCHIVE FAMILY ORAL HISTORY</span><a class="private-entry" href="./personalfamilypage/" aria-label="家族內部入口">FAMILY ACCESS </a></div></div></footer>
 
 
 
