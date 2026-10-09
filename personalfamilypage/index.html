@@ -106,8 +106,8 @@ async function decrypt(password){
  return await new Response(new Blob([compressed]).stream().pipeThrough(new DecompressionStream('gzip'))).text();
 }
 
-async function decryptPatch(password){
- const r=await fetch('./corrections.enc.json',{cache:'no-store'});if(!r.ok)throw Error('最新修訂資料無法載入');
+async function decryptPatch(password,relativePath='./corrections.enc.json'){
+ const r=await fetch(relativePath,{cache:'no-store'});if(!r.ok)throw Error('最新修訂資料無法載入');
  const v=await r.json();
  const base=await crypto.subtle.importKey('raw',new TextEncoder().encode(password),'PBKDF2',false,['deriveKey']);
  const key=await crypto.subtle.deriveKey({name:'PBKDF2',salt:toBytes(v.salt),hash:'SHA-256',iterations:v.iterations},base,{name:'AES-GCM',length:256},false,['decrypt']);
@@ -150,12 +150,18 @@ function applyCorrections(html,patch){
   if(!xiaofen.notes.some(note=>String(note).includes('基隆中正國中')))xiaofen.notes.push('家屬確認　國中就讀基隆中正國中　高中就讀基隆商工');
  }
  for(const e of patch.newEvents||[]){if(!data.events.some(x=>x.title===e.title))data.events.push(e)}
+ if(Array.isArray(patch.newChronicle)){
+  if(!Array.isArray(data.chronicle))data.chronicle=[];
+  for(const entry of patch.newChronicle){
+   if(!data.chronicle.some(ch=>ch.marker===entry.marker&&ch.title===entry.title))data.chronicle.push(entry)
+  }
+ }
  const content=JSON.stringify(data).replace(/</g,'\\u003c');
  return html.slice(0,start)+content+html.slice(end);
 }
 
 $('#togglePass').addEventListener('click',()=>{const show=input.type==='password';input.type=show?'text':'password';$('#togglePass').textContent=show?'隱藏':'顯示'});
-$('#login').addEventListener('submit',async e=>{e.preventDefault();if(locked)return;locked=true;const btn=$('#submit');btn.disabled=true;btn.setAttribute('aria-busy','true');$('#feedback').textContent='正在開啟家族典藏';input.blur();try{let html=await decrypt(input.value);html=applyCorrections(html,await decryptPatch(input.value));if(blobUrl)URL.revokeObjectURL(blobUrl);blobUrl=URL.createObjectURL(new Blob([html],{type:'text/html;charset=utf-8'}));$('#familyFrame').src=blobUrl;$('#private').hidden=false;document.documentElement.style.overflow='hidden';input.value='';$('#feedback').textContent='';$('#logout').focus({preventScroll:true});}catch(err){$('#feedback').textContent=err.name==='OperationError'?'密碼不正確 請重新輸入':String(err.message||'解鎖失敗 請稍後再試').replace(/[\p{P}\p{S}]/gu,' ');}finally{btn.disabled=false;btn.removeAttribute('aria-busy');locked=false}});
+$('#login').addEventListener('submit',async e=>{e.preventDefault();if(locked)return;locked=true;const btn=$('#submit');btn.disabled=true;btn.setAttribute('aria-busy','true');$('#feedback').textContent='正在開啟家族典藏';input.blur();try{let html=await decrypt(input.value);html=applyCorrections(html,await decryptPatch(input.value));html=applyCorrections(html,await decryptPatch(input.value,'./weiguo-annals.enc.json'));if(blobUrl)URL.revokeObjectURL(blobUrl);blobUrl=URL.createObjectURL(new Blob([html],{type:'text/html;charset=utf-8'}));$('#familyFrame').src=blobUrl;$('#private').hidden=false;document.documentElement.style.overflow='hidden';input.value='';$('#feedback').textContent='';$('#logout').focus({preventScroll:true});}catch(err){$('#feedback').textContent=err.name==='OperationError'?'密碼不正確 請重新輸入':String(err.message||'解鎖失敗 請稍後再試').replace(/[\p{P}\p{S}]/gu,' ');}finally{btn.disabled=false;btn.removeAttribute('aria-busy');locked=false}});
 $('#logout').addEventListener('click',()=>{$('#familyFrame').removeAttribute('src');$('#private').hidden=true;document.documentElement.style.overflow='';if(blobUrl){URL.revokeObjectURL(blobUrl);blobUrl=null}input.value='';$('#secret').focus({preventScroll:true})});
 window.addEventListener('pagehide',()=>{if(blobUrl)URL.revokeObjectURL(blobUrl)});
 })();
