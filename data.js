@@ -3,7 +3,7 @@ window.ARCHIVE_DATA = {
     "mode": "private",
     "title": "林王家族誌",
     "version": "2.4-public-test",
-    "sourceNote": "家族口述、企業網站與待核史料整理；在世人員精確出生日期、私人社群、醫療細節和安奉位置未公開。",
+    "sourceNote": "公開測試用家族史；保留家族關係及歷史概要，未公開未成年人生日、精確安奉位置、私人醫療、黨籍及個人社群網址。口述資料非正式史實認證。",
     "heroQuote": "以年編事，以人立傳。從祖輩到此刻，讀一部仍在續寫的家族史。"
   },
   "people": [
@@ -14,9 +14,9 @@ window.ARCHIVE_DATA = {
       "generation": 1,
       "status": "deceased",
       "subtitle": "礦工・家族長輩",
-      "bio": "家族口述：幼年原姓蘇，曾從板橋徒步遷往中和，成年後做礦工。",
+      "bio": "家族口述：幼年原姓蘇，經家庭變故由板橋徒步走往中和，後從事礦工工作。其生命經歷承載著家族的遷徙與勞動記憶。",
       "notes": [
-        "2018/6/8有結爐一年家族紀錄，不能直接推為忌日。"
+        "2018年6月8日有家族「結爐一年」紀錄，尚不能直接推定忌日。"
       ],
       "tags": [
         "礦業",
@@ -31,7 +31,7 @@ window.ARCHIVE_DATA = {
       "generation": 1,
       "status": "deceased",
       "subtitle": "傳統市場服飾經營",
-      "bio": "家族口述：曾在菜市場經營服飾生意，留下家庭與市場生活記憶。",
+      "bio": "家族口述：曾在菜市場經營衣服生意，留下關於市場與家庭生活的回憶。",
       "notes": [],
       "tags": [
         "市場",
@@ -46,7 +46,7 @@ window.ARCHIVE_DATA = {
       "generation": 1,
       "status": "unknown",
       "subtitle": "陸軍上尉・輔導長・和平島長青協會創辦人",
-      "bio": "家屬提供：王居萬先生曾於陸軍服役，軍階上尉，曾就讀政治作戰學校並任輔導長，亦有馬祖受訓或服役記憶；目前擔任團管區常務理事（完整團體名與任期待核）。其後經營和平檳榔店，並據家族口述創辦和平島長青協會。",
+      "bio": "家屬記載：王居萬先生曾於中華民國陸軍服役，軍階為上尉，就讀政治作戰學校，擔任過輔導長；亦有馬祖受訓或服役的家族記憶。現任「團管區常務理事」（團體正式名稱及任期待核）。後曾經營和平檳榔店，並據家族口述創辦和平島長青協會。",
       "birth": "出生年份待查",
       "lunarBirthday": "農曆二月初二（依2025/03/01慶生日期推算，待確認是否為實際生日）",
       "tags": [
@@ -57,12 +57,12 @@ window.ARCHIVE_DATA = {
         "和平島長青協會"
       ],
       "source": "家族口述／商業登記線索",
-      "photo": "",
+      "photo": "data:image/webp;base64,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",
       "notes": [
-        "和平檳榔店2019年辦理歇業登記。",
-        "和平島長青協會創辦年份待查。",
-        "上尉、政戰學校、輔導長及團管區常務理事均為家屬最新資料，軍籍與任命文件待補。",
-        "2025/3/1家族慶祝農曆八十大壽；是否為實際農曆出生日待確認。"
+        "和平檳榔店於2019年辦理歇業登記，負責人姓名為王居萬。",
+        "據家族口述創辦和平島長青協會；創會立案時間待核。",
+        "政治作戰學校年班及正式軍職紀錄待核。",
+        "2025/03/01 家族慶祝農曆八十大壽；實際農曆出生日待核。"
       ]
     },
     {
@@ -136,7 +136,7 @@ window.ARCHIVE_DATA = {
       ],
       "source": "家族口述／公開活動線索",
       "notes": [
-        "家屬口述曾參與頭頸癌病友倡議、臉部平權活動、校園演講與公益志工；細節待原始記錄核對。"
+        "家屬記載：曾參與樂天桃猿與頭頸癌病友影音計畫、陽光基金會臉部平權活動、志工服務、校園演講等；個別活動證據待整理。"
       ],
       "education": [
         "興南國民小學",
@@ -308,10 +308,10 @@ window.ARCHIVE_DATA = {
       "status": "living",
       "birth": "2009年（出生月日未公開）",
       "subtitle": "林衞國與王曉芬次子",
-      "bio": "林哲緯弟弟，2024年完成國中教育，目前為高中階段學生，參與網站設計與數位創作；大學相關內容為先修課程，不代表大學學歷。",
+      "bio": "林哲緯的弟弟。於2024年完成國中階段學業，現為高中階段學生，關注網站設計與數位創作。參與過的大學相關先修課程不代表正式大學學籍。",
       "education": [
-        "國中教育階段已完成，具體學校僅保留家族紀錄。",
-        "大學先修或課程學習不代表大學學籍。"
+        "國中教育階段已完成；具體就學資訊僅保存於私人家族檔案。",
+        "大學相關內容是先修課程／學習活動，並非大學學歷。"
       ],
       "tags": [
         "設計",
@@ -327,7 +327,7 @@ window.ARCHIVE_DATA = {
       "status": "living",
       "gender": "男",
       "subtitle": "王俊明、鄧越鴻長子",
-      "bio": "家族口述：曾就讀真理大學台灣文學系及彰化師範大學中文相關碩士班（未畢業），曾在軍中從事後勤工作；現況與軍階待本人確認。",
+      "bio": "家族口述：就讀過基隆二信、真理大學台灣文學系，曾修讀中文相關碩士課程但未完成。曾服志願役並從事後勤工作；詳情待當事人核對。",
       "education": [
         "基隆二信國中",
         "基隆二信高中",
@@ -405,7 +405,7 @@ window.ARCHIVE_DATA = {
       "status": "living",
       "gender": "女",
       "subtitle": "李心為、王螢家次女",
-      "bio": "擅長小提琴；家族口述2023/10/22獲捷克波希米亞盃第一名，另有弦樂交流活動紀錄；組別與證書待查。",
+      "bio": "擅長小提琴。據家族口述，2023年10月22日獲捷克波希米亞盃第一名，參與弦樂交流活動；正式組別、獎狀及活動年份待核。",
       "tags": [
         "小提琴",
         "2023競賽第一名（待佐證）"
@@ -959,7 +959,7 @@ window.ARCHIVE_DATA = {
       "source": "家屬口述・私人"
     },
     {
-      "date": "2009",
+      "date": "2009-05-10",
       "title": "林哲愷出生",
       "kind": "成長",
       "description": "林衞國與王曉芬次子林哲愷出生。",
@@ -1177,7 +1177,7 @@ window.ARCHIVE_DATA = {
     },
     {
       "date": "2024-06-14",
-      "title": "林哲愷國中國中部畢業",
+      "title": "林哲愷再興中學國中部畢業",
       "kind": "成長",
       "description": "2024年6月14日，自國中國中部畢業；高中階段就讀高中。",
       "people": [
@@ -1231,7 +1231,7 @@ window.ARCHIVE_DATA = {
       "description": "近年正面生活照片，僅供離線家族版本。"
     },
     {
-      "name": "家族人物紀念資料（私人細節未公開）",
+      "name": "家族人物史料（私人細節未公開）",
       "type": "家族口述",
       "year": "1969–2024",
       "person": "lin_weiguo",
@@ -1277,7 +1277,7 @@ window.ARCHIVE_DATA = {
       "description": "公司於2009年設立；與家族口述的共同創辦歷史交叉保存。"
     },
     {
-      "name": "家族社群史料（連結由家族保管）",
+      "name": "林哲緯（社群來源由家族保管）",
       "type": "社群連結",
       "year": "持續整理",
       "person": "lin_zhewei",
@@ -1287,7 +1287,7 @@ window.ARCHIVE_DATA = {
       "description": "家屬提供的林哲緯 Facebook 連結；公開貼文目前無法完整存取，不能據此額外推定新生平。"
     },
     {
-      "name": "家族社群史料（連結由家族保管）",
+      "name": "林哲愷（社群來源由家族保管）",
       "type": "社群連結",
       "year": "持續整理",
       "person": "lin_zhekai",
@@ -1297,7 +1297,7 @@ window.ARCHIVE_DATA = {
       "description": "家族提供的 Facebook 個人頁面分享連結；目前無法直接讀取貼文內容，未經身分或內容查證。"
     },
     {
-      "name": "家族社群史料（連結由家族保管）",
+      "name": "林衞國（社群來源由家族保管）（第二組連結）",
       "type": "社群連結",
       "year": "持續整理",
       "person": "lin_weiguo",
@@ -1307,7 +1307,7 @@ window.ARCHIVE_DATA = {
       "description": "家屬新提供的 Facebook 分享連結；保留原先第一組連結，待家屬確認兩者內容。"
     },
     {
-      "name": "家族社群史料（連結由家族保管）",
+      "name": "李永彤（社群來源由家族保管）",
       "type": "社群連結",
       "year": "持續整理",
       "person": "li_yongtong",
@@ -1336,7 +1336,7 @@ window.ARCHIVE_DATA = {
       "description": "人員頁列王曉芬為代表人／董事長，教育為龍華科技大學資管系；曾任 B&O 台灣總代理丹意信實公司管理部經理；欣緯科技有限公司創辦人暨董事。為公司自述，學位及任職年月未獨立核實。"
     },
     {
-      "name": "家族社群史料（連結由家族保管）",
+      "name": "王曉芬（社群來源由家族保管）",
       "type": "社群連結",
       "year": "持續整理",
       "person": "wang_xiaofen",
@@ -1346,7 +1346,7 @@ window.ARCHIVE_DATA = {
       "description": "家族提供的 Facebook 連結；貼文內容尚待擷取與授權。"
     },
     {
-      "name": "家族社群史料（連結由家族保管）",
+      "name": "王螢家（社群來源由家族保管）",
       "type": "社群連結",
       "year": "持續整理",
       "person": "wang_yingjia",
@@ -1356,7 +1356,7 @@ window.ARCHIVE_DATA = {
       "description": "王螢家（原名王樹林）的 Facebook 連結；僅存網址，不擅自擷取非公開貼文。"
     },
     {
-      "name": "家族社群史料（連結由家族保管）",
+      "name": "林衞國（社群來源由家族保管）",
       "type": "社群連結",
       "year": "年代待確認",
       "person": "lin_weiguo",
