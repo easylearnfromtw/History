@@ -1,0 +1,24 @@
+/* Plain typography, no emoji. Native details/summary preserves screen-reader and keyboard interactions. */
+.reading-disclosure{margin:13px 0 18px;border:1px solid var(--m-line,#dcd2c4);background:rgba(255,255,255,.19);min-width:0;max-width:100%;color:inherit}
+.reading-disclosure>summary{display:list-item;cursor:pointer;padding:17px 21px;font:500 15px/1.8 var(--m-serif,'Noto Serif TC',serif);color:var(--m-dark,#15362e);list-style:revert;list-style-position:inside}
+.reading-disclosure>summary:hover,.reading-disclosure>summary:focus-visible{background:rgba(173,144,97,.09)}
+.reading-disclosure[open]>summary{border-bottom:1px solid var(--m-line,#dcd2c4)}
+.reading-disclosure-content{padding:18px clamp(18px,3vw,34px);overflow-wrap:anywhere}
+.reading-disclosure-content>:first-child{margin-top:0}.reading-disclosure-content>:last-child{margin-bottom:0}
+.biography-text>.reading-disclosure .reading-disclosure-content>p{font:400 15px/2.6 var(--m-serif,'Noto Serif TC',serif)}
+.biography-text>.reading-disclosure .reading-disclosure-content>.compiler-verdict{margin-top:12px}
+.biography-text>.reading-disclosure .source-note{font-size:11px}
+.secondgen-life>.reading-disclosure{margin-top:16px}.secondgen-life>.reading-disclosure .secondgen-life-body{display:block}
+.chronicle-item:has(> .reading-disclosure){display:block;padding:19px 0}
+.chronicle-item> .chronicle-year,.chronicle-item> .chronicle-dot{display:none}
+.chronicle-item> .reading-disclosure{margin:0}
+.chronicle-item .reading-disclosure-content>.chronicle-copy{max-width:100%}
+.chronicle-item .reading-disclosure-content>.chronicle-copy h3{display:none}
+.shipyard-history>.reading-disclosure{margin-top:20px}
+.island-history-step>.reading-disclosure,.origin>.reading-disclosure{margin-top:auto;position:relative;z-index:1}
+.island-history-step>.reading-disclosure>summary,.origin>.reading-disclosure>summary{font-size:12px;padding:8px 12px}
+.island-history-step .reading-disclosure-content,.origin .reading-disclosure-content{padding:12px}
+.courtyard-story-body>.reading-disclosure,.leisure-opening>.reading-disclosure,.leisure-intro>.reading-disclosure,.leisure-table>.reading-disclosure,.leisure-ending>.reading-disclosure{margin-top:10px}
+.fire-history-annex>.reading-disclosure{margin-top:25px}
+.fire-history-annex>.reading-disclosure .fire-archive-library{margin-top:25px}
+@media(max-width:760px){.reading-disclosure>summary{padding:13px 14px;font-size:14px}.reading-disclosure-content{padding:14px 17px}.biography-text>.reading-disclosure .reading-disclosure-content>p{font-size:14px;line-height:2.35}}
