@@ -862,7 +862,8 @@ document.addEventListener('keydown',event=>{
 document.querySelector('#lineagePersonBack').addEventListener('click',()=>{
  const prev=personHistory.pop();if(!prev)return;
  lineageSteppingBack=true;openLineagePerson(prev);lineageSteppingBack=false;
- document.querySelector('#lineagePersonBack').focus({preventScroll:true});
+ const backControl=document.querySelector('#lineagePersonBack');
+ (backControl.hidden?document.querySelector('#lineagePersonClose'):backControl).focus({preventScroll:true});
 });
 const readingSizeToggle=document.querySelector('#readingSizeToggle');
 function applyTextSize(isLarger){
