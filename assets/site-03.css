@@ -1,0 +1,138 @@
+
+@media(max-width:360px){
+  .nav{padding-left:13px;padding-right:13px}
+  .brand-copy strong{font-size:14px}
+  .brand-copy small{font-size:7px}
+  .hero-copy{padding-left:17px;padding-right:17px}
+  .wrap{width:calc(100% - 34px)}
+  .hero-cta{gap:8px}
+  .hero-cta .btn,.quiet-link{font-size:11px}
+  .mobile-chapters a{font-size:11px}
+}
+@media(prefers-reduced-motion:reduce){
+  .theme-grid{scroll-behavior:auto}
+  .mobile-chapters a{transition:none}
+}
+
+
+/* A manuscript inspired public lineage */
+.lineage-section{background:#f9f6ed;padding:116px 0 125px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.lineage-header{display:flex;align-items:end;justify-content:space-between;gap:50px;border-bottom:1px solid #d4c7b2;padding-bottom:31px}
+.lineage-header h2{font:400 clamp(38px,5vw,64px)/1.5 var(--serif);letter-spacing:.06em;margin:9px 0}
+.lineage-motto{font:400 16px/1.8 var(--serif);color:var(--brown);margin:0;letter-spacing:.13em}
+.lineage-intro{font:400 14px/2.2 var(--serif);color:#6c6559;max-width:450px;margin:0}
+.lineage-generation{max-width:450px;display:flex;justify-content:space-around;margin:43px auto 14px;color:var(--brown);font:500 11px var(--serif);letter-spacing:.1em}
+.lineage-ancestor{display:flex;justify-content:center;align-items:center;gap:clamp(10px,2.6vw,40px)}
+.lineage-ancestor-person{flex:0 1 225px;min-width:0;min-height:155px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px 14px;border:1px solid #b9a280;background:#f3ede2;position:relative;transition:border-color .2s,background .2s}
+.lineage-ancestor-person:before{position:absolute;content:"";inset:5px;border:1px solid #e2d6c1;pointer-events:none}
+.lineage-ancestor-person:hover{border-color:var(--green);background:#ebe3d5}
+.lineage-ancestor-person>span{font:500 11px var(--serif);color:var(--brown)}
+.lineage-ancestor-person strong{font:400 clamp(24px,2.6vw,36px)/1.5 var(--serif);letter-spacing:.07em;color:var(--green);margin:7px 0}
+.lineage-ancestor-person small{font:400 11px var(--serif);color:var(--brown)}
+.lineage-marriage{display:grid;place-items:center;flex:0 0 66px;height:66px;border:1px solid #bca686;border-radius:50%;color:var(--brown);font:400 15px var(--serif);background:#f8f4eb}
+.lineage-stem{height:58px;width:1px;margin:0 auto;background:#baa684}
+.lineage-descendant-header{display:flex;align-items:center;gap:16px;border-top:1px solid #bcaa8e;padding-top:21px;position:relative}
+.lineage-descendant-header:before{position:absolute;content:"";height:16px;width:1px;background:#baa684;left:50%;top:-16px}
+.lineage-detail-hint{margin-left:auto;color:#8f816e;font:400 12px var(--serif)}
+.lineage-toggle-all{border:1px solid #9a8364;padding:9px 16px;background:transparent;color:var(--green);min-height:44px;font:500 12px var(--serif)}
+.lineage-toggle-all:hover{background:#ece5d7}
+.lineage-branches{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:13px;margin-top:25px;align-items:start}
+.lineage-branch{min-width:0;background:#ebe6da;border:1px solid #c9bcaa;transition:background .2s,border-color .2s}
+.lineage-branch[open]{border-color:#a58c64;background:#efe8da}
+.lineage-branch summary{display:flex;flex-direction:column;list-style:none;cursor:pointer;padding:23px 19px 19px;min-height:195px;outline-offset:3px;position:relative}
+.lineage-branch summary::-webkit-details-marker{display:none}
+.lineage-branch-top{font:500 10px var(--serif);color:#927959;letter-spacing:.15em}
+.lineage-branch summary strong{font:400 clamp(24px,2.5vw,34px)/1.5 var(--serif);color:var(--green);margin:14px 0 5px}
+.lineage-branch-summary{font:400 12px/1.9 var(--serif);color:#776a5c;min-height:23px}
+.lineage-expand{font:400 12px var(--serif);color:var(--brown);margin-top:auto;padding-top:21px;align-self:flex-end}
+.lineage-open,.lineage-branch[open] .lineage-closed{display:none}
+.lineage-branch[open] .lineage-open{display:inline}
+.lineage-relations{border-top:1px solid #d2c4b1;padding:16px 18px 21px;background:#f4efe6}
+.lineage-relation-title{font:500 11px var(--serif);color:#8b704d;letter-spacing:.14em}
+.lineage-relations p{font:400 13px/2 var(--serif);margin:11px 0;color:#5c554b}
+.lineage-child-list{display:flex;flex-wrap:wrap;gap:8px;margin-top:15px}
+.lineage-child-list span{padding:8px 10px;border:1px solid #d8c7ad;color:var(--green);font:500 13px var(--serif)}
+.lineage-relations .lineage-footnote{font:400 11px/1.9 var(--serif);color:#776f62}
+.lineage-epilogue{display:flex;justify-content:space-between;align-items:center;gap:30px;margin-top:30px;padding-top:25px;border-top:1px solid #d5c8b5}
+.lineage-epilogue p{font:400 18px/1.9 var(--serif);color:var(--green);margin:0}
+.lineage-epilogue small{font:400 11px/2 var(--serif);color:#83796b;max-width:380px}
+@media(max-width:1060px){.lineage-branches{grid-template-columns:repeat(2,minmax(0,1fr))}.lineage-epilogue{align-items:flex-start}}
+@media(max-width:720px){
+ .lineage-section{padding:68px 0 77px}
+ .lineage-header{display:block;padding-bottom:24px}
+ .lineage-header h2{font-size:clamp(37px,10vw,49px);margin:8px 0}
+ .lineage-motto{font-size:14px;line-height:1.9}
+ .lineage-intro{font-size:14px;line-height:2.15;margin-top:18px}
+ .lineage-generation{margin:30px auto 13px;font-size:10px}
+ .lineage-ancestor{gap:9px}
+ .lineage-ancestor-person{min-height:126px;padding:15px 7px}
+ .lineage-ancestor-person strong{font-size:clamp(20px,6vw,26px);letter-spacing:.02em}
+ .lineage-ancestor-person small{font-size:10px}
+ .lineage-marriage{flex-basis:39px;height:39px;font-size:11px}
+ .lineage-stem{height:48px}
+ .lineage-descendant-header{flex-wrap:wrap;gap:7px}
+ .lineage-descendant-header .kicker{flex:1 1 auto}
+ .lineage-detail-hint{flex:1 1 100%;order:3;font-size:11px;margin:0}
+ .lineage-toggle-all{padding:8px 12px;font-size:12px}
+ .lineage-branches{grid-template-columns:1fr;gap:10px;margin-top:22px}
+ .lineage-branch summary{min-height:116px;padding:17px 17px 14px}
+ .lineage-branch summary strong{margin:6px 0 3px;font-size:27px}
+ .lineage-expand{position:absolute;right:16px;bottom:14px;padding-top:0}
+ .lineage-branch-summary{max-width:70%;font-size:12px}
+ .lineage-relations{padding:16px 18px}
+ .lineage-epilogue{display:block;margin-top:23px}
+ .lineage-epilogue p{font-size:16px}
+ .lineage-epilogue small{display:block;margin-top:10px}
+ #lineage{scroll-margin-top:calc(90px + env(safe-area-inset-top,0px))}
+}
+@media(prefers-reduced-motion:reduce){.lineage-branch,.lineage-ancestor-person{transition:none}}
+
+/* Tappable lineage people and mobile biographical reader */
+.lineage-ancestor-person{font:inherit;cursor:pointer;text-align:center;color:inherit}
+.lineage-name-trigger{display:block;width:max-content;max-width:100%;cursor:pointer;outline-offset:3px;border-bottom:1px solid transparent}
+.lineage-name-trigger:hover,.lineage-name-trigger:focus-visible{border-bottom-color:var(--gold)}
+.lineage-record-trigger{touch-action:manipulation}
+.lineage-child-list .lineage-child-record{background:#f5efe4;border:1px solid #d8c7ad;color:var(--green);font:500 13px var(--serif);padding:9px 13px;min-height:44px;cursor:pointer}
+.lineage-child-record:hover,.lineage-child-record:focus-visible{background:#e2d5bf;border-color:var(--gold)}
+.lineage-inline-person{border:0;border-bottom:1px solid #a78d63;padding:0 3px;margin:0 1px;background:transparent;color:var(--green);font:inherit;min-height:34px;cursor:pointer}
+.lineage-branch summary{touch-action:manipulation}
+.lineage-person-overlay[hidden]{display:none}
+.lineage-person-overlay{position:fixed;inset:0;z-index:110;display:flex;align-items:stretch;justify-content:flex-end;isolation:isolate}
+.lineage-person-backdrop{position:absolute;inset:0;background:rgba(18,35,28,.57);backdrop-filter:blur(5px)}
+.lineage-person-sheet{background:var(--linen);color:var(--ink);position:relative;z-index:1;height:100%;width:min(100%,575px);overflow:auto;overscroll-behavior:contain;box-shadow:-18px 0 65px #0002;outline:none;padding:40px clamp(25px,5vw,55px) 60px}
+.lineage-sheet-header{display:flex;align-items:center;justify-content:space-between;gap:15px;border-bottom:1px solid var(--line);padding-bottom:20px;margin-bottom:35px}
+.lineage-sheet-close{background:transparent;color:var(--green);border:1px solid #c1ad8e;min-width:60px;min-height:44px;font:500 13px var(--serif)}
+.lineage-sheet-close:hover{background:#e8dfcf}
+.lineage-sheet-grip{display:none}
+.lineage-person-label{font:500 12px var(--serif);color:var(--brown);letter-spacing:.15em}
+.lineage-person-content h2{font:400 clamp(42px,5vw,64px)/1.4 var(--serif);color:var(--green);margin:16px 0 13px}
+.lineage-person-alias{color:#967850;font:500 17px/2 var(--serif);margin:0 0 27px}
+.lineage-person-biography{font:400 16px/2.35 var(--serif);color:#554d43;margin:23px 0 30px;overflow-wrap:anywhere}
+.lineage-person-relations{border-top:1px solid #d5c9b5;border-bottom:1px solid #d5c9b5}
+.lineage-person-relrow{display:grid;grid-template-columns:83px 1fr;align-items:start;gap:16px;padding:15px 0}
+.lineage-person-relrow + .lineage-person-relrow{border-top:1px solid #e0d7c8}
+.lineage-person-relrow>span{font:500 12px/2 var(--serif);color:var(--brown)}
+.lineage-person-relrow>div{display:flex;gap:8px;flex-wrap:wrap}
+.lineage-person-relrow button{min-height:40px;background:#ede5d8;border:1px solid #d6c5aa;color:var(--green);padding:7px 12px;font:400 13px var(--serif)}
+.lineage-person-relrow button:hover{background:#e2d5bf}
+.lineage-person-actions{margin-top:25px}
+.lineage-person-actions a{display:inline-flex;align-items:center;justify-content:center;background:var(--green);color:var(--cream);padding:12px 20px;min-height:48px;font:500 13px var(--serif)}
+.lineage-person-citation{margin-top:35px;color:#807263;font:400 11px/2.2 var(--serif)}
+body.lineage-modal-open{overflow:hidden}
+@media(max-width:720px){
+ .lineage-branch summary{min-height:120px}
+ .lineage-name-trigger{font-size:28px;min-height:42px;display:flex;align-items:center;max-width:100%}
+ .lineage-relations p{line-height:2.05}
+ .lineage-person-overlay{align-items:flex-end}
+ .lineage-person-backdrop{backdrop-filter:none}
+ .lineage-person-sheet{height:min(92dvh,850px);max-height:calc(100dvh - env(safe-area-inset-top,0px) - 12px);width:100%;border-radius:17px 17px 0 0;padding:0 21px calc(30px + env(safe-area-inset-bottom,0px));box-shadow:0 -8px 40px #13201b4d}
+ .lineage-sheet-grip{display:block;width:43px;height:4px;border-radius:4px;background:#ad9d86;margin:10px auto 8px}
+ .lineage-sheet-header{position:sticky;top:0;z-index:1;background:var(--linen);padding:8px 0 12px;margin-bottom:20px}
+ .lineage-person-content h2{font-size:43px;line-height:1.33;margin:11px 0 9px}
+ .lineage-person-alias{font-size:16px;line-height:1.8;margin-bottom:15px}
+ .lineage-person-biography{font-size:16px;line-height:2.22;margin:18px 0 24px}
+ .lineage-person-relrow{grid-template-columns:65px 1fr;gap:8px;padding:13px 0}
+ .lineage-person-relrow button{min-height:44px;font-size:13px}
+ .lineage-person-citation{margin:25px 0 0}
+}
+@media(prefers-reduced-motion:reduce){.lineage-person-sheet{scroll-behavior:auto}}
