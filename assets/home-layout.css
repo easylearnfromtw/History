@@ -1,0 +1,27 @@
+/* SHELIAO WANG / home — restrained editorial composition */
+:root{--home-rule:#d3c8b9;--home-serif:'Noto Serif TC',serif}
+.home-intro{padding:78px 0 62px;border-bottom:1px solid var(--home-rule)}
+.home-intro .museum-small{letter-spacing:.2em}
+.home-intro h1{font:400 clamp(46px,6vw,84px)/1.36 var(--home-serif);margin:24px 0 20px;letter-spacing:.04em;color:var(--m-dark)}
+.home-intro-copy{font:400 clamp(15px,1.65vw,20px)/2.3 var(--home-serif);color:#615b50;max-width:660px;margin:0}
+.home-intro-line{margin-top:40px;width:76px;height:1px;background:var(--m-gold)}
+.home-chapter{padding:65px 0 76px;border-bottom:1px solid var(--home-rule);scroll-margin-top:105px}
+.home-chapter-grid{display:grid;grid-template-columns:minmax(195px,.31fr) minmax(0,1fr);gap:clamp(35px,7vw,116px)}
+.home-chapter-aside{padding-top:6px}.home-chapter-aside h2{font:400 clamp(28px,3.4vw,43px)/1.5 var(--home-serif);margin:19px 0;color:var(--m-dark)}
+.home-chapter-aside small{display:block;color:var(--m-muted);font:400 12px/2 var(--m-sans);max-width:210px}
+.home-copy{max-width:760px;color:#4f5147;font:400 16px/2.65 var(--home-serif);letter-spacing:.025em}
+.home-copy p{margin:0 0 19px}.home-copy p:last-child{margin-bottom:0}
+.home-caption{font:400 12px/2.1 var(--m-sans);color:var(--m-muted);border-top:1px solid var(--home-rule);margin-top:23px;padding-top:12px}
+.home-action{display:inline-flex;align-items:center;gap:26px;justify-content:space-between;padding:12px 0 9px;margin-top:24px;border-bottom:1px solid var(--m-gold);color:var(--m-dark);font:500 13px/1.6 var(--m-sans)}
+.home-action:hover{color:#856734;border-bottom-color:#856734}
+.home-biographies{display:grid;grid-template-columns:1fr 1fr;gap:clamp(25px,4vw,60px)}
+.home-person{padding-top:7px}.home-person + .home-person{border-left:1px solid var(--home-rule);padding-left:clamp(25px,4vw,60px)}
+.home-person h3{font:400 clamp(29px,3.4vw,43px)/1.4 var(--home-serif);margin:7px 0 20px;color:var(--m-dark)}
+.home-person .home-copy{font-size:15px;line-height:2.55}.home-person-source{margin-top:22px;font:400 11px/2 var(--m-sans);color:var(--m-muted)}
+.home-number{color:var(--m-gold);font:600 11px var(--m-latin);letter-spacing:.18em}
+.home-literary{background:var(--m-dark);color:#eee7da;border-bottom:none}
+.home-literary h2,.home-literary .home-copy{color:#eee7da}.home-literary .home-copy{opacity:.88}.home-literary .home-action{color:#f5ead9;border-color:#ccb88e}.home-literary .home-chapter-aside small{color:#bfbeaf}.home-literary .home-caption{border-color:#597165;color:#c7c2b2}
+.home-ending{padding:38px 0 44px;display:flex;align-items:center;justify-content:space-between;gap:25px}.home-ending p{margin:0;color:var(--m-muted);font:12px/2 var(--m-sans)}.home-ending a{color:var(--m-dark);text-decoration:underline;text-decoration-color:var(--m-gold);text-underline-offset:6px}
+.home-summary-names{font:500 12px/2 var(--m-sans);color:#6a655b;padding-bottom:12px}
+@media(max-width:900px){.home-chapter-grid{grid-template-columns:1fr;gap:25px}.home-chapter-aside h2{margin:12px 0}.home-chapter-aside small{max-width:none}}
+@media(max-width:720px){.home-intro{padding:54px 0 46px}.home-intro h1{font-size:clamp(43px,10vw,62px)}.home-intro-copy{font-size:15px}.home-chapter{padding:45px 0 50px}.home-copy{font-size:15px;line-height:2.45}.home-biographies{grid-template-columns:1fr;gap:42px}.home-person+.home-person{border-left:0;border-top:1px solid var(--home-rule);padding:34px 0 0}.home-person .home-copy{font-size:15px}.home-ending{align-items:flex-start;flex-direction:column}}
