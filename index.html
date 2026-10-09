@@ -290,6 +290,10 @@ body.lineage-modal-open{overflow:hidden}
  .lineage-person-citation{margin:25px 0 0}
 }
 @media(prefers-reduced-motion:reduce){.lineage-person-sheet{scroll-behavior:auto}}
+
+.lineage-child-list .lineage-child-courtesy{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;min-height:65px;line-height:1.55}
+.lineage-child-courtesy small{display:block;color:var(--brown);font:400 11px/1.7 var(--serif);margin-top:2px;white-space:normal}
+@media(max-width:720px){.lineage-child-courtesy{max-width:100%;width:100%}.lineage-child-list .lineage-child-courtesy{min-height:61px}}
 </style>
 </head>
 <body>
@@ -356,7 +360,7 @@ body.lineage-modal-open{overflow:hidden}
    </details>
    <details class="lineage-branch" id="branch-xiaofen">
     <summary><span class="lineage-branch-top">王家支系</span><strong class="lineage-name-trigger" role="button" tabindex="0" data-person="王曉芬" aria-label="查看王曉芬人物紀錄">王曉芬</strong><span class="lineage-branch-summary">子女　林哲緯　林哲愷</span><span class="lineage-expand"><span class="lineage-closed">查看後代</span><span class="lineage-open">收合後代</span></span></summary>
-    <div class="lineage-relations"><span class="lineage-relation-title">婚姻與家系</span><p>與<button type="button" class="lineage-inline-person lineage-record-trigger" data-person="林衞國">林衞國</button>結縭　育有二子</p><div class="lineage-child-list"><button type="button" class="lineage-child-record lineage-record-trigger" data-person="林哲緯" aria-label="查看林哲緯人物紀錄">林哲緯</button><button type="button" class="lineage-child-record lineage-record-trigger" data-person="林哲愷" aria-label="查看林哲愷人物紀錄">林哲愷</button></div></div>
+    <div class="lineage-relations"><span class="lineage-relation-title">婚姻與家系</span><p>與<button type="button" class="lineage-inline-person lineage-record-trigger" data-person="林衞國">林衞國</button>結縭　育有二子</p><div class="lineage-child-list"><button type="button" class="lineage-child-record lineage-record-trigger" data-person="林哲緯" aria-label="查看林哲緯人物紀錄">林哲緯</button><button type="button" class="lineage-child-record lineage-record-trigger lineage-child-courtesy" data-person="林哲愷" aria-label="查看林哲愷人物紀錄">林哲愷<small>字 敻詠　號 淺山居士</small></button></div></div>
    </details>
    <details class="lineage-branch" id="branch-meiling">
     <summary><span class="lineage-branch-top">王家支系</span><strong class="lineage-name-trigger" role="button" tabindex="0" data-person="王美玲" aria-label="查看王美玲人物紀錄">王美玲</strong><span class="lineage-branch-summary">子女　陳季佑</span><span class="lineage-expand"><span class="lineage-closed">查看後代</span><span class="lineage-open">收合後代</span></span></summary>
