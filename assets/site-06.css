@@ -1,0 +1,76 @@
+
+.courtyard-art:after{inset:28px;transform:rotate(-25deg)}
+.courtyard-art span{font:400 45px/1 var(--serif);color:#bca78691}
+.courtyard-art-leaf{border-radius:8% 70% 8% 70%;transform:rotate(15deg)}
+.courtyard-story-body{position:relative;z-index:1;margin-top:auto;padding-top:112px}
+.courtyard-story-body h3{font:400 27px/1.7 var(--serif);color:var(--green);margin:0 0 15px}
+.courtyard-story-body p{font:400 clamp(15px,1.25vw,17px)/2.45 var(--serif);color:#564f43;margin:0 0 22px;letter-spacing:.035em;overflow-wrap:anywhere}
+.courtyard-story-body small{display:block;border-top:1px solid #ccbea9;padding-top:13px;color:#907f6b;font:400 11px/1.9 var(--serif)}
+.courtyard-footer{display:flex;justify-content:space-between;gap:25px;align-items:center;padding:25px 0 0;color:#857760;font:400 12px/2 var(--serif)}
+.courtyard-footer a{display:inline-flex;align-items:center;gap:10px;min-height:44px;border-bottom:1px solid #b7a07b;color:var(--green)}
+.courtyard-footer a:hover{color:#846843}
+html.reader-larger .courtyard-story-body p{font-size:19px;line-height:2.5}
+@media(max-width:780px){.courtyard-head{align-items:flex-start;flex-direction:column;gap:7px}.courtyard-stories{grid-template-columns:1fr;gap:11px}.courtyard-story{min-height:0;padding:22px 23px 27px}.courtyard-art{width:94px;height:94px;right:17px;top:26px}.courtyard-art span{font-size:35px}.courtyard-story-body{padding-top:97px}.courtyard-story-body h3{font-size:25px}.courtyard-story-body p{font-size:16px;line-height:2.35}.courtyard-footer{flex-direction:column;align-items:flex-start;gap:8px}.courtyard-history{scroll-margin-top:85px}}
+
+/* Published family holiday pastimes */
+.leisure-history{margin:0 0 clamp(55px,8vw,110px);padding-top:33px;border-top:1px solid #cbbfa9;scroll-margin-top:98px}
+.leisure-heading{display:flex;justify-content:space-between;align-items:center;gap:20px}
+.leisure-heading h2{font:400 clamp(36px,5vw,60px)/1.5 var(--serif);color:var(--green);margin:10px 0;letter-spacing:.1em}
+.leisure-heading p{font:400 13px/2.1 var(--serif);color:#846f55;margin:0}
+.leisure-seal{width:76px;height:76px;border:1px solid #b8a07d;border-radius:50%;display:grid;place-items:center;font:400 35px var(--serif);color:#9e835a;flex:none}
+.leisure-opening{background:#203f34;color:#f5f0e6;padding:clamp(20px,4vw,38px);display:grid;grid-template-columns:168px 1fr;gap:28px;align-items:center;margin:30px 0 23px}
+.leisure-opening>span{font:400 clamp(24px,2.8vw,32px)/1.6 var(--serif)}
+.leisure-opening>p{font:400 16px/2.35 var(--serif);margin:0;color:#eee8db}
+.leisure-intro{display:grid;grid-template-columns:168px 1fr;gap:28px;align-items:center;border-top:1px solid #cbbcaa;padding:24px 0 19px}
+.leisure-intro>span{font:400 24px/1.6 var(--serif);color:var(--green)}
+.leisure-intro p{font:400 15px/2.35 var(--serif);color:#5a544b;margin:0}
+.leisure-tables{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px}
+.leisure-table{background:#ede5d7;border:1px solid #cbbb9f;min-width:0;padding:25px 22px 28px}
+.leisure-table:nth-child(2){background:#e8e2d7}.leisure-table:nth-child(3){background:#f0eae0}
+.leisure-table-index{font:500 11px/2 var(--serif);color:#93764c}
+.leisure-table h3{font:400 clamp(21px,2.5vw,28px)/1.7 var(--serif);color:var(--green);margin:13px 0 0}
+.leisure-players{font:400 12px/1.9 var(--serif);color:#8a755d;display:block;margin:2px 0 19px}
+.leisure-table p{font:400 14px/2.35 var(--serif);color:#5a5145;margin:0}
+.leisure-ending{padding:24px 0 4px;display:grid;grid-template-columns:168px 1fr;gap:10px 28px;border-bottom:1px solid #cabb9f}
+.leisure-ending>span{font:500 11px/2 var(--serif);color:#9b835d}
+.leisure-ending p{font:400 12px/2.25 var(--serif);color:#81776b;margin:0}
+.leisure-ending a{grid-column:2;display:flex;align-items:center;min-height:44px;color:var(--green);font:500 12px var(--serif);justify-self:start}
+html.reader-larger .leisure-table p,html.reader-larger .leisure-intro p,html.reader-larger .leisure-opening p{font-size:18px!important;line-height:2.5}
+@media(max-width:950px){.leisure-tables{grid-template-columns:1fr}.leisure-table{padding:23px 22px}.leisure-table p{font-size:15px}}
+@media(max-width:700px){.leisure-history{scroll-margin-top:80px}.leisure-heading h2{font-size:39px}.leisure-seal{width:56px;height:56px;font-size:27px}.leisure-opening,.leisure-intro,.leisure-ending{grid-template-columns:1fr;gap:11px}.leisure-opening{margin-top:24px;padding:25px 20px}.leisure-opening>p{font-size:15px}.leisure-intro{padding-top:20px}.leisure-ending a{grid-column:1}.leisure-table{padding:20px 19px}.leisure-table h3{font-size:25px}.leisure-table p{font-size:14px;line-height:2.3}}
+
+/* Official chronicle links to independent volumes */
+.nav-links .more-nav-link{color:var(--green);border:1px solid #bdad92;padding:9px 14px;min-height:43px;display:inline-flex;align-items:center}
+.nav-links .more-nav-link:hover{background:#e4dbc9}
+.dark-panel .theme-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:13px}
+.dark-panel .theme-card{min-width:0}
+.other-histories{padding:80px 0 100px;border-top:1px solid var(--line)}
+.other-history-intro{display:grid;grid-template-columns:1fr 1fr;gap:35px;align-items:end;margin-bottom:34px}
+.other-history-intro h2{font:400 clamp(34px,4.2vw,53px)/1.5 var(--serif);color:var(--green);margin:14px 0}
+.other-history-intro>p{font:400 15px/2.35 var(--serif);color:#665b4c;margin:0}
+.other-history-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.other-history-card{display:flex;flex-direction:column;gap:7px;background:#ebe4d8;border:1px solid #cdbda5;min-height:218px;padding:24px 20px;color:var(--green);scroll-margin-top:100px}
+.other-history-card:nth-child(2){background:#e6e7db}.other-history-card:nth-child(3){background:#eee4dd}.other-history-card:nth-child(4){background:#e1e8e3}
+.other-history-number{font:500 11px/1.8 var(--serif);color:#9b7d50}
+.other-history-card strong{font:400 27px/1.55 var(--serif);margin:17px 0 0}.other-history-card small{font:400 12px/2 var(--serif);color:#786f60}
+.other-history-enter{font:500 11px/2 var(--serif);margin-top:auto;align-self:flex-end;border-bottom:1px solid #9f8969}
+.other-history-card:hover{background:#f6eddd}
+.other-history-view-all{display:inline-flex;align-items:center;justify-content:center;border:1px solid #b7a385;color:var(--green);padding:12px 19px;font:500 12px var(--serif);min-height:46px;margin-top:25px}
+.chronicle-read-more,.island-history-linkout a{display:inline-flex;min-height:45px;align-items:center;border:1px solid #bda787;padding:10px 15px;font:500 12px var(--serif);color:var(--green);margin-top:16px}
+.chronicle-read-more:hover,.island-history-linkout a:hover{background:#e6ddce}
+.island-history-linkout{border-top:1px solid #c8b89e;padding:35px 0;margin-top:30px;scroll-margin-top:95px}
+.island-history-linkout h3{font:400 clamp(28px,3vw,40px)/1.6 var(--serif);color:var(--green);margin:10px 0}
+.island-history-linkout p{font:400 14px/2.3 var(--serif);color:#5f574b;margin:0}
+@media(max-width:1100px){.dark-panel .theme-grid,.other-history-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.nav-links .more-nav-link{border:0;padding:10px 8px;justify-content:flex-start}}
+@media(max-width:720px){.dark-panel .theme-grid,.other-history-grid{grid-template-columns:1fr}.other-histories{padding:49px 0 70px}.other-history-intro{grid-template-columns:1fr;gap:4px}.other-history-intro h2{font-size:38px}.other-history-intro>p{font-size:14px}.other-history-card{min-height:155px;padding:20px}.other-history-card strong{font-size:25px;margin:7px 0 0}.other-history-card[id]{scroll-margin-top:84px}.island-history-linkout{scroll-margin-top:84px}}
+
+/* More volumes are always one tap from the mobile reader */
+@media(max-width:1100px){
+ .mobile-chapters .mobile-more-link{font-weight:600;color:var(--green);border:1px solid #baa17e;background:#eee3d1;min-width:0}
+ .mobile-chapters .mobile-more-link:hover,.mobile-chapters .mobile-more-link:focus-visible{background:#decdae}
+}
+@media(max-width:360px){
+ .mobile-chapters{gap:2px;padding-left:6px;padding-right:6px}
+ .mobile-chapters a{font-size:11px;padding-inline:1px}
+ .mobile-chapters .mobile-more-link{font-size:11px}
+}
