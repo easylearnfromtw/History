@@ -71,11 +71,109 @@ html{scroll-padding-top:105px}section[id],article[id],.intro-block[id]{scroll-ma
 
 /* 史傳全文不用標點 以行距與留白輔助閱讀 */
 .preface-copy p,.biography-text>p,.chronicle-copy p,.compiler-verdict p{line-break:strict;overflow-wrap:anywhere;text-align:justify;text-justify:inter-ideograph}
+
+/* Mobile editorial reading experience */
+:root{--touch-height:48px}
+.mobile-chapters{display:none}
+@media(max-width:1100px){
+  .nav{z-index:60}
+  .menu-toggle{min-width:48px;min-height:48px;display:inline-flex;align-items:center;justify-content:center;gap:10px;border-radius:2px}
+  .menu-toggle:after{content:"";display:block;width:14px;height:12px;border-top:1px solid currentColor;border-bottom:1px solid currentColor;box-shadow:inset 0 5px 0 -4px currentColor}
+  .menu-toggle[aria-expanded="true"]:after{transform:rotate(45deg);border-bottom:0;box-shadow:none}
+  .nav-links{padding:8px 0 14px;max-height:min(72svh,560px);overflow-y:auto;overscroll-behavior:contain}
+  .nav-links a{min-height:48px;display:flex;align-items:center;font-size:14px;border-bottom:1px solid rgba(116,93,72,.11)}
+  .nav-links a:last-child{border-bottom:0}
+}
+@media(max-width:720px){
+  html{scroll-padding-top:calc(84px + env(safe-area-inset-top,0px))}
+  body{padding-bottom:calc(66px + env(safe-area-inset-bottom,0px));overflow-x:clip}
+  body:before{display:none}
+  .nav{padding:10px max(18px,env(safe-area-inset-left,0px)) 10px max(18px,env(safe-area-inset-right,0px));min-height:69px;background:var(--linen);gap:10px}
+  .brand{gap:10px;min-width:0}.crest{width:40px;height:42px;flex:0 0 auto;font-size:16px}.brand-copy strong{font-size:16px;white-space:nowrap}.brand-copy small{font-size:8px;letter-spacing:.11em}
+  .menu-toggle{margin-left:auto;flex:0 0 auto;padding:9px 10px;font-size:13px}
+  .nav-links{max-height:calc(100dvh - 92px);gap:0;border-top:1px solid var(--line)}
+  .nav-links a{padding:10px 8px}
+  .wrap{width:calc(100% - 40px)}
+  .hero{min-height:0;display:flex;flex-direction:column}
+  .hero-copy{padding:clamp(34px,7svh,55px) 22px 35px}
+  .hero h1{margin:18px 0 15px}
+  .display{font-size:clamp(43px,10.6vw,58px);line-height:1.35;letter-spacing:-.06em}
+  .hero .intro{font-size:14px;line-height:2.0;max-width:38ch}
+  .hero-cta{gap:11px;margin-top:24px;align-items:stretch}
+  .hero-cta .btn{min-height:49px;padding:10px 19px;flex:1 1 175px;justify-content:center}
+  .quiet-link{min-height:49px;display:inline-flex;align-items:center;justify-content:center;flex:1 1 140px;padding:10px 0}
+  .hero-bottom{margin-top:25px;font-size:9px;letter-spacing:.1em}
+  .hero-art{min-height:245px;height:clamp(235px,35svh,315px)}
+  .hero-art:after{inset:15px}
+  .hero-art .line-art{height:98%;max-height:345px;width:auto;max-width:100%}
+  .art-corner{top:22px;right:24px;font-size:8px}
+  .art-caption{bottom:20px;left:22px;font-size:8px;letter-spacing:.13em}
+  .rule{padding:12px 0;font-size:9px;letter-spacing:.09em;gap:10px}
+  .rule span:first-child{max-width:60%}
+  .rule span:last-child{text-align:right}
+  .intro-block{padding:54px 0 60px;gap:16px}
+  .intro-block h2{margin-top:12px}
+  .preface-copy p{font-size:16px;line-height:2.28;margin-bottom:22px;letter-spacing:.015em}
+  .family-preface .serif-manuscript>p:not(.oral-note){font-size:16px;line-height:2.34;text-align:left}
+  .preface-colophon{margin-top:25px}
+  .dark-panel{padding:59px 0 67px}
+  .section-heading{margin-bottom:27px}.section-heading h2{font-size:clamp(32px,8vw,45px);line-height:1.45}
+  .section-heading p{font-size:13px;line-height:2.0;margin-top:12px}
+  .theme-grid{display:flex;gap:12px;border:0;background:transparent;margin-right:-20px;padding:0 20px 9px 0;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;scroll-padding-inline:4px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .theme-grid::-webkit-scrollbar{display:none}
+  .theme-card{scroll-snap-align:start;flex:0 0 min(82vw,310px);min-height:225px;padding:23px;background:#214a3d;border:1px solid rgba(231,213,171,.28)}
+  .theme-card:hover{background:#214a3d;transform:none}
+  .theme-card h3{margin:21px 0 9px;font-size:29px}
+  .theme-card p{font-size:13px;line-height:2}
+  .story-section{padding:70px 0}
+  .biography-section{padding:66px 0}
+  .biography-grid{gap:17px;padding-top:33px}
+  .biography-title h2{font-size:clamp(39px,10vw,53px);line-height:1.35}
+  .biography-title h2 small{letter-spacing:.12em;overflow-wrap:anywhere}
+  .biography-aside{font-size:13px;line-height:2.1}
+  .biography-text h3{font-size:22px;margin-bottom:12px}
+  .biography-text>p{font-size:16px;line-height:2.28;letter-spacing:.015em;margin-bottom:29px;text-align:left}
+  .biography-text>blockquote{margin:18px 0 25px;padding:21px 22px;font-size:19px;line-height:2.05}
+  .compiler-verdict{margin:30px 0 22px}
+  .compiler-verdict p{font-size:17px;line-height:2.2}
+  .chronicle-item{padding:30px 0;gap:9px}
+  .chronicle-copy h3{font-size:clamp(25px,7vw,31px);line-height:1.48}
+  .chronicle-copy p{font-size:15px;line-height:2.15}
+  .earth{padding:66px 0}
+  .origin{min-height:270px;padding:26px}
+  .sources{padding:67px 0}
+  .source-list p{gap:14px}
+  .footer{padding:45px 0 calc(35px + env(safe-area-inset-bottom,0px))}
+  .footer-title{font-size:34px}
+  .footer-links a{min-height:44px;display:inline-flex;align-items:center}
+  .backtotop{bottom:calc(83px + env(safe-area-inset-bottom,0px));right:13px;width:46px;height:46px}
+  .reveal{opacity:1;transform:none;transition:none}
+  .mobile-chapters{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:48;height:calc(64px + env(safe-area-inset-bottom,0px));padding:6px max(10px,env(safe-area-inset-left,0px)) calc(7px + env(safe-area-inset-bottom,0px)) max(10px,env(safe-area-inset-right,0px));background:#f2eee5fa;border-top:1px solid #d4c5ae;box-shadow:0 -7px 24px #0b2b210c;gap:4px}
+  .mobile-chapters a{min-width:0;flex:1;display:flex;align-items:center;justify-content:center;text-align:center;padding:7px 3px;min-height:44px;color:#675a46;font:500 12px/1.3 var(--serif);border-radius:3px;white-space:nowrap}
+  .mobile-chapters a[aria-current="location"]{color:#f7f1e5;background:var(--green)}
+  #about,#caiyun,#juwan,#chronicle,#origins,#sources{scroll-margin-top:calc(90px + env(safe-area-inset-top,0px))}
+}
+@media(max-width:360px){
+  .nav{padding-left:13px;padding-right:13px}
+  .brand-copy strong{font-size:14px}
+  .brand-copy small{font-size:7px}
+  .hero-copy{padding-left:17px;padding-right:17px}
+  .wrap{width:calc(100% - 34px)}
+  .hero-cta{gap:8px}
+  .hero-cta .btn,.quiet-link{font-size:11px}
+  .mobile-chapters a{font-size:11px}
+}
+@media(prefers-reduced-motion:reduce){
+  .theme-grid{scroll-behavior:auto}
+  .mobile-chapters a{transition:none}
+}
+
 </style>
 </head>
 <body>
 <div class="reading-progress" id="readingProgress" aria-hidden="true"></div>
 <header class="nav" id="top"><a class="brand" href="#top" aria-label="社寮王家家族史館首頁"><span class="crest">王</span><span class="brand-copy"><strong>社寮王家</strong><small>THE SHELIAO WANG FAMILY</small></span></a><button class="menu-toggle" id="toggle" type="button" aria-controls="links" aria-expanded="false">選單 </button><nav class="nav-links" id="links" aria-label="網站選單"><a href="#about">王家簡史</a><a href="#caiyun">彩雲傳</a><a href="#juwan">居萬傳</a><a href="#chronicle">王家通紀</a><a href="#origins">家系源流</a><a href="#sources">史料說明</a></nav><span class="nav-right">EST IN MEMORY</span></header>
+<nav class="mobile-chapters" aria-label="閱讀章節"><a href="#about" data-mobile-chapter="about">簡史</a><a href="#caiyun" data-mobile-chapter="caiyun">彩雲傳</a><a href="#juwan" data-mobile-chapter="juwan">居萬傳</a><a href="#chronicle" data-mobile-chapter="chronicle">通紀</a></nav>
 <main>
 <section class="hero"><div class="hero-copy"><span class="kicker">王家簡史 SHELIAO WANG FAMILY HISTORY</span><h1 class="display">社寮王家<br><em>以史傳家</em></h1><p class="intro">社寮王家居於此乃天時地利人和上祖相傳飄洋自福建輾轉汐止落腳社寮從紡織代工軍旅歲月到港邊商鋪以土地為序記下王家的來時路</p><div class="hero-cta"><a class="btn" href="#about">閱讀王家簡史 <span></span></a><a class="quiet-link" href="#caiyun">閱讀人物列傳　</a></div><div class="hero-bottom">一姓之傳 百年之思 以文存之</div></div><div class="hero-art" aria-label="象徵家族代代相連的抽象枝葉紋樣"><span class="art-corner">SHELIAO FIG 01</span><svg class="line-art" viewBox="0 0 520 610" role="img" aria-label="以年輪及枝脈象徵家族傳承的藝術圖形"><g fill="none" stroke="#bbaa8a" stroke-width="1"><ellipse cx="260" cy="300" rx="160" ry="228"/><ellipse cx="260" cy="300" rx="140" ry="208"/><ellipse cx="260" cy="300" rx="118" ry="185"/><ellipse cx="260" cy="300" rx="97" ry="160"/><ellipse cx="260" cy="300" rx="75" ry="132"/><path d="M260 94v420 M96 302h328 M260 303C203 251 194 213 215 166 M260 303C330 249 338 211 315 161 M260 303C196 353 189 401 227 451 M260 303C320 349 343 385 305 467" opacity=".6"/><path d="M85 490Q258 532 435 490 M93 116Q250 84 427 117" opacity=".4"/></g><g fill="#c2a97c"><circle cx="260" cy="95" r="3"/><circle cx="100" cy="300" r="3"/><circle cx="420" cy="300" r="3"/><circle cx="260" cy="510" r="3"/></g><rect x="186" y="255" width="148" height="92" fill="#173c32"/><text x="260" y="316" text-anchor="middle" class="center-mark">王</text></svg><span class="art-caption">A LEGACY WRITTEN THROUGH GENERATIONS</span></div></section>
 <div class="wrap"><div class="rule"><span>SHELIAO WANG FAMILY FAMILY HERITAGE</span><span>SCROLL TO EXPLORE </span></div>
@@ -128,5 +226,32 @@ function updateReadingProgress(){
 }
 window.addEventListener('scroll',()=>{if(!readingPending){readingPending=true;requestAnimationFrame(updateReadingProgress)}},{passive:true});
 window.addEventListener('resize',updateReadingProgress,{passive:true});updateReadingProgress();
+
+/* Keyboard and touch friendly chapter navigation */
+const chapterButtons=[...document.querySelectorAll('[data-mobile-chapter]')];
+const chapters=[...document.querySelectorAll('#about,#caiyun,#juwan,#chronicle')];
+function closeNavigation(){
+ n.classList.remove('open');
+ t.setAttribute('aria-expanded','false');
+}
+document.addEventListener('keydown',event=>{
+ if(event.key==='Escape'&&n.classList.contains('open')){closeNavigation();t.focus()}
+});
+document.addEventListener('pointerdown',event=>{
+ if(n.classList.contains('open')&&!n.contains(event.target)&&!t.contains(event.target))closeNavigation();
+},{passive:true});
+const chapterObserver='IntersectionObserver' in window?new IntersectionObserver(entries=>{
+ const visible=entries.filter(entry=>entry.isIntersecting);
+ if(!visible.length)return;
+ visible.sort((a,b)=>Math.abs(a.boundingClientRect.top)-Math.abs(b.boundingClientRect.top));
+ const current=visible[0].target.id;
+ chapterButtons.forEach(btn=>{
+  if(btn.dataset.mobileChapter===current)btn.setAttribute('aria-current','location');
+  else btn.removeAttribute('aria-current');
+ });
+},{rootMargin:'-18% 0px -58% 0px',threshold:0}):null;
+if(chapterObserver)chapters.forEach(chapter=>chapterObserver.observe(chapter));
+chapterButtons.forEach(btn=>btn.addEventListener('click',()=>closeNavigation()));
+
 </script>
 </body></html>
