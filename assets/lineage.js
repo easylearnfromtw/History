@@ -81,6 +81,11 @@ const publicLineageRecords={
  "李芸閑":{group:"王家第三代",bio:"王螢家與李心為之女　為王家外孫女",rel:[["父母",["王螢家","李心為"]],["手足",["李永彤"]]],source:"家屬提供親屬關係"},
  "李永彤":{group:"王家第三代",bio:"王螢家與李心為之女　為王家外孫女",rel:[["父母",["王螢家","李心為"]],["手足",["李芸閑"]]],source:"家屬提供親屬關係"}
 };
+/* Public profile revisions shared with the authenticated editorial interface and private viewer. */
+let profileRevisions={};
+function taipeiToday(){const date=new Intl.DateTimeFormat('en-US',{timeZone:'Asia/Taipei',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(new Date());const get=k=>date.find(x=>x.type===k)?.value||'';return get('year')+'-'+get('month')+'-'+get('day');}
+function activeEducation(person){if(!person)return '';return person.educationStatusFrom&&taipeiToday()>=person.educationStatusFrom?person.educationStatusAfter:person.educationStatus;}
+const profilesReady=fetch('../../data/people.json',{cache:'no-store'}).then(x=>{if(!x.ok)throw Error('Profile revisions unavailable');return x.json()}).then(j=>{profileRevisions=j.people||{};if(activePersonName)openLineagePerson(activePersonName);return true}).catch(()=>false);
 const personOverlay=document.querySelector('#lineagePersonOverlay');
 const personSheet=document.querySelector('#lineagePersonSheet');
 const personContent=document.querySelector('#lineagePersonContent');
@@ -104,6 +109,16 @@ function openLineagePerson(name,trigger){
  const aliasEl=document.querySelector('#lineagePersonAlias');
  aliasEl.hidden=!record.alias;aliasEl.textContent=record.alias||'';
  document.querySelector('#lineagePersonBio').textContent=record.bio;
+ const profile=profileRevisions[name]||null;
+ let supplement=document.querySelector('#lineagePersonSupplement');
+ if(!supplement){supplement=document.createElement('div');supplement.id='lineagePersonSupplement';supplement.className='lineage-person-supplement';document.querySelector('#lineagePersonBio').after(supplement);}
+ supplement.replaceChildren();supplement.hidden=!profile;
+ if(profile){
+  if(profile.ageRelation){const p=document.createElement('p');p.textContent='年齡關係　'+profile.ageRelation;supplement.append(p);}
+  const status=activeEducation(profile);
+  if(status&&status!=='未提供'){const p=document.createElement('p');p.textContent='學籍狀態　'+status;supplement.append(p);}
+  if(profile.statusNote){const small=document.createElement('small');small.textContent=profile.statusNote;supplement.append(small);}
+ }
  const educationBox=document.querySelector('#lineagePersonEducation');
  educationBox.hidden=!(record.education&&record.education.length);
  educationBox.replaceChildren();
@@ -274,4 +289,4 @@ readingSizeToggle.addEventListener('click',()=>applyTextSize(!document.documentE
 
 
 /* Open a named person from a biography's direct link. */
-try{const requested=new URLSearchParams(window.location.search).get("person");if(requested&&publicLineageRecords[requested])requestAnimationFrame(()=>openLineagePerson(requested,document.querySelector("#openPersonFinder")));}catch(e){}
+try{const requested=new URLSearchParams(window.location.search).get("person");if(requested&&publicLineageRecords[requested])profilesReady.finally(()=>requestAnimationFrame(()=>openLineagePerson(requested,document.querySelector("#openPersonFinder"))));}catch(e){}
