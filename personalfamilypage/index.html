@@ -23,11 +23,12 @@
 function toBytes(v){const b=atob(v);return Uint8Array.from(b,c=>c.charCodeAt(0))}
 async function decrypt(password){
  if(!window.crypto?.subtle||typeof DecompressionStream==='undefined')throw Error('請使用新版 Safari、Chrome 或 Edge，並從 HTTPS 網址開啟。');
- const r=await fetch('./archive.enc.json',{cache:'no-store'});if(!r.ok)throw Error('私人資料檔無法載入：'+r.status);
+ const r=await fetch('./manifest.json',{cache:'no-store'});if(!r.ok)throw Error('私人資料檔無法載入：'+r.status);
  const v=await r.json();if(v.version!==3||v.algorithm!=='AES-256-GCM'||v.kdf!=='PBKDF2-SHA256')throw Error('典藏格式不相容。');
  const base=await crypto.subtle.importKey('raw',new TextEncoder().encode(password),'PBKDF2',false,['deriveKey']);
  const key=await crypto.subtle.deriveKey({name:'PBKDF2',salt:toBytes(v.salt),hash:'SHA-256',iterations:v.iterations},base,{name:'AES-GCM',length:256},false,['decrypt']);
- const compressed=await crypto.subtle.decrypt({name:'AES-GCM',iv:toBytes(v.nonce),additionalData:new TextEncoder().encode(v.aad)},key,toBytes(v.payload));
+ const segments=await Promise.all(v.parts.map(async (path)=>{if(!/^part-\d{2}\.txt$/.test(path))throw Error('資料路徑格式錯誤');const r=await fetch('./'+path,{cache:'no-store'});if(!r.ok)throw Error('缺少片段 '+path);return (await r.text()).trim()}));
+ const compressed=await crypto.subtle.decrypt({name:'AES-GCM',iv:toBytes(v.nonce),additionalData:new TextEncoder().encode(v.aad)},key,toBytes(segments.join('')));
  return await new Response(new Blob([compressed]).stream().pipeThrough(new DecompressionStream('gzip'))).text();
 }
 $('#togglePass').addEventListener('click',()=>{const show=input.type==='password';input.type=show?'text':'password';$('#togglePass').textContent=show?'隱藏':'顯示'});
