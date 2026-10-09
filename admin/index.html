@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>人物資料管理｜社寮王家</title><link rel="stylesheet" href="../assets/heritage.css">
+<style>
+.editor{max-width:950px;margin:48px auto 85px;padding:0 22px}.editor h1{font:400 clamp(33px,5vw,55px)/1.4 var(--m-serif);margin:15px 0}.editor-lead{color:var(--m-muted);line-height:2.2;max-width:730px}
+.edit-person{border:1px solid var(--m-line);padding:26px;margin:19px 0;background:#fbf8f1}.edit-person h2{font:400 25px var(--m-serif);margin:0 0 17px}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px}
+.editor label{font-size:12px;color:var(--m-muted);display:block}.editor input,.editor textarea{display:block;width:100%;margin-top:6px;border:1px solid #cabfac;background:#fffdf8;color:var(--m-ink);padding:11px;font:14px/1.8 var(--m-sans);border-radius:0}.editor textarea{resize:vertical;min-height:79px}.full{grid-column:1/-1}.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px;align-items:center}.actions button,.actions a{border:1px solid var(--m-dark);padding:12px 18px;background:var(--m-dark);color:white;font:13px var(--m-sans)}.actions .subtle{background:transparent;color:var(--m-dark)}.editor button:disabled{opacity:.5;cursor:not-allowed}.status{color:var(--m-dark);padding:15px 0;min-height:55px}.editor-note{border-top:1px solid var(--m-line);padding-top:16px;color:var(--m-muted);font-size:12px}
+@media(max-width:720px){.form-grid{grid-template-columns:1fr}.edit-person{padding:17px}}
+</style></head><body>
+<header class="museum-header"><div class="museum-shell museum-top"><a class="museum-brand" href="../"><span class="museum-mark">王</span><span><b>社寮王家</b><small>THE SHELIAO WANG FAMILY</small></span></a><nav class="museum-nav" style="display:flex"><a href="../archive/lineage/">返回族譜</a><a href="../">返回首頁</a></nav></div></header>
+<main class="editor"><span class="museum-small">EDITORIAL SYSTEM / FAMILY RECORDS</span><h1>人物資料管理</h1><p class="editor-lead">統一維護家族成員的同齡關係、學籍狀態及排程日期。公開族譜與解鎖後的私人族譜共用此修訂資料。內容先在本頁編輯，發布必須使用具有儲存庫寫入權限的 GitHub 權杖。</p>
+<div id="entries" aria-live="polite"></div>
+<section><h2 style="font:400 23px var(--m-serif)">發布修訂</h2><label for="githubToken">GitHub Fine-grained Personal Access Token（Contents: Read and write；只在本次操作使用，不會儲存在瀏覽器）</label><input id="githubToken" type="password" autocomplete="off" spellcheck="false" placeholder="貼上個人的 GitHub 權杖"><div class="actions"><button type="button" id="publish" disabled>儲存到 GitHub</button><button type="button" id="download" class="subtle" disabled>另存 JSON 備份</button><a href="https://github.com/easylearnfromtw/History/edit/main/data/people.json" target="_blank" rel="noopener noreferrer" class="subtle">直接用 GitHub 編輯資料</a></div><p class="status" id="status" role="status" aria-live="polite">正在讀取人物資料</p><p class="editor-note">本管理頁不儲存密碼，也不編輯 AES-GCM 加密的家族私人原始資料。若未提供 GitHub 權杖，可下載 JSON 備份或到 GitHub 編輯檔案。GitHub Pages 更新可能有短暫部署延遲。</p></section>
+</main>
+<script>
+(()=>{'use strict';const repo='easylearnfromtw/History',filename='data/people.json';const $=id=>document.getElementById(id);let data=null,originSha=null;
+const safeText=s=>String(s??'');
+function formatStatus(r){const date=r.educationStatusFrom||'';return date?'到期排程：'+date+' → '+(r.educationStatusAfter||''):''}
+function field(parent,k,label,kind='text',big=false){const outer=document.createElement('label');if(big)outer.className='full';outer.textContent=label;const el=document.createElement(kind==='textarea'?'textarea':'input');if(kind!=='textarea')el.type=kind;el.value=safeText(parent[k]);el.addEventListener('input',()=>{parent[k]=el.value;setStatus('尚未發布的修改');});outer.append(el);return outer}
+function setStatus(s){$('status').textContent=s}
+function render(){const root=$('entries');root.replaceChildren();for(const [name,p] of Object.entries(data.people)){const section=document.createElement('section');section.className='edit-person';const h=document.createElement('h2');h.textContent=name;const f=document.createElement('div');f.className='form-grid';f.append(field(p,'ageRelation','年齡關係','text',true),field(p,'educationStatus','目前學籍狀態'),field(p,'educationStatusFrom','自動切換日期（YYYY-MM-DD；不排程可留空）'),field(p,'educationStatusAfter','到期後顯示狀態'),field(p,'statusNote','資料來源與畢業狀態註記','textarea',true));section.append(h,f);root.append(section)}$('publish').disabled=false;$('download').disabled=false;}
+async function load(){try{const [local,remote]=await Promise.all([fetch('../data/people.json',{cache:'no-store'}),fetch('https://api.github.com/repos/'+repo+'/contents/'+filename+'?ref=main',{headers:{Accept:'application/vnd.github+json'}})]);if(!local.ok)throw Error('讀取資料失敗');data=await local.json();originSha=remote.ok?(await remote.json()).sha:null;render();setStatus('資料已載入，可編輯並發布');}catch(e){setStatus('資料載入失敗：'+String(e.message||e))}}
+function toBase64(str){const bytes=new TextEncoder().encode(str);let raw='';for(const n of bytes)raw+=String.fromCharCode(n);return btoa(raw)}
+function exportBackup(){const blob=new Blob([JSON.stringify(data,null,2)+'\n'],{type:'application/json;charset=utf-8'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='people.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),500);}
+$('download').addEventListener('click',exportBackup);
+$('publish').addEventListener('click',async()=>{
+ const token=$('githubToken').value.trim();if(!token){setStatus('請輸入具備儲存庫 Contents 寫入權限的 GitHub 權杖');return}
+ if(!data||!originSha){setStatus('缺少 GitHub 最新檔案版本，請重新整理再發布');return}
+ for(const [name,p] of Object.entries(data.people)){if(p.educationStatusFrom&&!/^\d{4}-\d{2}-\d{2}$/.test(p.educationStatusFrom)){setStatus(name+' 的日期格式必須為 YYYY-MM-DD');return}}
+ $('publish').disabled=true;setStatus('正在核對 GitHub 檔案版本');
+ try{
+ const base='https://api.github.com/repos/'+repo+'/contents/'+filename;
+ const headers={Accept:'application/vnd.github+json',Authorization:'Bearer '+token,'X-GitHub-Api-Version':'2022-11-28'};
+ const current=await fetch(base+'?ref=main',{headers});
+ if(!current.ok)throw Error('權限驗證失敗或 GitHub 無法讀取檔案（HTTP '+current.status+'）');
+ const remote=await current.json();if(remote.sha!==originSha)throw Error('另一位編輯者已修改資料；請重新整理後合併，避免覆蓋他人的更新');
+ const payload={message:'Update family profile relationships and education statuses via editorial CMS',branch:'main',sha:remote.sha,content:toBase64(JSON.stringify(data,null,2)+'\n')};
+ const saved=await fetch(base,{method:'PUT',headers:{...headers,'Content-Type':'application/json'},body:JSON.stringify(payload)});
+ if(!saved.ok){const detail=await saved.text();throw Error('發布失敗（HTTP '+saved.status+'）：'+detail.slice(0,150))}
+ const result=await saved.json();originSha=result.content.sha;
+ $('githubToken').value='';setStatus('資料已提交 GitHub。等網站部署完成後前台會讀取新版本');
+ }catch(e){setStatus(String(e.message||e))}finally{$('publish').disabled=false}
+});
+load();
+})();
+</script></body></html>
