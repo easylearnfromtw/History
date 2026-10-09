@@ -149,6 +149,12 @@ function applyCorrections(html,patch){
   if(!Array.isArray(xiaofen.notes))xiaofen.notes=[];
   if(!xiaofen.notes.some(note=>String(note).includes('基隆中正國中')))xiaofen.notes.push('家屬確認　國中就讀基隆中正國中　高中就讀基隆商工');
  }
+ for(const [personId,notes] of Object.entries(patch.personNoteUpdates||{})){
+  const person=data.people.find(p=>p.id===personId);
+  if(!person||!Array.isArray(notes))continue;
+  if(!Array.isArray(person.notes))person.notes=[];
+  for(const note of notes){if(typeof note==='string'&&!person.notes.includes(note))person.notes.push(note)}
+ }
  for(const e of patch.newEvents||[]){if(!data.events.some(x=>x.title===e.title))data.events.push(e)}
  if(Array.isArray(patch.newChronicle)){
   if(!Array.isArray(data.chronicle))data.chronicle=[];
