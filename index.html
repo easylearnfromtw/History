@@ -374,12 +374,75 @@ body.lineage-modal-open{overflow:hidden}
  .shipyard-history-sources>a{flex:1 1 100%;min-height:46px;align-items:center;font-size:12px}
  #shipyard-history{scroll-margin-top:80px}
 }
+
+/* Deliberate navigation and reading tools */
+.skip-to-content{position:fixed;top:-80px;left:12px;background:var(--green);color:white;z-index:170;padding:12px 18px;font:500 13px var(--serif)}
+.skip-to-content:focus{top:12px}
+.find-trigger{color:var(--green);border:1px solid #b4a58b;background:transparent;min-height:44px;white-space:nowrap;padding:8px 13px;margin-left:5px;display:inline-flex;gap:9px;align-items:center;justify-content:center;font:500 13px var(--serif);touch-action:manipulation}
+.find-trigger:hover,.find-trigger:focus-visible{background:#e5dccb}
+.find-trigger-glyph{width:14px;height:14px;border:1.5px solid currentColor;border-radius:50%;position:relative;display:inline-block;transform:scale(.78)}
+.find-trigger-glyph:after{content:"";width:8px;height:1.5px;position:absolute;background:currentColor;transform:rotate(46deg);top:12px;left:11px}
+.reading-size-toggle{position:fixed;right:25px;bottom:86px;z-index:18;min-height:46px;min-width:52px;background:#f4eee2;border:1px solid #bfa988;color:var(--green);box-shadow:0 6px 20px #0013;display:flex;gap:5px;align-items:center;justify-content:center;padding:8px 11px;font:500 12px var(--serif);transition:background .2s,transform .2s}
+.reading-size-toggle:hover,.reading-size-toggle[aria-pressed="true"]{background:#dccbad}
+.reading-size-toggle span{font-size:20px}
+body.lineage-modal-open .reading-size-toggle,body.finder-open .reading-size-toggle{display:none}
+html.reader-larger .preface-copy p:not(.oral-note){font-size:19px!important;line-height:2.5}
+html.reader-larger .biography-text>p,html.reader-larger .secondgen-life-body>p:not(.secondgen-source){font-size:19px!important;line-height:2.55}
+html.reader-larger .chronicle-copy p,html.reader-larger .shipyard-history p,html.reader-larger .lineage-intro,html.reader-larger .lineage-person-biography{font-size:18px!important;line-height:2.38}
+html.reader-larger .compiler-verdict p,html.reader-larger .secondgen-editorial p{font-size:19px!important;line-height:2.38}
+.quick-find-modal[hidden]{display:none!important}
+.quick-find-modal{position:fixed;inset:0;z-index:125;display:flex;justify-content:center;align-items:center;isolation:isolate}
+.quick-find-shade{position:absolute;inset:0;background:#0a201bc7;backdrop-filter:blur(4px)}
+.quick-find-sheet{position:relative;z-index:1;width:min(90vw,625px);max-height:min(88dvh,820px);display:flex;flex-direction:column;background:#f6f0e6;box-shadow:0 15px 70px #0004;padding:30px 34px 18px;border:1px solid #bdaa8c;outline:none}
+.quick-find-head{display:flex;align-items:flex-start;justify-content:space-between;gap:18px;border-bottom:1px solid #d7c7ae;padding-bottom:17px;margin-bottom:22px}
+.quick-find-head h2{font:400 37px/1.4 var(--serif);color:var(--green);margin:5px 0 0}
+.quick-find-close{min-height:44px;border:1px solid #bda987;color:var(--green);font:400 13px var(--serif);background:transparent;padding:9px 18px}
+.quick-find-label{font:500 12px var(--serif);color:#776149;margin-bottom:10px;display:block}
+.quick-find-inputrow{min-height:55px;background:white;border:1px solid #b8a78a;display:flex;align-items:center;gap:10px;padding:0 16px;color:var(--green);font:400 16px var(--serif)}
+.quick-find-inputrow:focus-within{border-color:var(--green);outline:2px solid #9caf9b}
+.quick-find-inputrow input{font:400 17px/1.5 var(--serif);flex:1;min-width:0;background:transparent;border:0;outline:0;color:var(--ink);height:52px}
+.quick-find-inputrow input::-webkit-search-cancel-button{-webkit-appearance:none}
+.quick-find-count{font:400 12px/1.7 var(--serif);color:var(--brown);margin:16px 0 10px}
+.quick-find-results{min-height:120px;overflow:auto;overscroll-behavior:contain;padding:0 0 10px;scrollbar-width:thin}
+.quick-find-result{display:grid;grid-template-columns:1fr auto;align-items:center;gap:10px;text-align:left;width:100%;min-height:68px;background:transparent;border:0;border-top:1px solid #ded2c1;padding:12px 8px;cursor:pointer;color:var(--green)}
+.quick-find-result:hover,.quick-find-result:focus-visible{background:#e9dfcf}
+.quick-find-result-name{font:400 20px/1.5 var(--serif)}
+.quick-find-result-category{display:block;font:400 11px/1.8 var(--serif);color:#806f5b;margin-top:3px}
+.quick-find-result-action{font:400 11px var(--serif);color:#856c4e}
+.quick-find-empty{font:400 14px/2 var(--serif);padding:18px 4px;color:#6d655b}
+.quick-find-note{font:400 11px/2 var(--serif);color:#837568;border-top:1px solid #d7c7ae;padding:13px 0 0;margin:0}
+body.finder-open{overflow:hidden}
+.lineage-sheet-controls{display:flex;gap:7px;align-items:center}
+.lineage-sheet-back{min-height:44px;border:1px solid #c3b498;color:var(--green);font:400 12px var(--serif);background:transparent;padding:9px 11px}
+.lineage-sheet-back[hidden]{display:none}
+.lineage-sheet-back:hover{background:#e5dccc}
+@media(max-width:1100px){.find-trigger{order:2;margin:0 0 0 1px}.menu-toggle{order:1;margin-left:auto}.nav-links{order:3}}
+@media(max-width:720px){
+ .find-trigger{min-height:47px;padding:7px 9px;font-size:12px;gap:4px}
+ .mobile-chapters{padding-inline:8px;gap:6px}
+ .mobile-chapters a{font-size:13px;min-height:48px}
+ .mobile-chapters a:focus-visible{outline-offset:-2px}
+ .reading-size-toggle{right:12px;bottom:calc(142px + env(safe-area-inset-bottom,0px));min-width:48px;min-height:45px;padding:7px 9px}
+ .quick-find-modal{align-items:flex-end}
+ .quick-find-shade{backdrop-filter:none}
+ .quick-find-sheet{width:100%;max-height:calc(94dvh - env(safe-area-inset-top,0px));height:min(88dvh,840px);border-radius:16px 16px 0 0;padding:22px 18px calc(14px + env(safe-area-inset-bottom,0px));border:0}
+ .quick-find-head{padding-bottom:13px;margin-bottom:18px}
+ .quick-find-head h2{font-size:31px}
+ .quick-find-results{flex:1;min-height:0}
+ .quick-find-result{min-height:71px;padding:12px 9px}
+ .lineage-sheet-header{gap:6px}
+ .lineage-sheet-back{font-size:11px;padding:9px 7px}
+ html.reader-larger .preface-copy p:not(.oral-note),html.reader-larger .biography-text>p,html.reader-larger .secondgen-life-body>p:not(.secondgen-source){font-size:18px!important;line-height:2.45}
+}
+@media(max-width:360px){.find-trigger{font-size:11px;padding:6px 7px}.menu-toggle{min-width:43px;padding:8px}.lineage-sheet-back{font-size:10px}}
+@media(prefers-reduced-motion:reduce){.reading-size-toggle{transition:none}}
 </style>
 </head>
 <body>
 <div class="reading-progress" id="readingProgress" aria-hidden="true"></div>
-<header class="nav" id="top"><a class="brand" href="#top" aria-label="社寮王家家族史館首頁"><span class="crest">王</span><span class="brand-copy"><strong>社寮王家</strong><small>THE SHELIAO WANG FAMILY</small></span></a><button class="menu-toggle" id="toggle" type="button" aria-controls="links" aria-expanded="false">選單 </button><nav class="nav-links" id="links" aria-label="網站選單"><a href="#about">王家簡史</a><a href="#caiyun">彩雲傳</a><a href="#juwan">居萬傳</a><a href="#chronicle">王家通紀</a><a href="#origins">家系源流</a><a href="#lineage">家族世系</a><a href="#secondgen">第二代列傳</a><a href="#sources">史料說明</a></nav><span class="nav-right">EST IN MEMORY</span></header>
-<nav class="mobile-chapters" aria-label="閱讀章節"><a href="#about" data-mobile-chapter="about">簡史</a><a href="#caiyun" data-mobile-chapter="caiyun">彩雲傳</a><a href="#juwan" data-mobile-chapter="juwan">居萬傳</a><a href="#secondgen" data-mobile-chapter="secondgen">二代傳</a><a href="#chronicle" data-mobile-chapter="chronicle">通紀</a><a href="#lineage" data-mobile-chapter="lineage">世系</a></nav>
+<a href="#about" class="skip-to-content">跳至正文</a>
+<header class="nav" id="top"><a class="brand" href="#top" aria-label="社寮王家家族史館首頁"><span class="crest">王</span><span class="brand-copy"><strong>社寮王家</strong><small>THE SHELIAO WANG FAMILY</small></span></a><button class="menu-toggle" id="toggle" type="button" aria-controls="links" aria-expanded="false">選單 </button><nav class="nav-links" id="links" aria-label="網站選單"><a href="#about">王家簡史</a><a href="#caiyun">彩雲傳</a><a href="#juwan">居萬傳</a><a href="#chronicle">王家通紀</a><a href="#origins">家系源流</a><a href="#lineage">家族世系</a><a href="#secondgen">第二代列傳</a><a href="#sources">史料說明</a></nav><button class="find-trigger" type="button" id="openPersonFinder" aria-haspopup="dialog" aria-controls="personFinder">尋人 <span class="find-trigger-glyph" aria-hidden="true"></span></button></header>
+<nav class="mobile-chapters" aria-label="閱讀章節"><a href="#about" data-mobile-chapter="about">家乘序</a><a href="#caiyun" data-mobile-chapter="caiyun">人物</a><a href="#chronicle" data-mobile-chapter="chronicle">通紀</a><a href="#lineage" data-mobile-chapter="lineage">世系</a></nav>
 <main>
 <section class="hero"><div class="hero-copy"><span class="kicker">王家簡史 SHELIAO WANG FAMILY HISTORY</span><h1 class="display">社寮王家<br><em>以史傳家</em></h1><p class="intro">社寮王家居於此乃天時地利人和上祖相傳飄洋自福建輾轉汐止落腳社寮從紡織代工軍旅歲月到港邊商鋪以土地為序記下王家的來時路</p><div class="hero-cta"><a class="btn" href="#about">閱讀王家簡史 <span></span></a><a class="quiet-link" href="#caiyun">閱讀人物列傳　</a></div><div class="hero-bottom">一姓之傳 百年之思 以文存之</div></div><div class="hero-art" aria-label="象徵家族代代相連的抽象枝葉紋樣"><span class="art-corner">SHELIAO FIG 01</span><svg class="line-art" viewBox="0 0 520 610" role="img" aria-label="以年輪及枝脈象徵家族傳承的藝術圖形"><g fill="none" stroke="#bbaa8a" stroke-width="1"><ellipse cx="260" cy="300" rx="160" ry="228"/><ellipse cx="260" cy="300" rx="140" ry="208"/><ellipse cx="260" cy="300" rx="118" ry="185"/><ellipse cx="260" cy="300" rx="97" ry="160"/><ellipse cx="260" cy="300" rx="75" ry="132"/><path d="M260 94v420 M96 302h328 M260 303C203 251 194 213 215 166 M260 303C330 249 338 211 315 161 M260 303C196 353 189 401 227 451 M260 303C320 349 343 385 305 467" opacity=".6"/><path d="M85 490Q258 532 435 490 M93 116Q250 84 427 117" opacity=".4"/></g><g fill="#c2a97c"><circle cx="260" cy="95" r="3"/><circle cx="100" cy="300" r="3"/><circle cx="420" cy="300" r="3"/><circle cx="260" cy="510" r="3"/></g><rect x="186" y="255" width="148" height="92" fill="#173c32"/><text x="260" y="316" text-anchor="middle" class="center-mark">王</text></svg><span class="art-caption">A LEGACY WRITTEN THROUGH GENERATIONS</span></div></section>
 <div class="wrap"><div class="rule"><span>SHELIAO WANG FAMILY FAMILY HERITAGE</span><span>SCROLL TO EXPLORE </span></div>
@@ -538,6 +601,7 @@ body.lineage-modal-open{overflow:hidden}
 </section>
 
 <section class="sources wrap" id="sources"><div class="source-layout"><div class="reveal"><span class="kicker">OUR ARCHIVAL PRINCIPLES</span><h2>述其所聞<br>慎其所未聞</h2></div><div class="source-list reveal"><p>家屬口述與訪談 <span>ORAL HISTORY</span></p><p>歷史照片與實物 <span>FAMILY COLLECTION</span></p><p>工商及公開登記 <span>PUBLIC RECORDS</span></p><p>人物列傳與編年修訂 <span>EDITORIAL ARCHIVE</span></p></div></div></section>
+<button type="button" id="readingSizeToggle" class="reading-size-toggle" aria-pressed="false" aria-label="放大正文文字">字級 <span aria-hidden="true">甲</span></button>
 <a class="backtotop" id="jumpToTop" href="#top" aria-label="返回網頁頂部"><span aria-hidden="true"></span><span>TOP</span></a>
 </main><footer class="footer"><div class="wrap"><div class="footer-top"><div><div class="footer-title">社寮王家</div><p class="footer-desc">社寮為家以年紀事以人立傳<br>THE SHELIAO WANG FAMILY ARCHIVE</p></div><div class="footer-links"><a href="#about">簡史</a><a href="#caiyun">彩雲傳</a><a href="#juwan">居萬傳</a><a href="#secondgen">二代傳</a><a href="#chronicle">通紀</a><a href="#lineage">世系</a><a href="#sources">典藏原則</a></div></div><div class="footer-bottom"><span> 2026 SHELIAO WANG FAMILY ARCHIVE FAMILY ORAL HISTORY</span><a class="private-entry" href="./personalfamilypage/" aria-label="家族內部入口">FAMILY ACCESS </a></div></div></footer>
 <script>
@@ -573,7 +637,8 @@ const chapterObserver='IntersectionObserver' in window?new IntersectionObserver(
  const visible=entries.filter(entry=>entry.isIntersecting);
  if(!visible.length)return;
  visible.sort((a,b)=>Math.abs(a.boundingClientRect.top)-Math.abs(b.boundingClientRect.top));
- const current=visible[0].target.id;
+ const id=visible[0].target.id;
+ const current=['caiyun','juwan','secondgen'].includes(id)?'caiyun':id;
  chapterButtons.forEach(btn=>{
   if(btn.dataset.mobileChapter===current)btn.setAttribute('aria-current','location');
   else btn.removeAttribute('aria-current');
@@ -627,6 +692,8 @@ const personSheet=document.querySelector('#lineagePersonSheet');
 const personContent=document.querySelector('#lineagePersonContent');
 let lastPersonTrigger=null;
 let activePersonName=null;
+const personHistory=[];
+let lineageSteppingBack=false;
 function escapeLineageText(value){
  return String(value??'').replace(/[&<>"']/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
 }
@@ -634,7 +701,9 @@ function openLineagePerson(name,trigger){
  const record=publicLineageRecords[name];if(!record)return;
  const isOpening=personOverlay.hidden;
  if(isOpening){lastPersonTrigger=trigger||document.activeElement;document.body.classList.add('lineage-modal-open');}
+ if(!isOpening&&!lineageSteppingBack&&activePersonName&&activePersonName!==name)personHistory.push(activePersonName);
  activePersonName=name;
+ document.querySelector('#lineagePersonBack').hidden=!personHistory.length;
  personOverlay.hidden=false;
  document.querySelector('#lineagePersonName').textContent=name;
  document.querySelector('#lineagePersonRole').textContent=record.group;
@@ -660,6 +729,8 @@ function closeLineagePerson(){
  personOverlay.hidden=true;
  document.body.classList.remove('lineage-modal-open');
  activePersonName=null;
+ personHistory.length=0;
+ document.querySelector('#lineagePersonBack').hidden=true;
  const target=lastPersonTrigger;lastPersonTrigger=null;
  if(target&&target.isConnected)target.focus({preventScroll:true});
 }
@@ -699,13 +770,132 @@ document.addEventListener('keydown',event=>{
 document.querySelectorAll('.secondgen-profile-link').forEach(button=>{
  button.addEventListener('click',()=>openLineagePerson(button.dataset.person,button));
 });
+
+/* Public person discovery and accessible reading controls */
+const finder=document.querySelector('#personFinder');
+const finderInput=document.querySelector('#personFinderInput');
+const finderResults=document.querySelector('#personFinderResults');
+const finderCount=document.querySelector('#personFinderCount');
+const finderOpenBtn=document.querySelector('#openPersonFinder');
+const finderCloseBtn=document.querySelector('#closePersonFinder');
+const finderSheet=finder.querySelector('.quick-find-sheet');
+const publicNames=Object.keys(publicLineageRecords);
+let finderReturnFocus=null;
+function showFinder(){
+ if(!personOverlay.hidden)closeLineagePerson();
+ closeNavigation();
+ finderReturnFocus=document.activeElement;
+ finder.hidden=false;
+ document.body.classList.add('finder-open');
+ finderInput.value='';
+ renderFinder('');
+ requestAnimationFrame(()=>finderInput.focus({preventScroll:true}));
+}
+function hideFinder(){
+ if(finder.hidden)return;
+ finder.hidden=true;
+ document.body.classList.remove('finder-open');
+ if(finderReturnFocus&&finderReturnFocus.isConnected)finderReturnFocus.focus({preventScroll:true});
+ finderReturnFocus=null;
+}
+function normalizeFinderQuery(value){
+ return String(value).normalize('NFKC').toLocaleLowerCase().replace(/\s+/g,'').trim();
+}
+function renderFinder(value){
+ const q=normalizeFinderQuery(value);
+ const names=publicNames.filter(name=>{
+  if(!q)return ['王居萬','王黃彩雲','王曉芬','王美玲','王俊明','王螢家','林哲愷'].includes(name);
+  const person=publicLineageRecords[name];
+  return normalizeFinderQuery(name+' '+(person.alias||'')+' '+person.group+' '+(person.bio||'')+' '+(person.education||[]).flat().join(' ')).includes(q);
+ }).sort((a,b)=>{
+  const aScore=q&&normalizeFinderQuery(a).startsWith(q)?-1:0;
+  const bScore=q&&normalizeFinderQuery(b).startsWith(q)?-1:0;
+  return aScore-bScore||publicNames.indexOf(a)-publicNames.indexOf(b);
+ });
+ finderCount.textContent=q?'找到 '+names.length+' 位人物':'常用人物';
+ finderResults.replaceChildren();
+ if(!names.length){
+  const note=document.createElement('p');note.className='quick-find-empty';note.textContent='沒有符合的公開紀錄　可嘗試其他姓名';finderResults.append(note);return;
+ }
+ for(const name of names){
+  const person=publicLineageRecords[name];
+  const row=document.createElement('button');row.type='button';row.className='quick-find-result';row.dataset.findPerson=name;
+  const details=document.createElement('span');
+  const title=document.createElement('span');title.className='quick-find-result-name';title.textContent=name;
+  const desc=document.createElement('small');desc.className='quick-find-result-category';desc.textContent=person.group+(person.alias?'　'+person.alias:'');
+  details.append(title,desc);
+  const action=document.createElement('span');action.className='quick-find-result-action';action.textContent='查看紀錄';
+  row.append(details,action);finderResults.append(row);
+ }
+ finderResults.scrollTop=0;
+}
+finderOpenBtn.addEventListener('click',showFinder);
+finderCloseBtn.addEventListener('click',hideFinder);
+document.querySelector('#finderShade').addEventListener('click',hideFinder);
+finderInput.addEventListener('input',()=>renderFinder(finderInput.value));
+finderResults.addEventListener('click',event=>{
+ const button=event.target.closest('[data-find-person]');
+ if(!button)return;
+ const name=button.dataset.findPerson;
+ hideFinder();
+ openLineagePerson(name,finderOpenBtn);
+});
+finderInput.addEventListener('keydown',event=>{
+ if(event.key==='Enter'){
+  const first=finderResults.querySelector('[data-find-person]');
+  if(first){event.preventDefault();first.click();}
+ }
+});
+document.addEventListener('keydown',event=>{
+ if((event.key==='/'||event.key==='k'&&(event.metaKey||event.ctrlKey))&&!event.altKey&&!event.shiftKey&&!/^(INPUT|TEXTAREA|SELECT)$/.test(document.activeElement?.tagName||'')&&!document.activeElement?.isContentEditable){
+  event.preventDefault();if(finder.hidden)showFinder();else finderInput.focus();
+ }
+ if(finder.hidden)return;
+ if(event.key==='Escape'){event.preventDefault();hideFinder();return;}
+ if(event.key==='Tab'){
+  const focusable=[...finderSheet.querySelectorAll('button:not([disabled]),input:not([disabled])')].filter(el=>el.offsetParent!==null);
+  if(!focusable.length)return;
+  if(event.shiftKey&&document.activeElement===focusable[0]){event.preventDefault();focusable[focusable.length-1].focus();}
+  else if(!event.shiftKey&&document.activeElement===focusable[focusable.length-1]){event.preventDefault();focusable[0].focus();}
+ }
+});
+document.querySelector('#lineagePersonBack').addEventListener('click',()=>{
+ const prev=personHistory.pop();if(!prev)return;
+ lineageSteppingBack=true;openLineagePerson(prev);lineageSteppingBack=false;
+ document.querySelector('#lineagePersonBack').focus({preventScroll:true});
+});
+const readingSizeToggle=document.querySelector('#readingSizeToggle');
+function applyTextSize(isLarger){
+ document.documentElement.classList.toggle('reader-larger',isLarger);
+ readingSizeToggle.setAttribute('aria-pressed',String(isLarger));
+ readingSizeToggle.setAttribute('aria-label',isLarger?'還原正文文字大小':'放大正文文字');
+ readingSizeToggle.querySelector('span').textContent=isLarger?'乙':'甲';
+ try{localStorage.setItem('wang-reading-larger',isLarger?'1':'0')}catch(error){}
+}
+let savedLarge=false;
+try{savedLarge=localStorage.getItem('wang-reading-larger')==='1'}catch(error){}
+applyTextSize(savedLarge);
+readingSizeToggle.addEventListener('click',()=>applyTextSize(!document.documentElement.classList.contains('reader-larger')));
+
 </script>
 
+
+<div class="quick-find-modal" id="personFinder" hidden>
+ <div class="quick-find-shade" id="finderShade" aria-hidden="true"></div>
+ <section class="quick-find-sheet" role="dialog" aria-modal="true" aria-labelledby="finderTitle" tabindex="-1">
+  <div class="quick-find-head"><div><span class="kicker">FAMILY INDEX</span><h2 id="finderTitle">人物索引</h2></div><button type="button" class="quick-find-close" id="closePersonFinder">關閉</button></div>
+  <label for="personFinderInput" class="quick-find-label">輸入姓名或字號</label>
+  <div class="quick-find-inputrow"><span aria-hidden="true">尋</span><input id="personFinderInput" type="search" placeholder="搜尋家族成員" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" enterkeyhint="search"></div>
+  <p class="quick-find-count" id="personFinderCount" role="status" aria-live="polite"></p>
+  <div class="quick-find-results" id="personFinderResults"></div>
+  <p class="quick-find-note">僅搜尋公開的人物紀錄　私人家族資料不會顯示</p>
+ </section>
+</div>
 <div class="lineage-person-overlay" id="lineagePersonOverlay" hidden>
  <div class="lineage-person-backdrop" data-close-person aria-hidden="true"></div>
  <section class="lineage-person-sheet" id="lineagePersonSheet" role="dialog" aria-modal="true" aria-labelledby="lineagePersonName" tabindex="-1">
   <div class="lineage-sheet-grip" aria-hidden="true"></div>
-  <div class="lineage-sheet-header"><span class="kicker">社寮王家　人物紀錄</span><button type="button" class="lineage-sheet-close" id="lineagePersonClose" aria-label="關閉人物紀錄">關閉</button></div>
+  <div class="lineage-sheet-header"><span class="kicker">社寮王家　人物紀錄</span><span class="lineage-sheet-controls"><button type="button" class="lineage-sheet-back" id="lineagePersonBack" hidden>返回上一位</button><button type="button" class="lineage-sheet-close" id="lineagePersonClose" aria-label="關閉人物紀錄">關閉</button></span></div>
   <div class="lineage-person-content" id="lineagePersonContent" aria-live="polite">
    <span class="lineage-person-label" id="lineagePersonRole"></span>
    <h2 id="lineagePersonName"></h2>
