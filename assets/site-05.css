@@ -1,0 +1,123 @@
+
+.quick-find-result:hover,.quick-find-result:focus-visible{background:#e9dfcf}
+.quick-find-result-name{font:400 20px/1.5 var(--serif)}
+.quick-find-result-category{display:block;font:400 11px/1.8 var(--serif);color:#806f5b;margin-top:3px}
+.quick-find-result-action{font:400 11px var(--serif);color:#856c4e}
+.quick-find-empty{font:400 14px/2 var(--serif);padding:18px 4px;color:#6d655b}
+.quick-find-note{font:400 11px/2 var(--serif);color:#837568;border-top:1px solid #d7c7ae;padding:13px 0 0;margin:0}
+body.finder-open{overflow:hidden}
+.lineage-sheet-controls{display:flex;gap:7px;align-items:center}
+.lineage-sheet-back{min-height:44px;border:1px solid #c3b498;color:var(--green);font:400 12px var(--serif);background:transparent;padding:9px 11px}
+.lineage-sheet-back[hidden]{display:none}
+.lineage-sheet-back:hover{background:#e5dccc}
+@media(max-width:1100px){.find-trigger{order:2;margin:0 0 0 1px}.menu-toggle{order:1;margin-left:auto}.nav-links{order:3}}
+@media(max-width:720px){
+ .find-trigger{min-height:47px;padding:7px 9px;font-size:12px;gap:4px}
+ .mobile-chapters{padding-inline:8px;gap:6px}
+ .mobile-chapters a{font-size:13px;min-height:48px}
+ .mobile-chapters a:focus-visible{outline-offset:-2px}
+ .reading-size-toggle{right:12px;bottom:calc(142px + env(safe-area-inset-bottom,0px));min-width:48px;min-height:45px;padding:7px 9px}
+ .quick-find-modal{align-items:flex-end}
+ .quick-find-shade{backdrop-filter:none}
+ .quick-find-sheet{width:100%;max-height:calc(94dvh - env(safe-area-inset-top,0px));height:min(88dvh,840px);border-radius:16px 16px 0 0;padding:22px 18px calc(14px + env(safe-area-inset-bottom,0px));border:0}
+ .quick-find-head{padding-bottom:13px;margin-bottom:18px}
+ .quick-find-head h2{font-size:31px}
+ .quick-find-results{flex:1;min-height:0}
+ .quick-find-result{min-height:71px;padding:12px 9px}
+ .lineage-sheet-header{gap:6px}
+ .lineage-sheet-back{font-size:11px;padding:9px 7px}
+ html.reader-larger .preface-copy p:not(.oral-note),html.reader-larger .biography-text>p,html.reader-larger .secondgen-life-body>p:not(.secondgen-source){font-size:18px!important;line-height:2.45}
+}
+@media(max-width:360px){.find-trigger{font-size:11px;padding:6px 7px}.menu-toggle{min-width:43px;padding:8px}.lineage-sheet-back{font-size:10px}}
+@media(prefers-reduced-motion:reduce){.reading-size-toggle{transition:none}}
+
+/* Spring Festival family fire memory with mobile friendly video archive */
+.spring-fire-entry .chronicle-year{color:var(--green)}
+.spring-fire-date{display:block;font:400 12px/2 var(--serif);letter-spacing:.02em;color:var(--brown);margin-top:7px}
+.spring-fire-entry .chronicle-copy>p{margin-bottom:21px}
+.spring-fire-video{margin:27px 0 19px;background:#ede4d5;border:1px solid #cfbfaa;display:flex;gap:25px;justify-content:space-between;align-items:center;padding:19px 21px}
+.spring-fire-video-copy{min-width:0;display:flex;flex-direction:column}
+.spring-fire-video-copy .kicker{font-size:10px;color:#93724c}
+.spring-fire-video-copy strong{font:400 20px/1.75 var(--serif);color:var(--green);margin:4px 0 3px}
+.spring-fire-video-copy small{font:400 11px/1.9 var(--serif);color:#817568}
+.spring-fire-video a{display:inline-flex;justify-content:center;align-items:center;gap:10px;flex-shrink:0;min-height:48px;padding:10px 15px;background:var(--green);border:1px solid #486a56;color:#f7f1e6;font:500 13px/1.7 var(--serif);text-align:center}
+.spring-fire-video a:hover,.spring-fire-video a:focus-visible{background:#2d5545}
+.spring-fire-play{display:inline-block;width:21px;height:21px;border:1px solid currentColor;border-radius:50%;position:relative}
+.spring-fire-play:after{content:"";position:absolute;top:6px;left:8px;border-top:4px solid transparent;border-bottom:4px solid transparent;border-left:6px solid currentColor}
+.spring-fire-entry .chronicle-copy .spring-fire-reference{font:400 11px/2.1 var(--serif);color:#847b70;margin-bottom:0}
+@media(max-width:720px){
+ .spring-fire-entry .chronicle-year{font-size:13px}
+ .spring-fire-video{flex-direction:column;align-items:stretch;gap:17px;margin:21px 0 16px;padding:18px 16px}
+ .spring-fire-video-copy strong{font-size:18px}
+ .spring-fire-video a{width:100%;min-height:50px}
+ #spring-fire-2025{scroll-margin-top:90px}
+}
+
+/* Two family fire memories each with its own verifiable media inventory */
+.fire-archive-library{margin:25px 0 22px;border:1px solid #c9bba4;background:#eee7dc;padding:clamp(17px,3vw,25px)}
+.fire-archive-label h4{font:400 clamp(18px,2.1vw,24px)/1.6 var(--serif);color:var(--green);margin:9px 0 6px}
+.fire-archive-label p{font:400 12px/2 var(--serif);color:#756c5d;margin:0 0 15px}
+.fire-archive-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+.fire-archive-grid .fire-archive-link{min-height:61px;display:flex;align-items:center;justify-content:flex-start;gap:11px;padding:12px 14px;background:#173c32;border:1px solid #325849;color:#f6f0e6;font:400 14px/1.8 var(--serif);transition:background .2s}
+.fire-archive-grid .fire-archive-link:hover,.fire-archive-grid .fire-archive-link:focus-visible{background:#305447}
+.fire-archive-grid .fire-archive-link .fire-video-go{margin-left:auto;font-size:11px;opacity:.8}
+.fire-archive-grid .spring-fire-play{flex:0 0 21px}
+.fire-history-annex{background:#f0e8da;border:1px solid #d3bfa3;padding:clamp(23px,4vw,45px);margin:26px 0 53px;position:relative}
+.fire-history-annex:before{content:"";display:block;position:absolute;top:12px;bottom:12px;left:12px;width:2px;background:#a98b5c;opacity:.55}
+.fire-annex-heading{padding-left:12px}
+.fire-annex-date{display:block;font:400 12px/1.85 var(--serif);color:#906f42;margin:13px 0}
+.fire-annex-heading h3{font:400 clamp(26px,3.5vw,40px)/1.55 var(--serif);color:var(--green);margin:12px 0}
+.fire-annex-subtitle{font:400 13px/2 var(--serif);color:#826d54;margin:0}
+.fire-annex-story{padding:14px 0 0 12px}
+.fire-annex-story p{font:400 15px/2.4 var(--serif);color:#554d41;margin:0 0 20px}
+.fire-annex-story .fire-annex-verification{font:400 12px/2.2 var(--serif);color:#80715d;padding-top:13px;border-top:1px solid #cfc0ad}
+.fire-history-annex .fire-archive-library{margin-left:12px;margin-bottom:0;background:#e9dfcf}
+@media(max-width:720px){
+ .fire-archive-library{padding:17px 14px;margin:20px 0 16px}
+ .fire-archive-grid{grid-template-columns:1fr;gap:8px}
+ .fire-archive-grid .fire-archive-link{min-height:52px;padding:10px 12px}
+ .fire-archive-label h4{font-size:19px}
+ .fire-history-annex{margin:20px -2px 37px;padding:23px 17px}
+ .fire-history-annex:before{top:20px;bottom:20px;left:8px}
+ .fire-annex-heading{padding-left:5px}
+ .fire-annex-story{padding-left:5px}
+ .fire-annex-story p{font-size:14px;line-height:2.3}
+ .fire-history-annex .fire-archive-library{margin-left:5px}
+ #nextdoor-fire{scroll-margin-top:80px}
+}
+@media(prefers-reduced-motion:reduce){.fire-archive-grid .fire-archive-link{transition:none}}
+
+/* Place based historiography with accessible reading sequence */
+.island-history{border-top:1px solid #a99376;margin-top:clamp(42px,6vw,86px);padding-top:clamp(34px,5vw,66px);scroll-margin-top:98px}
+.island-history-head{display:grid;grid-template-columns:1fr 1fr;gap:clamp(26px,5vw,85px);align-items:end;margin-bottom:33px}
+.island-history-head h3{font:400 clamp(35px,4.7vw,58px)/1.55 var(--serif);letter-spacing:.06em;margin:13px 0 2px;color:var(--green)}
+.island-history-subtitle{font:400 13px/2 var(--serif);color:#936f49!important}
+.island-history-head>p{font:400 15px/2.3 var(--serif);color:#5d554b;margin:0}
+.island-history-map{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-left:1px solid #c9b99e;border-top:1px solid #c9b99e}
+.island-history-step{position:relative;min-height:230px;border-right:1px solid #c9b99e;border-bottom:1px solid #c9b99e;padding:29px 25px 47px;overflow:hidden;background:#ede6d9}
+.island-history-step:nth-child(2n){background:#e6ddcf}
+.island-history-era{display:block;font:500 11px/1.8 var(--serif);color:#896c46}
+.island-history-step h4{font:400 clamp(19px,2vw,25px)/1.72 var(--serif);color:var(--green);margin:11px 0}
+.island-history-step p{font:400 13px/2.18 var(--serif);color:#62594e;margin:0;position:relative;z-index:1}
+.island-history-num{position:absolute;right:17px;bottom:5px;font:400 56px/1.1 var(--serif);color:#b5a48c;opacity:.32;pointer-events:none}
+.island-history-bottom{display:grid;grid-template-columns:1fr 1fr;gap:25px;align-items:start;padding:25px 0 0}
+.island-history-bottom>p{font:400 12px/2.35 var(--serif);color:#887b68;margin:0}
+.island-history-links{display:flex;flex-wrap:wrap;gap:8px;justify-content:flex-end}
+.island-history-links a{display:inline-flex;align-items:center;justify-content:center;text-align:center;min-height:44px;padding:9px 13px;border:1px solid #bba587;color:var(--green);font:400 12px/1.8 var(--serif);background:#f6f0e6;transition:background .18s}
+.island-history-links a:hover,.island-history-links a:focus-visible{background:#dfd2bf}
+html.reader-larger .island-history-step p,html.reader-larger .island-history-head>p{font-size:17px!important}
+@media(max-width:980px){.island-history-map{grid-template-columns:repeat(2,minmax(0,1fr))}.island-history-bottom{grid-template-columns:1fr}.island-history-links{justify-content:flex-start}}
+@media(max-width:720px){.island-history{margin-top:45px;padding-top:36px;scroll-margin-top:81px}.island-history-head{grid-template-columns:1fr;gap:9px;margin-bottom:25px}.island-history-head h3{font-size:40px}.island-history-head>p{font-size:14px;line-height:2.25}.island-history-map{grid-template-columns:1fr}.island-history-step{min-height:0;padding:24px 22px 36px}.island-history-step h4{font-size:22px;margin:9px 0}.island-history-step p{font-size:14px}.island-history-links{flex-direction:column}.island-history-links a{width:100%;text-align:center;min-height:46px}.island-history-bottom{gap:14px}}
+@media(prefers-reduced-motion:reduce){.island-history-links a{transition:none}}
+
+/* Family courtyard micro histories */
+.courtyard-history{margin:clamp(25px,4.5vw,65px) 0 clamp(68px,7vw,115px);padding-top:35px;border-top:1px solid #cdbca4;scroll-margin-top:95px}
+.courtyard-head{display:flex;align-items:flex-end;justify-content:space-between;gap:30px;margin-bottom:30px}
+.courtyard-head h2{font:400 clamp(36px,5vw,60px)/1.5 var(--serif);letter-spacing:.12em;color:var(--green);margin:9px 0}
+.courtyard-head>p{font:400 13px/2.15 var(--serif);color:#88765e;margin:0 0 10px}
+.courtyard-stories{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.courtyard-story{min-width:0;position:relative;background:#ece4d7;border:1px solid #c9b9a1;min-height:360px;padding:23px clamp(19px,2.6vw,35px) 26px;display:flex;flex-direction:column}
+.courtyard-story:nth-child(2){background:#e5e1d3}
+.courtyard-story-order{font:500 11px/1.8 var(--serif);color:#92774c;letter-spacing:.12em}
+.courtyard-art{position:absolute;right:24px;top:38px;width:128px;height:128px;border:1px solid #bea78280;border-radius:50%;display:grid;place-items:center;pointer-events:none}
+.courtyard-art:before,.courtyard-art:after{content:"";position:absolute;inset:14px;border:1px solid #bca7866b;border-radius:50%;transform:rotate(30deg)}
