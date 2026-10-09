@@ -1,0 +1,31 @@
+{
+  "version": 1,
+  "updatedAt": "2026-10-10",
+  "timezone": "Asia/Taipei",
+  "description": "公開人物關係與學籍狀態修訂；只收錄必要的家族口述，不公開完整生日。",
+  "people": {
+    "林哲緯": {
+      "ageRelation": "與陳季佑、王品媗同歲",
+      "educationStatus": "就讀中",
+      "educationStatusFrom": "2027-05-01",
+      "educationStatusAfter": "已畢業",
+      "statusNote": "家屬預定於2027年5月畢業，顯示將按預定月份更新，實際畢業仍應另行核實。"
+    },
+    "陳季佑": {
+      "ageRelation": "與林哲緯、王品媗同歲",
+      "educationStatus": "已畢業"
+    },
+    "王品媗": {
+      "ageRelation": "與林哲緯、陳季佑同歲",
+      "educationStatus": "已畢業"
+    },
+    "林哲愷": {
+      "ageRelation": "比李芸閑年幼兩歲",
+      "educationStatus": "未提供"
+    },
+    "李芸閑": {
+      "ageRelation": "比林哲愷年長兩歲",
+      "educationStatus": "未提供"
+    }
+  }
+}
