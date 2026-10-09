@@ -3,7 +3,7 @@
 const path=location.pathname;
 if(/\/family\/?$/.test(path))return;
 function wrap(node,summaryText,targets,opts={}){
- if(!node||node.querySelector(':scope > details.reading-disclosure'))return;
+ if(!node)return;
  const items=targets.filter(x=>x&&x.parentNode===node);
  if(!items.length)return;
  const d=document.createElement('details');d.className='reading-disclosure'+(opts.extra?' '+opts.extra:'');
