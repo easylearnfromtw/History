@@ -347,6 +347,33 @@ body.lineage-modal-open{overflow:hidden}
  #secondgen{scroll-margin-top:85px}
 }
 @media(prefers-reduced-motion:reduce){.secondgen-index a{transition:none}}
+
+/* Verified shipyard timeline alongside family oral history */
+.shipyard-history{margin:32px 0 53px;padding:clamp(27px,4vw,48px);border:1px solid #cfc1ac;background:#f0e9dc;position:relative}
+.shipyard-history:before{content:"";position:absolute;inset:7px;border:1px solid rgba(157,132,90,.22);pointer-events:none}
+.shipyard-history-head{position:relative}
+.shipyard-history-head h3{font:400 clamp(27px,3.1vw,39px)/1.6 var(--serif);color:var(--green);margin:13px 0}
+.shipyard-history-head p,.shipyard-history-memory{font:400 15px/2.28 var(--serif);color:#5e584e;margin:0}
+.shipyard-history-events{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 24px;margin:30px 0}
+.shipyard-history-events>div{border-top:1px solid #cfbda3;padding:20px 0 24px}
+.shipyard-history-events span{display:block;font:500 11px/1.7 var(--serif);letter-spacing:.11em;color:#956e45}
+.shipyard-history-events strong{display:block;font:400 clamp(18px,2vw,23px)/1.8 var(--serif);color:var(--green);margin:5px 0 7px}
+.shipyard-history-events p{font:400 13px/2.2 var(--serif);color:#645b50;margin:0}
+.shipyard-history-memory{border-top:1px solid #cdbcaa;padding-top:24px}
+.shipyard-history-sources{display:flex;flex-wrap:wrap;gap:8px;margin-top:23px}
+.shipyard-history-sources>span{flex:0 0 100%;color:#856f52;font:500 11px/1.8 var(--serif)}
+.shipyard-history-sources>a{display:inline-flex;align-items:center;min-height:42px;padding:8px 12px;border:1px solid #ccbaa0;color:var(--green);font:400 11px/1.85 var(--serif);background:#f7f2e9}
+.shipyard-history-sources>a:hover{background:#e3d7c5;border-color:#ae9877}
+@media(max-width:720px){
+ .shipyard-history{margin:25px -3px 38px;padding:28px 18px}
+ .shipyard-history-head h3{font-size:27px;line-height:1.55}
+ .shipyard-history-head p,.shipyard-history-memory{font-size:14px;line-height:2.15}
+ .shipyard-history-events{grid-template-columns:1fr;gap:0;margin:23px 0 9px}
+ .shipyard-history-events>div{padding:15px 0 18px}
+ .shipyard-history-events strong{font-size:20px}
+ .shipyard-history-sources>a{flex:1 1 100%;min-height:46px;align-items:center;font-size:12px}
+ #shipyard-history{scroll-margin-top:80px}
+}
 </style>
 </head>
 <body>
@@ -370,7 +397,7 @@ body.lineage-modal-open{overflow:hidden}
 <div class="biography-grid"><div class="biography-title reveal"><span class="title-seal">王</span><h2>王黃彩雲<small>WANG HUANG CAIYUN</small></h2><p class="biography-subtitle">起於寒素成於勤儉半生風雨護一門燈火</p><div class="biography-rule"></div><p class="biography-aside">黃氏少時以勞動養家後與王居萬偕老於基隆社寮經營撞球間及和平檳榔店此傳據後人口述編纂</p></div>
 <div class="biography-text reveal"><h3>其一 少而勤業</h3><p>王黃彩雲者汐止黃家女也家傳黃氏為地方望族然富名未必能濟其貧其少時家用匱乏甫畢國小即負生計之重時值民國六十年代前後臺灣加工出口之業方興彩雲入紡織之工兼為家庭代作年紀尚幼而已知一家衣食之艱後人言及此事念其以稚肩任家事未嘗不感</p>
 <h3>其二 結縭社寮</h3><p>既而適王氏居萬遂稱王黃彩雲夫婦至基隆和平島立業初設撞球間時造船與港區事業興盛往來者眾家傳生意一度殷繁然經營之道非徒待客而已亦須日夕操持後乃轉營和平檳榔店歲月寒暑相仍為子女守一方溫飽</p>
-<h3>其三 家業與遠見</h3><p>及港區景象漸易舊日喧闐不復如前彩雲猶以通達人情善於應對維繫家業黃氏為人好客家中往來者多記其親厚又據家傳彼雖有承繼家產之緣終不以財貨為念曾讓資源於手足後其兄弟經營傳產有成其事關財產往來與商業沿革尚待實據不敢遽作定論</p>
+<h3>其三 家業與遠見</h3><p>及港區景象漸易舊日喧闐不復如前彩雲猶以通達人情善於應對維繫家業後世考中船產業沿革可與此段家族記憶互參黃氏為人好客家中往來者多記其親厚又據家傳彼雖有承繼家產之緣終不以財貨為念曾讓資源於手足後其兄弟經營傳產有成其事關財產往來與商業沿革尚待實據不敢遽作定論</p>
 <h3>其四 後人之思</h3><p>回望其生少而勞長而持家處世之際能識人情順逆之間不失其志家人今日所念者不僅是店舖曾有的熱鬧尤在她使後輩得有一屋可歸一席可聚其情未必見於簿冊而家人常記於心</p>
 <blockquote>社寮王家門前燕見識彩雲之遠見<small> 後代家語</small></blockquote>
 <aside class="compiler-verdict reveal" aria-label="王黃彩雲傳編者按"><span class="compiler-label">家乘編者曰 I</span><p>夫家之興豈獨在金玉田宅哉彩雲少受寒素長而持業日用之勞終成後世之安其勤也未嘗自言其苦其惠也不待史官而留於子孫之心後人聞之既敬且念故為之傳</p><small>此為後代感懷之文學性評語不另指認未經查證的生平事件</small></aside>
@@ -455,7 +482,19 @@ body.lineage-modal-open{overflow:hidden}
   <div class="secondgen-afterword">四傳之立　所以載一門之人　非謂傳已盡其生也　餘事俟家人續記</div>
  </div>
 </section>
-<section class="story-section wrap" id="chronicle"><div class="story-intro reveal"><div><span class="kicker">A CHRONOLOGICAL FAMILY HISTORY</span><h2>社寮王家通紀</h2></div><p>依家族口述編年與人物列傳互相參照未核實的年份及地點皆明白註記</p></div><article class="chronicle-item reveal"><div class="chronicle-year">清季至戰後 待考</div><div class="chronicle-copy"><small>卷一 遷徙</small><h3>上祖渡海定居社寮</h3><p>王家先世據家傳自福建渡海來臺或居汐止後與社寮結緣海程幾何遷居何歲舊牒未備今姑存其說以俟後考</p></div><i class="chronicle-dot"></i></article><article class="chronicle-item reveal"><div class="chronicle-year">民國六十年代前後</div><div class="chronicle-copy"><small>卷二 勤業</small><h3>黃氏少勤身繫家計</h3><p>黃氏彩雲少而家貧國小甫畢即從事紡織與家庭代工其時臺灣加工出口之業方興於世為產業之變於黃氏則為朝夕養家之勞</p></div><i class="chronicle-dot"></i></article><article class="chronicle-item reveal"><div class="chronicle-year">約民國六七十年代 待考</div><div class="chronicle-copy"><small>卷三 營商</small><h3>港口盛時始設撞球間</h3><p>居萬與彩雲既成婚於社寮營撞球間其時造船與港區之人往來家傳生意一度繁盛燈火與人聲雖不復可見猶存於家人言語之中</p></div><i class="chronicle-dot"></i></article><article class="chronicle-item reveal"><div class="chronicle-year">其後 待考</div><div class="chronicle-copy"><small>卷四 家業</small><h3>商海有興替持家不改其志</h3><p>其後夫婦改營和平檳榔店歲月流轉港區商情亦變黃氏仍以勤儉與人情周旋養育後代往日門庭之盛化作子孫今日之記憶</p></div><i class="chronicle-dot"></i></article><article class="chronicle-item reveal"><div class="chronicle-year">近年 待考</div><div class="chronicle-copy"><small>卷五 鄉里</small><h3>居萬存仁長念鄉人</h3><p>居萬軍旅之外亦念社寮鄰里據家屬記述曾創辦和平島長青協會助長者及里民至其創會年月與正式職務尚待考證</p></div><i class="chronicle-dot"></i></article><article class="chronicle-item reveal"><div class="chronicle-year">2025年3月1日</div><div class="chronicle-copy"><small>卷六 壽辰</small><h3>親族稱觴八秩誌慶</h3><p>民國一一四年三月一日王家為居萬祝農曆八十大壽是日農曆乙巳年二月初二親族得聚其意在祝年高而念來路是否為實際農曆誕辰正日尚待確認</p></div><i class="chronicle-dot"></i></article></section>
+<section class="story-section wrap" id="chronicle"><div class="story-intro reveal"><div><span class="kicker">A CHRONOLOGICAL FAMILY HISTORY</span><h2>社寮王家通紀</h2></div><p>依家族口述編年與人物列傳互相參照未核實的年份及地點皆明白註記</p></div><article class="chronicle-item reveal"><div class="chronicle-year">清季至戰後 待考</div><div class="chronicle-copy"><small>卷一 遷徙</small><h3>上祖渡海定居社寮</h3><p>王家先世據家傳自福建渡海來臺或居汐止後與社寮結緣海程幾何遷居何歲舊牒未備今姑存其說以俟後考</p></div><i class="chronicle-dot"></i></article><article class="chronicle-item reveal"><div class="chronicle-year">民國六十年代前後</div><div class="chronicle-copy"><small>卷二 勤業</small><h3>黃氏少勤身繫家計</h3><p>黃氏彩雲少而家貧國小甫畢即從事紡織與家庭代工其時臺灣加工出口之業方興於世為產業之變於黃氏則為朝夕養家之勞</p></div><i class="chronicle-dot"></i></article><article class="chronicle-item reveal"><div class="chronicle-year">約民國六七十年代 待考</div><div class="chronicle-copy"><small>卷三 營商</small><h3>港口盛時始設撞球間</h3><p>居萬與彩雲既成婚於社寮營撞球間其時造船與港區之人往來家傳生意一度繁盛燈火與人聲雖不復可見猶存於家人言語之中</p></div><i class="chronicle-dot"></i></article><article class="chronicle-item reveal"><div class="chronicle-year">其後 待考</div><div class="chronicle-copy"><small>卷四 家業</small><h3>商海有興替持家不改其志</h3><p>其後夫婦改營和平檳榔店歲月流轉港區商情亦變高雄大型船廠興建後中船於民國六十七年合併基隆舊廠民國八十五年總公司南遷高雄惟基隆廠仍續營其後造船景氣起落人力縮減亦牽動地方生計家人追述舊日門庭之盛漸成往昔黃氏仍以勤儉與人情周旋養育後代</p></div><i class="chronicle-dot"></i></article>
+<aside class="shipyard-history reveal" id="shipyard-history" aria-labelledby="shipyardTitle">
+ <div class="shipyard-history-head"><span class="kicker">KEELUNG AND KAOHSIUNG SHIPYARDS</span><h3 id="shipyardTitle">附記　中船與社寮港業興替</h3><p>昔社寮臨港　船塢與街市相依　大廠興革既關國家產業　亦牽地方人家之生計</p></div>
+ <div class="shipyard-history-events">
+  <div><span>民國六十二年</span><strong>中國造船於高雄成立</strong><p>大型造船廠於高雄港興建　開啟南部重工業造船新局</p></div>
+  <div><span>民國六十七年</span><strong>高雄基隆兩廠合併</strong><p>中國造船公司與基隆原臺灣造船公司合併　兩地均設總廠</p></div>
+  <div><span>民國八十五年</span><strong>總公司遷往高雄</strong><p>臺北總公司南遷與高雄總廠合署　並非基隆造船廠整廠撤離</p></div>
+  <div><span>其後</span><strong>景氣變局與人力調整</strong><p>國際造船業景氣與公司再生裁員　加以基隆港貨運結構變化　皆見於後世資料與報導</p></div>
+ </div>
+ <p class="shipyard-history-memory">家人憶昔年和平島造船人群往來帶動店鋪生意　後來商情漸淡　與造船重心南移及港業景氣變動在時序上相互參照　惟王家店業興替之確切年月與個別因果　仍俟家族訪談續證</p>
+ <div class="shipyard-history-sources"><span>參考史料</span><a href="https://zh.wikipedia.org/wiki/台灣國際造船" target="_blank" rel="noopener noreferrer">維基百科　台灣國際造船</a><a href="https://art.archives.gov.tw/tw/art/1363.html" target="_blank" rel="noopener noreferrer">國家發展委員會檔案管理局　推動大型工程</a><a href="https://www.csbcnet.com.tw/Uploads/AnnualReport104.pdf" target="_blank" rel="noopener noreferrer">台灣國際造船　公司年報</a><a href="https://news.pts.org.tw/article/33001" target="_blank" rel="noopener noreferrer">公視新聞　基隆港產業與中船裁員</a></div>
+</aside>
+<article class="chronicle-item reveal"><div class="chronicle-year">近年 待考</div><div class="chronicle-copy"><small>卷五 鄉里</small><h3>居萬存仁長念鄉人</h3><p>居萬軍旅之外亦念社寮鄰里據家屬記述曾創辦和平島長青協會助長者及里民至其創會年月與正式職務尚待考證</p></div><i class="chronicle-dot"></i></article><article class="chronicle-item reveal"><div class="chronicle-year">2025年3月1日</div><div class="chronicle-copy"><small>卷六 壽辰</small><h3>親族稱觴八秩誌慶</h3><p>民國一一四年三月一日王家為居萬祝農曆八十大壽是日農曆乙巳年二月初二親族得聚其意在祝年高而念來路是否為實際農曆誕辰正日尚待確認</p></div><i class="chronicle-dot"></i></article></section>
 <section class="earth" id="origins"><div class="wrap"><div class="section-heading reveal"><div><span class="kicker">FROM FUJIAN TO SHELIAO</span><h2>山海為證<br>一脈相承</h2></div><p>先世渡海之說汐止黃家之緣社寮王家之基凡家人所記依源而載未得舊牒之處姑存疑問</p></div><div class="origin-grid"><article class="origin reveal"><span class="origin-label">01 FROM FUJIAN TO TAIWAN</span><h3>渡海而來</h3><p>先祖相傳自福建渡臺緣及汐止海程年代與人物尚無完整文獻俟後世續考</p><span class="num">源</span></article><article class="origin reveal"><span class="origin-label">02 THE SHELIAO WANG FAMILY</span><h3>社寮立家</h3><p>居萬與彩雲成家於和平島從軍旅與營生至鄰里情誼一門記憶傳於子孫</p><span class="num">家</span></article></div></div></section>
 
 <section class="lineage-section" id="lineage" aria-labelledby="lineageTitle">
