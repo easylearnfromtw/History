@@ -2,7 +2,7 @@
 <html lang="zh-Hant">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>社寮王家家族簡史人物列傳編年通紀</title>
+<title>社寮王家正史　家乘序　人物列傳　王家通紀</title>
 <meta name="description" content="社寮王家家族史館從汐止到基隆和平島以王黃彩雲與王居萬的人物列傳為中心按年記事以人立傳留存世代記憶">
 <meta name="theme-color" content="#f2eee5"><meta property="og:title" content="社寮王家家族史館"><meta property="og:description" content="社寮為根汐止為脈閱讀王家的簡史人物列傳與家族通紀">
 <style>
@@ -566,15 +566,40 @@ html.reader-larger .courtyard-story-body p{font-size:19px;line-height:2.5}
 html.reader-larger .leisure-table p,html.reader-larger .leisure-intro p,html.reader-larger .leisure-opening p{font-size:18px!important;line-height:2.5}
 @media(max-width:950px){.leisure-tables{grid-template-columns:1fr}.leisure-table{padding:23px 22px}.leisure-table p{font-size:15px}}
 @media(max-width:700px){.leisure-history{scroll-margin-top:80px}.leisure-heading h2{font-size:39px}.leisure-seal{width:56px;height:56px;font-size:27px}.leisure-opening,.leisure-intro,.leisure-ending{grid-template-columns:1fr;gap:11px}.leisure-opening{margin-top:24px;padding:25px 20px}.leisure-opening>p{font-size:15px}.leisure-intro{padding-top:20px}.leisure-ending a{grid-column:1}.leisure-table{padding:20px 19px}.leisure-table h3{font-size:25px}.leisure-table p{font-size:14px;line-height:2.3}}
+
+/* Official chronicle links to independent volumes */
+.nav-links .more-nav-link{color:var(--green);border:1px solid #bdad92;padding:9px 14px;min-height:43px;display:inline-flex;align-items:center}
+.nav-links .more-nav-link:hover{background:#e4dbc9}
+.dark-panel .theme-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:13px}
+.dark-panel .theme-card{min-width:0}
+.other-histories{padding:80px 0 100px;border-top:1px solid var(--line)}
+.other-history-intro{display:grid;grid-template-columns:1fr 1fr;gap:35px;align-items:end;margin-bottom:34px}
+.other-history-intro h2{font:400 clamp(34px,4.2vw,53px)/1.5 var(--serif);color:var(--green);margin:14px 0}
+.other-history-intro>p{font:400 15px/2.35 var(--serif);color:#665b4c;margin:0}
+.other-history-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.other-history-card{display:flex;flex-direction:column;gap:7px;background:#ebe4d8;border:1px solid #cdbda5;min-height:218px;padding:24px 20px;color:var(--green);scroll-margin-top:100px}
+.other-history-card:nth-child(2){background:#e6e7db}.other-history-card:nth-child(3){background:#eee4dd}.other-history-card:nth-child(4){background:#e1e8e3}
+.other-history-number{font:500 11px/1.8 var(--serif);color:#9b7d50}
+.other-history-card strong{font:400 27px/1.55 var(--serif);margin:17px 0 0}.other-history-card small{font:400 12px/2 var(--serif);color:#786f60}
+.other-history-enter{font:500 11px/2 var(--serif);margin-top:auto;align-self:flex-end;border-bottom:1px solid #9f8969}
+.other-history-card:hover{background:#f6eddd}
+.other-history-view-all{display:inline-flex;align-items:center;justify-content:center;border:1px solid #b7a385;color:var(--green);padding:12px 19px;font:500 12px var(--serif);min-height:46px;margin-top:25px}
+.chronicle-read-more,.island-history-linkout a{display:inline-flex;min-height:45px;align-items:center;border:1px solid #bda787;padding:10px 15px;font:500 12px var(--serif);color:var(--green);margin-top:16px}
+.chronicle-read-more:hover,.island-history-linkout a:hover{background:#e6ddce}
+.island-history-linkout{border-top:1px solid #c8b89e;padding:35px 0;margin-top:30px;scroll-margin-top:95px}
+.island-history-linkout h3{font:400 clamp(28px,3vw,40px)/1.6 var(--serif);color:var(--green);margin:10px 0}
+.island-history-linkout p{font:400 14px/2.3 var(--serif);color:#5f574b;margin:0}
+@media(max-width:1100px){.dark-panel .theme-grid,.other-history-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.nav-links .more-nav-link{border:0;padding:10px 8px;justify-content:flex-start}}
+@media(max-width:720px){.dark-panel .theme-grid,.other-history-grid{grid-template-columns:1fr}.other-histories{padding:49px 0 70px}.other-history-intro{grid-template-columns:1fr;gap:4px}.other-history-intro h2{font-size:38px}.other-history-intro>p{font-size:14px}.other-history-card{min-height:155px;padding:20px}.other-history-card strong{font-size:25px;margin:7px 0 0}.other-history-card[id]{scroll-margin-top:84px}.island-history-linkout{scroll-margin-top:84px}}
 </style>
 </head>
 <body>
 <div class="reading-progress" id="readingProgress" aria-hidden="true"></div>
 <a href="#about" class="skip-to-content">跳至正文</a>
-<header class="nav" id="top"><a class="brand" href="#top" aria-label="社寮王家家族史館首頁"><span class="crest">王</span><span class="brand-copy"><strong>社寮王家</strong><small>THE SHELIAO WANG FAMILY</small></span></a><button class="menu-toggle" id="toggle" type="button" aria-controls="links" aria-expanded="false">選單 </button><nav class="nav-links" id="links" aria-label="網站選單"><a href="#about">王家簡史</a><a href="#courtyard">庭外史</a><a href="#family-pastimes">雅興外史</a><a href="#caiyun">彩雲傳</a><a href="#juwan">居萬傳</a><a href="#chronicle">王家通紀</a><a href="#origins">家系源流</a><a href="#lineage">家族世系</a><a href="#secondgen">第二代列傳</a><a href="#sources">史料說明</a></nav><button class="find-trigger" type="button" id="openPersonFinder" aria-haspopup="dialog" aria-controls="personFinder">尋人 <span class="find-trigger-glyph" aria-hidden="true"></span></button></header>
+<header class="nav" id="top"><a class="brand" href="#top" aria-label="社寮王家家族史館首頁"><span class="crest">王</span><span class="brand-copy"><strong>社寮王家</strong><small>THE SHELIAO WANG FAMILY</small></span></a><button class="menu-toggle" id="toggle" type="button" aria-controls="links" aria-expanded="false">選單 </button><nav class="nav-links" id="links" aria-label="網站選單"><a href="#about">家乘序</a><a href="#caiyun">人物列傳</a><a href="#secondgen">第二代列傳</a><a href="#chronicle">王家通紀</a><a href="#origins">家系源流</a><a href="#lineage">王家世系</a><a href="more/" class="more-nav-link">更多史篇</a></nav><button class="find-trigger" type="button" id="openPersonFinder" aria-haspopup="dialog" aria-controls="personFinder">尋人 <span class="find-trigger-glyph" aria-hidden="true"></span></button></header>
 <nav class="mobile-chapters" aria-label="閱讀章節"><a href="#about" data-mobile-chapter="about">家乘序</a><a href="#caiyun" data-mobile-chapter="caiyun">人物</a><a href="#chronicle" data-mobile-chapter="chronicle">通紀</a><a href="#lineage" data-mobile-chapter="lineage">世系</a></nav>
 <main>
-<section class="hero"><div class="hero-copy"><span class="kicker">王家簡史 SHELIAO WANG FAMILY HISTORY</span><h1 class="display">社寮王家<br><em>以史傳家</em></h1><p class="intro">社寮王家居於此乃天時地利人和上祖相傳飄洋自福建輾轉汐止落腳社寮從紡織代工軍旅歲月到港邊商鋪以土地為序記下王家的來時路</p><div class="hero-cta"><a class="btn" href="#about">閱讀王家簡史 <span></span></a><a class="quiet-link" href="#caiyun">閱讀人物列傳　</a></div><div class="hero-bottom">一姓之傳 百年之思 以文存之</div></div><div class="hero-art" aria-label="象徵家族代代相連的抽象枝葉紋樣"><span class="art-corner">SHELIAO FIG 01</span><svg class="line-art" viewBox="0 0 520 610" role="img" aria-label="以年輪及枝脈象徵家族傳承的藝術圖形"><g fill="none" stroke="#bbaa8a" stroke-width="1"><ellipse cx="260" cy="300" rx="160" ry="228"/><ellipse cx="260" cy="300" rx="140" ry="208"/><ellipse cx="260" cy="300" rx="118" ry="185"/><ellipse cx="260" cy="300" rx="97" ry="160"/><ellipse cx="260" cy="300" rx="75" ry="132"/><path d="M260 94v420 M96 302h328 M260 303C203 251 194 213 215 166 M260 303C330 249 338 211 315 161 M260 303C196 353 189 401 227 451 M260 303C320 349 343 385 305 467" opacity=".6"/><path d="M85 490Q258 532 435 490 M93 116Q250 84 427 117" opacity=".4"/></g><g fill="#c2a97c"><circle cx="260" cy="95" r="3"/><circle cx="100" cy="300" r="3"/><circle cx="420" cy="300" r="3"/><circle cx="260" cy="510" r="3"/></g><rect x="186" y="255" width="148" height="92" fill="#173c32"/><text x="260" y="316" text-anchor="middle" class="center-mark">王</text></svg><span class="art-caption">A LEGACY WRITTEN THROUGH GENERATIONS</span></div></section>
+<section class="hero"><div class="hero-copy"><span class="kicker">王家正史 THE SHELIAO WANG FAMILY RECORD</span><h1 class="display">社寮王家<br><em>以史傳家</em></h1><p class="intro">社寮王家居於此乃天時地利人和上祖相傳飄洋自福建輾轉汐止落腳社寮從紡織代工軍旅歲月到港邊商鋪以土地為序記下王家的來時路</p><div class="hero-cta"><a class="btn" href="#about">閱讀王家簡史 <span></span></a><a class="quiet-link" href="#caiyun">閱讀人物列傳　</a></div><div class="hero-bottom">一姓之傳 百年之思 以文存之</div></div><div class="hero-art" aria-label="象徵家族代代相連的抽象枝葉紋樣"><span class="art-corner">SHELIAO FIG 01</span><svg class="line-art" viewBox="0 0 520 610" role="img" aria-label="以年輪及枝脈象徵家族傳承的藝術圖形"><g fill="none" stroke="#bbaa8a" stroke-width="1"><ellipse cx="260" cy="300" rx="160" ry="228"/><ellipse cx="260" cy="300" rx="140" ry="208"/><ellipse cx="260" cy="300" rx="118" ry="185"/><ellipse cx="260" cy="300" rx="97" ry="160"/><ellipse cx="260" cy="300" rx="75" ry="132"/><path d="M260 94v420 M96 302h328 M260 303C203 251 194 213 215 166 M260 303C330 249 338 211 315 161 M260 303C196 353 189 401 227 451 M260 303C320 349 343 385 305 467" opacity=".6"/><path d="M85 490Q258 532 435 490 M93 116Q250 84 427 117" opacity=".4"/></g><g fill="#c2a97c"><circle cx="260" cy="95" r="3"/><circle cx="100" cy="300" r="3"/><circle cx="420" cy="300" r="3"/><circle cx="260" cy="510" r="3"/></g><rect x="186" y="255" width="148" height="92" fill="#173c32"/><text x="260" y="316" text-anchor="middle" class="center-mark">王</text></svg><span class="art-caption">A LEGACY WRITTEN THROUGH GENERATIONS</span></div></section>
 <div class="wrap"><div class="rule"><span>SHELIAO WANG FAMILY FAMILY HERITAGE</span><span>SCROLL TO EXPLORE </span></div>
 <section class="intro-block reveal family-preface" id="about">
 <div class="preface-heading"><span class="kicker">序 王家簡史 FAMILY PRELUDE</span><h2>社寮王家<br>家乘序</h2><div class="inscription-stamp">家訓　節儉、和</div><div class="preface-side-note">以先人之事，<br>寄後人之思。</div></div>
@@ -586,39 +611,11 @@ html.reader-larger .leisure-table p,html.reader-larger .leisure-intro p,html.rea
 <p class="oral-note">家乘序依編纂者最新修訂照錄。此文為家族史傳體題序，祖籍、地名沿革、災異、紀年及其他史實，仍有待文獻考證。</p>
 
 </div></section>
-<section class="courtyard-history reveal" id="courtyard" aria-labelledby="courtyardTitle">
- <div class="courtyard-head">
-  <div><span class="kicker">COURTYARD CHRONICLES</span><h2 id="courtyardTitle">庭外史</h2></div>
-  <p>門前一草一木　亦有家人往事可記</p>
- </div>
- <div class="courtyard-stories">
-  <article class="courtyard-story">
-   <span class="courtyard-story-order">庭外史之一</span>
-   <div class="courtyard-art courtyard-art-flower" aria-hidden="true"><span>曇</span></div>
-   <div class="courtyard-story-body"><h3>曇之夜綻</h3><p>於王家外庭，種有曇，彩雲所種也，常蓓蕾，夜時所綻，頃刻即謝，姍姍可愛</p><small>據家族庭院記憶收錄</small></div>
-  </article>
-  <article class="courtyard-story">
-   <span class="courtyard-story-order">庭外史之二</span>
-   <div class="courtyard-art courtyard-art-leaf" aria-hidden="true"><span>草</span></div>
-   <div class="courtyard-story-body"><h3>菸草偶生</h3><p>王家屋外，居萬時而喫煙之，菸草落於溝蓋下，意外種得菸草。</p><small>據家族庭院記憶收錄</small></div>
-  </article>
- </div>
- <div class="courtyard-footer"><span>庭外瑣事　存於家乘</span><a href="#chapters">續讀人物與通紀 <span aria-hidden="true">→</span></a></div>
-</section>
 
-<section class="leisure-history reveal" id="family-pastimes" aria-labelledby="leisureTitle">
- <div class="leisure-heading"><div><span class="kicker">FAMILY LEISURE CHRONICLES</span><h2 id="leisureTitle">雅興外史</h2><p>歲時相聚　骰聲牌響　一門之樂存於其間</p></div><span class="leisure-seal" aria-hidden="true">樂</span></div>
- <div class="leisure-opening"><span>歲朝骰戲</span><p>王家逢歲時佳節　親族常聚一堂　以骰為戲　俗稱輸吧骰子　此為家中相傳之過年餘興　亦見於臺灣民間節慶娛樂　往昔常以拾元為注　輪番擲骰　勝負之間笑語不絕　所重者終為親族共聚之歡</p></div>
- <div class="leisure-intro"><span>麻將三席</span><p>後麻將亦成雅興之一　居萬素好麻將　然於小注之局興致未必相投　親族團聚常分三桌　各有所好　今據家人回憶錄其席間風貌</p></div>
- <div class="leisure-tables">
-  <article class="leisure-table"><span class="leisure-table-index">其一</span><h3>古稀之席</h3><span class="leisure-players">長輩之桌</span><p>此席多為年逾七旬之長者　居萬與黃氏彩雲之兄弟常同遊　每以千元為注　其間摸牌談笑　時有吞雲吐霧　煙霧與牌聲相織　儼然昔年團圓之景</p></article>
-  <article class="leisure-table"><span class="leisure-table-index">其二</span><h3>二代之席</h3><span class="leisure-players">親族同席</span><p>常見王居萬　王漢文　林衞國　陳建成等人入席　王漢文乃居萬之弟與郭氏碧枝所生　此席亦常煙霧繚繞　出牌論局　時而熱鬧　各有牌風</p></article>
-  <article class="leisure-table"><span class="leisure-table-index">其三</span><h3>少輩親友之席</h3><span class="leisure-players">不拘長幼的歡聚之桌</span><p>林哲緯　林哲愷　李心為　陳季佑　王美玲　李芸閑　王品媗等人常聚　除麻將外亦遊黃牌　撲克　狼人殺　拉密及任天堂 Switch　麻將或採底十台五　或底五十台十　其注較輕　談笑與遊戲並重</p></article>
- </div>
- <div class="leisure-ending"><span>編者附記</span><p>三桌雖各異其趣　長幼同聚之情則一　昔日骰響牌聲　今皆成家門記憶　本文據家屬口述而錄　桌次席次及金額並非每次聚會皆固定</p><a href="#chronicle">接續閱讀王家通紀</a></div>
-</section>
+
+
 </div>
-<section class="dark-panel" id="chapters"><div class="wrap"><div class="section-heading reveal"><div><span class="kicker">THE HOUSE OF WANG 王家家乘</span><h2>事以年繫<br>人以傳存</h2></div><p>一族之盛衰藏於日用一人之悲歡見於平生此編以家乘為序以人物列傳為骨願來者得知先人所歷</p></div><div class="theme-grid"><a class="theme-card reveal" href="#about"><small>01 FAMILY PRELUDE</small><h3>王家簡史</h3><p>祖出福建因緣汐止終與社寮相繫錄其家訓與編纂者之思</p><span class="arrow"></span></a><a class="theme-card reveal" href="#caiyun"><small>02 BIOGRAPHIES</small><h3>人物列傳</h3><p>述彩雲少時勞苦記居萬軍旅鄉情使名姓之後猶見其人</p><span class="arrow"></span></a><a class="theme-card reveal" href="#chronicle"><small>03 CHRONICLE</small><h3>王家通紀</h3><p>按時序繫遷徙立業社寮興替與子孫之思</p><span class="arrow"></span></a></div></div></section>
+<section class="dark-panel" id="chapters"><div class="wrap"><div class="section-heading reveal"><div><span class="kicker">THE HOUSE OF WANG 王家家乘</span><h2>事以年繫<br>人以傳存</h2></div><p>一族之盛衰藏於日用一人之悲歡見於平生此編以家乘為序以人物列傳為骨願來者得知先人所歷</p></div><div class="theme-grid"><a class="theme-card reveal" href="#about"><small>01 FAMILY PRELUDE</small><h3>王家簡史</h3><p>祖出福建因緣汐止終與社寮相繫錄其家訓與編纂者之思</p><span class="arrow"></span></a><a class="theme-card reveal" href="#caiyun"><small>02 BIOGRAPHIES</small><h3>人物列傳</h3><p>述彩雲少時勞苦記居萬軍旅鄉情使名姓之後猶見其人</p><span class="arrow"></span></a><a class="theme-card reveal" href="#chronicle"><small>03 CHRONICLE</small><h3>王家通紀</h3><p>按時序繫遷徙立業社寮興替與子孫之思</p><span class="arrow"></span></a><a class="theme-card reveal" href="more/"><small>04 MORE STORIES</small><h3>更多史篇</h3><p>分頁閱讀庭外史　雅興外史　災異紀事與社寮地誌</p><span class="arrow"></span></a></div></div></section>
 <section class="biography-section wrap" id="caiyun"><div class="biography-head reveal"><span class="kicker">人物列傳 BIOGRAPHY I</span><span class="biography-index">列傳第一</span></div>
 <div class="biography-grid"><div class="biography-title reveal"><span class="title-seal">王</span><h2>王黃彩雲<small>WANG HUANG CAIYUN</small></h2><p class="biography-subtitle">起於寒素成於勤儉半生風雨護一門燈火</p><div class="biography-rule"></div><p class="biography-aside">黃氏少時以勞動養家後與王居萬偕老於基隆社寮經營撞球間及和平檳榔店此傳據後人口述編纂</p></div>
 <div class="biography-text reveal"><h3>其一 少而勤業</h3><p>王黃彩雲者汐止黃家女也家傳黃氏為地方望族然富名未必能濟其貧其少時家用匱乏甫畢國小即負生計之重時值民國六十年代前後臺灣加工出口之業方興彩雲入紡織之工兼為家庭代作年紀尚幼而已知一家衣食之艱後人言及此事念其以稚肩任家事未嘗不感</p>
@@ -721,71 +718,13 @@ html.reader-larger .leisure-table p,html.reader-larger .leisure-intro p,html.rea
  <div class="shipyard-history-sources"><span>參考史料</span><a href="https://zh.wikipedia.org/wiki/台灣國際造船" target="_blank" rel="noopener noreferrer">維基百科　台灣國際造船</a><a href="https://art.archives.gov.tw/tw/art/1363.html" target="_blank" rel="noopener noreferrer">國家發展委員會檔案管理局　推動大型工程</a><a href="https://www.csbcnet.com.tw/Uploads/AnnualReport104.pdf" target="_blank" rel="noopener noreferrer">台灣國際造船　公司年報</a><a href="https://news.pts.org.tw/article/33001" target="_blank" rel="noopener noreferrer">公視新聞　基隆港產業與中船裁員</a></div>
 </aside>
 <article class="chronicle-item reveal"><div class="chronicle-year">近年 待考</div><div class="chronicle-copy"><small>卷五 鄉里</small><h3>居萬存仁長念鄉人</h3><p>居萬軍旅之外亦念社寮鄰里據家屬記述曾創辦和平島長青協會助長者及里民至其創會年月與正式職務尚待考證</p></div><i class="chronicle-dot"></i></article>
-<aside class="fire-history-annex reveal" id="nextdoor-fire" aria-labelledby="nextdoorFireTitle">
- <div class="fire-annex-heading">
-  <span class="kicker">ANOTHER FAMILY FIRE MEMORY</span>
-  <span class="fire-annex-date">民國一百零八年九月九日下午</span>
-  <h3 id="nextdoorFireTitle">附記　阿媽家旁午後大火</h3>
-  <p class="fire-annex-subtitle">和平島舊日街屋　原阿九鯊魚羹旁火警口述</p>
- </div>
- <div class="fire-annex-story">
-  <p>民國一百零八年九月九日下午和平島阿媽家旁忽起大火其地為昔日阿九鯊魚羹所在之處與家宅緊鄰當時王家族人適逢外出旅遊未在現場據家屬所述幸無家族人員傷亡</p>
-  <p>然火勢所及不少物品遭焚損諸物昔日尚存而一旦成灰念之令人惋惜家族因旅遊而避過災厄亦成眾人記憶中難忘一事</p>
-  <p class="fire-annex-verification">此事與民國一一四年春節屋後火警為兩起不同事件　火警日期與時段由家屬補充確認　詳細受損範圍及火警原因仍待影像與正式紀錄查證</p>
- </div>
- <div class="fire-archive-library" aria-labelledby="nextdoorArchiveTitle">
-  <div class="fire-archive-label"><span class="kicker">FAMILY VIDEO ARCHIVE</span><h4 id="nextdoorArchiveTitle">阿媽家旁午後大火　影音紀錄</h4><p>家屬提供相關影片　共三支　影音內容尚未逐段核實</p></div>
-  <div class="fire-archive-grid"><a class="fire-archive-link" href="https://youtu.be/wY6YrXXqlbI?si=SW8IqofGcwHJvoCf" target="_blank" rel="noopener noreferrer" aria-label="阿媽家旁午後火警影像一"><span class="spring-fire-play" aria-hidden="true"></span><span>影像一</span><span class="fire-video-go" aria-hidden="true">觀看</span></a>
-   <a class="fire-archive-link" href="https://youtu.be/QxD_RAg_zgE?si=cfrmc0FFYOJQ-PUj" target="_blank" rel="noopener noreferrer" aria-label="阿媽家旁午後火警影像二"><span class="spring-fire-play" aria-hidden="true"></span><span>影像二</span><span class="fire-video-go" aria-hidden="true">觀看</span></a>
-   <a class="fire-archive-link" href="https://youtu.be/IaVmKb1oLsY?si=nTuqVG9Yosk4Hy9M" target="_blank" rel="noopener noreferrer" aria-label="阿媽家旁午後火警影像三"><span class="spring-fire-play" aria-hidden="true"></span><span>影像三</span><span class="fire-video-go" aria-hidden="true">觀看</span></a></div>
- </div>
-</aside>
-<article class="chronicle-item reveal spring-fire-entry" id="spring-fire-2025">
- <div class="chronicle-year">民國一一四年正月初一<small class="spring-fire-date">2025年1月29日</small></div>
- <div class="chronicle-copy">
-  <small>卷六 家事</small>
-  <h3>乙巳元旦屋後火警記</h3>
-  <p>民國一一四年乙巳正月朔日歲首新正王家族人齊集和平島阿媽家過年其時家人團坐忽聞屋後傳來一聲巨響初聞如煙火迨消防車聲繼起方知附近有火警家人所述火起於宅後幸未延燒王家房舍家人得以平安度此驚險一刻</p>
-  <p>據家人口述當時有人在屋後施放鞭炮疑因而起火然其確切起火原因尚未取得消防調查資料不以推測定其事今記春節團聚之際忽遇火警與屋舍未遭焚毀之幸使後人知此年家事</p>
-
-  <div class="fire-archive-library" aria-labelledby="rearArchiveTitle">
-   <div class="fire-archive-label"><span class="kicker">FAMILY VIDEO ARCHIVE</span><h4 id="rearArchiveTitle">乙巳元旦屋後火警　影音紀錄</h4><p>原有影片及家屬新增影片　共四支　影像內容尚未逐段核實</p></div>
-   <div class="fire-archive-grid"><a class="fire-archive-link" href="https://youtu.be/57ngxmBJYgQ?si=AgKppe7k2b6XO0bV" target="_blank" rel="noopener noreferrer" aria-label="春節屋後火警影像一"><span class="spring-fire-play" aria-hidden="true"></span><span>影像一</span><span class="fire-video-go" aria-hidden="true">觀看</span></a>
-    <a class="fire-archive-link" href="https://youtu.be/4cXZi6lpoLk?si=-01yQmxa0ce_j99F" target="_blank" rel="noopener noreferrer" aria-label="春節屋後火警影像二"><span class="spring-fire-play" aria-hidden="true"></span><span>影像二</span><span class="fire-video-go" aria-hidden="true">觀看</span></a>
-    <a class="fire-archive-link" href="https://youtu.be/cL4Q8PYMzHE?si=R3UIxFjzUlCTSwK4" target="_blank" rel="noopener noreferrer" aria-label="春節屋後火警影像三"><span class="spring-fire-play" aria-hidden="true"></span><span>影像三</span><span class="fire-video-go" aria-hidden="true">觀看</span></a>
-    <a class="fire-archive-link" href="https://youtu.be/mX5wcyjsZck?si=mA3DxgaPAreNrc9u" target="_blank" rel="noopener noreferrer" aria-label="春節屋後火警影像四"><span class="spring-fire-play" aria-hidden="true"></span><span>影像四</span><span class="fire-video-go" aria-hidden="true">觀看</span></a></div>
-  </div>
-  <p class="spring-fire-reference">紀事來源　家屬口述　日期經中央氣象署國曆與農曆對照核實　肇因尚待消防紀錄佐證</p>
- </div>
- <i class="chronicle-dot"></i>
-</article>
+<article class="chronicle-item reveal" id="nextdoor-fire"><div class="chronicle-year">民國一百零八年九月九日下午</div><div class="chronicle-copy"><small>卷六 災異</small><h3>阿媽家旁午後火警記</h3><p>和平島阿媽家旁昔日阿九鯊魚羹所在之處於午後發生大火　時族人適在外旅遊　據家人追述未有家族人員傷亡　而有物品遭焚損　其事今存於災異別卷</p><a class="chronicle-read-more" href="more/incidents.html#nextdoor-fire">閱讀火警詳記與三支影片</a></div><i class="chronicle-dot"></i></article>
+<article class="chronicle-item reveal" id="spring-fire-2025"><div class="chronicle-year">民國一一四年正月初一</div><div class="chronicle-copy"><small>卷七 災異</small><h3>乙巳元旦屋後火警記</h3><p>歲朝闔家團聚於阿媽家　忽聞屋後巨響與消防車聲　據家人追述火勢幸未延及家屋　此事別存家族影音四則</p><a class="chronicle-read-more" href="more/incidents.html#spring-fire-2025">閱讀火警詳記與四支影片</a></div><i class="chronicle-dot"></i></article>
 
 
-<article class="chronicle-item reveal"><div class="chronicle-year">2025年3月1日</div><div class="chronicle-copy"><small>卷七 壽辰</small><h3>親族稱觴八秩誌慶</h3><p>民國一一四年三月一日王家為居萬祝農曆八十大壽是日農曆乙巳年二月初二親族得聚其意在祝年高而念來路是否為實際農曆誕辰正日尚待確認</p></div><i class="chronicle-dot"></i></article></section>
+<article class="chronicle-item reveal"><div class="chronicle-year">2025年3月1日</div><div class="chronicle-copy"><small>卷八 壽辰</small><h3>親族稱觴八秩誌慶</h3><p>民國一一四年三月一日王家為居萬祝農曆八十大壽是日農曆乙巳年二月初二親族得聚其意在祝年高而念來路是否為實際農曆誕辰正日尚待確認</p></div><i class="chronicle-dot"></i></article></section>
 <section class="earth" id="origins"><div class="wrap"><div class="section-heading reveal"><div><span class="kicker">FROM FUJIAN TO SHELIAO</span><h2>山海為證<br>一脈相承</h2></div><p>先世渡海之說汐止黃家之緣社寮王家之基凡家人所記依源而載未得舊牒之處姑存疑問</p></div><div class="origin-grid"><article class="origin reveal"><span class="origin-label">01 FROM FUJIAN TO TAIWAN</span><h3>渡海而來</h3><p>先祖相傳自福建渡臺緣及汐止海程年代與人物尚無完整文獻俟後世續考</p><span class="num">源</span></article><article class="origin reveal"><span class="origin-label">02 THE SHELIAO WANG FAMILY</span><h3>社寮立家</h3><p>居萬與彩雲成家於和平島從軍旅與營生至鄰里情誼一門記憶傳於子孫</p><span class="num">家</span></article></div>
-<div class="island-history" id="island-history" aria-labelledby="islandHistoryTitle">
- <div class="island-history-head reveal">
-  <div><span class="kicker">THE LAND BEFORE OUR FAMILY</span><h3 id="islandHistoryTitle">社寮地誌</h3><p class="island-history-subtitle">地有其名　島有其史　家有其人</p></div>
-  <p>王家居社寮　然社寮之史非始於王家　今錄和平島古今地名　歷代港事與人文遺跡　使子孫知其家鄉之所自來</p>
- </div>
- <div class="island-history-map" aria-label="和平島歷史階段">
-  <article class="island-history-step reveal"><span class="island-history-era">漢人入墾以前</span><h4>巴賽族與海島</h4><p>島上原有巴賽族人生活　地方史料載其舊稱為 tuman　此地遠在王家定居之前　已有人群活動</p><span class="island-history-num">一</span></article>
-  <article class="island-history-step reveal"><span class="island-history-era">大航海時代</span><h4>雞籠海門與西荷往來</h4><p>昔稱大雞籠嶼　西元一六二六年西班牙人在島上興建聖薩爾瓦多城　其後荷蘭人亦曾在此經營據點</p><span class="island-history-num">二</span></article>
-  <article class="island-history-step reveal"><span class="island-history-era">清季至日治</span><h4>社寮島與社寮町</h4><p>清季以社寮島之名行世　日治時期行政區曾稱社寮町　社寮一名因而留存在地名與居民記憶之中</p><span class="island-history-num">三</span></article>
-  <article class="island-history-step reveal"><span class="island-history-era">日治昭和年間</span><h4>築橋通海　島陸相連</h4><p>和平橋前身興建於西元一九三四年　跨越水道連通基隆市區與社寮島　今所見橋梁經後代改建</p><span class="island-history-num">四</span></article>
-  <article class="island-history-step reveal"><span class="island-history-era">戰後初期</span><h4>社寮之名漸為和平島</h4><p>戰後此地逐漸改稱和平島　關於改名時間與由來有不同說法　地方文獻亦見二二八事件之前即有和平相關地名　不可遽定單一說法</p><span class="island-history-num">五</span></article>
-  <article class="island-history-step reveal"><span class="island-history-era">戰後至近代</span><h4>港業興替　家乘其間</h4><p>社寮曾歷戰後社寮島事件與其傷痕　亦見船廠與港業之盛衰　王家居於此地　其家事乃地方史長河中之一頁</p><span class="island-history-num">六</span></article>
- </div>
- <div class="island-history-bottom">
-  <p>地誌據公開文獻摘錄地方沿革　不代表王家先人親歷上述全部歷史　家族之事仍依口述與家乘另載</p>
-  <div class="island-history-links">
-   <a href="https://zh.wikipedia.org/wiki/和平島" target="_blank" rel="noopener noreferrer">維基百科　和平島</a>
-   <a href="https://klgreat.klcg.gov.tw/History_Content.aspx?n=8106&amp;s=8856&amp;sms=12604" target="_blank" rel="noopener noreferrer">基隆市歷史現場　社寮島</a>
-   <a href="https://klgreat.klcg.gov.tw/History_Content.aspx?n=8106&amp;s=8853" target="_blank" rel="noopener noreferrer">基隆市歷史現場　聖薩爾瓦多城</a>
-   <a href="#shipyard-history">閱讀中船與港業興替</a>
-  </div>
- </div>
-</div>
+<div class="island-history-linkout" id="island-history"><span class="kicker">SHELIAO ISLAND CHRONICLES</span><h3>社寮地誌</h3><p>從大雞籠嶼至和平島　社寮地名沿革　西荷遺跡與港城歷史已獨立編為地誌</p><a href="more/locality.html">閱讀完整社寮地誌</a></div>
 </div></section>
 
 <section class="lineage-section" id="lineage" aria-labelledby="lineageTitle">
@@ -829,9 +768,19 @@ html.reader-larger .leisure-table p,html.reader-larger .leisure-intro p,html.rea
 </section>
 
 <section class="sources wrap" id="sources"><div class="source-layout"><div class="reveal"><span class="kicker">OUR ARCHIVAL PRINCIPLES</span><h2>述其所聞<br>慎其所未聞</h2></div><div class="source-list reveal"><p>家屬口述與訪談 <span>ORAL HISTORY</span></p><p>歷史照片與實物 <span>FAMILY COLLECTION</span></p><p>工商及公開登記 <span>PUBLIC RECORDS</span></p><p>人物列傳與編年修訂 <span>EDITORIAL ARCHIVE</span></p></div></div></section>
+
+<section class="other-histories wrap" id="more-histories" aria-labelledby="moreHistoriesTitle">
+<div class="other-history-intro"><div><span class="kicker">OTHER FAMILY HISTORIES</span><h2 id="moreHistoriesTitle">正史之外<br>別有外史</h2></div><p>家乘以人與年為經　庭院之事　歲時之樂　災異之記　島嶼之史　今分列各篇　循更多史篇可入卷閱讀</p></div>
+<div class="other-history-grid">
+<a id="courtyard" href="more/courtyard.html" class="other-history-card"><span class="other-history-number">外史壹</span><strong>庭外史</strong><small>曇花夜開與菸草偶生</small><span class="other-history-enter">入卷閱讀</span></a>
+<a id="family-pastimes" href="more/pastimes.html" class="other-history-card"><span class="other-history-number">外史貳</span><strong>雅興外史</strong><small>歲朝骰戲與三桌麻將</small><span class="other-history-enter">入卷閱讀</span></a>
+<a href="more/incidents.html" class="other-history-card"><span class="other-history-number">別卷參</span><strong>災異紀事</strong><small>兩起火警與家族影音</small><span class="other-history-enter">入卷閱讀</span></a>
+<a href="more/locality.html" class="other-history-card"><span class="other-history-number">地誌肆</span><strong>社寮地誌</strong><small>和平島地名與港史</small><span class="other-history-enter">入卷閱讀</span></a>
+</div><a class="other-history-view-all" href="more/">瀏覽全部史篇</a>
+</section>
 <button type="button" id="readingSizeToggle" class="reading-size-toggle" aria-pressed="false" aria-label="放大正文文字">字級 <span aria-hidden="true">甲</span></button>
 <a class="backtotop" id="jumpToTop" href="#top" aria-label="返回網頁頂部"><span aria-hidden="true"></span><span>TOP</span></a>
-</main><footer class="footer"><div class="wrap"><div class="footer-top"><div><div class="footer-title">社寮王家</div><p class="footer-desc">社寮為家以年紀事以人立傳<br>THE SHELIAO WANG FAMILY ARCHIVE</p></div><div class="footer-links"><a href="#about">簡史</a><a href="#courtyard">庭外史</a><a href="#family-pastimes">雅興外史</a><a href="#caiyun">彩雲傳</a><a href="#juwan">居萬傳</a><a href="#secondgen">二代傳</a><a href="#chronicle">通紀</a><a href="#lineage">世系</a><a href="#sources">典藏原則</a></div></div><div class="footer-bottom"><span> 2026 SHELIAO WANG FAMILY ARCHIVE FAMILY ORAL HISTORY</span><a class="private-entry" href="./personalfamilypage/" aria-label="家族內部入口">FAMILY ACCESS </a></div></div></footer>
+</main><footer class="footer"><div class="wrap"><div class="footer-top"><div><div class="footer-title">社寮王家</div><p class="footer-desc">社寮為家以年紀事以人立傳<br>THE SHELIAO WANG FAMILY ARCHIVE</p></div><div class="footer-links"><a href="#about">家乘序</a><a href="#caiyun">人物列傳</a><a href="#chronicle">家族通紀</a><a href="#lineage">王家世系</a><a href="more/">更多史篇</a></div></div><div class="footer-bottom"><span> 2026 SHELIAO WANG FAMILY ARCHIVE FAMILY ORAL HISTORY</span><a class="private-entry" href="./personalfamilypage/" aria-label="家族內部入口">FAMILY ACCESS </a></div></div></footer>
 
 
 
