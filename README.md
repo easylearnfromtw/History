@@ -27,7 +27,7 @@
 
 - Public 公開網站以「社寮王家」為核心，文風採紀傳體、史傳筆法，強調人物境遇、親情、持家與地方記憶。
 - 〈王家簡史〉依編纂者最新提供的四段序文照錄 保留天實 祝融侵擾 眷聽而從之及民國壹佰壹拾五時秋朔等原有措辭 序文修辭及地方史敘述仍須與可考史實分別看待
-- 〈王黃彩雲傳〉、〈王居萬傳〉、六卷《社寮王家通紀》作風格統一；原有「家族口述／待考」標註保留。
+- 〈王黃彩雲傳〉、〈王居萬傳〉及《社寮王家通紀》作風格統一；原有「家族口述／待考」標註保留。
 - 私人家族入口 `personalfamilypage/` 仍維持獨立，公開文稿不載王居萬肖像與私密族譜。
 
 ## 公開第二代列傳
@@ -116,3 +116,18 @@
 - 菸草偶生　王家屋外，居萬時而喫煙之，菸草落於溝蓋下，意外種得菸草。
 
 兩則為家族生活記憶　並非可獨立考證之植物種源或科學鑑定資料
+
+## 正史與外史多頁架構
+
+公開網站為真正多頁的家族史館　正史首頁保留家乘序　人物列傳　王家通紀　家系源流及家族世系　與家族成員搜尋等互動
+
+- 正史首頁　https://easylearnfromtw.github.io/History/
+- 更多史篇目錄　https://easylearnfromtw.github.io/History/more/
+- 庭外史　https://easylearnfromtw.github.io/History/more/courtyard.html
+- 雅興外史　https://easylearnfromtw.github.io/History/more/pastimes.html
+- 災異紀事　https://easylearnfromtw.github.io/History/more/incidents.html
+- 社寮地誌　https://easylearnfromtw.github.io/History/more/locality.html
+
+首頁的更多史篇入口會前往獨立頁面　家族通紀中的火警紀錄僅保留概要　舊有的章節錨點仍保留作導覽　完整影音移至災異紀事　地誌詳細內容移至獨立頁面
+
+公開的雅興外史只收錄家族遊戲及麻將傳統　健康病史與具名家庭爭執均不公開　私人家族典藏仍是獨立加密入口
