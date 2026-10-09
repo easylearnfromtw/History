@@ -64,9 +64,34 @@
  .submit,.lock,.input-row button,.back{touch-action:manipulation}
 }
 
+
+/* Accessible private archive access and recovery */
+.input-row input{font-family:var(--sans);-webkit-text-size-adjust:100%}
+#togglePass{touch-action:manipulation}
+.submit{position:relative;touch-action:manipulation}
+#submit[aria-busy="true"]{cursor:progress}
+#submit[aria-busy="true"] span:last-child{display:block;width:17px;height:17px;border:2px solid #f0e9dd88;border-top-color:#f0e9dd;border-radius:50%;animation:unlock-spin 1s linear infinite}
+@keyframes unlock-spin{to{transform:rotate(360deg)}}
+.login-help{border-top:1px solid var(--line);margin-top:20px;color:var(--deep);font:400 12px/1.9 var(--serif)}
+.login-help summary{padding:15px 5px;min-height:48px;cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between}
+.login-help summary::-webkit-details-marker{display:none}
+.login-help summary:after{content:"";display:inline-block;width:9px;height:9px;border-right:1px solid currentColor;border-bottom:1px solid currentColor;transform:rotate(45deg);transition:transform .15s}
+.login-help[open] summary:after{transform:rotate(225deg)}
+.login-help-content{background:#eee8de;padding:16px 19px}
+.login-help-content p{margin:0 0 10px;color:#6b6153}
+.login-help-content p:last-child{margin-bottom:0}
+.note{border-top:0;margin-top:12px;padding-top:10px}
+#feedback:not(:empty){border-left:2px solid #b18b5b;background:#f0e7d8;padding:8px 11px;color:#704c33}
+@media(max-width:800px){
+ .login-help{margin-top:16px}
+ .login-help summary{font-size:13px}
+ #secret{font-size:17px;line-height:1.4}
+}
+@media(prefers-reduced-motion:reduce){#submit[aria-busy="true"] span:last-child{animation:none}.login-help summary:after{transition:none}}
 </style></head><body>
 <header class="header"><a class="brand" href="../"><span class="seal">林王</span><span>林王家族誌<small>PRIVATE FAMILY ARCHIVE</small></span></a><a class="back" href="../">返回家族官網　</a></header>
-<main class="shell"><div class="left"><span class="kicker">FAMILY MEMBERS PRIVATE COLLECTION</span><h1>家族故事<br>留給家人閱讀</h1><p>有人寫下名字有人留下足跡完整世系人物列傳家族大事紀與私人典藏僅在通過密碼解鎖後顯示</p><div class="foot">LIN WANG ARCHIVE RESTRICTED</div></div><div class="right"><section class="formbox"><span class="topline">01 MEMBER ACCESS</span><h2>登入家族典藏室</h2><p class="intro">請輸入家族密碼私人內容會在你使用的裝置上解密密碼不會以明文儲存於此網頁</p><form id="login"><label for="secret">家族密碼</label><div class="input-row"><input type="password" id="secret" autocomplete="current-password" required placeholder="請輸入家族密碼"><button type="button" id="togglePass">顯示</button></div><button class="submit" id="submit" type="submit"><span>解鎖家族完整版</span><span aria-hidden="true"></span></button><p id="feedback" class="error" role="status" aria-live="polite"></p></form><div class="note">此頁使用加密檔案並非伺服器帳號系統已解鎖的資料僅保留在此瀏覽分頁請勿在共用裝置解鎖8 位數密碼只適合測試日後建議換成較長的通關密語</div></section></div></main>
+<main class="shell"><div class="left"><span class="kicker">FAMILY MEMBERS PRIVATE COLLECTION</span><h1>家族故事<br>留給家人閱讀</h1><p>有人寫下名字有人留下足跡完整世系人物列傳家族大事紀與私人典藏僅在通過密碼解鎖後顯示</p><div class="foot">LIN WANG ARCHIVE RESTRICTED</div></div><div class="right"><section class="formbox"><span class="topline">01 MEMBER ACCESS</span><h2>登入家族典藏室</h2><p class="intro">請輸入家族密碼私人內容會在你使用的裝置上解密密碼不會以明文儲存於此網頁</p><form id="login"><label for="secret">家族密碼</label><div class="input-row"><input type="password" id="secret" name="family-password" autocomplete="current-password" autocorrect="off" autocapitalize="off" spellcheck="false" enterkeyhint="go" aria-describedby="feedback" required placeholder="請輸入家族密碼"><button type="button" id="togglePass" aria-label="顯示或隱藏家族密碼">顯示</button></div><button class="submit" id="submit" type="submit"><span>解鎖家族完整版</span><span aria-hidden="true"></span></button><p id="feedback" class="error" role="status" aria-live="polite"></p></form><details class="login-help"><summary>遇到解鎖問題</summary><div class="login-help-content"><p>請確認已連接網路　並使用新版 Safari 或 Chrome 瀏覽器</p><p>家族密碼由家人提供　如無法解鎖請向家族管理者確認</p><p>開啟私人族譜後可隨時點選登出並鎖定</p></div></details>
+<div class="note">此頁使用加密檔案並非伺服器帳號系統已解鎖的資料僅保留在此瀏覽分頁請勿在共用裝置解鎖8 位數密碼只適合測試日後建議換成較長的通關密語</div></section></div></main>
 <section class="private" id="private" hidden><div class="privatebar"><div>林王家族誌　　私人完整典藏<small>PRIVATE ACCESS SESSION ONLY</small></div><button class="lock" id="logout">登出並鎖定　</button></div><iframe id="familyFrame" title="完整家族族譜" referrerpolicy="no-referrer"></iframe></section>
 <script>
 (()=>{'use strict';const $=x=>document.querySelector(x);const input=$('#secret');let blobUrl=null,locked=false;
