@@ -1,0 +1,21 @@
+{
+  "version": 3,
+  "algorithm": "AES-256-GCM",
+  "kdf": "PBKDF2-SHA256",
+  "iterations": 750000,
+  "salt": "IXaAfBuaN8cBwGL7aQUgPBkyDc/s+ZQM",
+  "nonce": "XmGQY4Kl8NduBRd5",
+  "aad": "lin-wang-family-private-v3",
+  "parts": [
+    "part-01.txt",
+    "part-02.txt",
+    "part-03.txt",
+    "part-04.txt",
+    "part-05.txt",
+    "part-06.txt",
+    "part-07.txt",
+    "part-08.txt",
+    "part-09.txt",
+    "part-10.txt"
+  ]
+}
