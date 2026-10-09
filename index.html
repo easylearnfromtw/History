@@ -240,6 +240,56 @@ html{scroll-padding-top:105px}section[id],article[id],.intro-block[id]{scroll-ma
  #lineage{scroll-margin-top:calc(90px + env(safe-area-inset-top,0px))}
 }
 @media(prefers-reduced-motion:reduce){.lineage-branch,.lineage-ancestor-person{transition:none}}
+
+/* Tappable lineage people and mobile biographical reader */
+.lineage-ancestor-person{font:inherit;cursor:pointer;text-align:center;color:inherit}
+.lineage-name-trigger{display:block;width:max-content;max-width:100%;cursor:pointer;outline-offset:3px;border-bottom:1px solid transparent}
+.lineage-name-trigger:hover,.lineage-name-trigger:focus-visible{border-bottom-color:var(--gold)}
+.lineage-record-trigger{touch-action:manipulation}
+.lineage-child-list .lineage-child-record{background:#f5efe4;border:1px solid #d8c7ad;color:var(--green);font:500 13px var(--serif);padding:9px 13px;min-height:44px;cursor:pointer}
+.lineage-child-record:hover,.lineage-child-record:focus-visible{background:#e2d5bf;border-color:var(--gold)}
+.lineage-inline-person{border:0;border-bottom:1px solid #a78d63;padding:0 3px;margin:0 1px;background:transparent;color:var(--green);font:inherit;min-height:34px;cursor:pointer}
+.lineage-branch summary{touch-action:manipulation}
+.lineage-person-overlay[hidden]{display:none}
+.lineage-person-overlay{position:fixed;inset:0;z-index:110;display:flex;align-items:stretch;justify-content:flex-end;isolation:isolate}
+.lineage-person-backdrop{position:absolute;inset:0;background:rgba(18,35,28,.57);backdrop-filter:blur(5px)}
+.lineage-person-sheet{background:var(--linen);color:var(--ink);position:relative;z-index:1;height:100%;width:min(100%,575px);overflow:auto;overscroll-behavior:contain;box-shadow:-18px 0 65px #0002;outline:none;padding:40px clamp(25px,5vw,55px) 60px}
+.lineage-sheet-header{display:flex;align-items:center;justify-content:space-between;gap:15px;border-bottom:1px solid var(--line);padding-bottom:20px;margin-bottom:35px}
+.lineage-sheet-close{background:transparent;color:var(--green);border:1px solid #c1ad8e;min-width:60px;min-height:44px;font:500 13px var(--serif)}
+.lineage-sheet-close:hover{background:#e8dfcf}
+.lineage-sheet-grip{display:none}
+.lineage-person-label{font:500 12px var(--serif);color:var(--brown);letter-spacing:.15em}
+.lineage-person-content h2{font:400 clamp(42px,5vw,64px)/1.4 var(--serif);color:var(--green);margin:16px 0 13px}
+.lineage-person-alias{color:#967850;font:500 17px/2 var(--serif);margin:0 0 27px}
+.lineage-person-biography{font:400 16px/2.35 var(--serif);color:#554d43;margin:23px 0 30px;overflow-wrap:anywhere}
+.lineage-person-relations{border-top:1px solid #d5c9b5;border-bottom:1px solid #d5c9b5}
+.lineage-person-relrow{display:grid;grid-template-columns:83px 1fr;align-items:start;gap:16px;padding:15px 0}
+.lineage-person-relrow + .lineage-person-relrow{border-top:1px solid #e0d7c8}
+.lineage-person-relrow>span{font:500 12px/2 var(--serif);color:var(--brown)}
+.lineage-person-relrow>div{display:flex;gap:8px;flex-wrap:wrap}
+.lineage-person-relrow button{min-height:40px;background:#ede5d8;border:1px solid #d6c5aa;color:var(--green);padding:7px 12px;font:400 13px var(--serif)}
+.lineage-person-relrow button:hover{background:#e2d5bf}
+.lineage-person-actions{margin-top:25px}
+.lineage-person-actions a{display:inline-flex;align-items:center;justify-content:center;background:var(--green);color:var(--cream);padding:12px 20px;min-height:48px;font:500 13px var(--serif)}
+.lineage-person-citation{margin-top:35px;color:#807263;font:400 11px/2.2 var(--serif)}
+body.lineage-modal-open{overflow:hidden}
+@media(max-width:720px){
+ .lineage-branch summary{min-height:120px}
+ .lineage-name-trigger{font-size:28px;min-height:42px;display:flex;align-items:center;max-width:100%}
+ .lineage-relations p{line-height:2.05}
+ .lineage-person-overlay{align-items:flex-end}
+ .lineage-person-backdrop{backdrop-filter:none}
+ .lineage-person-sheet{height:min(92dvh,850px);max-height:calc(100dvh - env(safe-area-inset-top,0px) - 12px);width:100%;border-radius:17px 17px 0 0;padding:0 21px calc(30px + env(safe-area-inset-bottom,0px));box-shadow:0 -8px 40px #13201b4d}
+ .lineage-sheet-grip{display:block;width:43px;height:4px;border-radius:4px;background:#ad9d86;margin:10px auto 8px}
+ .lineage-sheet-header{position:sticky;top:0;z-index:1;background:var(--linen);padding:8px 0 12px;margin-bottom:20px}
+ .lineage-person-content h2{font-size:43px;line-height:1.33;margin:11px 0 9px}
+ .lineage-person-alias{font-size:16px;line-height:1.8;margin-bottom:15px}
+ .lineage-person-biography{font-size:16px;line-height:2.22;margin:18px 0 24px}
+ .lineage-person-relrow{grid-template-columns:65px 1fr;gap:8px;padding:13px 0}
+ .lineage-person-relrow button{min-height:44px;font-size:13px}
+ .lineage-person-citation{margin:25px 0 0}
+}
+@media(prefers-reduced-motion:reduce){.lineage-person-sheet{scroll-behavior:auto}}
 </style>
 </head>
 <body>
@@ -289,32 +339,32 @@ html{scroll-padding-top:105px}section[id],article[id],.intro-block[id]{scroll-ma
   </div>
   <div class="lineage-generation"><span>王家先輩</span><span>夫妻同心</span></div>
   <div class="lineage-ancestor reveal" aria-label="王居萬與王黃彩雲夫妻">
-   <a href="#juwan" class="lineage-ancestor-person"><span>王氏</span><strong>王居萬</strong><small>參閱居萬傳</small></a>
+   <button type="button" class="lineage-ancestor-person lineage-record-trigger" data-person="王居萬"><span>王氏</span><strong>王居萬</strong><small>參閱居萬傳</small></button>
    <span class="lineage-marriage" aria-label="夫妻">結縭</span>
-   <a href="#caiyun" class="lineage-ancestor-person"><span>黃氏</span><strong>王黃彩雲</strong><small>參閱彩雲傳</small></a>
+   <button type="button" class="lineage-ancestor-person lineage-record-trigger" data-person="王黃彩雲"><span>黃氏</span><strong>王黃彩雲</strong><small>參閱彩雲傳</small></button>
   </div>
   <div class="lineage-stem" aria-hidden="true"></div>
   <div class="lineage-descendant-header">
    <span class="kicker">THE NEXT GENERATION</span>
-   <span class="lineage-detail-hint">點開各支　閱其子孫</span>
+   <span class="lineage-detail-hint">點擊姓名可讀人物紀錄　點擊家系卡片可展開後代</span>
    <button type="button" class="lineage-toggle-all" id="lineageToggleAll" aria-expanded="false">展開全譜</button>
   </div>
   <div class="lineage-branches">
    <details class="lineage-branch" id="branch-junming">
-    <summary><span class="lineage-branch-top">王家支系</span><strong>王俊明</strong><span class="lineage-branch-summary">子女　王翔立　王品媗</span><span class="lineage-expand"><span class="lineage-closed">查看後代</span><span class="lineage-open">收合後代</span></span></summary>
-    <div class="lineage-relations"><span class="lineage-relation-title">婚姻與家系</span><p>曾與鄧越鴻結縭　育有子女二人</p><div class="lineage-child-list"><span>王翔立</span><span>王品媗</span></div><p class="lineage-footnote">現配偶家人稱小梅　正式姓名待補</p></div>
+    <summary><span class="lineage-branch-top">王家支系</span><strong class="lineage-name-trigger" role="button" tabindex="0" data-person="王俊明" aria-label="查看王俊明人物紀錄">王俊明</strong><span class="lineage-branch-summary">子女　王翔立　王品媗</span><span class="lineage-expand"><span class="lineage-closed">查看後代</span><span class="lineage-open">收合後代</span></span></summary>
+    <div class="lineage-relations"><span class="lineage-relation-title">婚姻與家系</span><p>曾與<button type="button" class="lineage-inline-person lineage-record-trigger" data-person="鄧越鴻">鄧越鴻</button>結縭　育有子女二人</p><div class="lineage-child-list"><button type="button" class="lineage-child-record lineage-record-trigger" data-person="王翔立" aria-label="查看王翔立人物紀錄">王翔立</button><button type="button" class="lineage-child-record lineage-record-trigger" data-person="王品媗" aria-label="查看王品媗人物紀錄">王品媗</button></div><p class="lineage-footnote">現配偶家人稱<button type="button" class="lineage-inline-person lineage-record-trigger" data-person="小梅">小梅</button>　正式姓名待補</p></div>
    </details>
    <details class="lineage-branch" id="branch-xiaofen">
-    <summary><span class="lineage-branch-top">王家支系</span><strong>王曉芬</strong><span class="lineage-branch-summary">子女　林哲緯　林哲愷</span><span class="lineage-expand"><span class="lineage-closed">查看後代</span><span class="lineage-open">收合後代</span></span></summary>
-    <div class="lineage-relations"><span class="lineage-relation-title">婚姻與家系</span><p>與林衞國結縭　育有二子</p><div class="lineage-child-list"><span>林哲緯</span><span>林哲愷</span></div></div>
+    <summary><span class="lineage-branch-top">王家支系</span><strong class="lineage-name-trigger" role="button" tabindex="0" data-person="王曉芬" aria-label="查看王曉芬人物紀錄">王曉芬</strong><span class="lineage-branch-summary">子女　林哲緯　林哲愷</span><span class="lineage-expand"><span class="lineage-closed">查看後代</span><span class="lineage-open">收合後代</span></span></summary>
+    <div class="lineage-relations"><span class="lineage-relation-title">婚姻與家系</span><p>與<button type="button" class="lineage-inline-person lineage-record-trigger" data-person="林衞國">林衞國</button>結縭　育有二子</p><div class="lineage-child-list"><button type="button" class="lineage-child-record lineage-record-trigger" data-person="林哲緯" aria-label="查看林哲緯人物紀錄">林哲緯</button><button type="button" class="lineage-child-record lineage-record-trigger" data-person="林哲愷" aria-label="查看林哲愷人物紀錄">林哲愷</button></div></div>
    </details>
    <details class="lineage-branch" id="branch-meiling">
-    <summary><span class="lineage-branch-top">王家支系</span><strong>王美玲</strong><span class="lineage-branch-summary">子女　陳季佑</span><span class="lineage-expand"><span class="lineage-closed">查看後代</span><span class="lineage-open">收合後代</span></span></summary>
-    <div class="lineage-relations"><span class="lineage-relation-title">婚姻與家系</span><p>與陳建成結縭　育有一子</p><div class="lineage-child-list"><span>陳季佑</span></div></div>
+    <summary><span class="lineage-branch-top">王家支系</span><strong class="lineage-name-trigger" role="button" tabindex="0" data-person="王美玲" aria-label="查看王美玲人物紀錄">王美玲</strong><span class="lineage-branch-summary">子女　陳季佑</span><span class="lineage-expand"><span class="lineage-closed">查看後代</span><span class="lineage-open">收合後代</span></span></summary>
+    <div class="lineage-relations"><span class="lineage-relation-title">婚姻與家系</span><p>與<button type="button" class="lineage-inline-person lineage-record-trigger" data-person="陳建成">陳建成</button>結縭　育有一子</p><div class="lineage-child-list"><button type="button" class="lineage-child-record lineage-record-trigger" data-person="陳季佑" aria-label="查看陳季佑人物紀錄">陳季佑</button></div></div>
    </details>
    <details class="lineage-branch" id="branch-yingjia">
-    <summary><span class="lineage-branch-top">王家支系</span><strong>王螢家</strong><span class="lineage-branch-summary">子女　李芸閑　李永彤</span><span class="lineage-expand"><span class="lineage-closed">查看後代</span><span class="lineage-open">收合後代</span></span></summary>
-    <div class="lineage-relations"><span class="lineage-relation-title">婚姻與家系</span><p>與李心為結縭　育有二女</p><div class="lineage-child-list"><span>李芸閑</span><span>李永彤</span></div></div>
+    <summary><span class="lineage-branch-top">王家支系</span><strong class="lineage-name-trigger" role="button" tabindex="0" data-person="王螢家" aria-label="查看王螢家人物紀錄">王螢家</strong><span class="lineage-branch-summary">子女　李芸閑　李永彤</span><span class="lineage-expand"><span class="lineage-closed">查看後代</span><span class="lineage-open">收合後代</span></span></summary>
+    <div class="lineage-relations"><span class="lineage-relation-title">婚姻與家系</span><p>與<button type="button" class="lineage-inline-person lineage-record-trigger" data-person="李心為">李心為</button>結縭　育有二女</p><div class="lineage-child-list"><button type="button" class="lineage-child-record lineage-record-trigger" data-person="李芸閑" aria-label="查看李芸閑人物紀錄">李芸閑</button><button type="button" class="lineage-child-record lineage-record-trigger" data-person="李永彤" aria-label="查看李永彤人物紀錄">李永彤</button></div></div>
    </details>
   </div>
   <div class="lineage-epilogue"><p>一姓之本　散為諸支　四支之親　同繫社寮</p><small>此處僅錄姓名與家屬確認之親屬關係　不載生辰與私人資料　四支次序不代表長幼</small></div>
@@ -384,5 +434,109 @@ if(lineageAll&&lineageBranches.length){
  lineageBranches.forEach(item=>item.addEventListener('toggle',updateLineageToggle));
  updateLineageToggle();
 }
+
+/* Public lineage individual records without sensitive attributes */
+const publicLineageRecords={
+ "王居萬":{group:"王家祖輩",bio:"王氏居萬少歷軍旅　據家屬所述曾就讀政治作戰學校　官至陸軍上尉　曾任輔導長　後於社寮參與鄉里公益",rel:[["配偶",["王黃彩雲"]],["子女",["王俊明","王曉芬","王美玲","王螢家"]]],chapter:"#juwan",source:"據家族口述整理　詳細事蹟參閱王居萬傳"},
+ "王黃彩雲":{group:"王家祖輩",bio:"黃氏彩雲出自汐止黃家　少時曾從事紡織與家庭代工　後與居萬成家於社寮　經營撞球間及和平檳榔店　後人尤念其勤儉與遠見",rel:[["配偶",["王居萬"]],["子女",["王俊明","王曉芬","王美玲","王螢家"]]],chapter:"#caiyun",source:"據家族口述整理　詳細事蹟參閱王黃彩雲傳"},
+ "王俊明":{group:"王家第二代",bio:"王氏俊明為居萬彩雲之子　家族譜系錄其婚姻與二名子女",rel:[["父母",["王居萬","王黃彩雲"]],["曾配偶",["鄧越鴻"]],["子女",["王翔立","王品媗"]],["現配偶",["小梅"]]],source:"家屬提供親屬關係"},
+ "王曉芬":{group:"王家第二代",bio:"王氏曉芬為居萬彩雲之女　與林衞國結縭　育有哲緯哲愷二子　並曾參與家族事業之經營",rel:[["父母",["王居萬","王黃彩雲"]],["配偶",["林衞國"]],["子女",["林哲緯","林哲愷"]]],source:"家屬提供親屬關係及事業經歷"},
+ "王美玲":{group:"王家第二代",bio:"王氏美玲為居萬彩雲之女　與陳建成結縭　育有季佑一子",rel:[["父母",["王居萬","王黃彩雲"]],["配偶",["陳建成"]],["子女",["陳季佑"]]],source:"家屬提供親屬關係"},
+ "王螢家":{group:"王家第二代",bio:"王氏螢家為居萬彩雲之女　與李心為結縭　育有芸閑永彤二女",rel:[["父母",["王居萬","王黃彩雲"]],["配偶",["李心為"]],["子女",["李芸閑","李永彤"]]],source:"家屬提供親屬關係"},
+ "鄧越鴻":{group:"王家姻親",bio:"王俊明前配偶　王翔立及王品媗之母",rel:[["曾配偶",["王俊明"]],["子女",["王翔立","王品媗"]]],source:"家屬提供親屬關係"},
+ "小梅":{group:"王家姻親",bio:"王俊明現配偶　家人稱小梅　正式姓名尚待確認",rel:[["配偶",["王俊明"]]],source:"小梅為家族稱呼　非正式姓名記載"},
+ "林衞國":{group:"王家姻親",bio:"王曉芬之夫　與曉芬共育哲緯哲愷二子　曾共同經營家族事業",rel:[["配偶",["王曉芬"]],["子女",["林哲緯","林哲愷"]]],source:"家屬提供親屬關係"},
+ "陳建成":{group:"王家姻親",bio:"王美玲之夫　陳季佑之父",rel:[["配偶",["王美玲"]],["子女",["陳季佑"]]],source:"家屬提供親屬關係"},
+ "李心為":{group:"王家姻親",bio:"王螢家之夫　李芸閑與李永彤之父",rel:[["配偶",["王螢家"]],["子女",["李芸閑","李永彤"]]],source:"家屬提供親屬關係"},
+ "王翔立":{group:"王家第三代",bio:"王俊明與鄧越鴻之子　為王家後輩",rel:[["父母",["王俊明","鄧越鴻"]],["手足",["王品媗"]]],source:"家屬提供親屬關係"},
+ "王品媗":{group:"王家第三代",bio:"王俊明與鄧越鴻之女　為王家後輩",rel:[["父母",["王俊明","鄧越鴻"]],["手足",["王翔立"]]],source:"家屬提供親屬關係"},
+ "林哲緯":{group:"王家第三代",bio:"王曉芬與林衞國之長子　為王家外孫",rel:[["父母",["王曉芬","林衞國"]],["手足",["林哲愷"]]],source:"家屬提供親屬關係"},
+ "林哲愷":{group:"王家第三代",alias:"字　敻詠　　號　淺山居士",bio:"林氏哲愷　字敻詠　號淺山居士　為曉芬與衞國之次子　王家外孫　參與家族族譜之編纂",rel:[["父母",["王曉芬","林衞國"]],["手足",["林哲緯"]]],source:"字號及親屬關係據家屬最新確認"},
+ "陳季佑":{group:"王家第三代",bio:"王美玲與陳建成之子　為王家外孫",rel:[["父母",["王美玲","陳建成"]]],source:"家屬提供親屬關係"},
+ "李芸閑":{group:"王家第三代",bio:"王螢家與李心為之女　為王家外孫女",rel:[["父母",["王螢家","李心為"]],["手足",["李永彤"]]],source:"家屬提供親屬關係"},
+ "李永彤":{group:"王家第三代",bio:"王螢家與李心為之女　為王家外孫女",rel:[["父母",["王螢家","李心為"]],["手足",["李芸閑"]]],source:"家屬提供親屬關係"}
+};
+const personOverlay=document.querySelector('#lineagePersonOverlay');
+const personSheet=document.querySelector('#lineagePersonSheet');
+const personContent=document.querySelector('#lineagePersonContent');
+let lastPersonTrigger=null;
+let activePersonName=null;
+function escapeLineageText(value){
+ return String(value??'').replace(/[&<>"']/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
+}
+function openLineagePerson(name,trigger){
+ const record=publicLineageRecords[name];if(!record)return;
+ const isOpening=personOverlay.hidden;
+ if(isOpening){lastPersonTrigger=trigger||document.activeElement;document.body.classList.add('lineage-modal-open');}
+ activePersonName=name;
+ personOverlay.hidden=false;
+ document.querySelector('#lineagePersonName').textContent=name;
+ document.querySelector('#lineagePersonRole').textContent=record.group;
+ const aliasEl=document.querySelector('#lineagePersonAlias');
+ aliasEl.hidden=!record.alias;aliasEl.textContent=record.alias||'';
+ document.querySelector('#lineagePersonBio').textContent=record.bio;
+ document.querySelector('#lineagePersonCitation').textContent=record.source||'家屬口述';
+ const relContainer=document.querySelector('#lineagePersonRelations');
+ relContainer.innerHTML=(record.rel||[]).map(([label,names])=>'<div class="lineage-person-relrow"><span>'+escapeLineageText(label)+'</span><div>'+names.map(n=>'<button type="button" data-person="'+escapeLineageText(n)+'">'+escapeLineageText(n)+'</button>').join('')+'</div></div>').join('');
+ document.querySelector('#lineagePersonActions').innerHTML=record.chapter?'<a href="'+record.chapter+'" data-person-read>閱讀人物列傳</a>':'';
+ personSheet.scrollTop=0;
+ if(isOpening)document.querySelector('#lineagePersonClose').focus({preventScroll:true});
+}
+function closeLineagePerson(){
+ if(personOverlay.hidden)return;
+ personOverlay.hidden=true;
+ document.body.classList.remove('lineage-modal-open');
+ activePersonName=null;
+ const target=lastPersonTrigger;lastPersonTrigger=null;
+ if(target&&target.isConnected)target.focus({preventScroll:true});
+}
+document.querySelector('#lineage').addEventListener('click',event=>{
+ const trigger=event.target.closest('[data-person]');
+ if(!trigger)return;
+ if(trigger.closest('summary')){event.preventDefault();event.stopPropagation();}
+ openLineagePerson(trigger.dataset.person,trigger);
+});
+document.querySelector('#lineage').addEventListener('keydown',event=>{
+ const trigger=event.target.closest('.lineage-name-trigger');
+ if(trigger&&(event.key==='Enter'||event.key===' ')){
+  event.preventDefault();event.stopPropagation();openLineagePerson(trigger.dataset.person,trigger);
+ }
+});
+personContent.addEventListener('click',event=>{
+ const other=event.target.closest('[data-person]');
+ if(other){openLineagePerson(other.dataset.person,other);return;}
+ const reading=event.target.closest('[data-person-read]');
+ if(reading)closeLineagePerson();
+});
+document.querySelector('#lineagePersonClose').addEventListener('click',closeLineagePerson);
+personOverlay.querySelector('[data-close-person]').addEventListener('click',closeLineagePerson);
+document.addEventListener('keydown',event=>{
+ if(personOverlay.hidden)return;
+ if(event.key==='Escape'){event.preventDefault();closeLineagePerson();return;}
+ if(event.key==='Tab'){
+  const focusable=[...personSheet.querySelectorAll('button:not([disabled]),a[href]')].filter(x=>x.offsetParent!==null);
+  if(!focusable.length)return;
+  const first=focusable[0],last=focusable[focusable.length-1];
+  if(event.shiftKey&&document.activeElement===first){event.preventDefault();last.focus();}
+  else if(!event.shiftKey&&document.activeElement===last){event.preventDefault();first.focus();}
+ }
+});
 </script>
+
+<div class="lineage-person-overlay" id="lineagePersonOverlay" hidden>
+ <div class="lineage-person-backdrop" data-close-person aria-hidden="true"></div>
+ <section class="lineage-person-sheet" id="lineagePersonSheet" role="dialog" aria-modal="true" aria-labelledby="lineagePersonName" tabindex="-1">
+  <div class="lineage-sheet-grip" aria-hidden="true"></div>
+  <div class="lineage-sheet-header"><span class="kicker">社寮王家　人物紀錄</span><button type="button" class="lineage-sheet-close" id="lineagePersonClose" aria-label="關閉人物紀錄">關閉</button></div>
+  <div class="lineage-person-content" id="lineagePersonContent" aria-live="polite">
+   <span class="lineage-person-label" id="lineagePersonRole"></span>
+   <h2 id="lineagePersonName"></h2>
+   <p class="lineage-person-alias" id="lineagePersonAlias" hidden></p>
+   <p class="lineage-person-biography" id="lineagePersonBio"></p>
+   <div class="lineage-person-relations" id="lineagePersonRelations"></div>
+   <div class="lineage-person-actions" id="lineagePersonActions"></div>
+   <p class="lineage-person-citation" id="lineagePersonCitation"></p>
+  </div>
+ </section>
+</div>
 </body></html>
