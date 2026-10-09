@@ -113,6 +113,17 @@ function applyCorrections(html,patch){
   if(!courtesy.notes.some(note=>note.includes('字敻詠')))courtesy.notes.push('家屬確認　字敻詠　號淺山居士');
  }
 
+ const xiaofen=data.people.find(person=>person.id==='wang_xiaofen');
+ if(xiaofen){
+  const schools=['基隆中正國中','基隆商工'];
+  if(!Array.isArray(xiaofen.education))xiaofen.education=[];
+  for(let i=schools.length-1;i>=0;i--){
+   if(!xiaofen.education.some(entry=>String(entry).includes(schools[i])))xiaofen.education.unshift(schools[i]);
+  }
+  if(!String(xiaofen.bio||'').includes('基隆中正國中'))xiaofen.bio='王曉芬國中就讀基隆中正國中　高中就讀基隆商工　'+String(xiaofen.bio||'');
+  if(!Array.isArray(xiaofen.notes))xiaofen.notes=[];
+  if(!xiaofen.notes.some(note=>String(note).includes('基隆中正國中')))xiaofen.notes.push('家屬確認　國中就讀基隆中正國中　高中就讀基隆商工');
+ }
  for(const e of patch.newEvents||[]){if(!data.events.some(x=>x.title===e.title))data.events.push(e)}
  const content=JSON.stringify(data).replace(/</g,'\\u003c');
  return html.slice(0,start)+content+html.slice(end);
