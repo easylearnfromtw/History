@@ -65,3 +65,26 @@
 家屬提供影片連結　https://youtu.be/57ngxmBJYgQ?si=AgKppe7k2b6XO0bV　影音內容尚未獨立核實
 
 公開通紀加列卷六家事　原卷六壽辰調整為卷七　不改動原有序文
+
+## 兩起和平島火警與影音紀錄
+
+兩起事件分別收錄於社寮王家通紀及主題附記 並非同一場火災
+
+### 乙巳元旦屋後火警
+
+2025年1月29日　農曆乙巳正月初一　家人春節聚於阿媽家　忽聞一聲巨響及消防車聲　家人表示後方火警未延燒家屋　據家人口述可能與施放鞭炮有關　尚無正式火調佐證
+
+- https://youtu.be/57ngxmBJYgQ?si=AgKppe7k2b6XO0bV
+- https://youtu.be/4cXZi6lpoLk?si=-01yQmxa0ce_j99F
+- https://youtu.be/cL4Q8PYMzHE?si=R3UIxFjzUlCTSwK4
+- https://youtu.be/mX5wcyjsZck?si=mA3DxgaPAreNrc9u
+
+### 阿媽家旁午間大火
+
+日期年份待考　家人回憶和平島阿媽家旁 原阿九鯊魚羹所在處 中午突發大火　家族適逢外出旅遊　據家屬所述家人未有傷亡　惟有不少物品焚損　損失範圍仍待核實
+
+- https://youtu.be/wY6YrXXqlbI?si=SW8IqofGcwHJvoCf
+- https://youtu.be/QxD_RAg_zgE?si=cfrmc0FFYOJQ-PUj
+- https://youtu.be/IaVmKb1oLsY?si=nTuqVG9Yosk4Hy9M
+
+影音網址由家屬提供　影片內容目前無法直接核實　日期及火警原因另待查證　公開網站採家族口述紀錄方式呈現
