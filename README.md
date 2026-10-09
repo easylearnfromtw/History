@@ -1,14 +1,23 @@
-# 林王家族誌 · History v2.4 公開測試版
+# 林王家族誌 · THE LIN × WANG FAMILY ARCHIVE
 
-主旨：家族電子族譜網站，**編年體主軸、人物列傳互相串連**。
+家族專屬族譜網站，採 **編年體 × 紀傳體**：以家族通紀串連不同世代，人物列傳保存生命故事。
 
-- `index.html` 首頁和互動介面
-- `data.js` 人物、世系、事件和七卷通紀
-- `app.js` 與 `style.css` 操作及視覺
-- `家族完整史料總整理.html` 網頁閱讀版
+## 雙入口
 
-## 注意
+- 公開官方網站：`index.html` — 家族源流、編年選讀、典藏理念。
+- 私人家族入口：`personalfamilypage/index.html` — 家族密碼解鎖私密資料；加密檔 `personalfamilypage/archive.enc.json`。
 
-這是 **公開 GitHub 儲存庫** 的免密碼測試站。為保護家人在世者，未成年人精確生日、個人社群網址、私人醫療細節及精確骨灰安奉位置沒有放入公開檔案。已確認與待確認的資訊各自標示。完整原始史料由家族成員另行備份，公開版不應視作史實定本。
+主視覺：亞麻白、深綠色、香檳金、棕色及大地色。沒有上傳或引用王居萬先生照片。
 
-如 GitHub Pages 尚未啟用：Settings → Pages → Deploy from a branch → main → /(root)。
+## 保護提醒
+
+這是加密存檔式的靜態測試站，不是真正的伺服器帳號驗證。私人資料雖使用 AES-256-GCM 與 PBKDF2 加密，短數字密碼仍容易受到離線猜測；正式上線建議改為高強度密碼或身分驗證服務。
+
+**過去放入公開 GitHub 的舊版資料與照片，可能仍存在 Git 歷史紀錄、網站快取或複本中。** 從最新分支刪除檔案，無法保證清除過去已公開的內容。
+
+本網站僅屬林王家族誌；和平島內容只作家族歷史背景，不開設獨立《和平島誌》。
+
+## 網站連結
+
+- 公開版：https://easylearnfromtw.github.io/History/
+- 家族入口：https://easylearnfromtw.github.io/History/personalfamilypage/
