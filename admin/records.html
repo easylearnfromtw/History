@@ -1,0 +1,40 @@
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>個別史記編輯｜社寮王家</title><link rel="stylesheet" href="../assets/heritage.css"><style>
+.records-editor{width:min(960px,calc(100% - 44px));margin:47px auto 85px}.records-editor h1{font:400 clamp(33px,5vw,54px)/1.5 var(--m-serif);margin:18px 0}.records-intro{font-size:13px;line-height:2.2;color:var(--m-muted)}
+.records-panel{border:1px solid var(--m-line);padding:clamp(20px,3vw,32px);background:#faf7ef;margin:23px 0}.records-panel h2{font:400 26px var(--m-serif)}.records-editor label{display:block;font-size:12px;color:var(--m-muted);margin:15px 0}.records-editor input,.records-editor textarea,.records-editor select{display:block;width:100%;margin-top:7px;padding:12px;border:1px solid var(--m-line);background:#fffdf9;color:var(--m-dark);font:14px/1.8 var(--m-sans);border-radius:0}.records-editor textarea{min-height:122px;resize:vertical}
+.records-section{margin:16px 0;padding:15px 18px;border-left:2px solid var(--m-gold);background:#f2ebe0}.records-actions{display:flex;gap:11px;flex-wrap:wrap;margin:22px 0}.records-actions button,.records-actions a{border:1px solid var(--m-dark);background:var(--m-dark);color:white;padding:11px 17px;font:13px var(--m-sans)}.records-actions .quiet{background:transparent;color:var(--m-dark)}.records-actions button:disabled{opacity:.5}.records-state{min-height:43px;font-size:13px;color:var(--m-dark);padding:10px 0}.records-guide{font-size:12px;line-height:2.2;color:var(--m-muted);border-top:1px solid var(--m-line);padding-top:16px}
+</style></head><body>
+<header class="museum-header"><div class="museum-shell museum-top"><a class="museum-brand" href="../"><span class="museum-mark">王</span><span><b>社寮王家</b><small>THE SHELIAO WANG FAMILY</small></span></a><nav class="museum-nav" style="display:flex;gap:17px"><a href="./">學籍管理</a><a href="../relations/">人物關係圖</a><a href="../">史館首頁</a></nav></div></header>
+<main class="records-editor"><span class="museum-small">EDITORIAL BACK OFFICE / HISTORICAL BIOGRAPHIES</span><h1>個別史記編輯</h1><p class="records-intro">本頁編輯公開人物關係圖所使用的個別史記，與學籍資料管理分開。所有修改先停留在目前瀏覽器，使用具備儲存庫 Contents 寫入權限的 GitHub 權杖才可正式發布。</p>
+<div class="records-panel"><label for="choosePerson">編輯哪一位人物？<select id="choosePerson"><option value="">正在載入人物清單</option></select></label>
+<div id="recordFields" hidden><label for="recordRole">人物稱謂／世系位置<input id="recordRole" type="text"></label><label for="recordSource">史料性質與待考註記<textarea id="recordSource" rows="2"></textarea></label>
+<h2>史傳段落</h2><div id="recordSections"></div><div class="records-actions"><button id="addSection" type="button" class="quiet">加入段落</button></div></div></div>
+<div class="records-panel"><h2>發布史記</h2><label for="editorToken">GitHub Fine-grained Personal Access Token（Contents: Read and write；僅當次使用）<input type="password" id="editorToken" autocomplete="off" spellcheck="false" placeholder="貼上個人權杖"></label>
+<div class="records-actions"><button id="save" type="button" disabled>發布至 GitHub</button><button id="backup" type="button" class="quiet" disabled>下載 JSON 備份</button><a href="https://github.com/easylearnfromtw/History/edit/main/data/person-records.json" target="_blank" rel="noopener noreferrer" class="quiet">在 GitHub 編輯</a></div><p class="records-state" id="recordStatus" role="status" aria-live="polite">正在讀取公開史記</p><p class="records-guide">這是以 GitHub 權限作為寫入驗證的靜態管理頁，沒有另設管理員帳號。編輯內容會公開於家族史館，請勿填入不適合公開的地址、完整生日、醫療紀錄或其他私人資訊。權杖不會被儲存於 localStorage 或傳至非 GitHub 網域。</p></div>
+</main>
+<script>
+(()=>{'use strict';const repo='easylearnfromtw/History',filePath='data/person-records.json',api='https://api.github.com/repos/'+repo+'/contents/'+filePath;
+const $=id=>document.getElementById(id);let data=null,sha=null,choice='';
+function status(t){$('recordStatus').textContent=t}
+function make(tag,txt){const e=document.createElement(tag);if(txt!==undefined)e.textContent=txt;return e}
+function input(parent,field,label,textarea=false){const l=make('label',label),el=make(textarea?'textarea':'input');if(!textarea)el.type='text';el.value=String(parent[field]||'');el.addEventListener('input',()=>{parent[field]=el.value;status('變更尚未發布')});l.append(el);return l}
+function renderPerson(){const p=data.records[choice],root=$('recordSections');root.replaceChildren();$('recordFields').hidden=!p;if(!p)return;$('recordRole').value=p.role||'';$('recordSource').value=p.source||'';
+ (p.sections||[]).forEach((section,i)=>{const div=make('div');div.className='records-section';div.append(input(section,'heading','段落標題 '+(i+1)),input(section,'text','段落正文',true));const remove=make('button','刪除此段');remove.type='button';remove.className='quiet';remove.style.cssText='border:1px solid #b7a890;background:none;padding:8px 13px;margin:8px 0;cursor:pointer';remove.addEventListener('click',()=>{p.sections.splice(i,1);renderPerson();status('已刪除段落，尚未發布')});div.append(remove);root.append(div)});
+}
+function decodeGitContent(c){const bytes=Uint8Array.from(atob(c.replace(/\s+/g,'')),x=>x.charCodeAt(0));return new TextDecoder().decode(bytes)}
+function encodeGitContent(c){const bytes=new TextEncoder().encode(c);let raw='';for(const n of bytes)raw+=String.fromCharCode(n);return btoa(raw)}
+$('choosePerson').addEventListener('change',e=>{choice=e.target.value;renderPerson()});
+$('recordRole').addEventListener('input',e=>{if(choice){data.records[choice].role=e.target.value;status('變更尚未發布')}});
+$('recordSource').addEventListener('input',e=>{if(choice){data.records[choice].source=e.target.value;status('變更尚未發布')}});
+$('addSection').addEventListener('click',()=>{if(!choice)return;data.records[choice].sections.push({heading:'新段落',text:''});renderPerson();status('新增段落尚未發布')});
+$('backup').addEventListener('click',()=>{if(!data)return;const url=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)+'\n'],{type:'application/json'}));const a=make('a');a.href=url;a.download='person-records.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),300)});
+async function load(){try{const r=await fetch(api+'?ref=main',{headers:{Accept:'application/vnd.github+json'}});if(!r.ok)throw Error('GitHub 讀取失敗：'+r.status);const x=await r.json();sha=x.sha;data=JSON.parse(decodeGitContent(x.content));const names=Object.keys(data.records);const select=$('choosePerson');select.replaceChildren();for(const name of names){const o=make('option',name);o.value=name;select.append(o)}choice=names[0]||'';select.value=choice;renderPerson();$('save').disabled=false;$('backup').disabled=false;status('已載入 '+names.length+' 位人物史記');}catch(e){status(String(e.message||e))}}
+$('save').addEventListener('click',async()=>{const token=$('editorToken').value.trim();if(!token){status('請先輸入具有儲存庫內容寫入權限的 GitHub 權杖');return}if(!data||!sha)return;$('save').disabled=true;status('核對 GitHub 最新資料');
+ try{const headers={Accept:'application/vnd.github+json',Authorization:'Bearer '+token,'X-GitHub-Api-Version':'2022-11-28'};const current=await fetch(api+'?ref=main',{headers});if(!current.ok)throw Error('權限驗證失敗或無法讀取儲存庫');const remote=await current.json();if(remote.sha!==sha)throw Error('另一位編輯者已修改史記，請重新整理以免覆蓋');
+ const req={message:'Edit family person histories from editorial manager',branch:'main',sha:remote.sha,content:encodeGitContent(JSON.stringify(data,null,2)+'\n')};
+ const saved=await fetch(api,{method:'PUT',headers:{...headers,'Content-Type':'application/json'},body:JSON.stringify(req)});
+ if(!saved.ok)throw Error('提交失敗，HTTP '+saved.status);const res=await saved.json();sha=res.content.sha;$('editorToken').value='';status('史記修訂已提交 GitHub；頁面更新需待部署完成');
+ }catch(e){status(String(e.message||e))}finally{$('save').disabled=false}
+});
+load();
+})();
+</script></body></html>
