@@ -173,7 +173,7 @@ function applyFamilyProfiles(html,doc){
  if(!doc||!doc.people)return html;
  const marker='window.ARCHIVE_DATA = ',at=html.indexOf(marker);
  if(at<0)return html;
- const start=at+marker.length,found=/;\\s*<\\/script>/.exec(html.slice(start));
+ const start=at+marker.length,found=/;\s*<\/script>/.exec(html.slice(start));
  if(!found)return html;
  const end=start+found.index;
  let data;try{data=JSON.parse(html.slice(start,end))}catch(error){return html}
@@ -189,10 +189,10 @@ function applyFamilyProfiles(html,doc){
   match.notes.push(info);
   if(changes.ageRelation)match.ageRelation=changes.ageRelation;
   if(status&&status!=='未提供')match.educationStatus=status;
-  let bio=String(match.bio||'').replace(/\\s*〔家族資料修訂：[^〕]*〕/gu,'');
+  let bio=String(match.bio||'').replace(/\s*〔家族資料修訂：[^〕]*〕/gu,'');
   match.bio=bio+'　〔家族資料修訂：'+info+'〕';
  }
- const safe=JSON.stringify(data).replace(/</g,'\\\\u003c');
+ const safe=JSON.stringify(data).replace(/</g,'\\u003c');
  return html.slice(0,start)+safe+html.slice(end);
 }
 async function loadPublicProfiles(){try{const r=await fetch('../data/people.json',{cache:'no-store'});if(!r.ok)throw Error('profiles');return await r.json()}catch(e){return null}}
