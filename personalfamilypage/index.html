@@ -23,16 +23,43 @@
 function toBytes(v){const b=atob(v);return Uint8Array.from(b,c=>c.charCodeAt(0))}
 async function decrypt(password){
  if(!window.crypto?.subtle||typeof DecompressionStream==='undefined')throw Error('請使用新版 Safari、Chrome 或 Edge，並從 HTTPS 網址開啟。');
- const r=await fetch('./manifest.json',{cache:'no-store'});if(!r.ok)throw Error('私人資料檔無法載入：'+r.status);
+ const r=await fetch('./archive.enc.json',{cache:'no-store'});if(!r.ok)throw Error('私人資料檔無法載入：'+r.status);
  const v=await r.json();if(v.version!==3||v.algorithm!=='AES-256-GCM'||v.kdf!=='PBKDF2-SHA256')throw Error('典藏格式不相容。');
  const base=await crypto.subtle.importKey('raw',new TextEncoder().encode(password),'PBKDF2',false,['deriveKey']);
  const key=await crypto.subtle.deriveKey({name:'PBKDF2',salt:toBytes(v.salt),hash:'SHA-256',iterations:v.iterations},base,{name:'AES-GCM',length:256},false,['decrypt']);
- const segments=await Promise.all(v.parts.map(async (path)=>{if(!/^part-\d{2}\.txt$/.test(path))throw Error('資料路徑格式錯誤');const r=await fetch('./'+path,{cache:'no-store'});if(!r.ok)throw Error('缺少片段 '+path);return (await r.text()).trim()}));
- const compressed=await crypto.subtle.decrypt({name:'AES-GCM',iv:toBytes(v.nonce),additionalData:new TextEncoder().encode(v.aad)},key,toBytes(segments.join('')));
+ const compressed=await crypto.subtle.decrypt({name:'AES-GCM',iv:toBytes(v.nonce),additionalData:new TextEncoder().encode(v.aad)},key,toBytes(v.payload));
  return await new Response(new Blob([compressed]).stream().pipeThrough(new DecompressionStream('gzip'))).text();
 }
+
+async function decryptPatch(password){
+ const r=await fetch('./corrections.enc.json',{cache:'no-store'});if(!r.ok)throw Error('最新修訂資料無法載入');
+ const v=await r.json();
+ const base=await crypto.subtle.importKey('raw',new TextEncoder().encode(password),'PBKDF2',false,['deriveKey']);
+ const key=await crypto.subtle.deriveKey({name:'PBKDF2',salt:toBytes(v.salt),hash:'SHA-256',iterations:v.iterations},base,{name:'AES-GCM',length:256},false,['decrypt']);
+ const compressed=await crypto.subtle.decrypt({name:'AES-GCM',iv:toBytes(v.nonce),additionalData:new TextEncoder().encode(v.aad)},key,toBytes(v.payload));
+ return JSON.parse(await new Response(new Blob([compressed]).stream().pipeThrough(new DecompressionStream('gzip'))).text());
+}
+function applyCorrections(html,patch){
+ const marker='window.ARCHIVE_DATA = ';
+ const at=html.indexOf(marker);if(at<0)throw Error('族譜資料格式不完整');
+ const start=at+marker.length;
+ const rest=html.slice(start);
+ const separator=/;\s*<\/script>/;
+ const found=separator.exec(rest);if(!found)throw Error('找不到族譜資料分隔');
+ const end=start+found.index;
+ const data=JSON.parse(html.slice(start,end));
+ Object.assign(data.meta,patch.meta||{});
+ for(const [id,fields] of Object.entries(patch.peopleUpdates||{})){const item=data.people.find(x=>x.id===id);if(item)Object.assign(item,fields)}
+ for(const [id,fields] of Object.entries(patch.nodeUpdates||{})){const item=data.nodes.find(x=>x.id===id);if(item)Object.assign(item,fields)}
+ for(const r of patch.newRelations||[]){if(!data.relations.some(x=>JSON.stringify(x)===JSON.stringify(r)))data.relations.push(r)}
+ for(const edge of patch.newEdges||[]){if(!data.edges.some(x=>JSON.stringify(x)===JSON.stringify(edge)))data.edges.push(edge)}
+ for(const e of patch.newEvents||[]){if(!data.events.some(x=>x.title===e.title))data.events.push(e)}
+ const content=JSON.stringify(data).replace(/</g,'\\u003c');
+ return html.slice(0,start)+content+html.slice(end);
+}
+
 $('#togglePass').addEventListener('click',()=>{const show=input.type==='password';input.type=show?'text':'password';$('#togglePass').textContent=show?'隱藏':'顯示'});
-$('#login').addEventListener('submit',async e=>{e.preventDefault();if(locked)return;locked=true;const btn=$('#submit');btn.disabled=true;$('#feedback').textContent='';try{const html=await decrypt(input.value);blobUrl=URL.createObjectURL(new Blob([html],{type:'text/html;charset=utf-8'}));$('#familyFrame').src=blobUrl;$('#private').hidden=false;document.documentElement.style.overflow='hidden';input.value='';}catch(err){$('#feedback').textContent=err.name==='OperationError'?'密碼不正確，請重新輸入。':err.message||'解鎖失敗，請稍後再試。';}finally{btn.disabled=false;locked=false}});
+$('#login').addEventListener('submit',async e=>{e.preventDefault();if(locked)return;locked=true;const btn=$('#submit');btn.disabled=true;$('#feedback').textContent='';try{let html=await decrypt(input.value);html=applyCorrections(html,await decryptPatch(input.value));blobUrl=URL.createObjectURL(new Blob([html],{type:'text/html;charset=utf-8'}));$('#familyFrame').src=blobUrl;$('#private').hidden=false;document.documentElement.style.overflow='hidden';input.value='';}catch(err){$('#feedback').textContent=err.name==='OperationError'?'密碼不正確，請重新輸入。':err.message||'解鎖失敗，請稍後再試。';}finally{btn.disabled=false;locked=false}});
 $('#logout').addEventListener('click',()=>{$('#familyFrame').removeAttribute('src');$('#private').hidden=true;document.documentElement.style.overflow='';if(blobUrl){URL.revokeObjectURL(blobUrl);blobUrl=null}input.value=''});
 window.addEventListener('pagehide',()=>{if(blobUrl)URL.revokeObjectURL(blobUrl)});
 })();
