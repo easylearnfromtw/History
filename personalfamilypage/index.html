@@ -49,7 +49,7 @@ function applyCorrections(html,patch){
  const end=start+found.index;
  const data=JSON.parse(html.slice(start,end));
  Object.assign(data.meta,patch.meta||{});
- for(const [id,fields] of Object.entries(patch.peopleUpdates||{})){const item=data.people.find(x=>x.id===id);if(item)Object.assign(item,fields)}
+ for(const [id,fields] of Object.entries(patch.peopleUpdates||{})){const i=data.people.findIndex(x=>x.id===id);if(i>=0)data.people[i]=fields}
  for(const [id,fields] of Object.entries(patch.nodeUpdates||{})){const item=data.nodes.find(x=>x.id===id);if(item)Object.assign(item,fields)}
  for(const r of patch.newRelations||[]){if(!data.relations.some(x=>JSON.stringify(x)===JSON.stringify(r)))data.relations.push(r)}
  for(const edge of patch.newEdges||[]){if(!data.edges.some(x=>JSON.stringify(x)===JSON.stringify(edge)))data.edges.push(edge)}
