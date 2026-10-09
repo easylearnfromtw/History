@@ -576,3 +576,9 @@ html{scroll-padding-top:94px}body{background:#f2eee5}.more-skip{position:fixed;l
 @media(max-width:970px){.more-head{flex-wrap:wrap}.more-links{width:100%;order:3;gap:19px}.more-intro{grid-template-columns:1fr;gap:8px}.more-disaster-entries .fire-archive-grid{grid-template-columns:1fr}}
 @media(max-width:720px){.more-head{padding:13px 17px}.more-brand strong{font-size:15px}.more-brand small{font-size:8px}.more-hero{padding:38px 0 41px}.more-hero h1{font-size:45px}.more-hero p{font-size:14px}.more-main{padding:14px 0 58px}.more-chapters{padding-bottom:12px}.more-cards{grid-template-columns:1fr;gap:12px}.more-card{min-height:230px}.more-story{padding:19px 0 36px}.more-note{flex-direction:column;align-items:stretch}.more-note a{justify-content:center}.more-foot{flex-direction:column}.more-disaster-entries .spring-fire-entry{padding:20px}.more-story .island-history-head{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.more-card{transition:none}}
+
+/* Static archive pages must never depend on homepage JavaScript reveals */
+.more-story .reveal{opacity:1!important;transform:none!important;transition:none!important;visibility:visible!important}
+.more-disaster-entries .fire-history-annex,.more-disaster-entries .chronicle-item{opacity:1!important;transform:none!important}
+.more-story .courtyard-history,.more-story .leisure-history{opacity:1!important}
+.more-card:focus-visible,.other-history-card:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
