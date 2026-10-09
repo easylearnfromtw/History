@@ -22,3 +22,6 @@
 .fire-history-annex>.reading-disclosure{margin-top:25px}
 .fire-history-annex>.reading-disclosure .fire-archive-library{margin-top:25px}
 @media(max-width:760px){.reading-disclosure>summary{padding:13px 14px;font-size:14px}.reading-disclosure-content{padding:14px 17px}.biography-text>.reading-disclosure .reading-disclosure-content>p{font-size:14px;line-height:2.35}}
+
+.lineage-person-supplement{border-top:1px solid var(--m-line,#dcd2c4);border-bottom:1px solid var(--m-line,#dcd2c4);padding:12px 0;margin:17px 0;color:var(--m-dark,#15362e)}
+.lineage-person-supplement p{margin:5px 0;font-size:13px}.lineage-person-supplement small{display:block;margin-top:8px;line-height:1.75;color:var(--m-muted,#766d5e);font-size:11px}
