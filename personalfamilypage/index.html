@@ -103,6 +103,16 @@ function applyCorrections(html,patch){
  for(const [id,fields] of Object.entries(patch.nodeUpdates||{})){const item=data.nodes.find(x=>x.id===id);if(item)Object.assign(item,fields)}
  for(const r of patch.newRelations||[]){if(!data.relations.some(x=>JSON.stringify(x)===JSON.stringify(r)))data.relations.push(r)}
  for(const edge of patch.newEdges||[]){if(!data.edges.some(x=>JSON.stringify(x)===JSON.stringify(edge)))data.edges.push(edge)}
+ const courtesy=data.people.find(person=>person.id==='lin_zhekai');
+ if(courtesy){
+  courtesy.courtesyName='敻詠';
+  courtesy.literaryName='淺山居士';
+  if(!String(courtesy.subtitle||'').includes('字敻詠'))courtesy.subtitle=String(courtesy.subtitle||'')+'　字敻詠　號淺山居士';
+  if(!String(courtesy.bio||'').includes('字敻詠'))courtesy.bio='林哲愷　字敻詠　號淺山居士　'+String(courtesy.bio||'');
+  if(!Array.isArray(courtesy.notes))courtesy.notes=[];
+  if(!courtesy.notes.some(note=>note.includes('字敻詠')))courtesy.notes.push('家屬確認　字敻詠　號淺山居士');
+ }
+
  for(const e of patch.newEvents||[]){if(!data.events.some(x=>x.title===e.title))data.events.push(e)}
  const content=JSON.stringify(data).replace(/</g,'\\u003c');
  return html.slice(0,start)+content+html.slice(end);
