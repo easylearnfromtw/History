@@ -1,0 +1,116 @@
+
+
+.lineage-child-list .lineage-child-courtesy{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;min-height:65px;line-height:1.55}
+.lineage-child-courtesy small{display:block;color:var(--brown);font:400 11px/1.7 var(--serif);margin-top:2px;white-space:normal}
+@media(max-width:720px){.lineage-child-courtesy{max-width:100%;width:100%}.lineage-child-list .lineage-child-courtesy{min-height:61px}}
+
+/* Education timeline within family biography */
+.lineage-person-education{border-top:1px solid #d5c9b5;margin:24px 0 4px;padding-top:20px}
+.lineage-person-education-title{display:block;font:500 12px var(--serif);color:var(--brown);letter-spacing:.12em;margin-bottom:11px}
+.lineage-person-education-row{display:grid;grid-template-columns:80px minmax(0,1fr);gap:10px;padding:12px 0;border-bottom:1px solid #e1d7c6;align-items:start}
+.lineage-person-education-row span{font:400 12px/1.9 var(--serif);color:var(--brown)}
+.lineage-person-education-row strong{font:400 15px/1.9 var(--serif);color:var(--green)}
+@media(max-width:720px){.lineage-person-education{margin-top:17px;padding-top:15px}.lineage-person-education-row{grid-template-columns:64px minmax(0,1fr)}}
+
+/* Second generation collected biographies with mobile-first manuscript rhythm */
+.secondgen-section{background:#f5f1e7;border-top:1px solid #d6cbb9;border-bottom:1px solid #d6cbb9;padding:105px 0 110px}
+.secondgen-header{max-width:790px}
+.secondgen-header h2{font:400 clamp(38px,5vw,63px)/1.5 var(--serif);letter-spacing:.05em;color:var(--green);margin:14px 0 18px}
+.secondgen-header p{font:400 15px/2.35 var(--serif);color:#71675a;margin:0}
+.secondgen-index{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:43px 0 65px}
+.secondgen-index a{background:#e9e1d4;border:1px solid #d1c2ac;padding:22px 18px;display:flex;min-height:135px;flex-direction:column;align-items:flex-start;justify-content:center;transition:background .2s,border-color .2s}
+.secondgen-index a:hover{background:#dfd4c0;border-color:var(--gold)}
+.secondgen-index small{font:400 11px var(--serif);color:#957954}
+.secondgen-index a span:nth-child(2){font:400 27px/1.65 var(--serif);color:var(--green);margin:7px 0}
+.secondgen-index-tail{font:400 11px var(--serif);color:#8a775f;align-self:end}
+.secondgen-manuscript{border-top:1px solid #ccbda7}
+.secondgen-life{display:grid;grid-template-columns:minmax(235px,.65fr) minmax(0,1fr);gap:clamp(35px,6vw,115px);padding:73px 0 79px;border-bottom:1px solid #d5c7b4}
+.secondgen-life-heading{position:sticky;top:118px;align-self:start}
+.secondgen-chapter-number{font:500 11px/1.9 var(--serif);color:var(--brown);letter-spacing:.1em}
+.secondgen-life h3{font:400 clamp(40px,5vw,65px)/1.48 var(--serif);letter-spacing:.07em;color:var(--green);margin:18px 0 24px}
+.secondgen-short{font:400 16px/2.2 var(--serif);color:#796952;max-width:340px}
+.secondgen-life-body>p{font:400 16px/2.55 var(--serif);color:#514b42;margin:0 0 26px;text-align:left;letter-spacing:.014em;overflow-wrap:anywhere}
+.secondgen-editorial{margin:26px 0 23px;padding:21px 23px;border-left:2px solid var(--gold);background:#ebe3d5}
+.secondgen-editorial span{font:500 11px var(--serif);color:#96754b}
+.secondgen-editorial p{font:400 17px/2.3 var(--serif);color:var(--green);margin:9px 0 0}
+.secondgen-source{font:400 11px/2.2 var(--serif)!important;color:#938571!important}
+.secondgen-profile-link{min-height:48px;border:1px solid #a78e65;background:transparent;color:var(--green);padding:12px 20px;font:500 13px var(--serif);cursor:pointer;touch-action:manipulation}
+.secondgen-profile-link:hover{background:#e7dbcb}
+.secondgen-afterword{font:400 15px/2.2 var(--serif);color:var(--brown);text-align:center;margin-top:42px}
+@media(max-width:1000px){.secondgen-life{grid-template-columns:1fr;gap:24px}.secondgen-life-heading{position:static}.secondgen-index{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:720px){
+ .secondgen-section{padding:65px 0 75px}
+ .secondgen-header h2{font-size:clamp(36px,9vw,47px);margin:10px 0 14px}
+ .secondgen-header p{font-size:14px;line-height:2.15}
+ .secondgen-index{display:flex;overflow-x:auto;gap:9px;margin:26px -20px 32px;padding:0 20px 10px;scroll-snap-type:x mandatory;scroll-padding-left:20px;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+ .secondgen-index::-webkit-scrollbar{display:none}
+ .secondgen-index a{flex:0 0 147px;min-height:105px;padding:14px;scroll-snap-align:start}
+ .secondgen-index a span:nth-child(2){font-size:23px;margin:3px 0}
+ .secondgen-life{padding:49px 0 56px;gap:18px;scroll-margin-top:85px}
+ .secondgen-life h3{font-size:42px;margin:10px 0 15px}
+ .secondgen-short{font-size:14px;line-height:2.05;margin:0}
+ .secondgen-life-body>p{font-size:16px;line-height:2.32;letter-spacing:.015em;margin-bottom:22px}
+ .secondgen-editorial{padding:20px 19px;margin:22px 0}
+ .secondgen-editorial p{font-size:16px;line-height:2.2}
+ .secondgen-afterword{text-align:left;font-size:14px;margin-top:30px}
+ #secondgen{scroll-margin-top:85px}
+}
+@media(prefers-reduced-motion:reduce){.secondgen-index a{transition:none}}
+
+/* Verified shipyard timeline alongside family oral history */
+.shipyard-history{margin:32px 0 53px;padding:clamp(27px,4vw,48px);border:1px solid #cfc1ac;background:#f0e9dc;position:relative}
+.shipyard-history:before{content:"";position:absolute;inset:7px;border:1px solid rgba(157,132,90,.22);pointer-events:none}
+.shipyard-history-head{position:relative}
+.shipyard-history-head h3{font:400 clamp(27px,3.1vw,39px)/1.6 var(--serif);color:var(--green);margin:13px 0}
+.shipyard-history-head p,.shipyard-history-memory{font:400 15px/2.28 var(--serif);color:#5e584e;margin:0}
+.shipyard-history-events{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 24px;margin:30px 0}
+.shipyard-history-events>div{border-top:1px solid #cfbda3;padding:20px 0 24px}
+.shipyard-history-events span{display:block;font:500 11px/1.7 var(--serif);letter-spacing:.11em;color:#956e45}
+.shipyard-history-events strong{display:block;font:400 clamp(18px,2vw,23px)/1.8 var(--serif);color:var(--green);margin:5px 0 7px}
+.shipyard-history-events p{font:400 13px/2.2 var(--serif);color:#645b50;margin:0}
+.shipyard-history-memory{border-top:1px solid #cdbcaa;padding-top:24px}
+.shipyard-history-sources{display:flex;flex-wrap:wrap;gap:8px;margin-top:23px}
+.shipyard-history-sources>span{flex:0 0 100%;color:#856f52;font:500 11px/1.8 var(--serif)}
+.shipyard-history-sources>a{display:inline-flex;align-items:center;min-height:42px;padding:8px 12px;border:1px solid #ccbaa0;color:var(--green);font:400 11px/1.85 var(--serif);background:#f7f2e9}
+.shipyard-history-sources>a:hover{background:#e3d7c5;border-color:#ae9877}
+@media(max-width:720px){
+ .shipyard-history{margin:25px -3px 38px;padding:28px 18px}
+ .shipyard-history-head h3{font-size:27px;line-height:1.55}
+ .shipyard-history-head p,.shipyard-history-memory{font-size:14px;line-height:2.15}
+ .shipyard-history-events{grid-template-columns:1fr;gap:0;margin:23px 0 9px}
+ .shipyard-history-events>div{padding:15px 0 18px}
+ .shipyard-history-events strong{font-size:20px}
+ .shipyard-history-sources>a{flex:1 1 100%;min-height:46px;align-items:center;font-size:12px}
+ #shipyard-history{scroll-margin-top:80px}
+}
+
+/* Deliberate navigation and reading tools */
+.skip-to-content{position:fixed;top:-80px;left:12px;background:var(--green);color:white;z-index:170;padding:12px 18px;font:500 13px var(--serif)}
+.skip-to-content:focus{top:12px}
+.find-trigger{color:var(--green);border:1px solid #b4a58b;background:transparent;min-height:44px;white-space:nowrap;padding:8px 13px;margin-left:5px;display:inline-flex;gap:9px;align-items:center;justify-content:center;font:500 13px var(--serif);touch-action:manipulation}
+.find-trigger:hover,.find-trigger:focus-visible{background:#e5dccb}
+.find-trigger-glyph{width:14px;height:14px;border:1.5px solid currentColor;border-radius:50%;position:relative;display:inline-block;transform:scale(.78)}
+.find-trigger-glyph:after{content:"";width:8px;height:1.5px;position:absolute;background:currentColor;transform:rotate(46deg);top:12px;left:11px}
+.reading-size-toggle{position:fixed;right:25px;bottom:86px;z-index:18;min-height:46px;min-width:52px;background:#f4eee2;border:1px solid #bfa988;color:var(--green);box-shadow:0 6px 20px #0013;display:flex;gap:5px;align-items:center;justify-content:center;padding:8px 11px;font:500 12px var(--serif);transition:background .2s,transform .2s}
+.reading-size-toggle:hover,.reading-size-toggle[aria-pressed="true"]{background:#dccbad}
+.reading-size-toggle span{font-size:20px}
+body.lineage-modal-open .reading-size-toggle,body.finder-open .reading-size-toggle{display:none}
+html.reader-larger .preface-copy p:not(.oral-note){font-size:19px!important;line-height:2.5}
+html.reader-larger .biography-text>p,html.reader-larger .secondgen-life-body>p:not(.secondgen-source){font-size:19px!important;line-height:2.55}
+html.reader-larger .chronicle-copy p,html.reader-larger .shipyard-history p,html.reader-larger .lineage-intro,html.reader-larger .lineage-person-biography{font-size:18px!important;line-height:2.38}
+html.reader-larger .compiler-verdict p,html.reader-larger .secondgen-editorial p{font-size:19px!important;line-height:2.38}
+.quick-find-modal[hidden]{display:none!important}
+.quick-find-modal{position:fixed;inset:0;z-index:125;display:flex;justify-content:center;align-items:center;isolation:isolate}
+.quick-find-shade{position:absolute;inset:0;background:#0a201bc7;backdrop-filter:blur(4px)}
+.quick-find-sheet{position:relative;z-index:1;width:min(90vw,625px);max-height:min(88dvh,820px);display:flex;flex-direction:column;background:#f6f0e6;box-shadow:0 15px 70px #0004;padding:30px 34px 18px;border:1px solid #bdaa8c;outline:none}
+.quick-find-head{display:flex;align-items:flex-start;justify-content:space-between;gap:18px;border-bottom:1px solid #d7c7ae;padding-bottom:17px;margin-bottom:22px}
+.quick-find-head h2{font:400 37px/1.4 var(--serif);color:var(--green);margin:5px 0 0}
+.quick-find-close{min-height:44px;border:1px solid #bda987;color:var(--green);font:400 13px var(--serif);background:transparent;padding:9px 18px}
+.quick-find-label{font:500 12px var(--serif);color:#776149;margin-bottom:10px;display:block}
+.quick-find-inputrow{min-height:55px;background:white;border:1px solid #b8a78a;display:flex;align-items:center;gap:10px;padding:0 16px;color:var(--green);font:400 16px var(--serif)}
+.quick-find-inputrow:focus-within{border-color:var(--green);outline:2px solid #9caf9b}
+.quick-find-inputrow input{font:400 17px/1.5 var(--serif);flex:1;min-width:0;background:transparent;border:0;outline:0;color:var(--ink);height:52px}
+.quick-find-inputrow input::-webkit-search-cancel-button{-webkit-appearance:none}
+.quick-find-count{font:400 12px/1.7 var(--serif);color:var(--brown);margin:16px 0 10px}
+.quick-find-results{min-height:120px;overflow:auto;overscroll-behavior:contain;padding:0 0 10px;scrollbar-width:thin}
+.quick-find-result{display:grid;grid-template-columns:1fr auto;align-items:center;gap:10px;text-align:left;width:100%;min-height:68px;background:transparent;border:0;border-top:1px solid #ded2c1;padding:12px 8px;cursor:pointer;color:var(--green)}
