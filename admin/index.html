@@ -14,7 +14,7 @@
 <script>
 (()=>{'use strict';const repo='easylearnfromtw/History',filename='data/people.json';const $=id=>document.getElementById(id);let data=null,originSha=null;
 const safeText=s=>String(s??'');
-function formatStatus(r){const date=r.educationStatusFrom||'';return date?'到期排程：'+date+' → '+(r.educationStatusAfter||''):''}
+function formatStatus(r){const date=r.educationStatusFrom||'';return date?'到期排程：'+date+'，狀態變更為 '+(r.educationStatusAfter||''):''}
 function field(parent,k,label,kind='text',big=false){const outer=document.createElement('label');if(big)outer.className='full';outer.textContent=label;const el=document.createElement(kind==='textarea'?'textarea':'input');if(kind!=='textarea')el.type=kind;el.value=safeText(parent[k]);el.addEventListener('input',()=>{parent[k]=el.value;setStatus('尚未發布的修改');});outer.append(el);return outer}
 function setStatus(s){$('status').textContent=s}
 function render(){const root=$('entries');root.replaceChildren();for(const [name,p] of Object.entries(data.people)){const section=document.createElement('section');section.className='edit-person';const h=document.createElement('h2');h.textContent=name;const f=document.createElement('div');f.className='form-grid';f.append(field(p,'ageRelation','年齡關係','text',true),field(p,'educationStatus','目前學籍狀態'),field(p,'educationStatusFrom','自動切換日期（YYYY-MM-DD；不排程可留空）'),field(p,'educationStatusAfter','到期後顯示狀態'),field(p,'statusNote','資料來源與畢業狀態註記','textarea',true));section.append(h,f);root.append(section)}$('publish').disabled=false;$('download').disabled=false;}
