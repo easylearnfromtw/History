@@ -168,12 +168,84 @@ html{scroll-padding-top:105px}section[id],article[id],.intro-block[id]{scroll-ma
   .mobile-chapters a{transition:none}
 }
 
+
+/* A manuscript inspired public lineage */
+.lineage-section{background:#f9f6ed;padding:116px 0 125px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.lineage-header{display:flex;align-items:end;justify-content:space-between;gap:50px;border-bottom:1px solid #d4c7b2;padding-bottom:31px}
+.lineage-header h2{font:400 clamp(38px,5vw,64px)/1.5 var(--serif);letter-spacing:.06em;margin:9px 0}
+.lineage-motto{font:400 16px/1.8 var(--serif);color:var(--brown);margin:0;letter-spacing:.13em}
+.lineage-intro{font:400 14px/2.2 var(--serif);color:#6c6559;max-width:450px;margin:0}
+.lineage-generation{max-width:450px;display:flex;justify-content:space-around;margin:43px auto 14px;color:var(--brown);font:500 11px var(--serif);letter-spacing:.1em}
+.lineage-ancestor{display:flex;justify-content:center;align-items:center;gap:clamp(10px,2.6vw,40px)}
+.lineage-ancestor-person{flex:0 1 225px;min-width:0;min-height:155px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px 14px;border:1px solid #b9a280;background:#f3ede2;position:relative;transition:border-color .2s,background .2s}
+.lineage-ancestor-person:before{position:absolute;content:"";inset:5px;border:1px solid #e2d6c1;pointer-events:none}
+.lineage-ancestor-person:hover{border-color:var(--green);background:#ebe3d5}
+.lineage-ancestor-person>span{font:500 11px var(--serif);color:var(--brown)}
+.lineage-ancestor-person strong{font:400 clamp(24px,2.6vw,36px)/1.5 var(--serif);letter-spacing:.07em;color:var(--green);margin:7px 0}
+.lineage-ancestor-person small{font:400 11px var(--serif);color:var(--brown)}
+.lineage-marriage{display:grid;place-items:center;flex:0 0 66px;height:66px;border:1px solid #bca686;border-radius:50%;color:var(--brown);font:400 15px var(--serif);background:#f8f4eb}
+.lineage-stem{height:58px;width:1px;margin:0 auto;background:#baa684}
+.lineage-descendant-header{display:flex;align-items:center;gap:16px;border-top:1px solid #bcaa8e;padding-top:21px;position:relative}
+.lineage-descendant-header:before{position:absolute;content:"";height:16px;width:1px;background:#baa684;left:50%;top:-16px}
+.lineage-detail-hint{margin-left:auto;color:#8f816e;font:400 12px var(--serif)}
+.lineage-toggle-all{border:1px solid #9a8364;padding:9px 16px;background:transparent;color:var(--green);min-height:44px;font:500 12px var(--serif)}
+.lineage-toggle-all:hover{background:#ece5d7}
+.lineage-branches{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:13px;margin-top:25px;align-items:start}
+.lineage-branch{min-width:0;background:#ebe6da;border:1px solid #c9bcaa;transition:background .2s,border-color .2s}
+.lineage-branch[open]{border-color:#a58c64;background:#efe8da}
+.lineage-branch summary{display:flex;flex-direction:column;list-style:none;cursor:pointer;padding:23px 19px 19px;min-height:195px;outline-offset:3px;position:relative}
+.lineage-branch summary::-webkit-details-marker{display:none}
+.lineage-branch-top{font:500 10px var(--serif);color:#927959;letter-spacing:.15em}
+.lineage-branch summary strong{font:400 clamp(24px,2.5vw,34px)/1.5 var(--serif);color:var(--green);margin:14px 0 5px}
+.lineage-branch-summary{font:400 12px/1.9 var(--serif);color:#776a5c;min-height:23px}
+.lineage-expand{font:400 12px var(--serif);color:var(--brown);margin-top:auto;padding-top:21px;align-self:flex-end}
+.lineage-open,.lineage-branch[open] .lineage-closed{display:none}
+.lineage-branch[open] .lineage-open{display:inline}
+.lineage-relations{border-top:1px solid #d2c4b1;padding:16px 18px 21px;background:#f4efe6}
+.lineage-relation-title{font:500 11px var(--serif);color:#8b704d;letter-spacing:.14em}
+.lineage-relations p{font:400 13px/2 var(--serif);margin:11px 0;color:#5c554b}
+.lineage-child-list{display:flex;flex-wrap:wrap;gap:8px;margin-top:15px}
+.lineage-child-list span{padding:8px 10px;border:1px solid #d8c7ad;color:var(--green);font:500 13px var(--serif)}
+.lineage-relations .lineage-footnote{font:400 11px/1.9 var(--serif);color:#776f62}
+.lineage-epilogue{display:flex;justify-content:space-between;align-items:center;gap:30px;margin-top:30px;padding-top:25px;border-top:1px solid #d5c8b5}
+.lineage-epilogue p{font:400 18px/1.9 var(--serif);color:var(--green);margin:0}
+.lineage-epilogue small{font:400 11px/2 var(--serif);color:#83796b;max-width:380px}
+@media(max-width:1060px){.lineage-branches{grid-template-columns:repeat(2,minmax(0,1fr))}.lineage-epilogue{align-items:flex-start}}
+@media(max-width:720px){
+ .lineage-section{padding:68px 0 77px}
+ .lineage-header{display:block;padding-bottom:24px}
+ .lineage-header h2{font-size:clamp(37px,10vw,49px);margin:8px 0}
+ .lineage-motto{font-size:14px;line-height:1.9}
+ .lineage-intro{font-size:14px;line-height:2.15;margin-top:18px}
+ .lineage-generation{margin:30px auto 13px;font-size:10px}
+ .lineage-ancestor{gap:9px}
+ .lineage-ancestor-person{min-height:126px;padding:15px 7px}
+ .lineage-ancestor-person strong{font-size:clamp(20px,6vw,26px);letter-spacing:.02em}
+ .lineage-ancestor-person small{font-size:10px}
+ .lineage-marriage{flex-basis:39px;height:39px;font-size:11px}
+ .lineage-stem{height:48px}
+ .lineage-descendant-header{flex-wrap:wrap;gap:7px}
+ .lineage-descendant-header .kicker{flex:1 1 auto}
+ .lineage-detail-hint{flex:1 1 100%;order:3;font-size:11px;margin:0}
+ .lineage-toggle-all{padding:8px 12px;font-size:12px}
+ .lineage-branches{grid-template-columns:1fr;gap:10px;margin-top:22px}
+ .lineage-branch summary{min-height:116px;padding:17px 17px 14px}
+ .lineage-branch summary strong{margin:6px 0 3px;font-size:27px}
+ .lineage-expand{position:absolute;right:16px;bottom:14px;padding-top:0}
+ .lineage-branch-summary{max-width:70%;font-size:12px}
+ .lineage-relations{padding:16px 18px}
+ .lineage-epilogue{display:block;margin-top:23px}
+ .lineage-epilogue p{font-size:16px}
+ .lineage-epilogue small{display:block;margin-top:10px}
+ #lineage{scroll-margin-top:calc(90px + env(safe-area-inset-top,0px))}
+}
+@media(prefers-reduced-motion:reduce){.lineage-branch,.lineage-ancestor-person{transition:none}}
 </style>
 </head>
 <body>
 <div class="reading-progress" id="readingProgress" aria-hidden="true"></div>
-<header class="nav" id="top"><a class="brand" href="#top" aria-label="社寮王家家族史館首頁"><span class="crest">王</span><span class="brand-copy"><strong>社寮王家</strong><small>THE SHELIAO WANG FAMILY</small></span></a><button class="menu-toggle" id="toggle" type="button" aria-controls="links" aria-expanded="false">選單 </button><nav class="nav-links" id="links" aria-label="網站選單"><a href="#about">王家簡史</a><a href="#caiyun">彩雲傳</a><a href="#juwan">居萬傳</a><a href="#chronicle">王家通紀</a><a href="#origins">家系源流</a><a href="#sources">史料說明</a></nav><span class="nav-right">EST IN MEMORY</span></header>
-<nav class="mobile-chapters" aria-label="閱讀章節"><a href="#about" data-mobile-chapter="about">簡史</a><a href="#caiyun" data-mobile-chapter="caiyun">彩雲傳</a><a href="#juwan" data-mobile-chapter="juwan">居萬傳</a><a href="#chronicle" data-mobile-chapter="chronicle">通紀</a></nav>
+<header class="nav" id="top"><a class="brand" href="#top" aria-label="社寮王家家族史館首頁"><span class="crest">王</span><span class="brand-copy"><strong>社寮王家</strong><small>THE SHELIAO WANG FAMILY</small></span></a><button class="menu-toggle" id="toggle" type="button" aria-controls="links" aria-expanded="false">選單 </button><nav class="nav-links" id="links" aria-label="網站選單"><a href="#about">王家簡史</a><a href="#caiyun">彩雲傳</a><a href="#juwan">居萬傳</a><a href="#chronicle">王家通紀</a><a href="#origins">家系源流</a><a href="#lineage">家族世系</a><a href="#sources">史料說明</a></nav><span class="nav-right">EST IN MEMORY</span></header>
+<nav class="mobile-chapters" aria-label="閱讀章節"><a href="#about" data-mobile-chapter="about">簡史</a><a href="#caiyun" data-mobile-chapter="caiyun">彩雲傳</a><a href="#juwan" data-mobile-chapter="juwan">居萬傳</a><a href="#chronicle" data-mobile-chapter="chronicle">通紀</a><a href="#lineage" data-mobile-chapter="lineage">世系</a></nav>
 <main>
 <section class="hero"><div class="hero-copy"><span class="kicker">王家簡史 SHELIAO WANG FAMILY HISTORY</span><h1 class="display">社寮王家<br><em>以史傳家</em></h1><p class="intro">社寮王家居於此乃天時地利人和上祖相傳飄洋自福建輾轉汐止落腳社寮從紡織代工軍旅歲月到港邊商鋪以土地為序記下王家的來時路</p><div class="hero-cta"><a class="btn" href="#about">閱讀王家簡史 <span></span></a><a class="quiet-link" href="#caiyun">閱讀人物列傳　</a></div><div class="hero-bottom">一姓之傳 百年之思 以文存之</div></div><div class="hero-art" aria-label="象徵家族代代相連的抽象枝葉紋樣"><span class="art-corner">SHELIAO FIG 01</span><svg class="line-art" viewBox="0 0 520 610" role="img" aria-label="以年輪及枝脈象徵家族傳承的藝術圖形"><g fill="none" stroke="#bbaa8a" stroke-width="1"><ellipse cx="260" cy="300" rx="160" ry="228"/><ellipse cx="260" cy="300" rx="140" ry="208"/><ellipse cx="260" cy="300" rx="118" ry="185"/><ellipse cx="260" cy="300" rx="97" ry="160"/><ellipse cx="260" cy="300" rx="75" ry="132"/><path d="M260 94v420 M96 302h328 M260 303C203 251 194 213 215 166 M260 303C330 249 338 211 315 161 M260 303C196 353 189 401 227 451 M260 303C320 349 343 385 305 467" opacity=".6"/><path d="M85 490Q258 532 435 490 M93 116Q250 84 427 117" opacity=".4"/></g><g fill="#c2a97c"><circle cx="260" cy="95" r="3"/><circle cx="100" cy="300" r="3"/><circle cx="420" cy="300" r="3"/><circle cx="260" cy="510" r="3"/></g><rect x="186" y="255" width="148" height="92" fill="#173c32"/><text x="260" y="316" text-anchor="middle" class="center-mark">王</text></svg><span class="art-caption">A LEGACY WRITTEN THROUGH GENERATIONS</span></div></section>
 <div class="wrap"><div class="rule"><span>SHELIAO WANG FAMILY FAMILY HERITAGE</span><span>SCROLL TO EXPLORE </span></div>
@@ -208,9 +280,50 @@ html{scroll-padding-top:105px}section[id],article[id],.intro-block[id]{scroll-ma
 <a class="biography-next" href="#chronicle"><span>接續閱讀 家族通紀</span><strong>社寮王家通紀 <span aria-hidden="true"></span></strong></a></div></div></div></section>
 <section class="story-section wrap" id="chronicle"><div class="story-intro reveal"><div><span class="kicker">A CHRONOLOGICAL FAMILY HISTORY</span><h2>社寮王家通紀</h2></div><p>依家族口述編年與人物列傳互相參照未核實的年份及地點皆明白註記</p></div><article class="chronicle-item reveal"><div class="chronicle-year">清季至戰後 待考</div><div class="chronicle-copy"><small>卷一 遷徙</small><h3>上祖渡海定居社寮</h3><p>王家先世據家傳自福建渡海來臺或居汐止後與社寮結緣海程幾何遷居何歲舊牒未備今姑存其說以俟後考</p></div><i class="chronicle-dot"></i></article><article class="chronicle-item reveal"><div class="chronicle-year">民國六十年代前後</div><div class="chronicle-copy"><small>卷二 勤業</small><h3>黃氏少勤身繫家計</h3><p>黃氏彩雲少而家貧國小甫畢即從事紡織與家庭代工其時臺灣加工出口之業方興於世為產業之變於黃氏則為朝夕養家之勞</p></div><i class="chronicle-dot"></i></article><article class="chronicle-item reveal"><div class="chronicle-year">約民國六七十年代 待考</div><div class="chronicle-copy"><small>卷三 營商</small><h3>港口盛時始設撞球間</h3><p>居萬與彩雲既成婚於社寮營撞球間其時造船與港區之人往來家傳生意一度繁盛燈火與人聲雖不復可見猶存於家人言語之中</p></div><i class="chronicle-dot"></i></article><article class="chronicle-item reveal"><div class="chronicle-year">其後 待考</div><div class="chronicle-copy"><small>卷四 家業</small><h3>商海有興替持家不改其志</h3><p>其後夫婦改營和平檳榔店歲月流轉港區商情亦變黃氏仍以勤儉與人情周旋養育後代往日門庭之盛化作子孫今日之記憶</p></div><i class="chronicle-dot"></i></article><article class="chronicle-item reveal"><div class="chronicle-year">近年 待考</div><div class="chronicle-copy"><small>卷五 鄉里</small><h3>居萬存仁長念鄉人</h3><p>居萬軍旅之外亦念社寮鄰里據家屬記述曾創辦和平島長青協會助長者及里民至其創會年月與正式職務尚待考證</p></div><i class="chronicle-dot"></i></article><article class="chronicle-item reveal"><div class="chronicle-year">2025年3月1日</div><div class="chronicle-copy"><small>卷六 壽辰</small><h3>親族稱觴八秩誌慶</h3><p>民國一一四年三月一日王家為居萬祝農曆八十大壽是日農曆乙巳年二月初二親族得聚其意在祝年高而念來路是否為實際農曆誕辰正日尚待確認</p></div><i class="chronicle-dot"></i></article></section>
 <section class="earth" id="origins"><div class="wrap"><div class="section-heading reveal"><div><span class="kicker">FROM FUJIAN TO SHELIAO</span><h2>山海為證<br>一脈相承</h2></div><p>先世渡海之說汐止黃家之緣社寮王家之基凡家人所記依源而載未得舊牒之處姑存疑問</p></div><div class="origin-grid"><article class="origin reveal"><span class="origin-label">01 FROM FUJIAN TO TAIWAN</span><h3>渡海而來</h3><p>先祖相傳自福建渡臺緣及汐止海程年代與人物尚無完整文獻俟後世續考</p><span class="num">源</span></article><article class="origin reveal"><span class="origin-label">02 THE SHELIAO WANG FAMILY</span><h3>社寮立家</h3><p>居萬與彩雲成家於和平島從軍旅與營生至鄰里情誼一門記憶傳於子孫</p><span class="num">家</span></article></div></div></section>
+
+<section class="lineage-section" id="lineage" aria-labelledby="lineageTitle">
+ <div class="wrap">
+  <div class="lineage-header reveal">
+   <div><span class="kicker">THE SHELIAO WANG FAMILY LINEAGE</span><h2 id="lineageTitle">社寮王家世系</h2><p class="lineage-motto">一脈由此而發　四支自此而承</p></div>
+   <p class="lineage-intro">夫家有世系　所以識其所自來也　今以居萬彩雲為本　錄子女及後代　庶幾血脈有徵　親情有寄</p>
+  </div>
+  <div class="lineage-generation"><span>王家先輩</span><span>夫妻同心</span></div>
+  <div class="lineage-ancestor reveal" aria-label="王居萬與王黃彩雲夫妻">
+   <a href="#juwan" class="lineage-ancestor-person"><span>王氏</span><strong>王居萬</strong><small>參閱居萬傳</small></a>
+   <span class="lineage-marriage" aria-label="夫妻">結縭</span>
+   <a href="#caiyun" class="lineage-ancestor-person"><span>黃氏</span><strong>王黃彩雲</strong><small>參閱彩雲傳</small></a>
+  </div>
+  <div class="lineage-stem" aria-hidden="true"></div>
+  <div class="lineage-descendant-header">
+   <span class="kicker">THE NEXT GENERATION</span>
+   <span class="lineage-detail-hint">點開各支　閱其子孫</span>
+   <button type="button" class="lineage-toggle-all" id="lineageToggleAll" aria-expanded="false">展開全譜</button>
+  </div>
+  <div class="lineage-branches">
+   <details class="lineage-branch" id="branch-junming">
+    <summary><span class="lineage-branch-top">王家支系</span><strong>王俊明</strong><span class="lineage-branch-summary">子女　王翔立　王品媗</span><span class="lineage-expand"><span class="lineage-closed">查看後代</span><span class="lineage-open">收合後代</span></span></summary>
+    <div class="lineage-relations"><span class="lineage-relation-title">婚姻與家系</span><p>曾與鄧越鴻結縭　育有子女二人</p><div class="lineage-child-list"><span>王翔立</span><span>王品媗</span></div><p class="lineage-footnote">現配偶家人稱小梅　正式姓名待補</p></div>
+   </details>
+   <details class="lineage-branch" id="branch-xiaofen">
+    <summary><span class="lineage-branch-top">王家支系</span><strong>王曉芬</strong><span class="lineage-branch-summary">子女　林哲緯　林哲愷</span><span class="lineage-expand"><span class="lineage-closed">查看後代</span><span class="lineage-open">收合後代</span></span></summary>
+    <div class="lineage-relations"><span class="lineage-relation-title">婚姻與家系</span><p>與林衞國結縭　育有二子</p><div class="lineage-child-list"><span>林哲緯</span><span>林哲愷</span></div></div>
+   </details>
+   <details class="lineage-branch" id="branch-meiling">
+    <summary><span class="lineage-branch-top">王家支系</span><strong>王美玲</strong><span class="lineage-branch-summary">子女　陳季佑</span><span class="lineage-expand"><span class="lineage-closed">查看後代</span><span class="lineage-open">收合後代</span></span></summary>
+    <div class="lineage-relations"><span class="lineage-relation-title">婚姻與家系</span><p>與陳建成結縭　育有一子</p><div class="lineage-child-list"><span>陳季佑</span></div></div>
+   </details>
+   <details class="lineage-branch" id="branch-yingjia">
+    <summary><span class="lineage-branch-top">王家支系</span><strong>王螢家</strong><span class="lineage-branch-summary">子女　李芸閑　李永彤</span><span class="lineage-expand"><span class="lineage-closed">查看後代</span><span class="lineage-open">收合後代</span></span></summary>
+    <div class="lineage-relations"><span class="lineage-relation-title">婚姻與家系</span><p>與李心為結縭　育有二女</p><div class="lineage-child-list"><span>李芸閑</span><span>李永彤</span></div></div>
+   </details>
+  </div>
+  <div class="lineage-epilogue"><p>一姓之本　散為諸支　四支之親　同繫社寮</p><small>此處僅錄姓名與家屬確認之親屬關係　不載生辰與私人資料　四支次序不代表長幼</small></div>
+ </div>
+</section>
+
 <section class="sources wrap" id="sources"><div class="source-layout"><div class="reveal"><span class="kicker">OUR ARCHIVAL PRINCIPLES</span><h2>述其所聞<br>慎其所未聞</h2></div><div class="source-list reveal"><p>家屬口述與訪談 <span>ORAL HISTORY</span></p><p>歷史照片與實物 <span>FAMILY COLLECTION</span></p><p>工商及公開登記 <span>PUBLIC RECORDS</span></p><p>人物列傳與編年修訂 <span>EDITORIAL ARCHIVE</span></p></div></div></section>
 <a class="backtotop" id="jumpToTop" href="#top" aria-label="返回網頁頂部"><span aria-hidden="true"></span><span>TOP</span></a>
-</main><footer class="footer"><div class="wrap"><div class="footer-top"><div><div class="footer-title">社寮王家</div><p class="footer-desc">社寮為家以年紀事以人立傳<br>THE SHELIAO WANG FAMILY ARCHIVE</p></div><div class="footer-links"><a href="#about">簡史</a><a href="#caiyun">彩雲傳</a><a href="#juwan">居萬傳</a><a href="#chronicle">通紀</a><a href="#sources">典藏原則</a></div></div><div class="footer-bottom"><span> 2026 SHELIAO WANG FAMILY ARCHIVE FAMILY ORAL HISTORY</span><a class="private-entry" href="./personalfamilypage/" aria-label="家族內部入口">FAMILY ACCESS </a></div></div></footer>
+</main><footer class="footer"><div class="wrap"><div class="footer-top"><div><div class="footer-title">社寮王家</div><p class="footer-desc">社寮為家以年紀事以人立傳<br>THE SHELIAO WANG FAMILY ARCHIVE</p></div><div class="footer-links"><a href="#about">簡史</a><a href="#caiyun">彩雲傳</a><a href="#juwan">居萬傳</a><a href="#chronicle">通紀</a><a href="#lineage">世系</a><a href="#sources">典藏原則</a></div></div><div class="footer-bottom"><span> 2026 SHELIAO WANG FAMILY ARCHIVE FAMILY ORAL HISTORY</span><a class="private-entry" href="./personalfamilypage/" aria-label="家族內部入口">FAMILY ACCESS </a></div></div></footer>
 <script>
 const t=document.querySelector('#toggle'),n=document.querySelector('#links');t.addEventListener('click',()=>{const on=n.classList.toggle('open');t.setAttribute('aria-expanded',String(on))});n.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{n.classList.remove('open');t.setAttribute('aria-expanded','false')}));
 if('IntersectionObserver' in window){const io=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target)}}),{threshold:.08});document.querySelectorAll('.reveal').forEach(x=>io.observe(x))}else document.querySelectorAll('.reveal').forEach(x=>x.classList.add('visible'));
@@ -229,7 +342,7 @@ window.addEventListener('resize',updateReadingProgress,{passive:true});updateRea
 
 /* Keyboard and touch friendly chapter navigation */
 const chapterButtons=[...document.querySelectorAll('[data-mobile-chapter]')];
-const chapters=[...document.querySelectorAll('#about,#caiyun,#juwan,#chronicle')];
+const chapters=[...document.querySelectorAll('#about,#caiyun,#juwan,#chronicle,#lineage')];
 function closeNavigation(){
  n.classList.remove('open');
  t.setAttribute('aria-expanded','false');
@@ -253,5 +366,23 @@ const chapterObserver='IntersectionObserver' in window?new IntersectionObserver(
 if(chapterObserver)chapters.forEach(chapter=>chapterObserver.observe(chapter));
 chapterButtons.forEach(btn=>btn.addEventListener('click',()=>closeNavigation()));
 
+
+/* Expandable public lineage branches */
+const lineageBranches=[...document.querySelectorAll('.lineage-branch')];
+const lineageAll=document.querySelector('#lineageToggleAll');
+if(lineageAll&&lineageBranches.length){
+ const updateLineageToggle=()=>{
+  const everyOpen=lineageBranches.every(item=>item.open);
+  lineageAll.textContent=everyOpen?'收合全譜':'展開全譜';
+  lineageAll.setAttribute('aria-expanded',String(everyOpen));
+ };
+ lineageAll.addEventListener('click',()=>{
+  const shouldOpen=!lineageBranches.every(item=>item.open);
+  lineageBranches.forEach(item=>item.open=shouldOpen);
+  updateLineageToggle();
+ });
+ lineageBranches.forEach(item=>item.addEventListener('toggle',updateLineageToggle));
+ updateLineageToggle();
+}
 </script>
 </body></html>
