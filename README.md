@@ -1,5 +1,25 @@
 # 社寮王家｜The Sheliao Wang Family Archive
 
+## 2026-10-10 多頁式網站更新（目前架構）
+
+首頁已改成精簡入口，完整史文移入專頁。舊版一頁式的網站說明留作編纂沿革，以下連結為目前主要導覽：
+
+- 首頁：https://easylearnfromtw.github.io/History/
+- 家族簡史：https://easylearnfromtw.github.io/History/family/
+- 和平島：https://easylearnfromtw.github.io/History/island/
+- 王居萬傳：https://easylearnfromtw.github.io/History/people/juwan/
+- 王黃彩雲傳：https://easylearnfromtw.github.io/History/people/caiyun/
+- 家族典藏目錄：https://easylearnfromtw.github.io/History/archive/
+- 第二代列傳：https://easylearnfromtw.github.io/History/archive/second-generation/
+- 王家通紀：https://easylearnfromtw.github.io/History/archive/chronicle/
+- 家系源流：https://easylearnfromtw.github.io/History/archive/origins/
+- 互動世系：https://easylearnfromtw.github.io/History/archive/lineage/
+- 更多史篇：https://easylearnfromtw.github.io/History/more/
+- 私人家族族譜：https://easylearnfromtw.github.io/History/personalfamilypage/
+
+舊首頁章節錨點會導向相對應的新頁面。公開內容保留家族口述／待考標記；私人族譜未變更。新增王居萬傳之地方交遊補記，所述謝立功、張文彬交誼與選舉拜訪情形依家族口述登載，尚待外部史料查核，並不代表特定政治立場。
+
+
 社寮王家家族史館，以**編年體為經、紀傳體為緯**，公開講述王家自福建、汐止至基隆社寮的家族口述史。主題為王家簡史、〈王黃彩雲傳〉、〈王居萬傳〉與社寮王家通紀。
 
 ## 公開世系圖
