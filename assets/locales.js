@@ -70,7 +70,7 @@ function apply(lang){
    const article=document.querySelector('main');if(article){for(const e of article.querySelectorAll('p')){
      if(e.closest(ignored))continue;
      const raw=[...e.childNodes].filter(n=>n.nodeType===Node.TEXT_NODE).map(n=>original.get(n)||n.nodeValue).join('').trim();
-     if(raw.length>50 && /[\\u4e00-\\u9fff]/u.test(raw) && !texts[raw]?.[lang])untranslated++;
+     if(raw.length>50 && /[\u4e00-\u9fff]/u.test(raw) && !texts[raw]?.[lang])untranslated++;
    }}
  }
  const note=document.getElementById('sheliao-language-note');
