@@ -83,3 +83,15 @@ body.reader-body{position:fixed;inset:0;width:100%;height:100vh;height:100dvh;ma
  .reader-body .cover-title{font-size:34px;letter-spacing:.02em;line-height:1.07}
  .reader-body .cover-bottom{position:static;margin-top:14px;font-size:9px;letter-spacing:0}
 }
+
+/* Book cover typography: proportional grid prevents vertical title / colophon collisions at every viewport. */
+.reader-body .paper-cover{display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:auto auto auto minmax(0,1fr) auto;place-items:center;gap:clamp(7px,1.3vh,14px);min-height:0;padding:clamp(14px,2.5vh,26px);overflow:hidden;border-width:clamp(6px,1vw,14px)}
+.reader-body .paper-cover::before{inset:clamp(10px,2vw,25px)}
+.reader-body .paper-cover::after{inset:clamp(16px,2.5vw,31px)}
+.reader-body .cover-micro{font-size:clamp(9px,.85vw,12px);letter-spacing:clamp(.06em,.13vw,.19em);line-height:1.4;text-align:center;white-space:nowrap;max-width:100%}
+.reader-body .cover-divider{margin:0;width:clamp(24px,3.6vw,45px)}
+.reader-body .cover-series{margin:0;font-size:clamp(10px,1vw,13px);letter-spacing:clamp(.08em,.26vw,.27em);white-space:nowrap}
+.reader-body .cover-title{writing-mode:vertical-rl;white-space:nowrap;align-self:center;justify-self:center;line-height:1.12;letter-spacing:.04em;max-width:100%;max-height:100%;min-height:0;flex-shrink:1;overflow:visible;font-size:clamp(26px,3.1vh,43px);font-weight:500;margin:0}
+.reader-body .cover-bottom{position:static;inset:auto;margin:0;padding:0;font-size:clamp(9px,.8vw,11px);line-height:1.6;letter-spacing:.02em;text-align:center;white-space:normal;overflow-wrap:break-word}
+@media(max-width:760px){.reader-body .cover-title{font-size:clamp(27px,4.4vh,43px)}.reader-body .paper-cover{gap:clamp(6px,1.1vh,12px);padding:clamp(12px,2.5vh,22px)}.reader-body .cover-micro{font-size:10px;letter-spacing:.08em}}
+@media(max-height:650px){.reader-body .paper-cover{gap:5px;padding:10px}.reader-body .cover-title{font-size:clamp(25px,5vh,33px)}.reader-body .cover-bottom{font-size:9px;margin:0}.reader-body .cover-divider{margin:0}.reader-body .cover-series{font-size:10px;margin:0}}
