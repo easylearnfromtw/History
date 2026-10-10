@@ -67,7 +67,11 @@ function apply(lang){
  }
  const sw=document.querySelector('#sheliao-lang-switch');if(sw)sw.value=lang;
  let untranslated=0;if(lang==='en'||lang==='ja'){
-   const article=document.querySelector('main');if(article){for(const e of article.querySelectorAll('p')){if(e.closest(ignored))continue;const t=e.textContent.trim();if(t.length>50&&/[\u4e00-\u9fff]/u.test(t)&&!texts[t]?.[lang])untranslated++;}}
+   const article=document.querySelector('main');if(article){for(const e of article.querySelectorAll('p')){
+     if(e.closest(ignored))continue;
+     const raw=[...e.childNodes].filter(n=>n.nodeType===Node.TEXT_NODE).map(n=>original.get(n)||n.nodeValue).join('').trim();
+     if(raw.length>50 && /[\\u4e00-\\u9fff]/u.test(raw) && !texts[raw]?.[lang])untranslated++;
+   }}
  }
  const note=document.getElementById('sheliao-language-note');
  if(note){note.hidden=!(untranslated>0);note.textContent=lang==='en'?'Editorial note: some historical passages remain in their original Chinese while their translations are reviewed. Dates, names and unverified claims have not been silently adapted.':lang==='ja'?'編集上のご案内：一部の史料本文は翻訳監修中のため、原文の中国語で掲載しています。人名・年代・未確認事項を推測で補うことはしていません。':''}
