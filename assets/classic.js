@@ -87,3 +87,6 @@ window.addEventListener('afterprint',()=>{while(opened.length)opened.pop().open=
  const insert=(name,next)=>{const s=document.createElement('script');s.src=url(name);s.async=false;if(next)s.onload=next;document.head.appendChild(s)};
  insert('locales.data.js',()=>insert('locales.js',()=>insert('typography.js')));
 })();
+
+/* Editorial workbench links, loaded only once after the classic layer. */
+(()=>{const origin=document.currentScript?.src;if(!origin)return;const script=document.createElement('script');script.src=new URL('studio-links.js',origin).href;script.defer=true;document.head.append(script)})();
