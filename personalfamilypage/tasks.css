@@ -1,0 +1,37 @@
+/* Family task console: available only in the unlocked private archive interface. */
+.private-task-panel{flex:1 1 0;min-height:0;overflow:auto;background:#f1ece3;color:#203f34;padding:clamp(18px,3.5vw,52px);overscroll-behavior:contain}
+.private-task-panel[hidden],#familyFrame[hidden]{display:none!important}
+.private-task-shell{max-width:1180px;margin:0 auto}
+.private-task-header{display:flex;justify-content:space-between;align-items:center;gap:18px;padding-bottom:18px;border-bottom:1px solid #c9bca8}
+.private-task-overline{font:600 11px/1.6 'DM Sans',sans-serif;letter-spacing:.18em;color:#9a794e}
+.private-task-header h2{font:400 clamp(29px,4vw,47px)/1.4 var(--serif);letter-spacing:.08em;margin:10px 0 5px}
+.private-task-header p{font:13px/2 var(--serif);color:#736958;margin:0;max-width:750px}
+.private-task-back{padding:11px 17px;min-height:44px;border:1px solid #9c8a70;background:transparent;color:#203f34;font:13px var(--serif);white-space:nowrap}
+.private-task-grid{display:grid;grid-template-columns:minmax(245px,.85fr) minmax(0,1.2fr);gap:clamp(16px,3vw,40px);margin-top:26px;align-items:start}
+.private-task-box{background:#faf7f0;border:1px solid #d3c6b2;padding:clamp(18px,2.5vw,28px)}
+.private-task-box h3{margin:0 0 15px;font:500 22px/1.4 var(--serif)}
+.private-task-form label{display:block;font:12px/1.8 var(--serif);color:#5a5e51;margin:10px 0}
+.private-task-form input,.private-task-form select,.private-task-form textarea,.private-task-filter select{display:block;width:100%;margin-top:5px;border:1px solid #c6b9a5;border-radius:0;padding:10px 11px;min-height:43px;color:#243d33;background:#fffcf6;font:14px/1.6 var(--sans)}
+.private-task-form textarea{min-height:85px;resize:vertical}
+.private-task-cols{display:grid;grid-template-columns:1fr 1fr;gap:0 12px}
+.private-task-form-actions,.private-task-actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:16px}
+.private-task-form-actions button,.private-task-actions button,.private-task-filter button{border:1px solid #234538;background:#234538;color:#fff8ea;font:12px var(--serif);padding:10px 14px;min-height:42px}
+.private-task-form-actions button.quiet,.private-task-actions button.quiet,.private-task-filter button{color:#254539;background:transparent;border-color:#b7a88e}
+.private-task-card{background:#fffdf9;border:1px solid #d4cbbd;margin:12px 0;padding:16px 18px}
+.private-task-cardtop{display:flex;gap:10px;align-items:start;justify-content:space-between}
+.private-task-cardtop h3{font-size:18px;letter-spacing:.04em;margin:0}
+.private-task-pill{white-space:nowrap;font:11px var(--sans);border:1px solid #b6a47e;color:#7a653f;padding:5px 8px}
+.private-task-meta{font:12px/1.8 var(--serif);color:#817160;margin:12px 0 0}
+.private-task-desc{font:13px/2 var(--serif);white-space:pre-wrap;color:#4a554b;margin:9px 0}
+.private-task-actions{margin-top:10px}
+.private-task-actions button{padding:7px 11px;min-height:36px}
+.private-task-filter{display:flex;gap:12px;align-items:end;justify-content:space-between;margin-bottom:8px}
+.private-task-filter label{flex:0 0 min(160px,44%);font:12px var(--serif);color:#73644f}
+#taskSummary{font:12px/1.7 var(--serif);color:#746c5b}
+.task-empty{font:14px/2 var(--serif);color:#7c7467;border:1px dashed #bdb09b;padding:20px}
+#taskStatus{font:12px/1.9 var(--serif);color:#45644b;margin:14px 0}
+#taskStatus[data-kind=error]{color:#a33b29}
+.private-task-notice{font:12px/2.1 var(--serif);color:#7d705e;background:#ece5d9;padding:12px 16px;margin-top:22px}
+.private-task-panel button:focus-visible,.private-task-panel input:focus-visible,.private-task-panel select:focus-visible,.private-task-panel textarea:focus-visible{outline:2px solid #a88658;outline-offset:2px}
+@media(max-width:800px){.private-task-grid{grid-template-columns:1fr}.private-task-header{align-items:start;flex-direction:column}.private-task-panel{padding:18px 14px calc(24px + env(safe-area-inset-bottom,0px))}}
+@media(max-width:380px){.private-task-cols{grid-template-columns:1fr}.private-task-filter{align-items:start;flex-direction:column}.private-task-filter label{width:100%;flex:none}}
