@@ -5,6 +5,7 @@
 <title>家族內部典藏林王家族誌</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Noto+Sans+TC:wght@400;500;600&family=Noto+Serif+TC:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="tasks.css">
 <style>
 :root{--linen:#f2eee5;--cream:#fbf8f1;--deep:#16372e;--gold:#af925f;--brown:#796552;--muted:#857b6c;--line:#d8d0c2;--serif:'Noto Serif TC',serif;--sans:'Noto Sans TC',sans-serif}
 *{box-sizing:border-box}html{height:100%;font-family:var(--sans)}body{margin:0;min-height:100%;background:var(--linen);color:var(--deep)}button,input{font:inherit}button{cursor:pointer}a{color:inherit;text-decoration:none}button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(--gold);outline-offset:3px}[hidden]{display:none!important}
@@ -102,17 +103,36 @@
 </style></head><body>
 <header class="header"><a class="brand" href="../"><span class="seal">林王</span><span>林王家族誌<small>PRIVATE FAMILY ARCHIVE</small></span></a><a class="back" href="../">返回家族官網　</a></header>
 <main class="shell"><div class="left"><span class="kicker">FAMILY MEMBERS PRIVATE COLLECTION</span><h1>家族故事<br>留給家人閱讀</h1><p>有人寫下名字有人留下足跡完整世系人物列傳家族大事紀與私人典藏僅在通過密碼解鎖後顯示</p><div class="foot">LIN WANG ARCHIVE RESTRICTED</div></div><div class="right"><section class="formbox"><span class="topline">01 MEMBER ACCESS</span><h2>登入家族典藏室</h2><p class="intro">請輸入家族密碼私人內容會在你使用的裝置上解密密碼不會以明文儲存於此網頁</p><form id="login"><label for="secret">家族密碼</label><div class="input-row"><input type="password" id="secret" name="family-password" autocomplete="current-password" autocorrect="off" autocapitalize="off" spellcheck="false" enterkeyhint="go" aria-describedby="feedback" required placeholder="請輸入家族密碼"><button type="button" id="togglePass" aria-label="顯示或隱藏家族密碼">顯示</button></div><button class="submit" id="submit" type="submit"><span>解鎖家族完整版</span><span aria-hidden="true"></span></button><p id="feedback" class="error" role="status" aria-live="polite"></p></form><details class="login-help"><summary>遇到解鎖問題</summary><div class="login-help-content"><p>請確認已連接網路　並使用新版 Safari 或 Chrome 瀏覽器</p><p>家族密碼由家人提供　如無法解鎖請向家族管理者確認</p><p>開啟私人族譜後可隨時點選登出並鎖定</p></div></details>
-<p style="margin:18px 0 0;font-size:12px"><a href="../admin/" style="text-decoration:underline;text-underline-offset:4px">前往人物資料管理</a></p><div class="note">此頁使用加密檔案並非伺服器帳號系統已解鎖的資料僅保留在此瀏覽分頁請勿在共用裝置解鎖8 位數密碼只適合測試日後建議換成較長的通關密語</div></section></div></main>
+<p style="margin:18px 0 0;font-size:12px;color:#746a5c">史傳編修、小說編修及任務管理入口，將在解鎖私人典藏館後顯示。</p><div class="note">此頁使用加密檔案並非伺服器帳號系統已解鎖的資料僅保留在此瀏覽分頁請勿在共用裝置解鎖8 位數密碼只適合測試日後建議換成較長的通關密語</div></section></div></main>
 <section class="private" id="private" hidden><div class="privatebar"><div>林王家族誌　　私人完整典藏<small>PRIVATE ACCESS SESSION ONLY</small></div><button class="lock" id="logout">登出並鎖定　</button></div>
 <nav class="private-tools" aria-label="私人典藏館編修工具">
 <span class="private-tools-label">典藏編修</span>
+<button class="private-tool private-tool--primary" id="taskManagerButton" type="button" aria-controls="privateTaskPanel" aria-pressed="false">任務系統管理 <span class="private-tool-note">登入後管理待辦與進度</span></button>
 <a class="private-tool private-tool--primary" href="../admin/histories.html" target="_blank" rel="noopener noreferrer" aria-label="開啟家族史與人物史編修室（新分頁）">史傳編修室 <span class="private-tool-note">新增・編輯家族史與人物史</span></a>
 <a class="private-tool" href="../admin/records.html" target="_blank" rel="noopener noreferrer">個別史記</a>
 <a class="private-tool" href="../admin/index.html" target="_blank" rel="noopener noreferrer">人物資料</a>
 <a class="private-tool" href="../admin/books.html" target="_blank" rel="noopener noreferrer">小說編修</a>
 <a class="private-tool" href="../admin/letters.html" target="_blank" rel="noopener noreferrer">家書・公文・賀慶</a>
 </nav>
+<section class="private-task-panel" id="privateTaskPanel" aria-labelledby="tasksTitle" hidden>
+<div class="private-task-shell">
+<header class="private-task-header"><div><span class="private-task-overline">PRIVATE FAMILY WORKSPACE / TASK MANAGER</span><h2 id="tasksTitle">任務系統管理</h2><p>此工作區僅在私人典藏館解鎖後顯示。可追蹤家族典藏、史料整理、家族活動與其他待辦工作。</p></div><button class="private-task-back" type="button" id="tasksReturn">返回私人族譜</button></header>
+<div class="private-task-grid">
+<section class="private-task-box"><h3>建立與編修任務</h3>
+<form class="private-task-form" id="taskForm">
+<label>任務名稱<input id="taskTitle" maxlength="120" required placeholder="例如：整理長輩口述訪談"></label>
+<label>負責人<input id="taskOwner" maxlength="60" placeholder="家族成員名稱"></label>
+<div class="private-task-cols"><label>截止日期<input id="taskDue" type="date"></label><label>優先程度<select id="taskPriority"><option>一般</option><option>重要</option><option>緊急</option></select></label></div>
+<label>進度<select id="taskStatusSelect"><option>待辦</option><option>進行中</option><option>完成</option></select></label>
+<label>任務說明<textarea id="taskDetail" rows="3" maxlength="2000" placeholder="待辦事項、參考資料與後續工作"></textarea></label>
+<div class="private-task-form-actions"><button type="submit" id="taskSave">新增任務</button><button class="quiet" id="taskCancel" type="button" hidden>取消修改</button></div>
+</form><p id="taskStatus" role="status" aria-live="polite"></p></section>
+<section class="private-task-box"><div class="private-task-filter"><div><h3>任務清單</h3><p id="taskSummary">尚未載入</p></div><label>篩選進度<select id="taskFilter"><option>全部</option><option>待辦</option><option>進行中</option><option>完成</option></select></label></div>
+<div id="taskList"></div><div class="private-task-form-actions"><button class="quiet" type="button" id="tasksBackup">下載加密備份</button></div></section>
+</div><p class="private-task-notice">隱私與同步：任務以 AES-GCM 加密儲存在此瀏覽器。登出後無法直接查看內容；不同手機與電腦不會自動同步。若需要跨家族成員協作，未來必須導入具權限控管的伺服器後台。</p>
+</div></section>
 <iframe id="familyFrame" title="完整家族族譜" referrerpolicy="no-referrer"></iframe></section>
+<script src="tasks.js" defer></script>
 <script>
 (()=>{'use strict';const $=x=>document.querySelector(x);const input=$('#secret');let blobUrl=null,locked=false;
 function toBytes(v){const b=atob(v);return Uint8Array.from(b,c=>c.charCodeAt(0))}
@@ -218,8 +238,8 @@ function applyFamilyProfiles(html,doc){
 async function loadPublicProfiles(){try{const r=await fetch('../data/people.json',{cache:'no-store'});if(!r.ok)throw Error('profiles');return await r.json()}catch(e){return null}}
 
 $('#togglePass').addEventListener('click',()=>{const show=input.type==='password';input.type=show?'text':'password';$('#togglePass').textContent=show?'隱藏':'顯示'});
-$('#login').addEventListener('submit',async e=>{e.preventDefault();if(locked)return;locked=true;const btn=$('#submit');btn.disabled=true;btn.setAttribute('aria-busy','true');$('#feedback').textContent='正在開啟家族典藏';input.blur();try{let html=await decrypt(input.value);html=applyCorrections(html,await decryptPatch(input.value));html=applyCorrections(html,await decryptPatch(input.value,'./weiguo-annals.enc.json'));html=applyFamilyProfiles(html,await loadPublicProfiles());if(blobUrl)URL.revokeObjectURL(blobUrl);blobUrl=URL.createObjectURL(new Blob([html],{type:'text/html;charset=utf-8'}));$('#familyFrame').src=blobUrl;$('#private').hidden=false;document.documentElement.style.overflow='hidden';input.value='';$('#feedback').textContent='';$('#logout').focus({preventScroll:true});}catch(err){$('#feedback').textContent=err.name==='OperationError'?'密碼不正確 請重新輸入':String(err.message||'解鎖失敗 請稍後再試').replace(/[\p{P}\p{S}]/gu,' ');}finally{btn.disabled=false;btn.removeAttribute('aria-busy');locked=false}});
-$('#logout').addEventListener('click',()=>{$('#familyFrame').removeAttribute('src');$('#private').hidden=true;document.documentElement.style.overflow='';if(blobUrl){URL.revokeObjectURL(blobUrl);blobUrl=null}input.value='';$('#secret').focus({preventScroll:true})});
+$('#login').addEventListener('submit',async e=>{e.preventDefault();if(locked)return;locked=true;const btn=$('#submit');btn.disabled=true;btn.setAttribute('aria-busy','true');$('#feedback').textContent='正在開啟家族典藏';input.blur();try{let html=await decrypt(input.value);html=applyCorrections(html,await decryptPatch(input.value));html=applyCorrections(html,await decryptPatch(input.value,'./weiguo-annals.enc.json'));html=applyFamilyProfiles(html,await loadPublicProfiles());try{await window.FamilyTaskManager?.unlock(input.value)}catch(e){console.warn('私人任務功能無法載入，但不影響族譜解鎖',e)}if(blobUrl)URL.revokeObjectURL(blobUrl);blobUrl=URL.createObjectURL(new Blob([html],{type:'text/html;charset=utf-8'}));$('#familyFrame').src=blobUrl;$('#private').hidden=false;document.documentElement.style.overflow='hidden';input.value='';$('#feedback').textContent='';$('#logout').focus({preventScroll:true});}catch(err){$('#feedback').textContent=err.name==='OperationError'?'密碼不正確 請重新輸入':String(err.message||'解鎖失敗 請稍後再試').replace(/[\p{P}\p{S}]/gu,' ');}finally{btn.disabled=false;btn.removeAttribute('aria-busy');locked=false}});
+$('#logout').addEventListener('click',()=>{window.FamilyTaskManager?.lock();$('#familyFrame').removeAttribute('src');$('#private').hidden=true;document.documentElement.style.overflow='';if(blobUrl){URL.revokeObjectURL(blobUrl);blobUrl=null}input.value='';$('#secret').focus({preventScroll:true})});
 window.addEventListener('pagehide',()=>{if(blobUrl)URL.revokeObjectURL(blobUrl)});
 })();
 </script></body></html>
