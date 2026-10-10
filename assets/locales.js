@@ -27,6 +27,7 @@ function changeNode(node,lang){
  const parent=node.parentElement;if(!parent||parent.closest(ignored)||skipChineseDisplay(parent))return;
  if(!original.has(node))original.set(node,node.nodeValue);
  const raw=original.get(node);const key=raw.trim();
+ if(lang==='zh-TW'){node.nodeValue=raw;return;}
  const v=valueFor(raw,lang);
  if(v===null){node.nodeValue=raw;return}
  const start=raw.match(/^\s*/u)?.[0]||'',end=raw.match(/\s*$/u)?.[0]||'';
