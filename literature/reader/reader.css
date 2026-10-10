@@ -12,3 +12,58 @@
 .page-content{overscroll-behavior:none;scrollbar-width:none}
 .page-content::-webkit-scrollbar{display:none}
 @media(max-width:760px){.book{height:clamp(430px,72svh,760px)}}
+
+/* Fixed-viewport reading: swipe flips a leaf without panning the book or document. */
+html:has(body.reader-body){height:100%;overflow:hidden;overscroll-behavior:none;scroll-behavior:auto}
+body.reader-body{position:fixed;inset:0;width:100%;height:100vh;height:100dvh;max-height:100dvh;display:flex;flex-direction:column;overflow:hidden;overscroll-behavior:none;-webkit-overflow-scrolling:auto}
+.reader-body .r-top,.reader-body .reader-heading,.reader-body .reader-tools,.reader-body .r-progress,.reader-body .reader-bottom{flex-shrink:0}
+.reader-body .reader-panel{flex:1 1 0;min-height:0;display:flex;flex-direction:column;overflow:hidden;padding:10px 12px calc(9px + env(safe-area-inset-bottom,0px))}
+.reader-body .reader-tools{margin-bottom:8px}
+.reader-body .r-progress{margin-bottom:9px}
+.reader-body .r-book-shadow{flex:1 1 0;min-height:0;max-height:none;height:auto;display:flex;align-items:stretch}
+.reader-body .book{height:100%;min-height:0;max-height:none;flex:1 1 auto;touch-action:none;overscroll-behavior:none;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none}
+.reader-body .leaf,.reader-body .page-inner,.reader-body .page-content,.reader-body .turn-sheet{touch-action:none;overscroll-behavior:none}
+.reader-body .page-content{overflow:hidden!important}
+.reader-body .reader-bottom{margin:9px auto 0}
+.reader-body .r-hint{display:none}
+.reader-body #readerError:not([hidden]){position:fixed;z-index:25;inset:auto 12px calc(62px + env(safe-area-inset-bottom,0px));padding:15px;background:#e3d4b7;color:#182b25;text-align:center}
+.reader-body .r-dialog-backdrop,.reader-body .r-drawer{overscroll-behavior:contain}
+.reader-body .r-drawer{height:100dvh;max-height:100dvh}
+.reader-body .drawer-body{min-height:0;touch-action:pan-y;overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
+.reader-body .r-drawer button,.reader-body .r-drawer input{touch-action:manipulation}
+.reader-notes{display:none;font-size:13px;line-height:2.15;color:#4f493e;padding:10px 4px 28px}
+.reader-notes.active{display:block}
+.reader-notes h3{font-size:22px;font-weight:500;color:#293e32;border-bottom:1px solid #c9b898;padding-bottom:12px;margin:0 0 16px}
+.reader-notes p{margin:0}
+@media(max-width:760px){
+ .reader-body .r-top{gap:8px;padding:9px 12px}
+ .reader-body .r-brand{flex:0 0 auto;font-size:11px;letter-spacing:.06em}
+ .reader-body .r-top-links{gap:5px 9px;flex-wrap:wrap;justify-content:flex-end}
+ .reader-body .r-top-links a{font-size:10px;letter-spacing:.03em}
+ .reader-body .reader-heading{padding:10px 10px 7px}
+ .reader-body .reader-heading h1{font-size:25px;margin:3px 0;letter-spacing:.2em}
+ .reader-body .reader-heading .deck{font-size:10px;letter-spacing:.04em}
+ .reader-body .reader-panel{width:100%;padding:2px 8px calc(7px + env(safe-area-inset-bottom,0px))}
+ .reader-body .reader-tools{padding:0 2px;margin-bottom:5px;gap:6px}
+ .reader-body .tools-group{gap:5px}
+ .reader-body .r-action{padding:8px 9px;font-size:11px;letter-spacing:.02em;min-height:38px}
+ .reader-body .r-progress{padding:0 3px;margin-bottom:6px;gap:7px;font-size:10px;letter-spacing:.01em}
+ .reader-body .r-book-shadow{width:min(100%,480px)}
+ .reader-body .book{height:100%;min-height:0;max-height:none}
+ .reader-body .reader-bottom{margin:7px 0 0;gap:12px}
+ .reader-body .reader-bottom .arrow{min-width:84px}
+ .reader-body .reader-live{font-size:10px;letter-spacing:0}
+ .reader-body .drawer-head{padding:20px 18px 12px}
+ .reader-body .drawer-body{padding:12px 18px 30px}
+}
+@media(max-height:650px){
+ .reader-body .r-top{padding-top:6px;padding-bottom:6px}
+ .reader-body .reader-heading{padding:3px 10px}
+ .reader-body .reader-heading h1{font-size:21px;margin:0}
+ .reader-body .reader-heading .deck,.reader-body .reader-heading .reader-overline{display:none}
+ .reader-body .reader-panel{padding-top:2px}
+ .reader-body .r-action{min-height:34px;padding-top:5px;padding-bottom:5px}
+ .reader-body .reader-tools{margin-bottom:4px}
+ .reader-body .r-progress{margin-bottom:4px}
+ .reader-body .reader-bottom{margin-top:4px}
+}
