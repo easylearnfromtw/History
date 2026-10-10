@@ -67,3 +67,19 @@ body.reader-body{position:fixed;inset:0;width:100%;height:100vh;height:100dvh;ma
  .reader-body .r-progress{margin-bottom:4px}
  .reader-body .reader-bottom{margin-top:4px}
 }
+
+/* Book cover adapts to a stationary viewport, including short phone screens. */
+.reader-body .r-drawer:not(.open){visibility:hidden;pointer-events:none}
+.reader-body .r-drawer.open{visibility:visible;pointer-events:auto}
+.reader-body .paper-cover{overflow:hidden;min-height:0}
+.reader-body .cover-title{writing-mode:vertical-rl;white-space:nowrap;flex-shrink:0;max-height:none;font-size:clamp(40px,4.4vw,56px);letter-spacing:.075em;line-height:1.08}
+@media(max-height:650px){
+ .reader-body .paper-cover{border-width:7px;padding:14px}
+ .reader-body .paper-cover::before{inset:14px}
+ .reader-body .paper-cover::after{inset:20px}
+ .reader-body .cover-micro{font-size:10px;letter-spacing:.12em}
+ .reader-body .cover-divider{width:30px;margin:11px auto}
+ .reader-body .cover-series{font-size:11px;letter-spacing:.13em;margin-bottom:9px}
+ .reader-body .cover-title{font-size:34px;letter-spacing:.02em;line-height:1.07}
+ .reader-body .cover-bottom{position:static;margin-top:14px;font-size:9px;letter-spacing:0}
+}
