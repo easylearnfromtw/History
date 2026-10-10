@@ -1,0 +1,53 @@
+/* 海島有名小說編修室：與既有 admin.css 串聯，不影響人物資料後台 */
+.admin-books{--b-ink:#28352f;--b-sage:#183c32;--b-gold:#ae956e;--b-border:#ded2bd;--b-paper:#fffdf6}
+.admin-books .admin-main{max-width:1500px}
+.books-layout{display:grid;grid-template-columns:minmax(210px,280px) minmax(0,1fr) minmax(240px,300px);align-items:start;gap:22px;margin:35px 0 70px}
+.books-index,.books-publish>section,.books-content{background:#fdfaf2;border:1px solid var(--b-border);box-shadow:0 10px 30px #2d392911}
+.books-index,.books-content,.books-publish>section{padding:clamp(17px,2.5vw,28px)}
+.books-index{position:sticky;top:90px;max-height:calc(100vh - 105px);display:flex;flex-direction:column}
+.books-index nav{overflow-y:auto;overscroll-behavior:contain;scrollbar-color:#b4a487 transparent}
+.books-block-header p{font-family:'Noto Serif TC',serif;font-size:22px;margin:0 0 7px}
+.books-block-header small{color:#726955;display:block;font-size:12px;margin-bottom:18px}
+.books-index ol{list-style:none;margin:14px 0 0;padding:0}
+.books-index li{margin:0;border-bottom:1px solid #e6dece}
+.books-index button{width:100%;border:0;background:transparent;text-align:left;color:#405348;padding:10px 7px;font-family:'Noto Serif TC',serif;font-size:13px;line-height:1.6}
+.books-index button:hover,.books-index button:focus-visible,.books-index button[aria-current="true"]{color:#173d32;background:#ebe5d7}
+.books-index button[aria-current="true"]{border-left:2px solid var(--b-gold);padding-left:11px}
+.books-index li[hidden]{display:none}
+.book-alert{padding:16px 24px;background:#f8f1e2;border-left:3px solid #ac9165;margin:24px 0;color:#5c4f3f}
+.book-alert strong{font-size:15px}.book-alert p{font-size:13px;line-height:2;margin:6px 0 0}
+.books-content .books-edit-intro{border-bottom:1px solid var(--b-border);padding-bottom:20px;margin-bottom:20px}
+.books-edit-intro h2{font-family:'Noto Serif TC',serif;font-size:clamp(23px,3vw,32px);font-weight:500;margin:12px 0}
+.books-edit-intro p{font-size:13px;line-height:2;color:#706b5f;margin:6px 0}
+.books-layout label{display:block;font-size:12px;line-height:1.9;color:#574c3b}
+.books-layout label input:not([type=checkbox]),.books-layout select,.books-layout textarea{width:100%;min-width:0;background:#fffefa;border:1px solid #c9bea9;border-radius:2px;padding:10px 12px;color:#27372f;font-family:'Noto Serif TC',serif;font-size:14px}
+.books-layout textarea{resize:vertical;line-height:1.9}
+.books-layout input:focus-visible,.books-layout textarea:focus-visible,.books-layout select:focus-visible{outline:2px solid #a28960;outline-offset:1px}
+.books-controls{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:21px 0}
+.books-metadata{margin-bottom:15px}.books-metadata details{border:1px solid var(--b-border);padding:14px;background:#f8f4e9}
+.books-metadata summary{cursor:pointer;font-weight:600;color:#4d5546}.books-metadata label{margin-top:12px}
+.books-page-editor{min-height:220px}.books-page-header{display:flex;align-items:center;justify-content:space-between;gap:10px;border-bottom:1px solid #c6b79c;padding-bottom:12px;margin-bottom:16px}
+.books-page-header h3{font-size:18px;font-weight:500;margin:0}.books-page-header small{font-size:11px;color:#806f54}
+.books-block{border:1px solid #e4dac9;background:#fffefa;padding:15px 18px;margin:13px 0}
+.books-block-top{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:7px}
+.books-block-top small{color:#a08662;letter-spacing:.05em}.books-block-top button{border:0;background:transparent;color:#80694e;font-size:12px;text-decoration:underline}
+.books-block textarea{display:block;width:100%;font-size:15px!important;line-height:2!important;min-height:88px}
+.books-block textarea[data-type="p"]{font-size:14px!important}
+.books-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
+.books-actions.stacked{flex-direction:column}.books-actions button,.books-publish button{border:1px solid #aa9a7e;background:#213f33;color:#f9f1e1;padding:10px 15px;font-size:12px;letter-spacing:.07em;cursor:pointer}
+.books-actions button.quiet{background:transparent;color:#304b3d}
+.books-actions button:disabled,.books-publish button:disabled{opacity:.45;cursor:not-allowed}
+.books-publish{display:grid;gap:18px;position:sticky;top:90px}
+.books-publish section h2{font-size:19px;font-weight:500;margin:0 0 12px}
+.books-publish section p{font-size:12px;line-height:1.95;color:#716857}
+.books-publish .books-warning{border-top:1px solid #e0cbb1;padding-top:13px;color:#934f3e;font-weight:600}
+.books-publish label{margin:14px 0}
+.books-layout .books-consent{display:flex;align-items:flex-start;gap:9px;font-weight:600;cursor:pointer}
+.books-consent input{accent-color:#34614e;margin-top:7px}
+.books-publish button{width:100%;margin-top:5px}
+.book-status{border-left:2px solid #aa9472;padding:9px 13px;margin:24px 0 0;font-size:12px;line-height:2;background:#f6f0e4;color:#465747}
+.book-status[data-level="error"]{color:#8b2d25;border-color:#b95f4b}.book-status[data-level="ok"]{border-color:#407e5c}
+.empty-help{font-size:14px;color:#857a65;line-height:2}
+@media(max-width:1180px){.books-layout{grid-template-columns:210px 1fr}.books-publish{grid-column:2;position:static;grid-template-columns:1fr 1fr}}
+@media(max-width:760px){.books-layout{display:flex;flex-direction:column;gap:16px}.books-index,.books-content,.books-publish{width:100%;position:static;max-height:none}.books-index nav{max-height:220px}.books-publish{display:grid;grid-template-columns:1fr}.books-controls{grid-template-columns:1fr}.admin-books .admin-nav{flex-wrap:wrap}.book-alert{padding:14px 16px}}
+@media(prefers-reduced-motion:reduce){.books-layout *{scroll-behavior:auto!important}}

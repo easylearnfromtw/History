@@ -10,7 +10,7 @@
 <h2>史傳段落</h2><div id="recordSections"></div><div class="records-actions"><button id="addSection" type="button" class="quiet">加入段落</button></div></div></div>
 <div class="records-panel"><h2>發布史記</h2><label for="editorToken">GitHub Fine-grained Personal Access Token（Contents: Read and write；僅當次使用）<input type="password" id="editorToken" autocomplete="off" spellcheck="false" placeholder="貼上個人權杖"></label>
 <div class="records-actions"><button id="save" type="button" disabled>發布至 GitHub</button><button id="backup" type="button" class="quiet" disabled>下載 JSON 備份</button><a href="https://github.com/easylearnfromtw/History/edit/main/data/person-records.json" target="_blank" rel="noopener noreferrer" class="quiet">在 GitHub 編輯</a></div><p class="records-state" id="recordStatus" role="status" aria-live="polite">正在讀取公開史記</p><p class="records-guide">這是以 GitHub 權限作為寫入驗證的靜態管理頁，沒有另設管理員帳號。編輯內容會公開於家族史館，請勿填入不適合公開的地址、完整生日、醫療紀錄或其他私人資訊。權杖不會被儲存於 localStorage 或傳至非 GitHub 網域。</p></div>
-</main>
+</main><aside class="museum-shell editor-books-entry" role="navigation" aria-label="編修室其他管理功能" style="display:flex;flex-wrap:wrap;gap:12px;padding:20px 22px 45px"><a href="./">人物資料管理</a><a href="records.html">個別史記管理</a><a href="books.html">海風有名小說編修室</a><a href="../literature/reader/">公開電子書</a></aside>
 <script>
 (()=>{'use strict';const repo='easylearnfromtw/History',filePath='data/person-records.json',api='https://api.github.com/repos/'+repo+'/contents/'+filePath;
 const $=id=>document.getElementById(id);let data=null,sha=null,choice='';

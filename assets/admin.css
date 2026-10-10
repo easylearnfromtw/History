@@ -1,0 +1,126 @@
+/* 社寮王家　編修室（後台）樣式：沿用書卷設計層，以靛藍為工作色。無 Emoji。 */
+
+/* ---------- 頁首：編修室標記與導覽 ---------- */
+.admin-header .museum-top{gap:18px}
+.admin-badge{flex:none;padding:4px 8px 4px 12px;border:1px solid var(--c-indigo);color:var(--c-indigo);font:600 13px/1.4 var(--f-song);letter-spacing:.36em}
+.admin-nav{margin-left:auto;display:flex;align-items:center;gap:clamp(14px,2vw,30px)}
+.admin-nav a{position:relative;padding:8px 0;font:500 14px/1.6 var(--f-song);letter-spacing:.12em;color:#5a5649}
+.admin-nav a::after{content:"";position:absolute;left:0;right:.12em;bottom:2px;height:1px;background:var(--c-indigo);transform:scaleX(0);transition:transform .3s var(--ease)}
+.admin-nav a:hover{color:var(--c-ink)}
+.admin-nav a:hover::after{transform:scaleX(.6)}
+.admin-nav a[aria-current=page]{color:var(--c-indigo)}
+.admin-nav a[aria-current=page]::after{transform:scaleX(1)}
+@media(max-width:760px){
+  .admin-badge{display:none}
+  .admin-nav{gap:14px}
+  .admin-nav a{font-size:13px;letter-spacing:.06em}
+  .admin-header .museum-brand small{display:none}
+}
+
+/* ---------- 篇首 ---------- */
+.admin-main{padding:clamp(28px,4vw,52px) 0 clamp(64px,7vw,110px)}
+.admin-hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.95fr);gap:16px clamp(28px,5vw,72px);align-items:end}
+.admin-hero::after{content:"";grid-column:1/-1;height:5px;border-top:2px solid var(--c-indigo);border-bottom:1px solid var(--c-gold);margin-top:12px}
+.admin .museum-small{color:var(--c-indigo-2)!important}
+.admin-hero h1{margin:12px 0 0;font:500 clamp(36px,4.4vw,56px)/1.3 var(--f-song);letter-spacing:.12em;color:var(--c-ink)}
+.admin-hero p{margin:0;font:400 15.5px/2.05 var(--f-song);color:var(--c-muted);letter-spacing:.03em}
+.admin-facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin:24px 0 0;border:1px solid var(--c-line);background:var(--c-paper-3)}
+.admin-facts>div{padding:14px 18px;border-right:1px solid var(--c-line-2);min-width:0}
+.admin-facts>div:last-child{border-right:0}
+.admin-facts dt{font:600 12.5px/1.6 var(--f-song);letter-spacing:.24em;color:var(--c-indigo)}
+.admin-facts dd{margin:2px 0 0;font:400 15px/1.7 var(--f-song);color:var(--c-ink);overflow-wrap:anywhere}
+.admin-facts code{font:500 15px/1.6 var(--f-latin);letter-spacing:.04em}
+@media(max-width:900px){.admin-hero{grid-template-columns:1fr}.admin-facts{grid-template-columns:1fr}.admin-facts>div{border-right:0;border-bottom:1px solid var(--c-line-2)}.admin-facts>div:last-child{border-bottom:0}}
+
+/* ---------- 工作區：索引｜編輯｜發布 ---------- */
+.admin-layout{display:grid;grid-template-columns:180px minmax(0,1fr) 320px;gap:clamp(24px,3vw,44px);align-items:start;margin-top:clamp(28px,3.5vw,44px)}
+.admin-index,.admin-publish{position:sticky;top:92px}
+.admin-index-title{margin:0 0 6px;padding-bottom:10px;border-bottom:2px solid var(--c-indigo);font:600 13px/1.6 var(--f-song);letter-spacing:.32em;color:var(--c-indigo)}
+.admin-index ol{list-style:none;margin:0;padding:0;counter-reset:person}
+.admin-index li{counter-increment:person}
+.admin-index li a,.admin-index li button{display:flex;align-items:baseline;gap:12px;width:100%;padding:7px 0;border:0;border-bottom:1px solid var(--c-line-2);background:none;text-align:left;
+  font:400 15px/1.7 var(--f-song);letter-spacing:.08em;color:var(--c-text);cursor:pointer}
+.admin-index li a::before,.admin-index li button::before{content:counter(person,decimal-leading-zero);flex:none;width:1.8em;font:600 12.5px/1 var(--f-latin);letter-spacing:.06em;color:var(--c-muted)}
+.admin-index li a:hover,.admin-index li button:hover{color:var(--c-indigo)}
+.admin-index [aria-current="true"]{color:var(--c-indigo);font-weight:600}
+.admin-index [aria-current="true"]::before{color:var(--c-indigo)}
+.admin-links{display:flex;flex-direction:column;gap:10px;margin:22px 0 0;padding:0}
+.admin-links a{width:fit-content;font:500 14px/1.7 var(--f-song);letter-spacing:.06em;color:var(--c-ink);border-bottom:1px solid var(--c-gold-soft)}
+.admin-links a:hover{color:var(--c-indigo);border-bottom-color:var(--c-indigo)}
+.admin-work{min-width:0}
+@media(max-width:1200px){
+  .admin-layout{grid-template-columns:minmax(0,1fr) 300px}
+  .admin-index{grid-column:1/-1;position:static}
+  .admin-index ol{display:flex;flex-wrap:wrap;gap:8px}
+  .admin-index li a,.admin-index li button{width:auto;padding:6px 12px;border:1px solid var(--c-line);background:var(--c-paper-3)}
+  .admin-links{flex-direction:row;flex-wrap:wrap;gap:8px 22px}
+}
+@media(max-width:900px){.admin-layout{grid-template-columns:1fr}.admin-publish{position:static}}
+
+/* ---------- 人物卡（人物資料管理） ---------- */
+#entries{counter-reset:card}
+.edit-person{counter-increment:card;scroll-margin-top:96px;margin:0 0 20px;padding:clamp(20px,2.6vw,30px);background:var(--c-paper-3);border:1px solid var(--c-line);box-shadow:var(--frame);transition:border-color .3s var(--ease)}
+.edit-person:focus-within{border-color:var(--c-indigo-2)}
+.edit-person h2{display:flex;align-items:baseline;gap:14px;margin:0 0 18px;padding-bottom:12px;border-bottom:1px solid var(--c-line-2);font:500 24px/1.4 var(--f-song);letter-spacing:.14em;color:var(--c-ink)}
+.edit-person h2::before{content:counter(card,decimal-leading-zero);font:600 14px/1 var(--f-latin);letter-spacing:.08em;color:var(--c-indigo)}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px 20px}
+.form-grid .full{grid-column:1/-1}
+@media(max-width:720px){.form-grid{grid-template-columns:1fr}}
+
+/* ---------- 史記面板（個別史記編輯） ---------- */
+.records-panel{margin:0 0 20px;padding:clamp(20px,2.6vw,30px);background:var(--c-paper-3);border:1px solid var(--c-line);box-shadow:var(--frame)}
+.records-panel h2{margin:26px 0 6px;padding-bottom:10px;border-bottom:1px solid var(--c-line-2);font:500 22px/1.5 var(--f-song);letter-spacing:.14em;color:var(--c-ink)}
+#recordSections{counter-reset:sec}
+.records-section{counter-increment:sec;position:relative;margin:16px 0;padding:18px 20px 12px 22px;background:var(--c-paper);border:1px solid var(--c-line-2);border-left:2px solid var(--c-indigo)}
+.records-section::before{content:"段 " counter(sec,cjk-ideographic);display:block;margin-bottom:2px;font:600 12.5px/1.6 var(--f-song);letter-spacing:.3em;color:var(--c-indigo)}
+.records-section button.quiet{border:0!important;background:none!important;padding:6px 0!important;margin:4px 0 2px!important;
+  font:500 13.5px/1.6 var(--f-song)!important;letter-spacing:.12em;color:var(--c-seal)!important;border-bottom:1px solid rgba(189,24,10,.35)!important;cursor:pointer}
+.records-section button.quiet:hover{border-bottom-color:var(--c-seal)!important}
+
+/* ---------- 表單 ---------- */
+.admin label{display:block;margin:0;font:400 13.5px/1.7 var(--f-song);letter-spacing:.08em;color:var(--c-muted)}
+.records-panel>label,#recordFields>label{margin:16px 0 0}
+.admin input:not([type=checkbox]):not([type=radio]),.admin textarea,.admin select{
+  display:block;width:100%;margin-top:7px;padding:11px 13px;border:1px solid var(--c-line);border-radius:0;background:#fffdf8;color:var(--c-ink);
+  font:400 15.5px/1.8 var(--f-song);letter-spacing:.03em;transition:border-color .2s var(--ease),box-shadow .2s var(--ease)}
+.admin textarea{min-height:110px;resize:vertical;line-height:1.95}
+.admin #recordSections textarea{min-height:150px}
+.admin input:hover,.admin textarea:hover,.admin select:hover{border-color:#c6b9a2}
+.admin input:focus,.admin textarea:focus,.admin select:focus{outline:0;border-color:var(--c-indigo);box-shadow:0 0 0 3px rgba(31,58,95,.12)}
+.admin select{appearance:none;-webkit-appearance:none;padding-right:42px;cursor:pointer;
+  background:#fffdf8 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%231f3a5f' stroke-width='1.4'/%3E%3C/svg%3E") right 16px center/12px 8px no-repeat}
+.admin input[type=password]{font-family:var(--f-latin);letter-spacing:.12em}
+.admin ::placeholder{color:#a59d8e;opacity:1}
+
+/* ---------- 發布面板 ---------- */
+.admin-publish{padding:clamp(20px,2.4vw,26px);background:var(--c-paper-3);border:1px solid var(--c-line);border-top:2px solid var(--c-indigo)}
+.admin-publish h2{margin:0 0 14px!important;padding:0!important;border:0!important;font:500 21px/1.5 var(--f-song)!important;letter-spacing:.16em;color:var(--c-indigo)!important}
+.admin-publish label{font-size:12.5px;line-height:1.8}
+.actions,.records-actions{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0 0;align-items:center}
+.actions button,.actions a,.records-actions button,.records-actions a{
+  display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:10px 18px;border:1px solid var(--c-indigo);background:var(--c-indigo);color:#f3f1ea;
+  font:500 14px/1.4 var(--f-song);letter-spacing:.14em;cursor:pointer;transition:background-color .25s var(--ease),color .25s var(--ease),border-color .25s var(--ease)}
+.actions button:hover,.records-actions button:hover{background:var(--c-indigo-2);border-color:var(--c-indigo-2)}
+.actions .subtle,.records-actions .quiet{background:transparent;color:var(--c-indigo)}
+.actions .subtle:hover,.records-actions .quiet:hover{background:var(--c-indigo-wash);color:var(--c-indigo)}
+.admin-publish .actions button,.admin-publish .actions a,.admin-publish .records-actions button,.admin-publish .records-actions a{flex:1 1 100%}
+.admin button:disabled{opacity:.42;cursor:not-allowed}
+#addSection{margin-top:4px}
+
+/* 狀態列：以小方點標示目前狀態 */
+.admin [role=status]{display:flex;align-items:flex-start;gap:10px;min-height:0;margin:18px 0 0;padding:12px 14px;border:1px solid var(--c-line-2);background:var(--c-paper);
+  font:400 14px/1.8 var(--f-song);letter-spacing:.04em;color:var(--c-ink)}
+.admin [role=status]::before{content:"";flex:none;width:8px;height:8px;margin-top:.62em;background:var(--c-muted)}
+.admin [role=status][data-state=busy]::before{background:var(--c-gold)}
+.admin [role=status][data-state=ready]::before{background:var(--c-indigo)}
+.admin [role=status][data-state=dirty]{border-color:var(--c-gold-soft)}
+.admin [role=status][data-state=dirty]::before{background:var(--c-gold-ink)}
+.admin [role=status][data-state=done]{border-color:rgba(28,58,48,.35)}
+.admin [role=status][data-state=done]::before{background:var(--c-pine)}
+.admin [role=status][data-state=error]{border-color:rgba(189,24,10,.35);color:#7d2219}
+.admin [role=status][data-state=error]::before{background:var(--c-seal)}
+.editor-note,.records-guide{margin:16px 0 0;padding-top:14px;border-top:1px solid var(--c-line-2);font:400 13px/2 var(--f-song);color:var(--c-muted)}
+
+.admin-foot{margin-top:clamp(40px,5vw,64px);padding-top:18px;border-top:1px solid var(--c-line);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
+  font:400 13px/1.9 var(--f-kai);letter-spacing:.08em;color:var(--c-muted)}
+.admin-foot a{font-family:var(--f-song);color:var(--c-ink);border-bottom:1px solid var(--c-gold-soft)}

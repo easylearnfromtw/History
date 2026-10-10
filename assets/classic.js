@@ -79,5 +79,19 @@ window.addEventListener('beforeprint',()=>{document.querySelectorAll('details:no
 window.addEventListener('afterprint',()=>{while(opened.length)opened.pop().open=false});
 })();
 
-/* 額外文字動態層獨立載入，不變更人物資料或族譜。 */
-(()=>{const current=document.currentScript;if(!current?.src)return;const s=document.createElement('script');s.src=new URL('typography.js',current.src).href;s.async=false;document.head.appendChild(s)})();
+/* Editorial localizations load before typographic entrance effects. */
+(()=>{
+ const current=document.currentScript;if(!current?.src)return;
+ const url=name=>new URL(name,current.src).href;
+ const css=document.createElement('link');css.rel='stylesheet';css.href=url('locales.css');document.head.append(css);
+ const insert=(name,next)=>{const s=document.createElement('script');s.src=url(name);s.async=false;if(next)s.onload=next;document.head.appendChild(s)};
+ insert('locales.data.js',()=>insert('locales.js',()=>insert('typography.js')));
+})();
+
+/* Multilingual site navigation: editorial locales, no live translation APIs. */
+(()=>{'use strict';if(document.body.classList.contains('reader-body'))return;
+ const src=document.currentScript?.src||new URL('assets/classic.js',location.href).href;
+ const asset=name=>new URL(name,src).href;
+ const css=document.createElement('link');css.rel='stylesheet';css.href=asset('locales.css');document.head.append(css);
+ const data=document.createElement('script');data.src=asset('locales.data.js');data.onload=()=>{const logic=document.createElement('script');logic.src=asset('locales.js');logic.defer=true;document.head.append(logic)};document.head.append(data);
+})();
