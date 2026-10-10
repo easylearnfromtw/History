@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light">
+<title>公文 HTML 製作室｜社寮王家</title>
+<meta name="description" content="社寮王家家書工作室：台灣民間函文 HTML 模板、即時編輯、A4 列印與下載。">
+<style id="uiStyle">
+:root{--pine:#17382f;--pine2:#264b3e;--ivory:#f2eee5;--paper:#fffefa;--ink:#2a312b;--gold:#a28c64;--line:#d4c9b7;--grey:#6f7068;--serif:'Noto Serif TC','Songti TC','PMingLiU',serif;--sans:system-ui,-apple-system,'Noto Sans TC',sans-serif}
+*{box-sizing:border-box}html{font-family:var(--sans);background:var(--ivory)}body{margin:0;color:var(--ink)}button,input,textarea,select{font:inherit}button{cursor:pointer}a{color:inherit}button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible,a:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.header{background:var(--pine);color:#f3e9d7;padding:17px clamp(18px,4vw,60px);display:flex;justify-content:space-between;align-items:center;gap:16px}.header-brand{font:600 18px/1.5 var(--serif);letter-spacing:.08em}.header-brand small{display:block;font:11px var(--sans);letter-spacing:.14em;color:#cebc9e}.header-links{display:flex;flex-wrap:wrap;gap:17px;font-size:12px}.header-links a{text-decoration:none;border-bottom:1px solid #9f8a63;padding-bottom:4px}
+.wrapper{max-width:1540px;margin:0 auto;padding:clamp(23px,3.5vw,48px) clamp(14px,3vw,42px) 65px}.eyebrow{font:700 11px var(--sans);letter-spacing:.24em;color:#867049}.heading{display:flex;justify-content:space-between;align-items:end;gap:20px;padding-bottom:22px;border-bottom:1px solid var(--line)}.heading h1{font:500 clamp(29px,4.3vw,51px)/1.35 var(--serif);letter-spacing:.12em;margin:9px 0}.heading p{max-width:800px;margin:0;color:#6f6d63;font:14px/1.9 var(--serif)}.tag{border:1px solid var(--gold);padding:8px 12px;white-space:nowrap;font:12px var(--serif);color:#755e3f}
+.grid{display:grid;grid-template-columns:minmax(310px,420px) minmax(0,1fr);gap:clamp(16px,2vw,32px);align-items:start;margin-top:26px}.editor{display:grid;gap:16px}.card{border:1px solid var(--line);background:#faf7f0;padding:clamp(18px,2vw,26px)}.card h2{font:500 23px var(--serif);margin:0 0 17px}.card h3{font:500 16px var(--serif);margin:22px 0 9px}.card .minor{color:var(--grey);font:12px/1.8 var(--serif);margin:0 0 17px}.field{display:block;font:12px/1.8 var(--serif);color:#555b50;margin:11px 0}.field input,.field textarea,.field select{display:block;width:100%;min-height:42px;margin-top:5px;padding:9px 11px;background:#fffdf8;color:#24392f;border:1px solid #c8bdab;border-radius:0;font:14px/1.7 var(--serif)}.field textarea{min-height:94px;resize:vertical}.field small{display:block;font-size:11px;color:#847d6c}.two{display:grid;grid-template-columns:1fr 1fr;gap:0 10px}.buttons{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 0}.btn{border:1px solid var(--pine);background:var(--pine);color:white;padding:11px 15px;min-height:43px;font:13px/1.4 var(--serif)}.btn.outline{background:transparent;color:var(--pine);border-color:#a89c85}.btn:hover{filter:brightness(1.12)}.status{min-height:42px;padding:10px 12px;background:#eee7da;border-left:3px solid #9c835c;color:#4c5a4e;font:12px/1.8 var(--serif);margin:15px 0 0}.status[role=status]{overflow-wrap:anywhere}
+.canvas-card{min-width:0;background:#e4dfd5;border:1px solid #d3c7b8;padding:clamp(13px,2vw,26px)}.canvas-toolbar{display:flex;gap:10px;justify-content:space-between;align-items:center;flex-wrap:wrap;margin-bottom:19px}.canvas-toolbar h2{font:500 21px var(--serif);margin:0}.canvas-toolbar p{font-size:11px;color:#6d6a60;margin:3px 0 0}.paper-area{display:flex;justify-content:center;align-items:flex-start;min-width:0}.paper{box-shadow:0 14px 50px #3c352c22}.canvas-tip{color:#68665d;font:12px/1.8 var(--serif);margin:20px 0 0}
+@media(max-width:1000px){.grid{grid-template-columns:1fr}.editor{grid-template-columns:repeat(2,minmax(0,1fr));align-items:start}.editor .main-fields{grid-column:1/-1}.header{padding:14px 20px}}
+@media(max-width:620px){.wrapper{padding:22px 12px 42px}.heading{display:block}.heading .tag{display:inline-block;margin-top:15px}.editor{grid-template-columns:1fr}.editor .main-fields{grid-column:auto}.card{padding:17px}.canvas-card{padding:10px}.header-brand{font-size:15px}.header-links{gap:10px;font-size:11px}.two{grid-template-columns:1fr}}
+@media print{.header,.heading,.editor,.canvas-toolbar,.canvas-tip,.status,.eyebrow{display:none!important}.wrapper,.grid,.canvas-card,.paper-area{display:block!important;padding:0!important;margin:0!important;border:0!important;background:none!important;max-width:none!important}.paper{box-shadow:none!important}body{background:white!important}}
+</style>
+<style id="documentStyles">
+/* Standalone A4 document skin — also embedded in exported HTML */
+@page{size:A4;margin:0}
+.paper{width:210mm;min-height:297mm;background:#fffefa;color:#171c18;padding:19mm 19mm 17mm;display:flex;flex-direction:column;font-family:'Noto Serif TC','Songti TC','PMingLiU',serif;overflow-wrap:anywhere}
+.paper .doc-top{border-top:4px double #273c33;padding-top:7mm}
+.paper .doc-org{font-size:23pt;font-weight:600;line-height:1.4;letter-spacing:.16em;text-align:center;margin:0}
+.paper .doc-kind{text-align:center;font-size:17pt;letter-spacing:.55em;margin:2mm 0 7mm;padding-left:.55em}
+.paper .doc-folio{text-align:right;font-size:9pt;color:#555;font-weight:400;letter-spacing:.03em}
+.paper .doc-line{border-top:1.2pt solid #222e27;margin:3mm 0 7mm}
+.paper .doc-meta{display:grid;grid-template-columns:25mm minmax(0,1fr);gap:1.6mm 3mm;font-size:11pt;line-height:1.8;margin:0 0 5mm}
+.paper .doc-meta dt{margin:0;letter-spacing:.04em;color:#404b42}
+.paper .doc-meta dd{margin:0;min-width:0;white-space:pre-wrap}
+.paper .doc-section{display:grid;grid-template-columns:17mm minmax(0,1fr);gap:2mm 3mm;margin:4mm 0 0;font-size:12pt;line-height:1.9;break-inside:avoid-page}
+.paper .doc-section-title{font-weight:600;white-space:nowrap}
+.paper .doc-section-content{min-width:0;white-space:pre-wrap}
+.paper .doc-section-content p{margin:0 0 1mm;text-align:justify}
+.paper .doc-section-content ol{margin:0;padding-left:1.65em;list-style-type:trad-chinese-informal}
+.paper .doc-section-content li{padding-left:.2em;margin:0 0 1.5mm}
+.paper .doc-sig{margin:16mm 0 11mm auto;text-align:right;max-width:75%;font-size:12pt;line-height:2}
+.paper .doc-sig-name{font-size:14pt;letter-spacing:.08em;font-weight:600}
+.paper .doc-rec{border-top:1px solid #778078;padding-top:4mm;display:grid;grid-template-columns:18mm 1fr;gap:2mm 3mm;margin-top:auto;font-size:10.5pt;line-height:1.8}
+.paper .doc-footer{display:flex;justify-content:space-between;gap:10px;border-top:1px solid #c0bbb0;padding-top:3mm;margin-top:6mm;font-size:8.5pt;color:#5e625c}
+.paper .doc-warn{margin-top:3mm;padding:2mm 3mm;border:1px solid #a5aa9d;color:#505d52;font-size:8.5pt;line-height:1.5;text-align:center}
+@media print{html,body{margin:0!important;padding:0!important;background:white!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}.paper{width:210mm;min-height:297mm;padding:19mm 19mm 17mm;box-shadow:none!important;break-after:page}.paper:last-child{break-after:auto}}
+@media screen and (max-width:1350px){.paper{width:100%;min-height:260mm;padding:clamp(22px,3.8vw,60px);font-size:inherit}.paper .doc-org{font-size:clamp(19px,2.1vw,30px)}.paper .doc-kind{font-size:clamp(16px,1.7vw,23px)}.paper .doc-meta{grid-template-columns:85px minmax(0,1fr);font-size:clamp(12px,1.2vw,15px)}.paper .doc-section{grid-template-columns:57px minmax(0,1fr);font-size:clamp(13px,1.2vw,16px)}}
+@media screen and (max-width:620px){.paper{min-height:0;padding:25px 18px}.paper .doc-org{font-size:19px;letter-spacing:.08em}.paper .doc-kind{font-size:17px}.paper .doc-meta{grid-template-columns:76px minmax(0,1fr);font-size:12px}.paper .doc-section{grid-template-columns:48px minmax(0,1fr);font-size:13px}.paper .doc-sig{max-width:100%;margin-top:36px}.paper .doc-rec{grid-template-columns:48px minmax(0,1fr);font-size:11px}.paper .doc-footer{font-size:10px}.paper .doc-warn{font-size:10px}}
+</style>
+</head>
+<body>
+<header class="header"><div class="header-brand">社寮王家　公文 HTML 製作室<small>SHELIAO WANG FAMILY · CORRESPONDENCE STUDIO</small></div><nav class="header-links"><a href="../personalfamilypage/" id="privateLink">私人典藏館</a><a href="letters.html" id="lettersLink">家書與 Gmail</a><a href="../" id="homeLink">返回史館</a></nav></header>
+<main class="wrapper"><div class="heading"><div><span class="eyebrow">DOCUMENT DESIGN / HTML TEMPLATES</span><h1>從範本開始，寫一份得體的函。</h1><p>選擇情境、修正文案，即時生成具備正式書函層次的 HTML。可下載獨立網頁、以 A4 列印，或開啟 Gmail 草稿。此為民間團體函文範例，不冒充政府機關公文。</p></div><span class="tag">示範版 · HTML / A4</span></div>
+<div class="grid"><div class="editor">
+<section class="card"><h2>01　選擇範本</h2><label class="field">適用情境<select id="preset"><option value="notice">家族會議通知函</option><option value="request">史料徵集函</option><option value="general">一般事務函</option><option value="invitation">敬老活動邀請函</option></select></label><p class="minor">每種模板均有不同的主旨、說明與辦法，不是只替換標題。選擇後會更新示範內容。</p><div class="buttons"><button class="btn" id="apply" type="button">套用範本</button><button class="btn outline" id="reset" type="button">恢復此範本</button></div></section>
+<section class="card"><h2>02　公文資訊</h2><label class="field">發文單位<input id="org" maxlength="90" value="社寮王家家史編纂小組"></label><div class="two"><label class="field">文別<select id="kind"><option>函</option><option>通知</option><option>邀請函</option></select></label><label class="field">發文日期<input id="date" type="date"></label></div><label class="field">受文者<input id="receiver" maxlength="100" value="各位家族成員"></label><div class="two"><label class="field">發文字號<input id="number" maxlength="60" placeholder="未編號（不虛構機關文號）"></label><label class="field">速別<select id="speed"><option>普通件</option><option>速件</option><option>最速件</option></select></label></div><div class="two"><label class="field">密等<select id="classification"><option>普通</option><option>限閱</option></select></label><label class="field">附件<input id="attachment" maxlength="100" placeholder="無"></label></div><p class="minor">「函」僅借用台灣民間往來的正式編排；文號及機關用印須依實際身分核發，不應自行偽造。</p></section>
+<section class="card main-fields"><h2>03　編寫正文</h2><label class="field">主旨<textarea id="subject" rows="3" maxlength="380"></textarea></label><label class="field">說明（每行一點）<textarea id="explanation" rows="6"></textarea></label><label class="field">辦法／辦理事項（每行一點）<textarea id="method" rows="5"></textarea></label><div class="two"><label class="field">正本<input id="original" maxlength="130"></label><label class="field">副本<input id="copy" maxlength="130"></label></div><div class="two"><label class="field">聯絡人<input id="contact" maxlength="70"></label><label class="field">聯絡方式<input id="contactInfo" maxlength="150" placeholder="電子郵件或電話"></label></div><label class="field">簽署單位／落款<input id="signature" maxlength="100"></label></section>
+<section class="card"><h2>04　下載、列印、寄送</h2><div class="buttons"><button class="btn" id="download" type="button">下載 HTML 公文</button><button class="btn outline" id="print" type="button">列印／另存 PDF</button><button class="btn outline" id="save" type="button">儲存本機草稿</button><button class="btn outline" id="load" type="button">讀取草稿</button><button class="btn outline" id="gmail" type="button">開啟 Gmail 草稿</button></div><p class="minor" style="margin-top:15px">Gmail 的一般撰信連結只能預填純文字，無法保證 HTML 版面完整帶入；若要保留排版，請將下載的 HTML 另行附上。沒有自動寄送功能。草稿存於此瀏覽器，非加密儲存，請勿填寫敏感個資。</p><p id="status" class="status" role="status" aria-live="polite">已準備家族會議通知函示範。</p></section>
+</div>
+<section class="canvas-card" aria-label="HTML 函文即時預覽"><div class="canvas-toolbar"><div><h2>HTML 即時預覽</h2><p>輸入任何內容後，右側版面會立即更新</p></div><span class="tag">A4 正式排版</span></div><div class="paper-area" id="paperMount"></div><p class="canvas-tip">列印時將自動隱藏編輯介面，保留函文版面。若內容太長，瀏覽器會依 A4 自動分頁。</p></section>
+</div></main>
+<script>
+(()=>{'use strict';
+const $=id=>document.getElementById(id),key='sheliao-html-official-draft-v1';
+const fields=['org','kind','date','receiver','number','speed','classification','attachment','subject','explanation','method','original','copy','contact','contactInfo','signature'];
+const presets={
+ notice:{kind:'函',receiver:'各位家族成員',number:'',speed:'普通件',classification:'普通',attachment:'會議議程（另行提供）',subject:'為辦理社寮王家家族史編纂工作討論會，敬請各位家族成員撥冗出席，請查照。',explanation:'為彙整家族口述歷史、照片與相關史料，擬召開編纂工作討論會。\n會議時間、地點與詳細議程將另行通知；如有不便出席者，亦可事先提供書面意見。\n相關家族資料之使用與公開方式，均應尊重當事人意願及授權範圍。',method:'敬請確認是否參與，並回覆與會意願。\n如持有舊照片、書信或族譜資料，可於會前先行告知，以便安排數位掃描及保存方式。',original:'各位家族成員',copy:'家史編纂工作小組',contact:'家族編纂聯絡人',contactInfo:'請填入聯絡電子郵件',signature:'社寮王家家史編纂小組'},
+ request:{kind:'函',receiver:'受邀提供史料之親友',number:'',speed:'普通件',classification:'普通',attachment:'史料整理與授權說明（另附）',subject:'為蒐整社寮王家家族史料，敬邀提供照片、書信及口述紀錄，請惠予協助。',explanation:'本編纂工作以保存家族記憶與和平島地方故事為目的，盼將分散於親友間的珍貴資料妥善整理。\n徵集項目包括可供提供者自主選擇的照片、書信、相關文書與口述紀錄，並非強制提供。\n受訪內容如涉及在世人士、隱私或敏感情節，將先取得適當授權與確認，再決定典藏或公開方式。',method:'如願意提供資料，敬請先與編纂聯絡人接洽，確認掃描、借展或訪談方式。\n提供者得就姓名標示、引用範圍與公開權限提出意見。',original:'受邀提供史料之親友',copy:'社寮王家家史編纂小組',contact:'家史編纂聯絡人',contactInfo:'請填入聯絡電子郵件',signature:'社寮王家家史編纂小組'},
+ general:{kind:'函',receiver:'相關單位',number:'',speed:'普通件',classification:'普通',attachment:'無',subject:'有關家族文史資料整理與交流合作事宜，敬請惠予協助，請查照。',explanation:'為保存和平島與社寮王家相關文史紀錄，本小組持續進行既有資料之整理與核對。\n為利後續研究與內容正確性，敬請協助確認可供引用之史料資訊與使用條件。',method:'敬請於方便時回覆適當聯絡窗口及相關資料取得方式。\n如需補充計畫內容，本小組將再提供說明。',original:'相關單位',copy:'家史編纂工作小組',contact:'文史聯絡人',contactInfo:'請填入聯絡電子郵件',signature:'社寮王家家史編纂小組'},
+ invitation:{kind:'邀請函',receiver:'家族長輩及親友',number:'',speed:'普通件',classification:'普通',attachment:'活動資訊（另附）',subject:'敬邀蒞臨社寮王家敬老交流茶會，共敘家誼，敬請撥冗出席。',explanation:'為向家族長輩致意，並促進親友間的情感交流，擬辦理家族敬老交流茶會。\n活動期盼在輕鬆溫暖的氣氛中，聆聽長輩分享生活與家族記憶。',method:'活動日期、地點與交通資訊將另行通知。\n敬請回覆出席人數及必要的無障礙或飲食需求，以利妥善安排。',original:'家族長輩及親友',copy:'活動籌備工作小組',contact:'活動聯絡人',contactInfo:'請填入聯絡電子郵件',signature:'社寮王家家史編纂小組'}
+};
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const all=()=>Object.fromEntries(fields.map(f=>[f,$(f).value]));
+const rawText=s=>String(s||'').trim();
+const dateFmt=str=>{if(!/^\d{4}-\d{2}-\d{2}$/.test(str))return str||'待填';const [y,m,d]=str.split('-').map(Number);return (y>1911?'中華民國'+(y-1911)+'年':y+'年')+m+'月'+d+'日'};
+const lines=s=>String(s||'').split(/\r?\n/).map(x=>x.trim()).filter(Boolean);
+const list=s=>{const a=lines(s);return a.length?'<ol>'+a.map(x=>'<li>'+esc(x)+'</li>').join('')+'</ol>':'<p>（待補）</p>'};
+const docSection=(title,html)=>'<section class="doc-section"><div class="doc-section-title">'+title+'：</div><div class="doc-section-content">'+html+'</div></section>';
+function documentHTML(){const d=all();let h='<article class="paper" id="documentPaper"><div class="doc-top"><h2 class="doc-org">'+esc(d.org||'發文單位')+'</h2><p class="doc-kind">'+esc(d.kind)+'</p><div class="doc-folio">民間文書 · 範例草稿</div></div><div class="doc-line"></div>';
+const meta=[['受文者',d.receiver],['發文日期',dateFmt(d.date)],['發文字號',d.number||'未編號'],['速別',d.speed],['密等',d.classification],['附件',d.attachment||'無']];
+h+='<dl class="doc-meta">'+meta.map(([k,v])=>'<dt>'+esc(k)+'：</dt><dd>'+esc(v)+'</dd>').join('')+'</dl>';
+h+=docSection('主旨','<p>'+esc(rawText(d.subject)||'（請輸入主旨）')+'</p>');
+h+=docSection('說明',list(d.explanation));
+if(rawText(d.method))h+=docSection('辦法',list(d.method));
+h+='<section class="doc-sig"><div class="doc-sig-name">'+esc(d.signature||d.org)+'</div></section>';
+h+='<div class="doc-rec"><div>正本：</div><div>'+esc(d.original||d.receiver)+'</div><div>副本：</div><div>'+esc(d.copy||'無')+'</div><div>聯絡：</div><div>'+esc([d.contact,d.contactInfo].filter(Boolean).join('　／　')||'請填入聯絡方式')+'</div></div>';
+h+='<div class="doc-footer"><span>'+esc(d.org||'家族編纂小組')+'</span><span>內部編修稿 · '+esc(dateFmt(d.date))+'</span></div>';
+h+='<div class="doc-warn">本件為民間家族事務 HTML 函文範本，非政府機關核發之正式公文。</div></article>';return h}
+const status=s=>$('status').textContent=s;
+function render(){$('paperMount').innerHTML=documentHTML()}
+function apply(){const p=presets[$('preset').value];if(!p)return;for(const [k,v] of Object.entries(p))if($(k))$(k).value=v;render();status('已套用「'+$('preset').selectedOptions[0].text+'」，所有欄位可自由修改。')}
+function download(name,content,mime){const blob=new Blob([content],{type:mime});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1200)}
+function exportHTML(){const head='<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>'+esc($('org').value+' '+$('kind').value+' · '+$('subject').value.slice(0,45))+'</title><style>'+document.getElementById('documentStyles').textContent+'</style></head><body style="margin:0;background:#fff">';const result=head+documentHTML()+'</body></html>';const name=($('org').value+'_'+$('kind').value+'_'+($('date').value||'草稿')).replace(/[\\/:*?"<>|]/g,'_').slice(0,75)+'.html';download(name,result,'text/html;charset=utf-8');status('已下載獨立 HTML，可離線開啟或自行附在電子郵件中。')}
+function gmail(){const d=all();const body=['受文者：'+d.receiver,'發文日期：'+dateFmt(d.date),'發文單位：'+d.org,'', '主旨：'+d.subject,'','說明：',...lines(d.explanation).map((x,i)=>(i+1)+'、'+x),'','辦法：',...lines(d.method).map((x,i)=>(i+1)+'、'+x),'','正本：'+d.original,'副本：'+d.copy,'','聯絡：'+d.contact+' '+d.contactInfo].join('\n');const p=new URLSearchParams({view:'cm',fs:'1',su:d.subject,body});const win=window.open('https://mail.google.com/mail/?'+p.toString(),'_blank','noopener,noreferrer');status(win?'已開啟 Gmail 純文字草稿，尚未寄送。如需保存 HTML 格式，請另外附上已下載檔案。':'瀏覽器可能封鎖新視窗，請允許開啟 Gmail。')}
+const today=new Date();$('date').value=[today.getFullYear(),String(today.getMonth()+1).padStart(2,'0'),String(today.getDate()).padStart(2,'0')].join('-');
+fields.forEach(f=>$(f).addEventListener('input',render));$('preset').addEventListener('change',apply);$('apply').addEventListener('click',apply);$('reset').addEventListener('click',()=>{if(confirm('要恢復此情境的預設文案？目前尚未儲存的修改會被取代。'))apply()});$('download').addEventListener('click',exportHTML);$('print').addEventListener('click',()=>window.print());$('gmail').addEventListener('click',gmail);
+$('save').addEventListener('click',()=>{try{localStorage.setItem(key,JSON.stringify({preset:$('preset').value,values:all()}));status('草稿已儲存於此瀏覽器，未加密且未上傳 GitHub。')}catch{status('本機儲存失敗，請直接下載 HTML 檔案')}});
+$('load').addEventListener('click',()=>{let d;try{d=JSON.parse(localStorage.getItem(key)||'null')}catch{}if(!d||!d.values){status('沒有找到本機草稿。');return}if(d.preset&&presets[d.preset])$('preset').value=d.preset;for(const f of fields)if(typeof d.values[f]==='string')$(f).value=d.values[f];render();status('已載入本機草稿。')});
+apply();
+})();
+</script>
+</body>
+</html>
