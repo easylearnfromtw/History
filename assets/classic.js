@@ -78,3 +78,6 @@ const opened=[];
 window.addEventListener('beforeprint',()=>{document.querySelectorAll('details:not([open])').forEach(d=>{d.open=true;opened.push(d)})});
 window.addEventListener('afterprint',()=>{while(opened.length)opened.pop().open=false});
 })();
+
+/* 額外文字動態層獨立載入，不變更人物資料或族譜。 */
+(()=>{const current=document.currentScript;if(!current?.src)return;const s=document.createElement('script');s.src=new URL('typography.js',current.src).href;s.async=false;document.head.appendChild(s)})();

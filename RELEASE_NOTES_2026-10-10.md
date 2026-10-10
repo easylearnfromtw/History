@@ -7,3 +7,7 @@
 - 加入偏好減少動態效果的閱讀支援。
 - 保留所有 `personalfamilypage/*.enc.json`、分段加密文本，以及 `data/*.json` 原始資料，不覆寫、不解密。
 - 發布目標：`easylearnfromtw/History`，預設分支 `main`，GitHub Pages 網址 `https://easylearnfromtw.github.io/History/`（須以 Pages 設定為準）。
+
+## 文字動態加強
+- 首頁主題、五卷卷名、人物列傳標題逐字落墨；卷次、短摘要、引文與章節行筆依序揭示。
+- 行動裝置降低位移，減少動態效果／列印均保持全文可閱讀；史料、加密族譜、人物資料不變。

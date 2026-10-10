@@ -1,0 +1,48 @@
+/* 社寮王家 | 落墨、行筆、卷章、引文。文字可存取、低耗能，無印章動畫。 */
+.ink-sr{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0 0 0 0)!important;white-space:nowrap!important;border:0!important}
+.ink-glyphs{display:inline-flex;flex-wrap:nowrap;white-space:nowrap;max-width:100%;vertical-align:baseline}
+.ink-glyph{display:inline-block;white-space:pre;transform-origin:50% 84%}
+.ink-person-name{display:inline-block}
+@media(prefers-reduced-motion:no-preference){
+  .ink-ready .ink-glyph{opacity:0;transform:translate3d(0,.34em,0) rotate(2deg);transition:opacity .78s cubic-bezier(.2,.75,.2,1),transform .84s cubic-bezier(.18,.8,.18,1);transition-delay:calc(var(--ink-delay,0ms) + var(--ink-index,0)*70ms)}
+  .ink-ready.ink-in .ink-glyph{opacity:1;transform:translate3d(0,0,0) rotate(0)}
+  .home-title-main.ink-ready .ink-glyph{transition-duration:1s,1.12s;transition-delay:calc(60ms + var(--ink-index,0)*115ms)}
+  .home-title-sub.ink-ready .ink-glyph{transition-delay:calc(350ms + var(--ink-index,0)*110ms)}
+  .ink-person-name.ink-ready .ink-glyph{transition-delay:calc(var(--ink-index,0)*100ms)}
+  .home-title-main.ink-ready,.home-title-sub.ink-ready,.home-intro-copy.type-fade{animation:none!important}
+  .type-fade,.type-paragraph{opacity:0;transform:translate3d(0,13px,0);transition:opacity .85s ease,transform .9s cubic-bezier(.2,.72,.2,1);transition-delay:var(--fade-delay,0ms)}
+  .type-fade.type-in,.type-paragraph.type-in{opacity:1;transform:none}
+  .type-quotation{opacity:0;transform:translateY(10px);transition:opacity 1s ease,transform 1s cubic-bezier(.2,.7,.2,1)}
+  .type-quotation.type-in{opacity:1;transform:none}
+  .type-numeral{opacity:0;transform:translate3d(8px,15px,0);transition:transform 1.08s cubic-bezier(.2,.7,.2,1),opacity 1.08s ease}
+  .type-numeral.type-in{opacity:1;transform:none}
+  .type-rule{transform-origin:left center;transform:scaleX(0);transition:transform 1.1s cubic-bezier(.24,.7,.21,1) 90ms}
+  .type-rule.type-in{transform:scaleX(1)}
+  .museum-page-hero.type-drawn::after,.home-intro.type-drawn::after,.relations-lede.type-drawn::after{clip-path:inset(0 100% 0 0);transition:clip-path 1.15s cubic-bezier(.2,.7,.2,1) .16s}
+  .museum-page-hero.type-drawn.type-in::after,.home-intro.type-drawn.type-in::after,.relations-lede.type-drawn.type-in::after{clip-path:inset(0 0 0 0)}
+  .home-chapter-aside h2.ink-ready{position:relative}
+  .home-chapter-aside h2.ink-ready::after{content:"";position:absolute;bottom:-6px;left:0;width:clamp(27px,3vw,44px);height:1px;background:var(--c-gold);transform:scaleX(0);transform-origin:left;transition:transform .75s cubic-bezier(.2,.7,.2,1) .6s}
+  .home-chapter-aside h2.ink-ready.ink-in::after{transform:scaleX(1)}
+  .welcome-step.is-current .welcome-poem span{animation:poem-ink .85s cubic-bezier(.18,.8,.2,1) both}
+  .welcome-step.is-current .welcome-poem span:first-child{animation-delay:.12s}
+  .welcome-step.is-current .welcome-poem span:last-child{animation-delay:.38s}
+  .welcome-step.is-current .welcome-dedication{animation:poem-ink 1.05s cubic-bezier(.18,.8,.2,1) .15s both}
+  @keyframes poem-ink{from{opacity:0;transform:translateY(12px);letter-spacing:.13em}to{opacity:1;transform:translateY(0);letter-spacing:inherit}}
+  .home-action,.fiction-entry a,.museum-next,.footer-return{position:relative}
+  .home-action::after,.fiction-entry a::after{content:"";position:absolute;pointer-events:none;left:0;right:0;bottom:-1px;height:1px;background:var(--c-pine);transform-origin:left;transform:scaleX(0);transition:transform .45s cubic-bezier(.2,.7,.2,1)}
+  .home-action:hover::after,.home-action:focus-visible::after,.fiction-entry a:hover::after,.fiction-entry a:focus-visible::after{transform:scaleX(1)}
+  .home-person h3 a .ink-glyph{transition-property:opacity,transform,color}
+  .home-person h3 a:hover .ink-glyph,.home-person h3 a:focus-visible .ink-glyph{color:var(--c-pine)}
+}
+@media(hover:none){.home-action::after,.fiction-entry a::after{display:none!important}.ink-ready .ink-glyph{transform:translateY(.18em)}}
+@media(max-width:760px) and (prefers-reduced-motion:no-preference){
+  .ink-ready .ink-glyph{transition-duration:.54s,.62s;transition-delay:calc(var(--ink-delay,0ms) + var(--ink-index,0)*48ms)}
+  .home-title-main.ink-ready .ink-glyph,.home-title-sub.ink-ready .ink-glyph{transition-delay:calc(var(--ink-index,0)*63ms)}
+  .type-fade,.type-paragraph{transform:translateY(7px);transition-duration:.62s,.7s}
+  .type-quotation{transform:translateY(5px);transition-duration:.75s}
+}
+@media(prefers-reduced-motion:reduce),print{
+  .ink-ready .ink-glyph,.type-fade,.type-paragraph,.type-quotation,.type-numeral,.type-rule{opacity:1!important;transform:none!important;transition:none!important;animation:none!important}
+  .museum-page-hero.type-drawn::after,.home-intro.type-drawn::after,.relations-lede.type-drawn::after{clip-path:none!important;transition:none!important}
+  .home-chapter-aside h2.ink-ready::after{transform:none!important;transition:none!important}
+}
